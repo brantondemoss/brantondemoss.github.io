@@ -13,6 +13,7 @@ body {
     position: relative; }
 #wrapper p {
     z-index: 5;
+    margin: 0px 0px;
 }
 #wrapper img {
     position: relative;
