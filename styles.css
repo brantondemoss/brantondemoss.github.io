@@ -13,12 +13,11 @@ body {
     position: relative; }
 #wrapper p {
     z-index: 5;
-    margin: 0px 0px;
 }
 #wrapper img {
     position: relative;
     z-index: -1;
-    max-width: 50%; }
+    max-width: 40%; }
 
 #footer {
     font: 14px "Source Code Pro", Inconsolata;
@@ -39,6 +38,7 @@ body {
 
 img{
     margin-left: 20%;
+    margin-right: 0px;
     float: left;
     -moz-animation:250s rotateRight infinite linear;
     -webkit-animation:250s rotateRight infinite linear;
