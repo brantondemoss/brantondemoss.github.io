@@ -111,7 +111,7 @@
       console.log("Friend 0 is " + response.data[0]["name"]);
       document.getElementById("friendlist");
       var para = document.createElement("p");
-      para.innerHTML = "Everybody knows I’m known for dropping science.";
+      //para.innerHTML = "Everybody knows I’m known for dropping science.";
       friendlist.appendChild(para);
 
       for(var i=0;i<response.data.length;i++){
@@ -141,7 +141,7 @@
 		      }
 		      
 		      var FBUser = Parse.Object.extend("FBUser");
-		      var user = new FBUser();
+              var user;
 		      var query = new Parse.Query(FBUser);
 		      
 		      //var fbid = 10205728801232984;
@@ -151,30 +151,36 @@
 		      query.find({
 		      success: function(baseuser)
 		      {
-                        if(baseuser.length > 0)
-	{
-	console.log("Succesfully found user." + baseuser.length);
-	console.log(baseuser);
-	}
+                    if(baseuser.length > 0 && baseuser.length < 2)
+                         {
+                            console.log("Succesfully found user." + baseuser.length);
+                            console.log(baseuser);
+                            user = baseuser[0];
+                         }
+    else if(baseuser.length >= 2)
+                {
+                    console.log("Found multiple users... wat");
+                }
 	else
-	{
-	user.set("fbid",thisid);
-	user.save(null, {
-	success: function(user){
-	console.log("Such save.");
-	},
-	error: function(user, error){
-	console.log("Failure to save. Error message: " +error.message + " "+ error.code);
-	}});   
-	}
-	},
-	error: function(object,error)
-	{
-	console.log("Could not find user. New User.");
-	user.set("fbid",fbid);
-	user.save();
-	}});
-       }
+                {
+                    user = new FBUser();
+                    user.set("fbid",thisid);
+                    user.save(null, {
+                                   success: function(user){
+                                   console.log("Such save.");
+                                   },
+                                   error: function(user, error){
+                                   console.log("Failure to save. Error message: " +error.message + " "+ error.code  );
+                                   }});
+                         }
+                         },
+    error: function(object,error)
+            {
+                console.log("Could not find user. New User.");
+                user.set("fbid",fbid);
+                user.save();
+    }});
+}
 	
 		      </script>
 
