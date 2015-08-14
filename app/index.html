@@ -139,20 +139,18 @@
               var user;
 		      var query = new Parse.Query(FBUser);
 		      
-		      //var fbid = 10205728801232984;
-		      
 		      query.equalTo("fbid", thisid);
 		      
 		      query.find({
 		      success: function(baseuser)
 		      {
-                    if(baseuser.length > 0 && baseuser.length < 2)
+                    if(baseuser.length == 1)
                          {
-                            console.log("Succesfully found existing user." + baseuser.length);
+                            console.log("Succesfully found one existing user.");
                             console.log(baseuser);
                             user = baseuser[0];
                          }
-                    else if(baseuser.length >= 2)
+                    else if(baseuser.length > 1)
                          {
                             console.log("Found multiple users... wat");
                          }
