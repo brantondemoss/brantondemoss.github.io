@@ -98,6 +98,7 @@
       console.log('UserId is: ' + response.id);
       document.getElementById('status').innerHTML =
       'Thanks for logging in, ' + response.name + '!';
+      ParseShit();
       });
 
       FB.api(
@@ -125,9 +126,9 @@
 		      }
 		      });
 		      }
-
+       function ParseShit(){
 		      Parse.initialize("RSM1g2L24BVOdWoZsmc8epia5sUKI8RKLxd46Qhi", "hUujmDc4i7fOmwuLrAnIexV6QoGjJYaLrbyRenTc");
-
+		      
 		      function NewUser(leuser)
 		      {
 		      
@@ -167,6 +168,7 @@
 	user.set("fbid",fbid);
 	user.save();
 	}});
+	}
 	
 		      </script>
 
