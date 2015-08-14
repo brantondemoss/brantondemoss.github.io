@@ -135,11 +135,6 @@
               
               thisid = parseInt(thisid);
 		      
-		      function NewUser(leuser)
-		      {
-		      
-		      }
-		      
 		      var FBUser = Parse.Object.extend("FBUser");
               var user;
 		      var query = new Parse.Query(FBUser);
@@ -153,34 +148,36 @@
 		      {
                     if(baseuser.length > 0 && baseuser.length < 2)
                          {
-                            console.log("Succesfully found user." + baseuser.length);
+                            console.log("Succesfully found existing user." + baseuser.length);
                             console.log(baseuser);
                             user = baseuser[0];
                          }
-    else if(baseuser.length >= 2)
-                {
-                    console.log("Found multiple users... wat");
-                }
-	else
-                {
-                    user = new FBUser();
-                    user.set("fbid",thisid);
-                    user.save(null, {
+                    else if(baseuser.length >= 2)
+                         {
+                            console.log("Found multiple users... wat");
+                         }
+                    else
+                         {
+                            console.log("We got a new one.")
+                            user = new FBUser();
+                            user.set("fbid",thisid);
+                            user.save(null, {
                                    success: function(user){
-                                   console.log("Such save.");
+                                   console.log("Successfully registered new user.");
                                    },
                                    error: function(user, error){
                                    console.log("Failure to save. Error message: " +error.message + " "+ error.code  );
-                                   }});
+                                   }
+                            });
                          }
-                         },
-    error: function(object,error)
-            {
-                console.log("Could not find user. New User.");
-                user.set("fbid",fbid);
-                user.save();
-    }});
-}
+                },
+                error: function(object,error)
+                {
+                         console.log("Could not find user. Also, ERROR " + error.code + ": " + error.message);
+                         //user.set("fbid",fbid);
+                         //user.save();
+                }});
+       }
 	
 		      </script>
 
