@@ -3,6 +3,8 @@
   <head>
     <title>Facebook Login JavaScript Example</title>
     <meta charset="UTF-8">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
   </head>
   <style>
     p {
@@ -16,6 +18,9 @@
   </style>
   <body>
     <script>
+
+      var thisid = 0;
+      
       function statusChangeCallback(response) {
       console.log('statusChangeCallback');
       console.log(response);
@@ -89,6 +94,7 @@
       console.log('Welcome!  Fetching your information.... ');
       FB.api('/me', function(response) {
       console.log('Successful login for: ' + response.name);
+      thisid = response.id;
       console.log('UserId is: ' + response.id);
       document.getElementById('status').innerHTML =
       'Thanks for logging in, ' + response.name + '!';
@@ -113,12 +119,55 @@
 		      var img = document.createElement('img');
 		      img.src = obj["picture"]["data"]["url"];
 		      document.getElementById('friendlist').appendChild(img);
-
+		      
 		      }
 
 		      }
 		      });
 		      }
+
+		      Parse.initialize("RSM1g2L24BVOdWoZsmc8epia5sUKI8RKLxd46Qhi", "hUujmDc4i7fOmwuLrAnIexV6QoGjJYaLrbyRenTc");
+
+		      function NewUser(leuser)
+		      {
+		      
+		      }
+		      
+		      var FBUser = Parse.Object.extend("FBUser");
+		      var user = new FBUser();
+		      var query = new Parse.Query(FBUser);
+		      
+		      //var fbid = 10205728801232984;
+		      
+		      query.equalTo("fbid", thisid);
+		      
+		      query.find({
+		      success: function(baseuser)
+		      {
+		      if(baseuser.length > 0)
+	{
+	console.log("Succesfully found user." + baseuser.length);
+	console.log(baseuser);
+	}
+	else
+	{
+	user.set("fbid",thisid);
+	user.save(null, {
+	success: function(user){
+	console.log("Such save.");
+	},
+	error: function(user, error){
+	console.log("Failure to save." + error.code);
+	}});   
+	}
+	},
+	error: function(object,error)
+	{
+	console.log("Could not find user. New User.");
+	user.set("fbid",fbid);
+	user.save();
+	}});
+	
 		      </script>
 
         <!--
