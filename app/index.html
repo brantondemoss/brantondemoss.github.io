@@ -149,7 +149,7 @@
 		      query.find({
 		      success: function(baseuser)
 		      {
-		      if(baseuser.length > 0)
+                        if(baseuser.length > 0)
 	{
 	console.log("Succesfully found user." + baseuser.length);
 	console.log(baseuser);
@@ -162,7 +162,7 @@
 	console.log("Such save.");
 	},
 	error: function(user, error){
-	console.log("Failure to save." + error.code);
+	console.log("Failure to save. Error message: " + error.code);
 	}});   
 	}
 	},
@@ -172,7 +172,7 @@
 	user.set("fbid",fbid);
 	user.save();
 	}});
-	}
+       }
 	
 		      </script>
 
