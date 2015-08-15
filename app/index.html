@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Facebook Login JavaScript Example</title>
+    <title>ilikeyou</title>
     <meta charset="UTF-8">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
@@ -102,7 +102,7 @@
       });
 
       FB.api(
-      "/me/taggable_friends?limit=5000",
+      "/me/friends?limit=5000",
       function (response) {
       if(response && !response.error) {
       /* handle the result */
@@ -115,8 +115,24 @@
       friendlist.appendChild(para);
 
       for(var i=0;i<response.data.length;i++){
-		      var obj = response.data[i];
-		      var name = obj["name"];
+             
+             var obj = response.data[i];
+             var name = obj["name"];
+             
+             var checkbox = document.createElement('input');
+             checkbox.type = "checkbox";
+             checkbox.name = name;
+             checkbox.value = "value";
+             checkbox.id = "id";
+             
+             var label = document.createElement('label')
+             label.htmlFor = "id";
+             label.appendChild(document.createTextNode('text for label after checkbox'));
+             
+             container.appendChild(checkbox);
+             container.appendChild(label);
+             
+		      
 		      var img = document.createElement('img');
 		      img.src = obj["picture"]["data"]["url"];
 		      document.getElementById('friendlist').appendChild(img);
@@ -172,8 +188,6 @@
                 error: function(object,error)
                 {
                          console.log("Major malfunction in query request " + error.code + ": " + error.message);
-                         //user.set("fbid",fbid);
-                         //user.save();
                 }});
        }
 	
