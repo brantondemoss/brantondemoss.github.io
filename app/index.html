@@ -100,6 +100,12 @@
       'Thanks for logging in, ' + response.name + '!';
       ParseShit();
       });
+      
+      function getPic(userid)
+      {
+          FB.api("/"+userid+"/picture", function(response)
+                 { return response});
+      }
 
       FB.api(
       "/me/friends?limit=5000",
@@ -128,10 +134,10 @@
              checkbox.type = "checkbox";
              checkbox.name = name;
              checkbox.value = "value";
-             checkbox.id = "id";
+             checkbox.id = "poop";
              
              var label = document.createElement('label')
-             label.htmlFor = "id";
+             label.htmlFor = "poop";
              label.appendChild(document.createTextNode('text for label after checkbox'));
              
              container.appendChild(checkbox);
@@ -139,7 +145,7 @@
              
 		      
 		      var img = document.createElement('img');
-		      img.src = obj["picture"]["data"]["url"];
+              img.src = getPic(obj["id"]);
 		      document.getElementById('friendlist').appendChild(img);
 		      
 		      }
