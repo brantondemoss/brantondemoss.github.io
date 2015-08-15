@@ -119,7 +119,12 @@
              var obj = response.data[i];
              var name = obj["name"];
              
+             console.log("Catch 1");
+             
              var checkbox = document.createElement('input');
+             
+             console.log("Catch 2");
+             
              checkbox.type = "checkbox";
              checkbox.name = name;
              checkbox.value = "value";
