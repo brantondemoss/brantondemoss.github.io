@@ -7,7 +7,7 @@ function pixTimeChange() {
     var r4="resources/psycplutoround.jpg"
     var el=document.getElementById('myimage');
     
-    if(h>=7 && h<21 && false)
+    if(h>=7 && h<21)
     {el.src =  r1;}
     else if(h==4)
     {el.src = r4;
