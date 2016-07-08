@@ -64,7 +64,7 @@ img{
 .large {
     
     font-family: "HelveticaNeueLight", "HelveticaNeue-Light", "Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif; font-weight:300; font-stretch:normal;
-    font-size: 36px;
+    font-size: 30px;
 }
 
 ul {
@@ -84,7 +84,9 @@ ul {
 
 .light-gray {
     color: rgba(206, 206, 206, 0.9); }
-
+.red {
+    color: #d0021b;
+}
 a {
     text-decoration: none; }
 a.red {
