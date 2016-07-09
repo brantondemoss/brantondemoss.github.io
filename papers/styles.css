@@ -11,11 +11,15 @@ body {
     position: relative; }
 #wrapper p {
     margin: 12px 0; }
-#wrapper img {
+ img {
     max-width: 100%; }
 #wrapper #contact {
     margin-top: 20px; }
-
+#boxmebaby {
+ border-style:  dotted;
+ border-width:  2px;
+ border-color:  rgba(206, 206, 206, 0.9);
+ }
 .med {
     font-size: 14px; }
 
