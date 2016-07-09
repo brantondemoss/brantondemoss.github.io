@@ -103,6 +103,10 @@ ul {
 .red {
     color: #d0021b;
 }
+
+.gray {
+    color: rgba(155, 155, 155, 0.9); }
+
 a {
     text-decoration: none; }
 a.red {
