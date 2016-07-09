@@ -1,7 +1,8 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
 body {
     position: relative;
     text-align: center;
-    font-family: 'Lato', sans-serif;
+    font-family: "Open Sans", 'Lato', Helvetica, sans-serif;
     background-color: white;
     color: black;
     overflow: hidden;
@@ -77,7 +78,7 @@ img{
 
 .large {
     
-    font-family: 'Lato', sans-serif;
+    font-family: "Open Sans", 'Lato', Helvetica, sans-serif;
     font-weight:100; 
     font-stretch:normal;
     font-size: 30px;
