@@ -1,7 +1,7 @@
 body {
     position: relative;
     text-align: center;
-    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-family: 'Lato', sans-serif;
     background-color: white;
     color: black;
     overflow: hidden;
@@ -77,7 +77,7 @@ img{
 
 .large {
     
-    font-family: "HelveticaNeueLight", "HelveticaNeue-Light", "Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif; 
+    font-family: 'Lato', sans-serif;
     font-weight:100; 
     font-stretch:normal;
     font-size: 30px;
