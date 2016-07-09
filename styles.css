@@ -4,6 +4,7 @@ body {
     font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
     background-color: white;
     color: black;
+    overflow: hidden;
 }
 #plutotext {
      margin-left: 12px;
