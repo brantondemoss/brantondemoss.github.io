@@ -19,7 +19,7 @@ function pixTimeChange() {
     }
     else
     {el.src = r2;
-        document.getElementById("plutotext").innerHTML +="<p class='med just'>It's a bit late, isn't it? Enjoy the moon.</p>";
+        document.getElementById("plutotext").innerHTML +="<p class='med just'>It's only a liquid crystal moon.</p>";
     }
 }
 
