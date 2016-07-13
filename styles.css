@@ -16,6 +16,7 @@ body {
     padding-top: 70px;
     display: block;
     /*max-width: 400px;*/
+    word-wrap: break-word;
     position: relative; }
 #wrapper p {
     z-index: 5;
