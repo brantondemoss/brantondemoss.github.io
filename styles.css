@@ -1,6 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 body {
-    overflow: auto;
+    overflow: hidden;
     position: relative;
     text-align: center;
     font-family: "Open Sans", 'Lato', Helvetica, sans-serif;
