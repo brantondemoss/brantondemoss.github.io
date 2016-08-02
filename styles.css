@@ -37,6 +37,15 @@ body {
     color: #4D4D4D;
 }
 
+.key {
+    font-family: "Menlo", monospace;
+    text-align: left;
+    width: 50%;
+    margin: auto;
+    white-space: pre-wrap;
+    line-height:10px;
+} 
+
 .rounded {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;

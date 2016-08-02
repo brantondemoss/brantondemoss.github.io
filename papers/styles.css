@@ -5,14 +5,15 @@ body {
     font-family: "Open Sans", Helvetica; }
 
 #wrapper {
-    padding-top: 70px;
+    padding-top: 10px;
     display: inline-block;
     max-width: 400px;
     position: relative; }
 #wrapper p {
     margin: 12px 0; }
  img {
-    max-width: 100%; }
+     max-width: 100%;
+ }
 #wrapper #contact {
     margin-top: 20px; }
 #boxmebaby {
