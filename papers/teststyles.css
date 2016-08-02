@@ -72,6 +72,8 @@ tab {
 }
 
 img{
+    /*border-right: 2px solid #9799a7;*/
+    /*padding-right: 40px;*/
     margin-left: 5%;
     margin-right: 0px;
     float: left;  
@@ -117,7 +119,7 @@ a {
     text-decoration: none; }
 a.red {
     color: #d0021b;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 a.red:hover {
     background-color: #ffd2d8; }
