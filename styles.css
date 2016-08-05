@@ -126,7 +126,7 @@ ul {
 a {
     text-decoration: none; }
 a.red {
-    color: #d0021b;
+    color: #D00A07;
     text-transform: uppercase;
 }
 a.red:hover {
@@ -152,4 +152,12 @@ a.purple {
     color: #9932CD;}
 a.purple:hover {
     background-color: rgba(153, 50, 205, 0.2);
+}
+a.turquoise
+{
+ color: #0CC5DD;   
+}
+a.turquoise:hover
+{
+ background-color: #78E5E7;   
 }
