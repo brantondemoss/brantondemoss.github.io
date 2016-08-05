@@ -127,7 +127,7 @@ a {
     text-decoration: none; }
 a.red {
     color: #D00A07;
-    text-transform: uppercase;
+    /*text-transform: uppercase;*/
 }
 a.red:hover {
     background-color: #ffd2d8; }
