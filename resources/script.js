@@ -15,11 +15,11 @@ function pixTimeChange() {
     }
     else if(h<6 && h>=1)
     {el.src = r3;
-        /*document.getElementById("plutotext").innerHTML +="<p class='med just'>It's a lonely time of night. Enjoy Pluto :)</p>";*/
+        document.getElementById("plutotext").innerHTML +="<p class='med just'>It's a lonely time of night. Enjoy Pluto :)</p>";
     }
     else
     {el.src = r2;
-        document.getElementById("plutotext").innerHTML +="<p class='med just'>it's only a liquid crystal moon</p>";
+        /*document.getElementById("plutotext").innerHTML +="<p class='med just'>it's only a liquid crystal moon</p>";*/
     }
 }
 
