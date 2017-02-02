@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>	
+    <link rel="icon" sizes="16x16 32x32" type="image/png" href="favicon.ico">
+    <title>brantondemoss</title>
+    <link href="styles.css" rel="stylesheet" type="text/css"/>
+    <script src="resources/script.js"></script>
+  </head>
+
+  <body>
+
+    <div id="wrapper">
+
+      <a href="/sunflower">
+	<img class="rounded" src="" id="myimage" alt="a picture, duh" title="this image changes based on time of day">
+      </a>
+
+      <div class="content">
+	<p class="large left gray">branton demoss</p>
+	<p class="med just">boulder bicyclist</p>
+	<p class="med just">dj at <a class="red" href="http://www.radio1190.org/" target="_blank">radio1190</a></p>
+	<p class="med just">here's some of my <a class="purple" href="https://github.com/brantondemoss?tab=repositories" target="_blank">&#60;code&#62;</a></p>
+	<p class="med just">here're <a href="/papers" class="blue">some things I wrote</a></p>
+	<p class="med just">recently I did some knot theory with <a class="red" href="http://euclid.colorado.edu/~pflaum/" target="_blank">Prof. Pflaum</a>
+	<p class="med just">I am a <a href="http://www.iie.org/Programs/Gilman-Scholarship-Program" class="turquoise" target="_blank">Gilman Scholar</a> at the <a class="blue" href="http://ox.ac.uk" target="_blank">University of Oxford.</a></p><p class="med just">But usually I'm a student in Boulder, Colorado. 
+    <!-- <ul>
+     <li><a class="gold" href="http://euclid.colorado.edu/~pflaum/" target="_blank">CU Mathematical Physics</a></li>
+     </ul> -->
+	<div id="plutotext">
+	</div>
+      </div>
+
+	
+    </div>
+
+    <div id="footer">
+	 
+      
+    <p id="contact" class="med center">&#60;<a href="mailto: branton@brantondemoss.com" class="gray">branton@brantondemoss.com</a>: <a href="http://pgp.mit.edu/pks/lookup?op=get&search=0x4A986C04970E2F40" class="gray">0x4a986c04970e2f40</a>&#62;</p>
+    
+    </div>
+      
+  </body>
+  
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+       
+       ga('create', 'UA-48874513-2', 'auto');
+       ga('send', 'pageview');
+       
+  </script>
+  
+</html>
