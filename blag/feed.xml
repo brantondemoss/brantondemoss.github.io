@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>jekyll-grid</title>
-    <description>A jekyll theme ideal for showcasing projects</description>
+    <title>blag</title>
+    <description>pics&amp;amp;words</description>
     <link>http://brantondemoss.com</link>
     <atom:link href="http://brantondemoss.com/feed.xml" rel="self" type="application/rss+xml" />
     
