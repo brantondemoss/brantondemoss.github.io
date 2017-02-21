@@ -76,6 +76,9 @@ tab {
 
 img{
     margin-left: 20%;
+    @include mobile {
+       margin-left: 10%;
+    }
     margin-right: 0px;
     float: left;
     -moz-animation:250s rotateRight infinite linear;
