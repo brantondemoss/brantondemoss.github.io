@@ -26,8 +26,10 @@ body {
     position: relative;
     z-index: -1;
     max-width: 40%;
+
     @media only screen and (max-device-width: 667px) and (orientation : landscape) {
            max-width: 20%;
+
     }
 }
 
