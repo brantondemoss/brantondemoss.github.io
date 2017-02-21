@@ -26,6 +26,9 @@ body {
     position: relative;
     z-index: -1;
     max-width: 40%;
+    @include mobile {
+    	     max-width: 30%;
+    }
 }
 
 #footer {
