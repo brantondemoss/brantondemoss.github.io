@@ -26,8 +26,8 @@ body {
     position: relative;
     z-index: -1;
     max-width: 40%;
-    @include mobile {
-    	     max-width: 20%;
+    media only screen and (max-device-width: 1183px) {
+           max-width: 35%;
     }
 }
 
@@ -76,8 +76,8 @@ tab {
 
 img{
     margin-left: 20%;
-    @include mobile {
-       margin-left: 10%;
+    @media only screen and (max-device-width: 1183px) {
+    	   margin-left: 15%;
     }
     margin-right: 0px;
     float: left;
