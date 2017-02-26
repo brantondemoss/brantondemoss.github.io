@@ -77,7 +77,7 @@ tab {
 }
 
 img{
-    margin-left: 17%;
+    margin-left: 15%;
     @media only screen and (max-device-width: 667px) and (orientation : landscape) {
     	   margin-left: 10%;
     }
