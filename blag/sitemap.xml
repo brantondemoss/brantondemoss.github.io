@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>http://brantondemoss.com/blag/Four-Portraits/</loc>
-<lastmod>2017-02-02T00:00:00+00:00</lastmod>
+<loc>http://brantondemoss.com/blag/four-portraits/</loc>
+<lastmod>2017-02-02T00:00:00-07:00</lastmod>
 </url>
 <url>
 <loc>http://brantondemoss.com/blag/Remembering/</loc>
-<lastmod>2017-02-12T00:00:00+00:00</lastmod>
+<lastmod>2017-02-12T00:00:00-07:00</lastmod>
 </url>
 <url>
 <loc>http://brantondemoss.com/blag/like/</loc>
-<lastmod>2017-02-15T00:00:00+00:00</lastmod>
+<lastmod>2017-02-15T00:00:00-07:00</lastmod>
 </url>
 <url>
 <loc>http://brantondemoss.com/blag/friends/</loc>
-<lastmod>2017-02-20T00:00:00+00:00</lastmod>
+<lastmod>2017-02-20T00:00:00-07:00</lastmod>
 </url>
 <url>
 <loc>http://brantondemoss.com/blag/tired/</loc>
-<lastmod>2017-02-23T00:00:00+00:00</lastmod>
+<lastmod>2017-02-23T00:00:00-07:00</lastmod>
+</url>
+<url>
+<loc>http://brantondemoss.com/blag/fool/</loc>
+<lastmod>2017-03-17T00:00:00-06:00</lastmod>
 </url>
 <url>
 <loc>http://brantondemoss.com/blag/404/</loc>
