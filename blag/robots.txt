@@ -1,1 +1,1 @@
-Sitemap: http://brantondemoss.com/blag/sitemap.xml
+Sitemap: http://localhost:4000/blag/sitemap.xml
