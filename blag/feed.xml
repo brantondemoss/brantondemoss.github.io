@@ -3,8 +3,8 @@
   <channel>
     <title>blag</title>
     <description>pics&amp;amp;words</description>
-    <link>http://localhost:4000</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://brantondemoss.com</link>
+    <atom:link href="http://brantondemoss.com/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>onwards</title>
@@ -36,8 +36,8 @@ so enjoy the little things&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;../images/boulderflagstaff.JPG&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 26 Mar 2017 00:00:00 -0600</pubDate>
-        <link>http://localhost:4000/onwards/</link>
-        <guid isPermaLink="true">http://localhost:4000/onwards/</guid>
+        <link>http://brantondemoss.com/onwards/</link>
+        <guid isPermaLink="true">http://brantondemoss.com/onwards/</guid>
       </item>
     
       <item>
@@ -53,8 +53,8 @@ so enjoy the little things&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;../images/turlstreetrain.JPG&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Fri, 17 Mar 2017 00:00:00 -0600</pubDate>
-        <link>http://localhost:4000/fool/</link>
-        <guid isPermaLink="true">http://localhost:4000/fool/</guid>
+        <link>http://brantondemoss.com/fool/</link>
+        <guid isPermaLink="true">http://brantondemoss.com/fool/</guid>
       </item>
     
       <item>
@@ -87,8 +87,8 @@ i remember waking up after a long night’s sleep, so so slowly. the alarm sound
 &lt;p&gt;the world feels so god damn warm and soft&lt;/p&gt;
 </description>
         <pubDate>Thu, 23 Feb 2017 00:00:00 -0700</pubDate>
-        <link>http://localhost:4000/tired/</link>
-        <guid isPermaLink="true">http://localhost:4000/tired/</guid>
+        <link>http://brantondemoss.com/tired/</link>
+        <guid isPermaLink="true">http://brantondemoss.com/tired/</guid>
       </item>
     
       <item>
@@ -119,8 +119,8 @@ but it’s okay to be crazy&lt;br /&gt;&lt;/p&gt;
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/QxR0rl6ylFA&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 </description>
         <pubDate>Mon, 20 Feb 2017 00:00:00 -0700</pubDate>
-        <link>http://localhost:4000/friends/</link>
-        <guid isPermaLink="true">http://localhost:4000/friends/</guid>
+        <link>http://brantondemoss.com/friends/</link>
+        <guid isPermaLink="true">http://brantondemoss.com/friends/</guid>
       </item>
     
       <item>
@@ -134,8 +134,8 @@ but it’s okay to be crazy&lt;br /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;../images/nashvilleme.png&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Wed, 15 Feb 2017 00:00:00 -0700</pubDate>
-        <link>http://localhost:4000/like/</link>
-        <guid isPermaLink="true">http://localhost:4000/like/</guid>
+        <link>http://brantondemoss.com/like/</link>
+        <guid isPermaLink="true">http://brantondemoss.com/like/</guid>
       </item>
     
       <item>
@@ -153,8 +153,8 @@ got married at nineteen?&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;../images/brickwall.jpg&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
 </description>
         <pubDate>Sun, 12 Feb 2017 00:00:00 -0700</pubDate>
-        <link>http://localhost:4000/Remembering/</link>
-        <guid isPermaLink="true">http://localhost:4000/Remembering/</guid>
+        <link>http://brantondemoss.com/Remembering/</link>
+        <guid isPermaLink="true">http://brantondemoss.com/Remembering/</guid>
       </item>
     
       <item>
@@ -165,8 +165,8 @@ got married at nineteen?&lt;/p&gt;
 
 </description>
         <pubDate>Thu, 02 Feb 2017 00:00:00 -0700</pubDate>
-        <link>http://localhost:4000/four-portraits/</link>
-        <guid isPermaLink="true">http://localhost:4000/four-portraits/</guid>
+        <link>http://brantondemoss.com/four-portraits/</link>
+        <guid isPermaLink="true">http://brantondemoss.com/four-portraits/</guid>
       </item>
     
   </channel>
