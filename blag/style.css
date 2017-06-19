@@ -434,6 +434,14 @@ footer {
   margin: 20px 0;
 }
 
+.orient {
+  -ms-transform: rotate(90deg);
+  /* IE 9 */
+  -webkit-transform: rotate(90deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(90deg);
+}
+
 .highlight pre {
   /* overflow: scroll; Prefer no word wrap? Uncomment this line and comment out the 2 lines below. */
   word-break: break-all;
