@@ -3,8 +3,41 @@
   <channel>
     <title>blag</title>
     <description>pics&amp;amp;words</description>
-    <link>http://brantondemoss.com</link>
-    <atom:link href="http://brantondemoss.com/feed.xml" rel="self" type="application/rss+xml" />
+    <link>http://localhost:4000</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>feel alive?</title>
+        <description>&lt;p&gt;one time in Oxford…&lt;/p&gt;
+&lt;audio src=&quot;../images/piano.m4a&quot; autoplay=&quot;&quot; controls=&quot;&quot; loop=&quot;&quot;&gt;
+&lt;/audio&gt;
+
+&lt;p&gt;Hannah who I never met besides standing in a kiddy pool in the dolphin&lt;/p&gt;
+
+&lt;p&gt;Sam K who I know through honey&lt;/p&gt;
+
+&lt;p&gt;Tae-yeoun through MB, and Fleur and Kris and Sohin and Curtis&lt;/p&gt;
+
+&lt;p&gt;It’s an asymmetric feeling&lt;/p&gt;
+
+&lt;p&gt;wish I knew even a hint&lt;/p&gt;
+
+&lt;p&gt;what it meant&lt;/p&gt;
+
+&lt;p&gt;but her piano rang out beautifully for centuries that minute&lt;/p&gt;
+
+&lt;p&gt;it all moves so fast and slow&lt;/p&gt;
+
+&lt;p&gt;I want to be fifty&lt;/p&gt;
+
+&lt;p&gt;I want to be five&lt;/p&gt;
+
+&lt;p&gt;I just want to feel alive&lt;/p&gt;
+</description>
+        <pubDate>Sat, 23 Sep 2017 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000/feel-alive/</link>
+        <guid isPermaLink="true">http://localhost:4000/feel-alive/</guid>
+      </item>
     
       <item>
         <title>last night in town</title>
@@ -22,9 +55,9 @@ and I really did try&lt;/p&gt;
 
 &lt;p&gt;sam, you really saved me&lt;/p&gt;
 </description>
-        <pubDate>Mon, 19 Jun 2017 00:00:00 +0100</pubDate>
-        <link>http://brantondemoss.com/last-night-in-town/</link>
-        <guid isPermaLink="true">http://brantondemoss.com/last-night-in-town/</guid>
+        <pubDate>Mon, 19 Jun 2017 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000/last-night-in-town/</link>
+        <guid isPermaLink="true">http://localhost:4000/last-night-in-town/</guid>
       </item>
     
       <item>
@@ -55,9 +88,9 @@ and I really did try&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;../images/cobordism.svg&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Mon, 29 May 2017 00:00:00 +0100</pubDate>
-        <link>http://brantondemoss.com/human-beings/</link>
-        <guid isPermaLink="true">http://brantondemoss.com/human-beings/</guid>
+        <pubDate>Mon, 29 May 2017 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000/human-beings/</link>
+        <guid isPermaLink="true">http://localhost:4000/human-beings/</guid>
       </item>
     
       <item>
@@ -82,9 +115,9 @@ and I really did try&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;../images/snakelemma.png&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Thu, 25 May 2017 00:00:00 +0100</pubDate>
-        <link>http://brantondemoss.com/myself/</link>
-        <guid isPermaLink="true">http://brantondemoss.com/myself/</guid>
+        <pubDate>Thu, 25 May 2017 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000/myself/</link>
+        <guid isPermaLink="true">http://localhost:4000/myself/</guid>
       </item>
     
       <item>
@@ -141,9 +174,9 @@ and I really did try&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;../images/communitygardens.jpg&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Wed, 12 Apr 2017 00:00:00 +0100</pubDate>
-        <link>http://brantondemoss.com/all-my-friends/</link>
-        <guid isPermaLink="true">http://brantondemoss.com/all-my-friends/</guid>
+        <pubDate>Wed, 12 Apr 2017 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000/all-my-friends/</link>
+        <guid isPermaLink="true">http://localhost:4000/all-my-friends/</guid>
       </item>
     
       <item>
@@ -175,9 +208,9 @@ so enjoy the little things&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;../images/boulderflagstaff.JPG&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Sun, 26 Mar 2017 00:00:00 +0000</pubDate>
-        <link>http://brantondemoss.com/onwards/</link>
-        <guid isPermaLink="true">http://brantondemoss.com/onwards/</guid>
+        <pubDate>Sun, 26 Mar 2017 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000/onwards/</link>
+        <guid isPermaLink="true">http://localhost:4000/onwards/</guid>
       </item>
     
       <item>
@@ -192,9 +225,9 @@ so enjoy the little things&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;../images/turlstreetrain.JPG&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Fri, 17 Mar 2017 00:00:00 +0000</pubDate>
-        <link>http://brantondemoss.com/fool/</link>
-        <guid isPermaLink="true">http://brantondemoss.com/fool/</guid>
+        <pubDate>Fri, 17 Mar 2017 00:00:00 -0600</pubDate>
+        <link>http://localhost:4000/fool/</link>
+        <guid isPermaLink="true">http://localhost:4000/fool/</guid>
       </item>
     
       <item>
@@ -226,9 +259,9 @@ i remember waking up after a long night’s sleep, so so slowly. the alarm sound
 
 &lt;p&gt;the world feels so god damn warm and soft&lt;/p&gt;
 </description>
-        <pubDate>Thu, 23 Feb 2017 00:00:00 +0000</pubDate>
-        <link>http://brantondemoss.com/tired/</link>
-        <guid isPermaLink="true">http://brantondemoss.com/tired/</guid>
+        <pubDate>Thu, 23 Feb 2017 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/tired/</link>
+        <guid isPermaLink="true">http://localhost:4000/tired/</guid>
       </item>
     
       <item>
@@ -258,9 +291,9 @@ but it’s okay to be crazy&lt;br /&gt;&lt;/p&gt;
 
 &lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/QxR0rl6ylFA&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 </description>
-        <pubDate>Mon, 20 Feb 2017 00:00:00 +0000</pubDate>
-        <link>http://brantondemoss.com/friends/</link>
-        <guid isPermaLink="true">http://brantondemoss.com/friends/</guid>
+        <pubDate>Mon, 20 Feb 2017 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/friends/</link>
+        <guid isPermaLink="true">http://localhost:4000/friends/</guid>
       </item>
     
       <item>
@@ -273,28 +306,9 @@ but it’s okay to be crazy&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;../images/nashvilleme.png&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Wed, 15 Feb 2017 00:00:00 +0000</pubDate>
-        <link>http://brantondemoss.com/like/</link>
-        <guid isPermaLink="true">http://brantondemoss.com/like/</guid>
-      </item>
-    
-      <item>
-        <title>identity</title>
-        <description>&lt;p&gt;i keep getting told i’m only twenty&lt;/p&gt;
-
-&lt;p&gt;guess what
-i did actually know that&lt;/p&gt;
-
-&lt;p&gt;did you know helen
-got married at nineteen?&lt;/p&gt;
-
-&lt;p&gt;you can prove that identical particles cannot be distinguished by their histories. well, why shouldn’t that apply to everything, after all?&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;../images/brickwall.jpg&quot; width=&quot;100%&quot; /&gt;&lt;/p&gt;
-</description>
-        <pubDate>Sun, 12 Feb 2017 00:00:00 +0000</pubDate>
-        <link>http://brantondemoss.com/Remembering/</link>
-        <guid isPermaLink="true">http://brantondemoss.com/Remembering/</guid>
+        <pubDate>Wed, 15 Feb 2017 00:00:00 -0700</pubDate>
+        <link>http://localhost:4000/like/</link>
+        <guid isPermaLink="true">http://localhost:4000/like/</guid>
       </item>
     
   </channel>
