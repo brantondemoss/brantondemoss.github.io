@@ -1,0 +1,54 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    position: absolute;
+    text-align: center;
+    font-family: "Open Sans", 'Lato', Helvetica, sans-serif;
+    background-color: #f9f1f1;
+    color: black;
+    width: 20001px;
+    overflow-y: hidden;
+}
+#intro {
+    display: block;
+    margin-right: 30px;
+}
+.column {
+    float: left;
+    width: 300px;
+    padding: 20px 20px 0px 20px;
+}
+img {
+    position: relative;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+}
+#vagina {
+    
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.texture {
+    width: 50%;
+    padding-right: 2px;
+    padding-bottom: 43px;
+    
+}
+
+.centerpic {
+    width: 100%;
+    margin-left: 0%;
+    margin-bottom: 12%;
+}
+#staircasebegin {
+    margin-left: 150px;
+}
+a {
+    text-decoration: none;
+    color: #3e94e0;
+}
