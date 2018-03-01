@@ -18,9 +18,7 @@ body {
     overflow: hidden;}
 #wrapper p {
     z-index: 5;
-    margin: 12px 0px;
-    /*word-wrap: break-word;
-    word-break: break-all;*/
+    margin: 5px 0px;
 }
 #wrapper img {
     position: relative;

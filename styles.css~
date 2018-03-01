@@ -10,20 +10,27 @@ body {
 #wrapper {
     padding-top: 70px;
     display: block;
+    padding-right: 0px;
     /*max-width: 400px;*/
-    word-wrap: break-word;
+    /*word-wrap: break-word;
     word-break: break-all;
-    position: relative; }
+    position: relative;*/
+    overflow: hidden;}
 #wrapper p {
     z-index: 5;
     margin: 12px 0px;
-    word-wrap: break-word;
-    word-break: break-all;
+    /*word-wrap: break-word;
+    word-break: break-all;*/
 }
 #wrapper img {
     position: relative;
     z-index: -1;
     max-width: 40%;
+
+    @media only screen and (max-device-width: 667px) and (orientation : landscape) {
+           max-width: 20%;
+
+    }
 }
 
 #footer {
@@ -61,8 +68,8 @@ body {
     padding-left: 12px;
     border-left: 2px solid #9799a7;
     /*border-bottom: 2px solid #9799a7;*/
-    word-wrap: break-word;
-    word-break: break-all;   
+    /*word-wrap: break-word;
+    word-break: break-all;  */
 }
 
 tab {
@@ -70,7 +77,10 @@ tab {
 }
 
 img{
-    margin-left: 20%;
+    margin-left: 10%;
+    @media only screen and (max-device-width: 667px) and (orientation : landscape) {
+    	   margin-left: 10%;
+    }
     margin-right: 0px;
     float: left;
     -moz-animation:250s rotateRight infinite linear;
