@@ -9,7 +9,7 @@ body {
     font-family: "Open Sans", 'Lato', Helvetica, sans-serif;
     background-color: #f9f1f1;
     color: black;
-    width: 8000px;
+    width: 20001px;
     overflow-y: hidden;
 }
 #intro {
@@ -26,6 +26,15 @@ img {
     float: left;
     margin: 0px;
     padding: 0px;
+}
+img:click {
+    width: 1000px;
+}
+.largecolumn {
+    float: left;
+    width: 450px;
+    padding: 20px 15px 0px 20px;
+    margin-left: 150px;
 }
 #vagina {
     
