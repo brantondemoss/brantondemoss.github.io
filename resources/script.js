@@ -40,3 +40,26 @@ function addLoadEvent(func) {
 addLoadEvent(function() {
              pixTimeChange();
              });
+
+
+
+function ipLookUp () {
+    $.ajax('http://ip-api.com/json')
+    .then(
+          function success(response) {
+          
+          if(response.countryCode != "GB")
+          {
+            document.getElementById("ox").innerHTML +="<li>studied math/physics at <a href='http://ox.ac.uk'>Oxford</a></li>";
+          }
+          /*console.log('User\'s Location Data is ', response);
+          console.log('User\'s Country', response.country);*/
+          },
+          
+          function fail(data, status) {
+          console.log('Request failed.  Returned status of',
+                      status);
+          }
+          );
+}
+ipLookUp()
