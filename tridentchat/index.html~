@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>	
+    <title>DeepTrace</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+  </head>
+
+  <body>
+  <div id="box">
+  <a href="http://frontrangegeosciences.com/">
+  <img href="http://frontrangegeosciences.com/" src="FRGLogo.png" alt="FRG Logo" style="float: right; position: relative; max-width: 7%; z-index: 20;"></img>
+  </a>
+  
+    <div id="wrapper">
+    
+    
+	<div class="content">
+    
+    
+	  <p class="large left red bottom">DeepTrace</p>
+	  <p class="large left gray bottom">A.I. for first break picking</p>
+	  <p class="med left">DeepTrace is a breakthrough application of deep learning for picking arrival times in seismic data. Integrated with FRG's new Phoenix Refraction Statics program, DeepTrace can pick billions of traces per hour at human quality. Users can train further train DeepTrace on their historical data to continually refine DeepTrace's picking abilities in diverse geophysical contexts.
+	  <p class="med left">DeepTrace was recently shown at SEG 2019. To see our slides from the show, <a href="/DeepTrace/DeepTracePresentation.pdf" class="blue">click here</a>.</p>
+      <!--<p class="med left">DeepTrace services can be hired on a per job basis, and we are now offering free demo software so that users can test its accuracy before committing to purchasing services or a dedicated installation. For information about downloading and installing a demo, see below.</p> 
+
+      <p class="large left" style="padding-top: 12%;"><a href="/DeepTrace/download" class="blue">Get DeepTrace</a></p> -->
+	
+    </div>
+
+
+    <div id="footer">
+	 
+     
+    <p id="contact" class="med center">email: <a href="mailto: info@frontrangegeosciences.com" class="gray">info@frontrangegeosciences.com</a> &nbsp;| &nbsp;phone: 720-627-5035 </p>
+    
+    </div>
+    </div>
+  </body>
+  
+  <script>
+       
+  </script>
+  
+</html>
