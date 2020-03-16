@@ -50,7 +50,7 @@ function ipLookUp () {
           
           if(response.countryCode != "GB")
           {
-            document.getElementById("ox").innerHTML +="<li>studied math/physics at <a href='http://ox.ac.uk' class='blue'>Oxford</a></li>";
+            document.getElementById("ox").innerHTML +="<li>studied math/physics at <a href='http://ox.ac.uk' class='blue'>Oxford</a> and <a href='https://www.colorado.edu/physics/' class='orange'>Boulder</a></li>";
           }
           /*console.log('User\'s Location Data is ', response);
           console.log('User\'s Country', response.country);*/
