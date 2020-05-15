@@ -1,0 +1,107 @@
+# Love Letter to KataGo, or: <br> Go AI past, present, and future
+
+![](katagame.png)
+*KataGo (B) vs LeelaZero (W)[^kata1]*
+
+There's something magical about the game of Go. For thousands of years, it has captured the imagination of those who want to learn *what it is to learn*, to think about what thinking means.
+
+With the recent advent of strong, open source Go AI that can beat top professionals, it's worth tracing the histroy of the game, why it remained so difficult to beat humans for so long, and what the future of Go may hold.
+
+## Complexity
+Like chess, Go is a deterministic game of perfect information. There is no stochasticity, no hidden state. 
+
+Unlike chess in which there are on average around 35 legal moves to consider playing each turn, there are on average around 250 legal moves to consider in Go.
+
+In tic-tac-toe, we can search the entire game tree, and easily find the optimal response at any state. xkcd nicely summarized this in an image[^1]:
+
+<img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="xkcd.png"/>
+
+Although it is in principle possible to create such a tree for Go since it is a finite game, the state space of Go is very large: the number of legal positions[^2] in Go is approximately $2.1 \times 10^{170}$.
+
+Since a game is a trajectory through legal board states, the number of possible games of Go is considerably larger: lower and upper bounds of $10^{10^{104}}$ and $10^{10^{171}}$ respectively have been calculated [^3] [^4].
+
+## Intuition & Reading
+Go's state space is too larged to be searched, because of this players must learn to prune bad moves, to focus only on moves that look promising. In short, players must develop an *intuitive* sense of what moves might be good, avoiding wasting time on dubious possibilities.
+
+Intuition guides move selection, but reading is at the heart of selecting a move. With a set of move candidates, players must read ahead, considering how their opponent will respond to maximise their **own** chance of winning. Reading can involve considering up to dozens[^5] of moves and responses, evaluating which player gets a "better" result in the end.
+
+Intuition and reading lie at the center of Go's connection with creativity and intelligence. One must consider the board from an opponent's perspective, develop an intuition for favorable positions that will lead to victory, and consider long chains of state transitions where the opponent will try to gain advantage. Consider how hard it really is to chose a move when you know the opponent's response will be designed to steal the advantage from you. It is not a straight and clear path.
+
+How can we encode all of these properties into computers? How can we give AI intuition for promising moves, reading capability, and most importantly, creativity?
+
+## Creativity
+Before we can even consider giving AI creativity, we have to try to define what creativity even is.
+
+Creativity is fundamentally related to our own ignorance. If a problem has a known solution, implementing it is not considered creative. It is rather the *surprisingness* of the solution that determines how creative we consider it. 
+
+If you accept this position, then creativity and novelty are closely linked. To make a creative AI Go player, we require it to be able to find *new* ways of playing. Unlike the AI systems of old[^6], we want our Go AI to discover new knowledge on its own, and share it with us.
+
+## Classical AI
+Expert knowledge systems, DeepBlue, value function definition problems
+
+Tree search, alpha-beta and MCTS
+
+Early MCTS bots
+
+Value of position is percent of playouts from position which result in winning state
+
+## AlphaGo
+Bootstrapping from human knowledge
+
+Reinforcement learning def and cartoon
+
+AlphaZero - no additional features. Combining policy and value in backbone strength increase (eye towards KataGo implementing additional outputs as regularizers)
+
+Strength of policy + reading. Elo ratings
+
+## Leela Zero
+Troubles with ladders
+
+Compute efficiency
+
+Open source ethos, reproducability, incorporating ELFv2 games, bringing AI review to the masses
+
+Shin Jinseo reportedly uses Leela on an iPad everywhere
+
+Loss to FineArt (jueyi) in AI cup
+
+## KataGo
+
+Reinforcement + Features + Self Supervised (additional training signal)
+
+Arbitrary board sizes and komi - helpful for public to learn
+
+Igo Hatsuyoron
+
+Compute efficiency
+
+Continuing development
+
+Speculation about future research directions
+
+David Silver quote Zero bots will continue to get better for 100 years with more compute
+
+How can we make AI bots more useful to humans to elarn from and study with? Will they overfit to MCTS policy and become overconfident?
+
+MuZero Go RL "model" learned in NN
+
+Interview Q's w/DJ Wu?
+
+## Other Bots
+Black hole?
+Q-whatever
+minigo
+
+[^kata1]: [KataGo vs. Leela Zero](http://www.yss-aya.com/cgos/viewer.cgi?19x19/SGF/2020/05/14/693137.sgf): B+Resign
+
+[^1]: [xkcd 832](https://xkcd.com/832/)
+
+[^2]: [Tromp, Number of legal Go positions](https://tromp.github.io/go/legal.html)
+
+[^3]: Lower bound: [Walraet, A Googolplex of Go Games](GoGamesNumber.pdf) 
+
+[^4]: Upper bound: [Tromp and Farneback, Combinatorics of Go](https://tromp.github.io/go/gostate.pdf)
+
+[^5]: At least in the case of ladders
+
+[^6]: DeepBlue link
