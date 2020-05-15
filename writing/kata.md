@@ -3,6 +3,8 @@
 ![](katagame.png)
 *KataGo (B) vs LeelaZero (W)[^kata1]*
 
+>In order to programme a computer to play a reasonable game of Go - rather than merely a legal game - it is necessary to formalise the principles of good strategy, or to design a learning programme. The principles are more qualitative and mysterious than in chess, and depend more on judgment. So I think it will be even more difficult to programme a computer to play a reasonable game of Go than of chess. <br>- I J Good, 1965[^quote1]
+
 There's something magical about the game of Go. For thousands of years, it has captured the imagination of those who want to learn *what it is to learn*, to think about what thinking means.
 
 With the recent advent of strong, open source Go AI that can beat top professionals, it's worth tracing the histroy of the game, why it remained so difficult to beat humans for so long, and what the future of Go may hold.
@@ -12,18 +14,19 @@ Like chess, Go is a deterministic game of perfect information. There is no stoch
 
 Unlike chess in which there are on average around 35 legal moves to consider playing each turn, there are on average around 250 legal moves to consider in Go.
 
-In tic-tac-toe, we can search the entire game tree, and easily find the optimal response at any state. xkcd nicely summarized this in an image[^1]:
+In tic-tac-toe, we can search the entire game tree, and easily find the optimal response at any state. xkcd nicely summarized this in an image:
 
-<img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="xkcd.png"/>
+![](xkcd.png)
+*Perfect $\times$ strategy[^1]*
 
 Although it is in principle possible to create such a tree for Go since it is a finite game, the state space of Go is very large: the number of legal positions[^2] in Go is approximately $2.1 \times 10^{170}$.
 
-Since a game is a trajectory through legal board states, the number of possible games of Go is considerably larger: lower and upper bounds of $10^{10^{104}}$ and $10^{10^{171}}$ respectively have been calculated [^3] [^4].
+Since a game is a trajectory through legal board states, the number of possible games of Go is considerably larger. The number of unique games of Go has been bounded between $(10^{10^{104}},10^{10^{171}})$ [^3] [^4].
 
 ## Intuition & Reading
-Go's state space is too larged to be searched, because of this players must learn to prune bad moves, to focus only on moves that look promising. In short, players must develop an *intuitive* sense of what moves might be good, avoiding wasting time on dubious possibilities.
+Go's state space is too larged to be searched, because of this players must learn to prune bad moves, focusing only on moves that look promising - players must develop an *intuitive* sense of what moves might be good, and avoid wasting time on dubious possibilities.
 
-Intuition guides move selection, but reading is at the heart of selecting a move. With a set of move candidates, players must read ahead, considering how their opponent will respond to maximise their **own** chance of winning. Reading can involve considering up to dozens[^5] of moves and responses, evaluating which player gets a "better" result in the end.
+While intuition guides move selection, reading strengthens intuition with a form of self-argument. With a set of move candidates, players must read ahead, considering how their opponent will respond to maximise their **own** chance of winning. Reading can involve considering up to dozens[^5] of moves and responses, evaluating which player gets a "better" result in the end.
 
 Intuition and reading lie at the center of Go's connection with creativity and intelligence. One must consider the board from an opponent's perspective, develop an intuition for favorable positions that will lead to victory, and consider long chains of state transitions where the opponent will try to gain advantage. Consider how hard it really is to chose a move when you know the opponent's response will be designed to steal the advantage from you. It is not a straight and clear path.
 
@@ -94,14 +97,16 @@ minigo
 
 [^kata1]: [KataGo vs. Leela Zero](http://www.yss-aya.com/cgos/viewer.cgi?19x19/SGF/2020/05/14/693137.sgf): B+Resign
 
+[^quote1]: [I J Good: The Mystery of Go, 1965](http://www.chilton-computing.org.uk/acl/literature/reports/p019.htm)
+
 [^1]: [xkcd 832](https://xkcd.com/832/)
 
-[^2]: [Tromp, Number of legal Go positions](https://tromp.github.io/go/legal.html)
+[^2]: [Tromp: Number of legal Go positions](https://tromp.github.io/go/legal.html)
 
-[^3]: Lower bound: [Walraet, A Googolplex of Go Games](GoGamesNumber.pdf) 
+[^3]: Lower bound: [Walraet: A Googolplex of Go Games](GoGamesNumber.pdf) 
 
-[^4]: Upper bound: [Tromp and Farneback, Combinatorics of Go](https://tromp.github.io/go/gostate.pdf)
+[^4]: Upper bound: [Tromp and Farneback: Combinatorics of Go](https://tromp.github.io/go/gostate.pdf)
 
 [^5]: At least in the case of ladders
 
-[^6]: DeepBlue link
+[^6]: [Deep Blue vs. Kasparov](https://en.wikipedia.org/wiki/Deep_Blue_versus_Garry_Kasparov)
