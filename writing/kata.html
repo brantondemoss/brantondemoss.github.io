@@ -39,15 +39,21 @@
 <p>While intuition guides move selection, reading strengthens intuition with a form of self-argument. With a set of move candidates, players must read ahead, considering how their opponent will respond to maximise their <strong>own</strong> chance of winning. Reading can involve considering up to dozens<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> of moves and responses, evaluating which player gets a “better” result in the end.</p>
 <p>Intuition and reading lie at the center of Go’s connection with creativity and intelligence. One must consider the board from an opponent’s perspective, develop an intuition for favorable positions that will lead to victory, and consider long chains of state transitions where the opponent will try to gain advantage. Consider how hard it really is to chose a move when you know the opponent’s response will be designed to steal the advantage from you. It is not a straight and clear path.</p>
 <p>How can we encode all of these properties into computers? How can we give AI intuition for promising moves, reading capability, and most importantly, creativity?</p>
-<h2 id="creativity">Creativity</h2>
-<p>Before we can even consider giving AI creativity, we have to try to define what creativity even is.</p>
 <p>Creativity is fundamentally related to our own ignorance. If a problem has a known solution, implementing it is not considered creative. It is rather the <em>surprisingness</em> of the solution that determines how creative we consider it.</p>
-<p>If you accept this position, then creativity and novelty are closely linked. To make a creative AI Go player, we require it to be able to find <em>new</em> ways of playing. Unlike the AI systems of old<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>, we want our Go AI to discover new knowledge on its own, and share it with us.</p>
+<p>If you accept this position, then creativity and novelty are closely linked. To make a creative AI Go player, we require it to be able to find <em>new</em> ways of playing, of understanding the game. Unlike the AI systems of old<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>, we want our Go AI to discover new knowledge on its own, and share it with us.</p>
 <h2 id="classical-ai">Classical AI</h2>
-<p>Expert knowledge systems, DeepBlue, value function definition problems</p>
-<p>Tree search, alpha-beta and MCTS</p>
-<p>Early MCTS bots</p>
-<p>Value of position is percent of playouts from position which result in winning state</p>
+<blockquote>
+<p>Looked at in one way, everyone knows what intelligence is; looked at in another way, no one does.<br> Robert Sternberg, 2000</p>
+</blockquote>
+<p>The definition of AI has not remained static over time. The naive definition<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a> of AI as “computer systems that perform tasks which require <em>human reasoning</em> to do well” is not stable - as we build these computer systems and become normalized to them, we stop thinking of the tasks they solve as demonstrating any kind of intelligence - so AI is very much in a <a href="https://en.wikipedia.org/wiki/God_of_the_gaps">God of the gaps</a> situation.</p>
+<p>Tying intelligence to performance in any single task, or even finite set of tasks, doesn’t seem consistent and informative. Some have proposed that intelligence is the ability to perform many tasks well, or the ability to solve tasks in a diverse range of environments<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>. Others claim that intelligence is the ability to acquire new skills through learning <a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a>. More recently there have been proposals<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> that intelligence is a measure of skill acquisition <em>efficiency</em>. Given two agents with the same knowledge and fixed training time on a novel task, the more intelligent agent is the one that ends up with better skills.</p>
+<p>The most popular AI system of the last century was Deep Blue, a chess playing system designed by researchers at IBM. The system consisted of specially created hardware designed for the task, which could process 100 million positions per second. But what was the search optimizing?</p>
+<p><img src="abpruning.png" /> <em>Alpha-beta pruning tree<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a></em></p>
+<p>Value functions measure the “goodness” of states (read: how likely they are to lead to victory). Creating meaningful evaluation functions is no small task - indeed, the Deep Blue evaluation function consisted of 8000 hand coded heuristics<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>! Programmers got together with chess experts to assign value to various board states - rooks on the back rank, passed pawns, king safety, etc… All of these calculated values were combined into a single number representing the “value” of that position. Then, the computer searched through a game tree (using <a href="https://en.wikipedia.org/wiki/Minimax">minimax search</a>) to find the move which resulted in the best future board state.</p>
+<p>Deep Blue is an example of an “expert system” - one which has human expert knowledge encoded into it. It did not learn from its play, or generate novel heuristics or understanding - it maximised board state value according to the human-defined value function.</p>
+<p>Hand crafted value functions were not enough to solve Go, though. The search space is simply too large, and hueristics too hard to define. One approach that saw some success was a modified tree search called Monte Carlo Tree Search (MCTS)<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>. MCTS uses random rollouts of the game tree to the end, and values of moves are based on the proportion of rollouts which result in victory.</p>
+<p>There is something deeply interesting that weighting move values by random rollouts to the end actually provides a meaningful approximation of true move value. It almost seems a tautalogy when spelled out, but truly “good” moves really do have higher propotions of trajectories leading to victory, and random sampling is enough to approximate that value.</p>
+<h2 id="learning-how-to-learn">Learning How to Learn</h2>
 <h2 id="alphago">AlphaGo</h2>
 <p>Bootstrapping from human knowledge</p>
 <p>Reinforcement learning def and cartoon</p>
@@ -83,6 +89,16 @@
 <li id="fn6" role="doc-endnote"><p>Upper bound: <a href="https://tromp.github.io/go/gostate.pdf">Tromp and Farneback: Combinatorics of Go</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn7" role="doc-endnote"><p>At least in the case of ladders<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn8" role="doc-endnote"><p><a href="https://en.wikipedia.org/wiki/Deep_Blue_versus_Garry_Kasparov">Deep Blue vs. Kasparov</a><a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9" role="doc-endnote"><blockquote>
+<p>AI is the science of making machines capable of performing tasks that would require intelligence if done by humans<br>Minsky, 1968</p>
+</blockquote>
+<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn10" role="doc-endnote"><p><a href="https://arxiv.org/abs/0706.3639">Legg and Hutter: A Collection of Definitions of Intelligence</a><a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p>Jose Hernandez-Orallo: Evaluation in artificial intelligence: from task-oriented to ability-oriented measurement. Artificial Intelligence Review, pages 397–447, 2017<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12" role="doc-endnote"><p><a href="https://arxiv.org/pdf/1911.01547.pdf">Chollet: On the Measure of Intelligence</a><a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13" role="doc-endnote"><p><a href="https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning">Wikimedia Commons: AB Pruning - Jez9999 / CC BY-SA</a><a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14" role="doc-endnote"><p><a href="https://core.ac.uk/download/pdf/82416379.pdf">Campbell et al: Deep Blue</a><a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15" role="doc-endnote"><p><a href="https://www.remi-coulom.fr/CG2006/CG2006.pdf">Coulom: Efficient Selectivity and Backup Operators in Monte-Carlo Tree Search</a><a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 </body>
