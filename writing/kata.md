@@ -1,4 +1,4 @@
-# Love Letter to KataGo, or: <br> Go AI past, present, and future
+# Love Letter to KataGo, or: <br> Go AI past, present, and futuretest
 
 ![](katagame.png)
 *KataGo (B) vs LeelaZero (W)[^kata1]*
@@ -81,19 +81,45 @@ To solve this problem, AlphaGo uses self-play and reinforcement learning to impr
 
 ![](reinforcement.png)
 
-Broadly, reinforcement learning agents take actions in an environment, receive rewards and observations from their environment, and learn to adjust their actions to maximise rewards in future. In this case, the "environment" is a simulated game of Go, and the reward is the final result of the game (i.e. the rewards are sparse, and only received after many actions are made).
+Broadly, reinforcement learning agents take actions in an environment, receive rewards and observations from their environment, and learn to adjust their actions to maximise future rewards. In this case, the "environment" is a simulated game of Go, and the reward is the final result of the game (i.e. the rewards are sparse, and only received after many actions are made).
 
-Dubious claim, maybe rephrase as just it couldn't improve: The problem is that the CNNs trained on human games are optimised to predict *which move a human would make*, and what the probability *the current human player has of winning from the current state*, instead of directly optimising their prediction of policy and value for winning.
+Because the MCTS in AlphaGo optimizes for maximum value (which measures probability of winning), by producing games of self-play, the CNNs can be further trained to predict value, and importantly, the policy can be trained *on the MCTS search values*, that is, we can train the policy CNN to output the final move-transition values found by the MCTS during self-play. Using this system of producing games of self-play, and training on their policy and value results, AlphaGo was able to continually improve, and finally reach superhuman performance.
 
-Bootstrapping from human knowledge
+![](leesedol.jpg)
+*[AlphaGo vs Lee Sedol](https://deepmind.com/alphago-korea)*
 
-Reinforcement learning def and cartoon
+## AlphaZero
+AlphaGo succeeded in beating world champion Lee Sedol, finally giving computers the edge over humans. But the team at DeepMind wanted to push the method further.
 
-AlphaZero - no additional features. Combining policy and value in backbone strength increase (eye towards KataGo implementing additional outputs as regularizers)
+In addition to the raw board state, AlphaGo's inputs included the following for every evaluation:
 
-Strength of policy + reading. Elo ratings
+![](alphagofeatures.png)
+*Feature planes of AlphaGo [^17]*
+
+In a sense, there was still Go-specific knowledge that AlphaGo was "programmed with", and the team wanted to see if a bot with zero game-specific knowledge could perform similarly.
+
+In 2017 the team published the AlphaGo Zero paper[^18], with three primary improvements:
+
+1. The networks are trained solely from self-play reinforcement learning, starting from random play using no human data.
+2. Only the black and white stone positions are used as input features to the networks.
+3. The policy and value networks are combined into a single network with shared backbone, with shallow policy and value heads on top.
+
+With these changes, AlphaGo Zero far surpassed AlphaGo's performance, getting massive increases in training efficiency from the combined policy and value net, and from using a ResNet-like architecture[^19] instead of a fully convolutional network.
+
+To measure relative playing strength of different agents, a commonly-used metric is [Elo rating](https://en.wikipedia.org/wiki/Elo_rating_system). While the details of Elo rating are beyond the scope of this article, briefly, Elo rating encodes relative probability of winning. Using the standard scales, for example, a 100 point rating difference encodes an expectation that the higher rated palyer has a 64% chance of beating their opponent; if the difference is 200, then the expectation is 76%.
+
+There is a wonderful plot of Elo ratings of various bots from the AlphaGo Zero paper:
+
+![](elo.png)
+*Elo comparison of various computer Go programs*
+
+Note that the raw network's strength is around ~3000, while the full AlphaZero bot (using the policy network + MCTS + value network) achieves a rating > 5000. This gives us an idea of how much stronger the tree search and value estimation makes the raw network move intuition.
+
+Going back to our earlier definition of intelligence as a measure of learning efficiency, it would have been excellent to see how the Elo strength as a function of self-play games changed from AlphaGo to AlphaGo Zero
 
 ## Leela Zero
+AlphaGo shook both the Go world and AI research community, but DeepMind largely left it behind and moved on to other topics. With only the research papers to guide them, many started to re-implement AlphaZero. Early open source efforts included Leela Zero
+
 Troubles with ladders
 
 Compute efficiency
@@ -168,3 +194,9 @@ minigo
 [^15]: [Krizhevsky et al.: ImageNet Classification with Deep ConvolutionalNeural Networks](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf)
 
 [^16]: [Universal Approximation Theorem](https://en.wikipedia.org/wiki/Universal_approximation_theorem)
+
+[^17]: [Silver et al: Mastering the game of Go with deep neural networks and tree search](https://www.nature.com/articles/nature16961)
+
+[^18]: [Silver et al: Mastering the game of Go without human knowledge](https://www.nature.com/articles/nature24270.epdf?author_access_token=VJXbVjaSHxFoctQQ4p2k4tRgN0jAjWel9jnR3ZoTv0PVW4gB86EEpGqTRDtpIz-2rmo8-KG06gqVobU5NSCFeHILHcVFUeMsbvwS-lxjqQGg98faovwjxeTUgZAUMnRQ)
+
+[^19]: [He et al: Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)

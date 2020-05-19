@@ -20,7 +20,7 @@
   <![endif]-->
 </head>
 <body>
-<h1 id="love-letter-to-katago-or-go-ai-past-present-and-future">Love Letter to KataGo, or: <br> Go AI past, present, and future</h1>
+<h1 id="love-letter-to-katago-or-go-ai-past-present-and-futuretest">Love Letter to KataGo, or: <br> Go AI past, present, and futuretest</h1>
 <p><img src="katagame.png" /> <em>KataGo (B) vs LeelaZero (W)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></em></p>
 <blockquote>
 <p>In order to programme a computer to play a reasonable game of Go - rather than merely a legal game - it is necessary to formalise the principles of good strategy, or to design a learning programme. The principles are more qualitative and mysterious than in chess, and depend more on judgment. So I think it will be even more difficult to programme a computer to play a reasonable game of Go than of chess. <br>- I J Good, 1965<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
@@ -66,13 +66,28 @@
 <p>Although MCTS improved the play of the trained CNNs, the CNNs themselves were trained only on human games, and had no means of improving, they could only weakly imitate humans.</p>
 <p>To solve this problem, AlphaGo uses self-play and reinforcement learning to improve the policy and value estimations.</p>
 <p><img src="reinforcement.png" /></p>
-<p>Broadly, reinforcement learning agents take actions in an environment, receive rewards and observations from their environment, and learn to adjust their actions to maximise rewards in future. In this case, the “environment” is a simulated game of Go, and the reward is the final result of the game (i.e. the rewards are sparse, and only received after many actions are made).</p>
-<p>Dubious claim, maybe rephrase as just it couldn’t improve: The problem is that the CNNs trained on human games are optimised to predict <em>which move a human would make</em>, and what the probability <em>the current human player has of winning from the current state</em>, instead of directly optimising their prediction of policy and value for winning.</p>
-<p>Bootstrapping from human knowledge</p>
-<p>Reinforcement learning def and cartoon</p>
-<p>AlphaZero - no additional features. Combining policy and value in backbone strength increase (eye towards KataGo implementing additional outputs as regularizers)</p>
-<p>Strength of policy + reading. Elo ratings</p>
+<p>Broadly, reinforcement learning agents take actions in an environment, receive rewards and observations from their environment, and learn to adjust their actions to maximise future rewards. In this case, the “environment” is a simulated game of Go, and the reward is the final result of the game (i.e. the rewards are sparse, and only received after many actions are made).</p>
+<p>Because the MCTS in AlphaGo optimizes for maximum value (which measures probability of winning), by producing games of self-play, the CNNs can be further trained to predict value, and importantly, the policy can be trained <em>on the MCTS search values</em>, that is, we can train the policy CNN to output the final move-transition values found by the MCTS during self-play. Using this system of producing games of self-play, and training on their policy and value results, AlphaGo was able to continually improve, and finally reach superhuman performance.</p>
+<p><img src="leesedol.jpg" /> <em><a href="https://deepmind.com/alphago-korea">AlphaGo vs Lee Sedol</a></em></p>
+<h2 id="alphazero">AlphaZero</h2>
+<p>AlphaGo succeeded in beating world champion Lee Sedol, finally giving computers the edge over humans. But the team at DeepMind wanted to push the method further.</p>
+<p>In addition to the raw board state, AlphaGo’s inputs included the following for every evaluation:</p>
+<p><img src="alphagofeatures.png" /> <em>Feature planes of AlphaGo <a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a></em></p>
+<p>In a sense, there was still Go-specific knowledge that AlphaGo was “programmed with”, and the team wanted to see if a bot with zero game-specific knowledge could perform similarly.</p>
+<p>In 2017 the team published the AlphaGo Zero paper<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a>, with three primary improvements:</p>
+<ol type="1">
+<li>The networks are trained solely from self-play reinforcement learning, starting from random play using no human data.</li>
+<li>Only the black and white stone positions are used as input features to the networks.</li>
+<li>The policy and value networks are combined into a single network with shared backbone, with shallow policy and value heads on top.</li>
+</ol>
+<p>With these changes, AlphaGo Zero far surpassed AlphaGo’s performance, getting massive increases in training efficiency from the combined policy and value net, and from using a ResNet-like architecture<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a> instead of a fully convolutional network.</p>
+<p>To measure relative playing strength of different agents, a commonly-used metric is <a href="https://en.wikipedia.org/wiki/Elo_rating_system">Elo rating</a>. While the details of Elo rating are beyond the scope of this article, briefly, Elo rating encodes relative probability of winning. Using the standard scales, for example, a 100 point rating difference encodes an expectation that the higher rated palyer has a 64% chance of beating their opponent; if the difference is 200, then the expectation is 76%.</p>
+<p>There is a wonderful plot of Elo ratings of various bots from the AlphaGo Zero paper:</p>
+<p><img src="elo.png" /> <em>Elo comparison of various computer Go programs</em></p>
+<p>Note that the raw network’s strength is around ~3000, while the full AlphaZero bot (using the policy network + MCTS + value network) achieves a rating &gt; 5000. This gives us an idea of how much stronger the tree search and value estimation makes the raw network move intuition.</p>
+<p>Going back to our earlier definition of intelligence as a measure of learning efficiency, it would have been excellent to see how the Elo strength as a function of self-play games changed from AlphaGo to AlphaGo Zero</p>
 <h2 id="leela-zero">Leela Zero</h2>
+<p>AlphaGo shook both the Go world and AI research community, but DeepMind largely left it behind and moved on to other topics. With only the research papers to guide them, many started to re-implement AlphaZero. Early open source efforts included Leela Zero</p>
 <p>Troubles with ladders</p>
 <p>Compute efficiency</p>
 <p>Open source ethos, reproducability, incorporating ELFv2 games, bringing AI review to the masses</p>
@@ -116,6 +131,9 @@
 <li id="fn16" role="doc-endnote"><p><a href="https://github.com/vdumoulin/conv_arithmetic">Dumoulin and Visin: Convolution arithmetic</a><a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn17" role="doc-endnote"><p><a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf">Krizhevsky et al.: ImageNet Classification with Deep ConvolutionalNeural Networks</a><a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn18" role="doc-endnote"><p><a href="https://en.wikipedia.org/wiki/Universal_approximation_theorem">Universal Approximation Theorem</a><a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn19" role="doc-endnote"><p><a href="https://www.nature.com/articles/nature16961">Silver et al: Mastering the game of Go with deep neural networks and tree search</a><a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn20" role="doc-endnote"><p><a href="https://www.nature.com/articles/nature24270.epdf?author_access_token=VJXbVjaSHxFoctQQ4p2k4tRgN0jAjWel9jnR3ZoTv0PVW4gB86EEpGqTRDtpIz-2rmo8-KG06gqVobU5NSCFeHILHcVFUeMsbvwS-lxjqQGg98faovwjxeTUgZAUMnRQ">Silver et al: Mastering the game of Go without human knowledge</a><a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn21" role="doc-endnote"><p><a href="https://arxiv.org/abs/1512.03385">He et al: Deep Residual Learning for Image Recognition</a><a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 </body>
