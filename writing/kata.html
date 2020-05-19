@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>kata</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="love-letter-to-katago-or-go-ai-past-present-and-future">Love Letter to KataGo, or: <br> Go AI past, present, and future</h1>
+<p><img src="katagame.png" /> <em>KataGo (B) vs LeelaZero (W)<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></em></p>
+<blockquote>
+<p>In order to programme a computer to play a reasonable game of Go - rather than merely a legal game - it is necessary to formalise the principles of good strategy, or to design a learning programme. The principles are more qualitative and mysterious than in chess, and depend more on judgment. So I think it will be even more difficult to programme a computer to play a reasonable game of Go than of chess. <br>- I J Good, 1965<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+</blockquote>
+<p>There’s something magical about the game of Go. For thousands of years, it has captured the imagination of those who want to learn <em>what it is to learn</em>, to think about what thinking means.</p>
+<p>With the recent advent of strong, open source Go AI that can beat top professionals, it’s worth tracing the histroy of the game, why it remained so difficult to beat humans for so long, and what the future of Go may hold.</p>
+<h2 id="complexity">Complexity</h2>
+<p>Like chess, Go is a deterministic game of perfect information. There is no stochasticity, no hidden state.</p>
+<p>Unlike chess in which there are on average around 35 legal moves to consider playing each turn, there are on average around 250 legal moves to consider in Go.</p>
+<p>In tic-tac-toe, we can search the entire game tree, and easily find the optimal response at any state. xkcd nicely summarized this in an image:</p>
+<p><img src="xkcd.png" /> <em>Perfect <span class="math inline">\(\times\)</span> strategy<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></em></p>
+<p>Although it is in principle possible to create such a tree for Go since it is a finite game, the state space of Go is very large: the number of legal positions<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> in Go is approximately <span class="math inline">\(2.1 \times 10^{170}\)</span>.</p>
+<p>Since a game is a trajectory through legal board states, the number of possible games of Go is considerably larger. The number of unique games of Go has been bounded between <span class="math inline">\((10^{10^{104}},10^{10^{171}})\)</span> <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</p>
+<h2 id="intuition-reading">Intuition &amp; Reading</h2>
+<p>Go’s state space is too larged to be searched, because of this players must learn to prune bad moves, focusing only on moves that look promising - players must develop an <em>intuitive</em> sense of what moves might be good, and avoid wasting time on dubious possibilities.</p>
+<p>While intuition guides move selection, reading strengthens intuition with a form of self-argument. With a set of move candidates, players must read ahead, considering how their opponent will respond to maximise their <strong>own</strong> chance of winning. Reading can involve considering up to dozens<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> of moves and responses, evaluating which player gets a “better” result in the end.</p>
+<p>Intuition and reading lie at the center of Go’s connection with creativity and intelligence. One must consider the board from an opponent’s perspective, develop an intuition for favorable positions that will lead to victory, and consider long chains of state transitions where the opponent will try to gain advantage. Consider how hard it really is to chose a move when you know the opponent’s response will be designed to steal the advantage from you. It is not a straight and clear path.</p>
+<p>How can we encode all of these properties into computers? How can we give AI intuition for promising moves, reading capability, and most importantly, creativity?</p>
+<p>Creativity is fundamentally related to our own ignorance. If a problem has a known solution, implementing it is not considered creative. It is rather the <em>surprisingness</em> of the solution that determines how creative we consider it.</p>
+<p>If you accept this position, then creativity and novelty are closely linked. To make a creative AI Go player, we require it to be able to find <em>new</em> ways of playing, of understanding the game. Unlike the AI systems of old, we want our Go AI to discover new knowledge on its own, and share it with us.</p>
+<h2 id="classical-ai">Classical AI</h2>
+<blockquote>
+<p>Looked at in one way, everyone knows what intelligence is; looked at in another way, no one does.<br> Robert Sternberg, 2000</p>
+</blockquote>
+<p>The definition of AI has not remained static over time. The naive definition<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a> of AI as “computer systems that perform tasks which require <em>human reasoning</em> to do well” is not stable - as we build these computer systems and become normalized to them, we stop thinking of the tasks they solve as demonstrating any kind of intelligence - so this naive definition of AI is in a sort of <a href="https://en.wikipedia.org/wiki/God_of_the_gaps">God of the gaps</a> situation.</p>
+<p>Tying intelligence to performance in any single task, or even finite set of tasks, doesn’t seem consistent and informative. Some have proposed that intelligence is the ability to perform many tasks well, or the ability to solve tasks in a diverse range of environments<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>. Others claim that intelligence is the ability to acquire new skills through learning <a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>. More recently there have been proposals<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> that intelligence is a measure of skill acquisition <em>efficiency</em>. Given two agents with the same knowledge and fixed training time on a novel task, the more intelligent agent is the one that ends up with better skills.</p>
+<p>The most popular AI system of the last century was Deep Blue, a chess playing system designed by researchers at IBM. The system consisted of a hand-crafted board evaluation function, a tree search to maximise expected board state value given an adversarial opponent, and custom hardware designed to accelerate those operations, achieving speeds of around 100 million position evaluations per second.</p>
+<p><img src="abpruning.png" /> <em>Alpha-beta pruning tree<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></em></p>
+<p>Value functions measure the “goodness” of states (read: how likely they are to lead to victory). Creating meaningful evaluation functions is no small task - indeed, the Deep Blue evaluation function consisted of 8000 hand coded heuristics<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a>! Programmers got together with chess experts to assign value to various board states - rooks on the back rank, passed pawns, king safety, etc… All of these values were combined into a single number representing the “value” of that position, which the tree search could then optimize for expected future value, given an opponent who attempts to minimize your value (<a href="minimax">minimax</a>).</p>
+<p>With a well-tuned value function and powerful tree search to read ahead and find a value-maximising trajectory, Deep Blue managed a win over Garry Kasparov, the world chess champion, in 1997<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>.</p>
+<p>Deep Blue is an example of an “expert system” - one which has human expert knowledge encoded into it. It did not learn from its play, or generate novel heuristics or understanding - it maximised board state value according to the human-defined value function.</p>
+<p>Hand crafted value functions were not enough to solve Go, though. The search space is simply too large, and hueristics too hard to define. One approach that saw some success was a modified tree search called Monte Carlo Tree Search (MCTS)<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>. MCTS randomly samples legal moves from the current position, and rolls out the game tree all the way to the end, each time using a random move. The value of the initial move is related to the proportion of rollout trajectories that result in a won terminal state. Somewhat surprisingly, Go bots using MCTS were able to reach advanced amateur level (low-mid dan) with nothing more than MCTS!</p>
+<p>There is something deeply interesting in the fact that defining state values by random rollouts to the end actually provides a meaningful approximation of “true value”. It seems tautological when spelled out, but truly “good” moves really do have a greater propotion of trajectories leading to victory, and <strong>random sampling</strong> is enough to approximate their value.</p>
+<h2 id="neural-networks">Neural Networks</h2>
+<p>If the heuristics of board evaluation and move selection are so hard to program, so hard to even specify, how can humans play Go so well? Some experts can read many variations out very quickly, but nothing like the hundreds of millions per second of Deep Blue (obviously).</p>
+<p>Human move selection intuition is <em>excellent</em>. At a glance, a very small number of moves stand out as worth considering. From the experience of many games of Go, we seem to be able to learn a sharp sense of which moves work, and which moves don’t. Furthermore we can read Go theory, which is the distilled experience of many others over millenia.</p>
+<p>How can AI agents be given this excellent intuition? Convolutional neural networks!</p>
+<p><img src="conv.gif" /> <em>Convolutional kernel (dark blue) applied to input (blue) to produce output (cyan)<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a></em></p>
+<p>Briefly, convolutional neural networks are an example of a <a href="https://en.wikipedia.org/wiki/Artificial_neural_network">neural network</a> that use only <em>local connections</em> to learn about and process spatially-correlated features in images. The GIF above shows a learned convolutional filter sliding around an image, producing a lower-dimension representation. Typical networks contain millions of such learned parameters, and can perform a <a href="https://www.youtube.com/watch?v=b62iDkLgGSI">wide</a> <a href="https://www.youtube.com/watch?v=D4C1dB9UheQ">variety</a> <a href="https://www.youtube.com/watch?v=qWl9idsCuLQ">of</a> <a href="https://www.youtube.com/watch?v=HgDdaMy8KNE">tasks</a> in image processing.</p>
+<p>As convolutional neural networks started to show promise in image recognition tasks<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a>, and since neural networks can approximate any function<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a>, people began thinking about using them to estimate the value function, treating the board state encoding as an “image” input to the CNN. The idea is straightforward: given some board state and final game result pair, <span class="math inline">\((s,r)\)</span> train your CNN to predict <span class="math inline">\(r\)</span> from <span class="math inline">\(s\)</span>. Even better, given the same state <span class="math inline">\(s\)</span>, estimate the next move.</p>
+<p>And so people started downloading hundreds of thousands of games of Go played online by strong amateurs and training CNNs to predict moves and win-rates. Agents playing from raw move prediction alone could outperform some of the weaker Go bots, but still struggled against the MCTS bots. Combining CNNs for move selection (called the policy) and value estiamtion (probability of winning from current state), and incorporating MCTS with the estimated policies and values to select optimal moves, these prototype CNN bots started to outperform all others, but professional humans were still out of reach.</p>
+<h2 id="alphago">AlphaGo</h2>
+<p>Although MCTS improved the play of the trained CNNs, the CNNs themselves were trained only on human games, and had no means of improving, they could only weakly imitate humans.</p>
+<p>To solve this problem, AlphaGo uses self-play and reinforcement learning to improve the policy and value estimations.</p>
+<p><img src="reinforcement.png" /></p>
+<p>Broadly, reinforcement learning agents take actions in an environment, receive rewards and observations from their environment, and learn to adjust their actions to maximise future rewards. In this case, the “environment” is a simulated game of Go, and the reward is the final result of the game (i.e. the rewards are sparse, and only received after many actions are made).</p>
+<p>Because the MCTS in AlphaGo optimizes for maximum value (which measures probability of winning), by producing games of self-play, the CNNs can be further trained to predict value, and importantly, the policy can be trained <em>on the MCTS search values</em>, that is, we can train the policy CNN to output the final move-transition values found by the MCTS during self-play. Using this system of producing games of self-play, and training on their policy and value results, AlphaGo was able to continually improve, and finally reach superhuman performance.</p>
+<p><img src="leesedol.jpg" /> <em><a href="https://deepmind.com/alphago-korea">AlphaGo vs Lee Sedol</a></em></p>
+<h2 id="alphazero">AlphaZero</h2>
+<p>AlphaGo succeeded in beating world champion Lee Sedol, finally giving computers the edge over humans. But the team at DeepMind wanted to push the method further.</p>
+<p>In addition to the raw board state, AlphaGo’s inputs included the following for every evaluation:</p>
+<p><img src="alphagofeatures.png" /> <em>Feature planes of AlphaGo <a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a></em></p>
+<p>In a sense, there was still Go-specific knowledge that AlphaGo was “programmed with”, and the team wanted to see if a bot with zero game-specific knowledge could perform similarly.</p>
+<p>In 2017 the team published the AlphaGo Zero paper<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a>, with three primary improvements:</p>
+<ol type="1">
+<li>The networks are trained solely from self-play reinforcement learning, starting from random play using no human data.</li>
+<li>Only the black and white stone positions are used as input features to the networks.</li>
+<li>The policy and value networks are combined into a single network with shared backbone, with shallow policy and value heads on top.</li>
+</ol>
+<p>With these changes, AlphaGo Zero far surpassed AlphaGo’s performance, getting massive increases in training efficiency from the combined policy and value net, and from using a ResNet-like architecture<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a> instead of a fully convolutional network.</p>
+<p>To measure relative playing strength of different agents, a commonly-used metric is <a href="https://en.wikipedia.org/wiki/Elo_rating_system">Elo rating</a>. While the details of Elo rating are beyond the scope of this article, briefly, Elo rating encodes relative probability of winning. Using the standard scales, for example, a 100 point rating difference encodes an expectation that the higher rated palyer has a 64% chance of beating their opponent; if the difference is 200, then the expectation is 76%.</p>
+<p>There is a wonderful plot of Elo ratings of various bots from the AlphaGo Zero paper:</p>
+<p><img src="elo.png" /> <em>Elo comparison of various computer Go programs</em></p>
+<p>Note that the raw network’s strength is around ~3000, while the full AlphaZero bot (using the policy network + MCTS + value network) achieves a rating &gt; 5000. This gives us an idea of how much stronger the tree search and value estimation makes the raw network move intuition.</p>
+<p>Going back to our earlier definition of intelligence as a measure of learning efficiency, it would have been excellent to see how the Elo strength as a function of self-play games changed from AlphaGo to AlphaGo Zero.</p>
+<p>Finally the DeepMind team extended their AlphaGo Zero method to chess and shogi, removing all Go-specific aspects of the program, and published again, calling it AlphaZero.</p>
+<h2 id="zero-explosion">Zero Explosion</h2>
+<p>AlphaGo shook both the Go world and AI research community, but DeepMind largely left it behind and moved on to other topics. With only the research papers to guide them, many started to re-implement AlphaZero.</p>
+<p>Early open source efforts included Leela Zero, a Zero-style bot (no input other than board state, no training on data other than self-play games) that crowdsourced GPU compute to generate selfplay games and train the network. As Leela and other bots became available to the public for review and play, Go experienced a cultural shift unlike any that had come before. People were analyzing every move of their games with superhuman help from Leela and others, new joseki discovered with AlphaGo could be better studied and incorporated, and players began incorporating Zero-style gameplay into their own repertoire.</p>
+<p>Facebook relsead their ELF bot to the public,</p>
+<p>Troubles with ladders</p>
+<p>Compute efficiency</p>
+<p>Open source ethos, reproducability, incorporating ELFv2 games, bringing AI review to the masses</p>
+<p>AlphaZero code/weights never released</p>
+<p>Shin Jinseo reportedly uses Leela on an iPad everywhere</p>
+<p>Loss to FineArt (jueyi) in AI cup</p>
+<h2 id="katago">KataGo</h2>
+<p>Reinforcement + Features + Self Supervised (additional training signal)</p>
+<p>Arbitrary board sizes and komi - helpful for public to learn</p>
+<p>Igo Hatsuyoron</p>
+<p>Compute efficiency</p>
+<p>Continuing development</p>
+<p>Speculation about future research directions</p>
+<p>David Silver quote Zero bots will continue to get better for 100 years with more compute</p>
+<p>How can we make AI bots more useful to humans to elarn from and study with? Will they overfit to MCTS policy and become overconfident?</p>
+<p>MuZero Go RL “model” learned in NN</p>
+<p>Interview Q’s w/DJ Wu?</p>
+<h2 id="other-bots">Other Bots</h2>
+<p>Black hole? Q-whatever minigo</p>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p><a href="http://www.yss-aya.com/cgos/viewer.cgi?19x19/SGF/2020/05/14/693137.sgf">KataGo vs. Leela Zero</a>: B+Resign<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a href="http://www.chilton-computing.org.uk/acl/literature/reports/p019.htm">I J Good: The Mystery of Go, 1965</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p><a href="https://xkcd.com/832/">xkcd 832</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p><a href="https://tromp.github.io/go/legal.html">Tromp: Number of legal Go positions</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>Lower bound: <a href="GoGamesNumber.pdf">Walraet: A Googolplex of Go Games</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>Upper bound: <a href="https://tromp.github.io/go/gostate.pdf">Tromp and Farneback: Combinatorics of Go</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p>At least in the case of ladders<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8" role="doc-endnote"><blockquote>
+<p>AI is the science of making machines capable of performing tasks that would require intelligence if done by humans<br>Minsky, 1968</p>
+</blockquote>
+<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></li>
+<li id="fn9" role="doc-endnote"><p><a href="https://arxiv.org/abs/0706.3639">Legg and Hutter: A Collection of Definitions of Intelligence</a><a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10" role="doc-endnote"><p>Jose Hernandez-Orallo: Evaluation in artificial intelligence: from task-oriented to ability-oriented measurement. Artificial Intelligence Review, pages 397–447, 2017<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p><a href="https://arxiv.org/pdf/1911.01547.pdf">Chollet: On the Measure of Intelligence</a><a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12" role="doc-endnote"><p><a href="https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning">Wikimedia Commons: AB Pruning - Jez9999 / CC BY-SA</a><a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13" role="doc-endnote"><p><a href="https://core.ac.uk/download/pdf/82416379.pdf">Campbell et al: Deep Blue</a><a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14" role="doc-endnote"><p><a href="https://en.wikipedia.org/wiki/Deep_Blue_versus_Garry_Kasparov">Deep Blue vs. Kasparov</a><a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15" role="doc-endnote"><p><a href="https://www.remi-coulom.fr/CG2006/CG2006.pdf">Coulom: Efficient Selectivity and Backup Operators in Monte-Carlo Tree Search</a><a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16" role="doc-endnote"><p><a href="https://github.com/vdumoulin/conv_arithmetic">Dumoulin and Visin: Convolution arithmetic</a><a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17" role="doc-endnote"><p><a href="https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf">Krizhevsky et al.: ImageNet Classification with Deep ConvolutionalNeural Networks</a><a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18" role="doc-endnote"><p><a href="https://en.wikipedia.org/wiki/Universal_approximation_theorem">Universal Approximation Theorem</a><a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn19" role="doc-endnote"><p><a href="https://www.nature.com/articles/nature16961">Silver et al: Mastering the game of Go with deep neural networks and tree search</a><a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn20" role="doc-endnote"><p><a href="https://www.nature.com/articles/nature24270.epdf?author_access_token=VJXbVjaSHxFoctQQ4p2k4tRgN0jAjWel9jnR3ZoTv0PVW4gB86EEpGqTRDtpIz-2rmo8-KG06gqVobU5NSCFeHILHcVFUeMsbvwS-lxjqQGg98faovwjxeTUgZAUMnRQ">Silver et al: Mastering the game of Go without human knowledge</a><a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn21" role="doc-endnote"><p><a href="https://arxiv.org/abs/1512.03385">He et al: Deep Residual Learning for Image Recognition</a><a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>
