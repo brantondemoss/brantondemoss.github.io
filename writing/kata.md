@@ -34,32 +34,57 @@ How can we encode all of these properties into computers? How can we give AI int
 
 Creativity is fundamentally related to our own ignorance. If a problem has a known solution, implementing it is not considered creative. It is rather the *surprisingness* of the solution that determines how creative we consider it. 
 
-If you accept this position, then creativity and novelty are closely linked. To make a creative AI Go player, we require it to be able to find *new* ways of playing, of understanding the game. Unlike the AI systems of old[^6], we want our Go AI to discover new knowledge on its own, and share it with us.
+If you accept this position, then creativity and novelty are closely linked. To make a creative AI Go player, we require it to be able to find *new* ways of playing, of understanding the game. Unlike the AI systems of old, we want our Go AI to discover new knowledge on its own, and share it with us.
 
 ## Classical AI
 >Looked at in one way, everyone knows what intelligence is; looked at in another way, no one does.<br> Robert Sternberg, 2000
 
-The definition of AI has not remained static over time. The naive definition[^7] of AI as "computer systems that perform tasks which require *human reasoning* to do well" is not stable -  as we build these computer systems and become normalized to them, we stop thinking of the tasks they solve as demonstrating any kind of intelligence - so AI is very much in a [God of the gaps](https://en.wikipedia.org/wiki/God_of_the_gaps) situation.
+The definition of AI has not remained static over time. The naive definition[^7] of AI as "computer systems that perform tasks which require *human reasoning* to do well" is not stable -  as we build these computer systems and become normalized to them, we stop thinking of the tasks they solve as demonstrating any kind of intelligence - so this naive definition of AI is in a sort of [God of the gaps](https://en.wikipedia.org/wiki/God_of_the_gaps) situation.
 
 Tying intelligence to performance in any single task, or even finite set of tasks, doesn't seem consistent and informative. Some have proposed that intelligence is the ability to perform many tasks well, or the ability to solve tasks in a diverse range of environments[^8]. Others claim that intelligence is the ability to acquire new skills through learning [^9]. More recently there have been proposals[^10] that intelligence is a measure of skill acquisition *efficiency*. Given two agents with the same knowledge and fixed training time on a novel task, the more intelligent agent is the one that ends up with better skills.
 
-The most popular AI system of the last century was Deep Blue, a chess playing system designed by researchers at IBM. The system consisted of specially created hardware designed for the task, which could process 100 million positions per second. But what was the search optimizing?
+The most popular AI system of the last century was Deep Blue, a chess playing system designed by researchers at IBM. The system consisted of a hand-crafted board evaluation function, a tree search to maximise expected board state value given an adversarial opponent, and custom hardware designed to accelerate those operations, achieving speeds of around 100 million position evaluations per second.
 
 ![](abpruning.png)
 *Alpha-beta pruning tree[^12]*
 
-Value functions measure the "goodness" of states (read: how likely they are to lead to victory). Creating meaningful evaluation functions is no small task - indeed, the Deep Blue evaluation function consisted of 8000 hand coded heuristics[^11]! Programmers got together with chess experts to assign value to various board states - rooks on the back rank, passed pawns, king safety, etc... All of these calculated values were combined into a single number representing the "value" of that position. Then, the computer searched through a game tree (using [minimax search](https://en.wikipedia.org/wiki/Minimax)) to find the move which resulted in the best future board state.
+Value functions measure the "goodness" of states (read: how likely they are to lead to victory). Creating meaningful evaluation functions is no small task - indeed, the Deep Blue evaluation function consisted of 8000 hand coded heuristics[^11]! Programmers got together with chess experts to assign value to various board states - rooks on the back rank, passed pawns, king safety, etc... All of these values were combined into a single number representing the "value" of that position, which the tree search could then optimize for expected future value, given an opponent who attempts to minimize your value ([minimax](minimax)).
+
+With a well-tuned value function and powerful tree search to read ahead and find a value-maximising trajectory, Deep Blue managed a win over Garry Kasparov, the world chess champion, in 1997[^6].
 
 Deep Blue is an example of an "expert system" - one which has human expert knowledge encoded into it. It did not learn from its play, or generate novel heuristics or understanding - it maximised board state value according to the human-defined value function.
 
-Hand crafted value functions were not enough to solve Go, though. The search space is simply too large, and hueristics too hard to define. One approach that saw some success was a modified tree search called Monte Carlo Tree Search (MCTS)[^13]. MCTS uses random rollouts of the game tree to the end, and values of moves are based on the proportion of rollouts which result in victory. 
+Hand crafted value functions were not enough to solve Go, though. The search space is simply too large, and hueristics too hard to define. One approach that saw some success was a modified tree search called Monte Carlo Tree Search (MCTS)[^13]. MCTS randomly samples legal moves from the current position, and rolls out the game tree all the way to the end, each time using a random move. The value of the initial move is related to the proportion of rollout trajectories that result in a won terminal state. Somewhat surprisingly, Go bots using MCTS were able to reach advanced amateur level (low-mid dan) with nothing more than MCTS!
 
-There is something deeply interesting that weighting move values by random rollouts to the end actually provides a meaningful approximation of true move value. It almost seems a tautalogy when spelled out, but truly "good" moves really do have higher propotions of trajectories leading to victory, and random sampling is enough to approximate that value.
+There is something deeply interesting in the fact that defining state values by random rollouts to the end actually provides a meaningful approximation of "true value". It seems tautological when spelled out, but truly "good" moves really do have a greater propotion of trajectories leading to victory, and **random sampling** is enough to approximate their value.
 
-## Learning How to Learn
+## Neural Networks
+If the heuristics of board evaluation and move selection are so hard to program, so hard to even specify, how can humans play Go so well? Some experts can read many variations out very quickly, but nothing like the hundreds of millions per second of Deep Blue (obviously). 
 
+Human move selection intuition is *excellent*. At a glance, a very small number of moves stand out as worth considering. From the experience of many games of Go, we seem to be able to learn a sharp sense of which moves work, and which moves don't. Furthermore we can read Go theory, which is the distilled experience of many others over millenia.
+
+How can AI agents be given this excellent intuition? Convolutional neural networks!
+
+![](conv.gif)
+*Convolutional kernel (dark blue) applied to input (blue) to produce output (cyan)[^14]*
+
+Briefly, convolutional neural networks are an example of a [neural network](https://en.wikipedia.org/wiki/Artificial_neural_network) that use only *local connections* to learn about and process spatially-correlated features in images. The GIF above shows a learned convolutional filter sliding around an image, producing a lower-dimension representation. Typical networks contain millions of such learned parameters, and can perform a [wide](https://www.youtube.com/watch?v=b62iDkLgGSI) [variety](https://www.youtube.com/watch?v=D4C1dB9UheQ) [of](https://www.youtube.com/watch?v=qWl9idsCuLQ) [tasks](https://www.youtube.com/watch?v=HgDdaMy8KNE) in image processing.
+
+As convolutional neural networks started to show promise in image recognition tasks[^15], and since neural networks can approximate any function[^16], people began thinking about using them to estimate the value function, treating the board state encoding as an "image" input to the CNN. The idea is straightforward: given some board state and final game result pair, $(s,r)$ train your CNN to predict $r$ from $s$. Even better, given the same state $s$, estimate the next move.
+
+And so people started downloading hundreds of thousands of games of Go played online by strong amateurs and training CNNs to predict moves and win-rates. Agents playing from raw move prediction alone could outperform some of the weaker Go bots, but still struggled against the MCTS bots. Combining CNNs for move selection (called the policy) and value estiamtion (probability of winning from current state), and incorporating MCTS with the estimated policies and values to select optimal moves, these prototype CNN bots started to outperform all others, but professional humans were still out of reach.
 
 ## AlphaGo
+Although MCTS improved the play of the trained CNNs, the CNNs themselves were trained only on human games, and had no means of improving, they could only weakly imitate humans.
+
+To solve this problem, AlphaGo uses self-play and reinforcement learning to improve the policy and value estimations.
+
+![](reinforcement.png)
+
+Broadly, reinforcement learning agents take actions in an environment, receive rewards and observations from their environment, and learn to adjust their actions to maximise rewards in future. In this case, the "environment" is a simulated game of Go, and the reward is the final result of the game (i.e. the rewards are sparse, and only received after many actions are made).
+
+Dubious claim, maybe rephrase as just it couldn't improve: The problem is that the CNNs trained on human games are optimised to predict *which move a human would make*, and what the probability *the current human player has of winning from the current state*, instead of directly optimising their prediction of policy and value for winning.
+
 Bootstrapping from human knowledge
 
 Reinforcement learning def and cartoon
@@ -74,6 +99,8 @@ Troubles with ladders
 Compute efficiency
 
 Open source ethos, reproducability, incorporating ELFv2 games, bringing AI review to the masses
+
+AlphaZero code/weights never released
 
 Shin Jinseo reportedly uses Leela on an iPad everywhere
 
@@ -135,3 +162,9 @@ minigo
 [^12]: [Wikimedia Commons: AB Pruning - Jez9999 / CC BY-SA](https://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning)
 
 [^13]: [Coulom: Efficient Selectivity and Backup Operators in Monte-Carlo Tree Search](https://www.remi-coulom.fr/CG2006/CG2006.pdf)
+
+[^14]: [Dumoulin and Visin: Convolution arithmetic](https://github.com/vdumoulin/conv_arithmetic)
+
+[^15]: [Krizhevsky et al.: ImageNet Classification with Deep ConvolutionalNeural Networks](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf)
+
+[^16]: [Universal Approximation Theorem](https://en.wikipedia.org/wiki/Universal_approximation_theorem)
