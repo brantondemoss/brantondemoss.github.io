@@ -115,18 +115,10 @@ There is a wonderful plot of Elo ratings of various bots from the AlphaGo Zero p
 
 Note that the raw network's strength is around ~3000, while the full AlphaZero bot (using the policy network + MCTS + value network) achieves a rating > 5000. This gives us an idea of how much stronger the tree search and value estimation makes the raw network move intuition.
 
-Going back to our earlier definition of intelligence as a measure of learning efficiency, it would have been excellent to see how the Elo strength as a function of self-play games changed from AlphaGo to AlphaGo Zero.
+Going back to our earlier definition of intelligence as a measure of learning efficiency, it would have been excellent to see how the Elo strength as a function of self-play games changed from AlphaGo to AlphaGo Zero
 
-Finally the DeepMind team extended their AlphaGo Zero method to chess and shogi, removing all Go-specific aspects of the program, and published again, calling it AlphaZero.
-
-## Zero Explosion
-AlphaGo shook both the Go world and AI research community, but DeepMind largely left it behind and moved on to other topics. With only the research papers to guide them, many started to re-implement AlphaZero. 
-
-Early open source efforts included Leela Zero, a Zero-style bot (no input other than board state, no training on data other than self-play games) that crowdsourced GPU compute to generate selfplay games and train the network. As Leela and other bots became available to the public for review and play, Go experienced a cultural shift unlike any that had come before. People were analyzing every move of their games with superhuman help from Leela and others, new joseki discovered with AlphaGo could be better studied and incorporated, and players began incorporating Zero-style gameplay into their own repertoire.
-
-Facebook relsead their ELF bot to the public,
-
-
+## Leela Zero
+AlphaGo shook both the Go world and AI research community, but DeepMind largely left it behind and moved on to other topics. With only the research papers to guide them, many started to re-implement AlphaZero. Early open source efforts included Leela Zero
 
 Troubles with ladders
 
