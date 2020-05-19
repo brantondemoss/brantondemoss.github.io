@@ -120,11 +120,11 @@ Going back to our earlier definition of intelligence as a measure of learning ef
 Finally the DeepMind team extended their AlphaGo Zero method to chess and shogi, removing all Go-specific aspects of the program, and published again, calling it AlphaZero.
 
 ## Zero Explosion
-AlphaGo shook both the Go world and AI research community, but DeepMind largely left it behind and moved on to other topics. With only the research papers to guide them, many started to re-implement AlphaZero. 
+AlphaGo shook both the Go world and AI research community, but DeepMind largely left their work behind and moved on to other topics. With only the research papers to guide them, many started to re-implement AlphaZero.
 
-Early open source efforts included Leela Zero, a Zero-style bot (no input other than board state, no training on data other than self-play games) that crowdsourced GPU compute to generate selfplay games and train the network. As Leela and other bots became available to the public for review and play, Go experienced a cultural shift unlike any that had come before. People were analyzing every move of their games with superhuman help from Leela and others, new joseki discovered with AlphaGo could be better studied and incorporated, and players began incorporating Zero-style gameplay into their own repertoire.
+Early open source efforts included Leela Zero, a Zero-style bot (no input other than board state, no training on data other than self-play games) that crowdsourced GPU compute to generate selfplay games and train the network. As Leela and other bots became available to the public for review and play, Go experienced a cultural shift unlike any that had come before. People were analyzing every move of their games with superhuman help from Leela and others, new joseki discovered with AlphaGo could be studied in-depth, players began incorporating Zero-style gameplay into their own repertoire, and AI "win percentages" started informing every aspect of play.
 
-Facebook relsead their ELF bot to the public,
+But these Zero bots still had problems: they were expensive to train, taking months or years to achieve super-human performance with "normal" amounts of compute, they were [surprisingly bad at ladders]](https://github.com/leela-zero/leela-zero/issues/1482)
 
 
 
