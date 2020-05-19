@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            img {
+                width: 40%;
+                padding: 0 0 0 0;
+                margin: 0 0 0 0;
+                float: left;
+                display: block;
+            }
+        </style>
+        
+        
+        <script type="text/javascript">
+            var images = new Array();
+            for (var i = 1; i < 7; i++)
+            {
+                images.push("../resources/gif" + i + ".gif");
+            }
+        
+        var x = 0;
+        var y = 0;
+        var z = 0;
+        var a = 0;
+        
+        function rando()
+        {
+            return Math.floor(Math.random() * 6);
+        }
+        
+        function changeImage()
+        {
+            x = rando();
+            y = rando();
+            z = rando();
+            a = rando();
+            
+            document.getElementById('ad1').src = images[x];
+            <!-- document.getElementById('imgsrc1').innerHTML = "<h1>" + images[x] + "</h1>"; -->
+            
+            document.getElementById('ad2').src = images[y];
+            <!-- document.getElementById('imgsrc2').innerHTML = "<h1>" + images[y] + "</h1>"; -->
+            
+            document.getElementById('ad3').src = images[z];
+            <!-- document.getElementById('imgsrc3').innerHTML = "<h1>" + images[z] + "</h1>"; -->
+            
+            document.getElementById('ad4').src = images[a];
+            <!-- document.getElementById('imgsrc4').innerHTML = "<h1>" + images[a] + "</h1>"; -->
+            if (x < 5) {
+                x += 1;
+            } else {
+                x = 0;
+            }
+        }
+        
+        window.onload = function()
+        {
+            setInterval(function () {
+                        changeImage();
+                        }, 3500);
+        }
+        </script>
+    </head>
+    <body>
+        <img id="ad1" src="../resources/gif1.gif" style="padding-left: 10%"/>
+        <div id="imgsrc1"></div>
+        
+        <img id="ad2" src="../resources/gif2.gif" />
+        <div id="imgsrc2"></div>
+        
+        <img id="ad3" src="../resources/gif3.gif" style="padding-left: 10%"/>
+        <div id="imgsrc3"></div>
+        
+        <img id="ad4" src="../resources/gif4.gif" />
+        <div id="imgsrc4"></div>
+    </body>
+</html>

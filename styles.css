@@ -1,24 +1,35 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
 body {
+    overflow: hidden;
     position: relative;
     text-align: center;
-    font-family: "Helvetica Neue",Arial,Helvetica,sans-serif;
+    font-family: "Open Sans", 'Lato', Helvetica, sans-serif;
     background-color: white;
     color: black;
 }
-
 #wrapper {
     padding-top: 70px;
     display: block;
+    padding-right: 0px;
     /*max-width: 400px;*/
-    position: relative; }
+    /*word-wrap: break-word;
+    word-break: break-all;
+    position: relative;*/
+    overflow: hidden;}
 #wrapper p {
     z-index: 5;
-    margin: 12px 0px
+    margin: 5px 0px;
 }
 #wrapper img {
     position: relative;
     z-index: -1;
-    max-width: 40%; }
+    max-width: 40%;
+
+    @media only screen and (max-device-width: 667px) and (orientation : landscape) {
+           max-width: 20%;
+
+    }
+}
 
 #footer {
     font: 14px "Source Code Pro", Inconsolata;
@@ -31,20 +42,48 @@ body {
     color: #4D4D4D;
 }
 
+.key {
+    font-family: "Menlo", monospace;
+    text-align: left;
+    width: 50%;
+    margin: auto;
+    white-space: pre-wrap;
+    line-height:10px;
+} 
+
+.rounded {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
 .content {
     float: left;
     margin-left: 12px;
     padding-left: 12px;
     border-left: 2px solid #9799a7;
     /*border-bottom: 2px solid #9799a7;*/
+    /*word-wrap: break-word;
+    word-break: break-all;  */
+}
+
+tab {
+    padding-left: 2em;
 }
 
 img{
     margin-left: 20%;
+    @media only screen and (max-device-width: 667px) and (orientation : landscape) {
+    	   margin-left: 10%;
+    }
     margin-right: 0px;
     float: left;
     -moz-animation:250s rotateRight infinite linear;
     -webkit-animation:250s rotateRight infinite linear;
+    overflow: hidden;
 }
 
 @-moz-keyframes rotateRight{
@@ -63,7 +102,8 @@ img{
 
 .large {
     
-    font-family: "HelveticaNeueLight", "HelveticaNeue-Light", "Helvetica Neue Light", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif; font-weight:300; font-stretch:normal;
+    font-family: "Open Sans", 'Lato', Helvetica, sans-serif;
+    font-stretch:normal;
     font-size: 36px;
 }
 
@@ -84,12 +124,18 @@ ul {
 
 .light-gray {
     color: rgba(206, 206, 206, 0.9); }
+.red {
+    color: #d0021b;
+}
+
+.gray {
+    color: rgba(155, 155, 155, 0.9); }
 
 a {
     text-decoration: none; }
 a.red {
-    color: #d0021b;
-    text-transform: uppercase;
+    color: #D00A07;
+    /*text-transform: uppercase;*/
 }
 a.red:hover {
     background-color: #ffd2d8; }
@@ -114,4 +160,20 @@ a.purple {
     color: #9932CD;}
 a.purple:hover {
     background-color: rgba(153, 50, 205, 0.2);
+}
+a.turquoise
+{
+ color: #0CC5DD;   
+}
+a.turquoise:hover
+{
+ background-color: #AFDDDC;   
+}
+a.orange
+{
+ color: #E7BE11;   
+}
+a.orange:hover
+{
+ background-color: #E7D9A4;   
 }
