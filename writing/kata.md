@@ -190,7 +190,7 @@ Like AlphaGo, KataGo is trained from scratch via self-play reinforcement learnin
 
 2. Forced playouts and policy target pruning:
    
-   There is a classic trade-off in reinforcement learning between exploration and exploitation: should you use the knowledge you've learned to take optimal actions, or should you explore seemingly non-optimal moves to discover new behavior? KataGo attempts to solve this issue with *forced playouts*, where each child of the root that has received any playouts receives a minimum number of playouts. For more details, [read the paper](https://arxiv.org/pdf/1902.10565.pdf)
+   There is a classic trade-off in reinforcement learning between exploration and exploitation: should you use the knowledge you've learned to take optimal actions, or should you explore seemingly non-optimal moves to discover new behavior? KataGo attempts to solve this issue with *forced playouts*, where each child of the root that has received any playouts receives a minimum number of playouts. For more details, [read the paper](https://arxiv.org/pdf/1902.10565.pdf).
 
 3. Global pooling:
 
