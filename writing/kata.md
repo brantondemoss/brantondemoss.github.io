@@ -124,7 +124,7 @@ AlphaGo shook both the Go world and AI research community, but DeepMind largely 
 
 Early open source efforts included Leela Zero, a Zero-style bot (no input other than board state, no training on data other than self-play games) that crowdsourced GPU compute to generate selfplay games and train the network. As Leela and other bots became available to the public for review and play, Go experienced a cultural shift unlike any that had come before. People were analyzing every move of their games with superhuman help from Leela and others, new joseki discovered with AlphaGo could be studied in-depth, players began incorporating Zero-style gameplay into their own repertoire, and AI "win percentages" started informing every aspect of play.
 
-But these Zero bots still had problems: they were expensive to train, taking months or years to achieve super-human performance with "normal" amounts of compute, they were [surprisingly bad at ladders]](https://github.com/leela-zero/leela-zero/issues/1482)
+But these Zero bots still had problems: they were expensive to train, taking months or years to achieve super-human performance with "normal" amounts of compute, they were [surprisingly bad at ladders](https://github.com/leela-zero/leela-zero/issues/1482)
 
 
 
