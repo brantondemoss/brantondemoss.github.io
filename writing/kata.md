@@ -134,6 +134,10 @@ While a great resource to the Go community, these Zero bots still had problems: 
 
 In a 2019 World AI Cup, Leela failed to podium, losing $3^{rd}$ place to HanDol, a Korean bot which would later play Lee Sedol for his final game as a professional. Dissapointingly, the commercial bots destroyed the #1 open source bot Leela, likely due to vastly greater compute resources for training at their disposal. It is unclear what algorithmic differences, if any, the commercial bots have vs AlphaGo.
 
+## Yann's Cake
+
+Self supervised
+
 ## KataGo
 In late 2017 [lightvector](https://github.com/lightvector) began work on a Go project, an AlphaGo-style bot for personal experimentation. For those interested in the gritty details, I highly recommend people check out the original [repository](https://github.com/lightvector/GoNN) to follow along with his experimentation. The project evolved into a genuine research effort, and became [KataGo](https://github.com/lightvector/KataGo).
 
@@ -156,7 +160,8 @@ KataGo makes a number of seemingly small changes to the AlphaGo/Zero system that
 
 Like AlphaGo, KataGo is trained from scratch via self-play reinforcement learning. There are four major improvements to learning efficiency:
 
-1. Playout cap randomization
+1. Playout cap randomization:
+   As noted in the KataGo paper, there is a "tension  between  policy  and  value training [...] the  game  outcome  value  target  is  highly  data-limited,  with  only  one noisy binary result per entire game." Lik
 
 2. Forced playouts and policy target pruning
 
@@ -179,7 +184,7 @@ Continuing development
 
 KataGo CGS position
 
-Speculation about future research directions. Will KataGo incorporate games against external opponents into training?
+Speculation about future research directions. Will KataGo incorporate games against external opponents into training? KataGo too opinionated 919x19 thread)? Beating weaker programs at high handicap[](https://lifein19x19.com/viewtopic.php?f=18&t=17219)
 
 David Silver quote Zero bots will continue to get better for 100 years with more compute
 
