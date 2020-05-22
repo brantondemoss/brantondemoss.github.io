@@ -7,7 +7,7 @@
 
 There's something magical about the game of Go. For thousands of years, it has captured the imagination of those who want to learn *what it is to learn*, to think about what thinking means.
 
-With the recent advent of strong, open source Go AI that can beat top professionals, it's worth tracing the history of the game, why it remained so difficult to beat humans for so long, and what the future of Go may hold.
+With the recent advent of strong, open source Go AI that can beat top professionals, it's worth tracing the histroy of the game, why it remained so difficult to beat humans for so long, and what the future of Go may hold.
 
 ## Classical AI
 >Looked at in one way, everyone knows what intelligence is; looked at in another way, no one does.<br> Robert Sternberg, 2000
@@ -16,7 +16,7 @@ How we define AI has changed over time, older naive definitions were mostly conc
 
 >The science of making machines capable of performing tasks that would require intelligence if done by humans.<br/> Minsky, 1968
 
-Definitions like thse are inherently unstable, because as we build these computer systems and become normalized to their (at first) astonishing capabilities, we stop thinking of their task performance as demonstrating any kind of intelligence. Definitions like these leave AI in a sort of [God of the gaps](https://en.wikipedia.org/wiki/God_of_the_gaps) situation.
+Definitions like thse are inherenetly unstable, because as we build these computer systems and become normalized to their (at first) astonishing capabilities, we stop thinking of their task performance as demonstrating any kind of intelligence. Definitions like these leave AI in a sort of [God of the gaps](https://en.wikipedia.org/wiki/God_of_the_gaps) situation.
 
 Tying intelligence to performance in any single task, or even finite set of tasks, doesn't seem consistent and informative. Some have proposed that intelligence is the ability to perform many tasks well, or the ability to solve tasks in a diverse range of environments[^8]. Others claim that intelligence is the ability to acquire new skills through learning [^9]. More recently there have been proposals[^10] that intelligence is a measure of skill acquisition *efficiency*. Given two agents with the same knowledge and fixed training time on a novel task, the more intelligent agent is the one that ends up with better skills.
 
@@ -48,7 +48,7 @@ Since a game is a trajectory through legal board states (with some transition co
 ## Intuition & Reading
 Because the state space of Go is too large to be enumerated and searched through, players must learn to focus only on promising moves when considering possible game state trajectories (variations), in other words players must develop an *intuitive* sense of what moves might be good, and avoid wasting time on dubious possibilities. Defining such a value function turns out to be much more difficult for Go than for chess.
 
-While intuition guides move selection, reading variations strengthens intuition using a form of self-argument: because Go is a [zero sum game](https://en.wikipedia.org/wiki/Zero-sum_game), move choice is necessarily conditioned on an adversarial opponent. Because player's goals are perfectly anti-aligned, an optimal strategy can be constructed by considering maximising future state-value *given a minimizing opponent* (this logic is nicely encoded in the [minimax algorithm](https://en.wikipedia.org/wiki/Minimax)).
+While intuition guides move selection, reading variations strengthens intuition using a form of self-argument: because Go is a [zero sum game](https://en.wikipedia.org/wiki/Zero-sum_game), move choice is necessarily conditioned on an adversarial opponent. Because player's goals are perfectly anti-aligned, an optimal strategy can be constructed by considering maximising future state-value *given a minimizing oppoenent* (this logic is nicely encoded in the [minimax algorithm](https://en.wikipedia.org/wiki/Minimax)).
 
 
 
@@ -123,7 +123,8 @@ AlphaGo shook both the Go world and AI research community, but DeepMind largely 
 
 As early as the first published paper on AlphaGo, many private companies, especially in China, S. Korea and Japan (where commercial Go products are viable) began to recreate AlphaGo/Zero. While these bots were helpful to those who could afford access, it wasn't until open source bots became wide-spread that the Go community could fully take advantage their benefits.
 
-The most well known open source bot is [Leela Zero](https://zero.sjeng.org/home), a faithful reimplementation of AlphaZero, which uses crowdsourced GPU compute to produce games of self-play and train the network. Leela Zero has been training since late 2017, and has produced about 20 million games of self-play as of May 2020.
+
+But these Zero bots still had problems: they were expensive to train, taking months or years to achieve super-human performance with "normal" amounts of compute, they were [surprisingly bad at ladders](https://github.com/leela-zero/leela-zero/issues/1482)
 
 ![](leelaelo.png)
 *Leela Zero Elo rating vs. number of games of self-play[^20]*
@@ -132,7 +133,7 @@ As Leela Zero and other bots became available to the public for review and play,
 
 While a great resource to the Go community, these Zero bots still had problems: they were expensive to train, taking months or years to achieve super-human performance with "normal" amounts of compute, they were [surprisingly bad at ladders](https://github.com/leela-zero/leela-zero/issues/1482) (at first), inherited AlphaGo's tendency to make slack moves when ahead, couldn't play with variable komi, and played erratically in handicap games.
 
-In a 2019 World AI Cup, Leela failed to podium, losing $3^{rd}$ place to HanDol, a Korean bot which would later play Lee Sedol for his final game as a professional. Disappointingly, the commercial bots destroyed the #1 open source bot Leela, likely due to vastly greater compute resources for training at their disposal. It is unclear what algorithmic differences, if any, the commercial bots have vs AlphaGo.
+In a 2019 World AI Cup, Leela failed to podium, losing $3^{rd}$ place to HanDol, a Korean bot which would later play Lee Sedol for his final game as a professional. Dissapointingly, the commercial bots destroyed the #1 open source bot Leela, likely due to vastly greater compute resources for training at their disposal. It is unclear what algorithmic differences, if any, the commercial bots have vs AlphaGo.
 
 ## Yann LeCun's Cake of Learning
 
@@ -147,7 +148,7 @@ Yann's point is that the bulk of information contained in things is "unstructure
 
 Supervised learning is a little better: let's say we want to build a CNN to classify images of dogs. Each training example contains a human-created label, which is much less noisy than a Go result, and is backpropogated through only the current image, a much stronger learning signal. Supervised learning generally requires fewer examples than reinforcement learning to achieve good performance.
 
-Finally there's what Yann calls "self-supervised" learning, in which "the system learns to predict part of its input from other parts of its input"[^22]. The idea is that the unstructured input data contains far more information than any supervised labels ever could, and so finding ways to cleverly predict parts of the input results in much better learning signal and eventual learnt representations.
+Finally there's what Yann calls "self-supervised" learning, in which "the system learns to predict part of its input from other parts of its input"[^22]. The idea is that the unstructed input data contains far more information than any supervised labels ever could, and so finding ways to cleverly predict parts of the input results in much better learning signal and eventual learnt representations.
 
 A fun recent example of successful self-supervised learning is monocular depth estimation [^23].
 
