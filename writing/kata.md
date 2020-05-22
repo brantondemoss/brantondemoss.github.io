@@ -137,7 +137,7 @@ In a 2019 World AI Cup, Leela failed to podium, losing $3^{rd}$ place to HanDol,
 
 ## Yann LeCun's Cake of Learning
 
-"Godfather of AI", co-inventor of convolutional neural networks and Turing laureate Yann Lecun wants to tell you about his cake.
+"Godfather of AI", co-inventor of convolutional neural networks and Turing laureate Yann LeCgun wants to tell you about his cake.
 
 ![](cake.png)
 *Slide from that one talk he's always giving*
