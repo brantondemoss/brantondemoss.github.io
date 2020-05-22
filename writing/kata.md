@@ -214,17 +214,18 @@ Like AlphaGo, KataGo is trained from scratch via self-play reinforcement learnin
 With these improvements, KataGo massively outperforms Leela Zero and Facebook's ELF bot in learning efficiency, getting a factor of fifty improvement over ELF:
 
 ![](efficiency.png)
+*Relative Elo rating vs self-play cost in billions of equivalent 20 block x 256 channel queries (log scale)*
 
-In addition to these improvements, KataGo also directly optimizes for maximum score (with some caveats), mostly eliminating the slack slack moves found in other Zero style bots. KataGo also palys handicap games against weaker versions of itself during training, plays on multiple board sizes, and with variable komi and rulesets, so it is flexible under permutations of these game settings.
+In addition to these improvements, KataGo also directly optimizes for maximum score (with some caveats), mostly eliminating the slack moves found in other Zero style bots. KataGo also plays handicap games against weaker versions of itself during training, plays on multiple board sizes, and with variable komi and rulesets, so it is flexible under permutations of these game settings.
 
-With all of these additional features, KataGo adds up to the most useful analysis tool yet made for Go, providing us with even more insight into the opinions of superhuman Go agents.
+With all of these additional features, KataGo adds up to the most useful analysis tool yet made for Go, providing players with greater insight into the opinions of a superhuman Go agent.
 
 KataGo is likely now the strongest open source Go bot available, recently topping the [CGS rankings](http://www.yss-aya.com/cgos/19x19/standings.html) in all board sizes.
 
 I highly recommend those interested check out the original [KataGo paper](https://arxiv.org/abs/1902.10565) - it's an extremely accessible read.
 
 ## Future
-David Silver, the lead researcher behind AlphaGo, recently said that he expects AlphaZero style bots to continue improving for the next 100 years, that Go's skill ceiling still isn't even close to being reached. KataGo gives us a picture of how improvements will continue to be made, and how value for human players can be added along the way. Who knows, maybe next-generation Go bots will incorporate language models and be able to explain their move choices in natural language.
+David Silver, the lead researcher behind AlphaGo, recently said that he expects AlphaZero style bots to continue improving for the next 100 years, that Go's skill ceiling still isn't even close to being reached. KataGo provides a picture of how improvements will continue to be made, and how value for human players can be added along the way. Who knows, maybe next-generation Go bots will incorporate language models and be able to explain their move choices in natural language.
 
 Will KataGo incorporate games played against external opponents? Self-play has worked wonders, but an even greater diversity of ideas can be found from learning from external agents. Professional Go players used to say that even God couldn't give them a four stone handicap. With KataGo inching towards that with wins over professional players with three stones, how far can handicaps be pushed? Can an agent trained for optimal self-play learn the kinds of aggressive strategies needed to win the most difficult handicap games?
 
