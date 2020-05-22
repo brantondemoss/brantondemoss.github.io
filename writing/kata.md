@@ -82,7 +82,7 @@ To solve this problem, AlphaGo uses self-play and reinforcement learning to impr
 
 Broadly, reinforcement learning agents take actions in an environment, receive rewards and observations from their environment, and learn to adjust their actions to maximise future rewards. In this case, the "environment" is a simulated game of Go, and the reward is the final result of the game (i.e. the rewards are sparse, and only received after many actions are made).
 
-Because the MCTS in AlphaGo optimizes for maximum value (which measures probability of winning), by producing games of self-play, the CNNs can be further trained to predict value, and importantly, the policy can be trained *on the MCTS search values*, that is, we can train the policy CNN to output the final move-transition values found by the MCTS during self-play. Using this system of producing games of self-play, and training on their policy and value results, AlphaGo was able to continually improve, and finally reach superhuman performance.
+Because the MCTS in AlphaGo optimizes for maximal value (which measures probability of winning), by producing and training on games of self-play, the network can be further trained to produce better value predictions, and importantly, the policy can be trained *on the MCTS search values*, that is, we can train the policy CNN to output the final move-transition values found by the MCTS during self-play. Using this system of producing games of self-play, and training on their policy and value results, AlphaGo was able to continually improve, and finally reach superhuman performance.
 
 ![](leesedol.jpg)
 *[AlphaGo vs Lee Sedol](https://deepmind.com/alphago-korea)*
