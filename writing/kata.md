@@ -74,7 +74,7 @@ As convolutional neural networks started to show promise in image recognition ta
 And so people started downloading hundreds of thousands of games of Go played online by strong amateurs and training CNNs to predict moves and win-rates. Agents playing from raw move prediction alone could outperform some of the weaker Go bots, but still struggled against the MCTS bots. Combining CNNs for move selection (called the policy) and value estimation (probability of winning from current state), and incorporating MCTS with the estimated policies and values to select optimal moves (i.e. instead of randomly sampling moves, we weight the sampling by the policy priors from the CNN, and instead of rolling out to a terminal state, we estiamte the value of the current state from the value network), these prototype CNN bots started to outperform all others, but professional humans were still out of reach.
 
 ## AlphaGo
-Although MCTS improved the play of the trained CNNs, the CNNs themselves were trained only on human games, and had no means of improving, they could only weakly imitate humans.
+Although MCTS improved the play of the trained CNNs, the networks were trained only on human games and had no means of improving beyond human knowledge. They could only weakly imitate humans.
 
 To solve this problem, AlphaGo uses self-play and reinforcement learning to improve the policy and value estimations.
 
