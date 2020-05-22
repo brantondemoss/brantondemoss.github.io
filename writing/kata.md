@@ -135,14 +135,37 @@ While a great resource to the Go community, these Zero bots still had problems: 
 
 In a 2019 World AI Cup, Leela failed to podium, losing $3^{rd}$ place to HanDol, a Korean bot which would later play Lee Sedol for his final game as a professional. Dissapointingly, the commercial bots destroyed the #1 open source bot Leela, likely due to vastly greater compute resources for training at their disposal. It is unclear what algorithmic differences, if any, the commercial bots have vs AlphaGo.
 
-## Yann's Cake
+## Yann LeCun's Cake of Learning
 
-Self supervised
+"Godfather of AI", co-inventor of convolutional neural networks and Turing laureate Yann Lecun wants to tell you about his cake.
+
+![](cake.png)
+*Slide from that one talk he's always giving*
+
+> If intelligence is a cake, the bulk of the cake is self-supervised learning, the icing on the cake is supervised learning, and the cherry on the cake is reinforcement learning
+
+Yann's point is that the bulk of information contained in things is "unstructured". Reinforcement learning takes extremely low information density, e.g. a win-loss signal from a Go self-play game, and propogates that learning signal through many board states (e.g. training the value network to predict win rate from given board state). The signal-to-noise ratio there is not good, so reinforcement learning is **extremely** data-hungry.
+
+Supervised learning is a little better: let's say we want to build a CNN to classify images of dogs. Each training example contains a human-created label, which is much less noisy than a Go result, and is backpropogated through only the current image, a much stronger learning signal. Supervised learning generally requires fewer examples than reinforcement learning to achieve good performance.
+
+Finally there's what Yann calls "self-supervised" learning, in which "the system learns to predict part of its input from other parts of its input"[^22]. The idea is that the unstructed input data contains far more information than any supervised labels ever could, and so finding ways to cleverly predict parts of the input results in much better learning signal and eventual learnt representations.
+
+A fun recent example of successful self-supervised learning is monocular depth estimation [^23].
+
+![](packnet.gif)
+*Monocular depth estimation [^24]*
+
+It would be very useful to estimate pixel-accurate depth maps from monocular camera images<sup>[citation needed]</sup>. Humans cannot accurately label per-pixel depth maps, and LiDAR data is expensive to gather, so can we somehow get a network to estimate depth using only raw images as training samples?
+
+It turns out, yes! By exploiting the fact that stills from video contain many of the same objects, we can have a network guess a depth and scene pose, use some geometry to transform that scene to another viewpoint, and compare pixel-wise photometric loss from the reconstructed and actual images as a measure of depth and pose accuracy. Using this method, networks can learn to predict accurate depth maps with only raw video input.
+
+![](monocdiagram.png)
+*Self-supervised monocular network diagram[^24]*
 
 ## KataGo
 In late 2017 [lightvector](https://github.com/lightvector) began work on a Go project, an AlphaGo-style bot for personal experimentation. For those interested in the gritty details, I highly recommend people check out the original [repository](https://github.com/lightvector/GoNN) to follow along with his experimentation. The project evolved into a genuine research effort, and became [KataGo](https://github.com/lightvector/KataGo).
 
-Like AlphaGo, KataGo uses a CNN to estimate winrate (value) and move choice (policy), but it forgoes some of the Zero methodology of disincluding Go-specific information, instead including relevant features as input to the CNN, such as ladder and liberty status, amongst others. In particular, for $b =$ board width, a $b \times b \times 18$ tensor of:
+Like AlphaGo, KataGo uses a CNN to estimate winrate (value) and move choice (policy), but it forgoes some of the Zero methodology of disincluding Go-specific information, instead including relevant features as input to the network, such as ladder and liberty status, amongst others. In particular, for $b =$ board width, a $b \times b \times 18$ tensor of:
 
  # Channels | Feature
  :---: | :---
@@ -155,50 +178,57 @@ Like AlphaGo, KataGo uses a CNN to estimate winrate (value) and move choice (pol
  1 | Moving here catches opponent in ladder
  2 | Pass-alive area for {self,opponent}
 
-is passed as input to the CNN, along with an additional input vector of some global state properties including ko and komi details[^21].
+is passed as input to the CNN, along with an additional input vector of some global state properties including ko and komi details.
 
-KataGo makes a number of seemingly small changes to the AlphaGo/Zero system that add up to huge efficiency gains in learning, and welcome usability changes for the Go community.
+KataGo makes a number of seemingly small changes to the AlphaGo/Zero system that add up to huge efficiency gains in learning, and welcome usability improvements for the Go community.
 
 Like AlphaGo, KataGo is trained from scratch via self-play reinforcement learning. There are four major improvements to learning efficiency:
 
 1. Playout cap randomization:
-   As noted in the KataGo paper, there is a "tension  between  policy  and  value training [...] the  game  outcome  value  target  is  highly  data-limited,  with  only  one noisy binary result per entire game." Lik
 
-2. Forced playouts and policy target pruning
+   As noted in the KataGo paper, there is a "tension between policy and value training [...] the game outcome value target is highly data-limited, with only one noisy binary result per entire game", while the optimal policy training would use around 800 MCTS playouts per move. In other words, the value net would like more games to be played more quickly, but the policy net would like MCTS during self-play to go deeper to get better policy targets, so the there is tension between these two goals due to limited compute. To solve this issue, during self-play KataGo occasionally performs a "full search" of 600 playouts for move selection, but mostly only uses 100 playouts to finish games more quickly. Only the "full search" moves are used to train the policy network, but because there are more game results, the value net has more training samples.
 
-3. Global pooling
+2. Forced playouts and policy target pruning:
+   
+   There is a classic trade-off in reinforcement learning between exploration and exploitation: should you use the knowledge you've learned to take optimal actions, or should you explore seemingly non-optimal moves to discover new behavior? KataGo attempts to solve this issue with *forced playouts*, where each child of the root that has received any playouts receives a minimum number of playouts. For more details, [read the paper](https://arxiv.org/pdf/1902.10565.pdf)
 
-4. Auxiliary policy targets
+3. Global pooling:
+
+   A relatively simple improvement is seen in KataGo by introducing occasional global pooling layers, so that the network can condition on board areas that may be out of reach of the perceptual radius of the convolutional layers. Experiments with KataGo showed that this greatly improves later stages of training, "as Go contains explicit nonlocal tactics ('ko'), this is not surprising".
+
+4. Auxiliary policy targets:
+
+   I think this is the most interesting change in KataGo, which shares similar ideas with those from self-supervised learning: training additional policy targets. Typically AlphaZero style bots only predict move policies and board state values (via winrate). Taking the idea from LeCun's slide that learning can be improved with the addition of more training targets, KataGo attempts to predict more game outcomes than just policy and value. In particular, KataGo also predicts final territory control, and final score difference. Quoting from the paper:
+   
+   > It might be surprising that these targets would continue to help beyond the earliest stages. We
+   offer an intuition: consider the task of updating from a game primarily lost due to misjudging a
+   particular region of the board. With only a final binary result, the neural net can only “guess”
+   at what aspect of the board position caused the loss. By contrast, with an ownership target, the
+   neural net receives direct feedback on which area of the board was mispredicted, with large errors
+   and gradients localized to the mispredicted area. The neural net should therefore require fewer
+   samples to perform the correct credit assignment and update correctly.
 
 ![](territory.png)
 *Visualization of ownership predictions by KataGo [^21]*
 
-Reinforcement + Features + Self Supervised (additional training signal)
+With these improvements, KataGo massively outperforms Leela Zero and Facebook's ELF bot in learning efficiency, getting a factor of fifty improvement over ELF:
 
-Arbitrary board sizes and komi - helpful for public to learn
+![](efficiency.png)
 
-Igo Hatsuyoron
+In addition to these improvements, KataGo also directly optimizes for maximum score (with some caveats), mostly eliminating the slack slack moves found in other Zero style bots. KataGo also palys handicap games against weaker versions of itself during training, plays on multiple board sizes, and with variable komi and rulesets, so it is flexible under permutations of these game settings.
 
-Compute efficiency
+With all of these additional features, KataGo adds up to the most useful analysis tool yet made for Go, providing us with even more insight into the opinions of superhuman Go agents.
 
-Continuing development
+KataGo is likely now the strongest open source Go bot available, recently topping the [CGS rankings](http://www.yss-aya.com/cgos/19x19/standings.html) in all board sizes.
 
-KataGo CGS position
+I highly recommend those interested check out the original [KataGo paper](https://arxiv.org/abs/1902.10565) - it's an extremely accessible read.
 
-Speculation about future research directions. Will KataGo incorporate games against external opponents into training? KataGo too opinionated 919x19 thread)? Beating weaker programs at high handicap[](https://lifein19x19.com/viewtopic.php?f=18&t=17219)
+## Future
+David Silver, the lead researcher behind AlphaGo, recently said that he expects AlphaZero style bots to continue improving for the next 100 years, that Go's skill ceiling still isn't even close to being reached. KataGo gives us a picture of how improvements will continue to be made, and how value for human players can be added along the way. Who knows, maybe next-generation Go bots will incorporate language models and be able to explain their move choices in natural language.
 
-David Silver quote Zero bots will continue to get better for 100 years with more compute
+Will KataGo incorporate games played against external opponents? Self-play has worked wonders, but an even greater diversity of ideas can be found from learning from external agents. Professional Go players used to say that even God couldn't give them a four stone handicap. With KataGo inching towards that with wins over professional players with three stones, how far can handicaps be pushed? Can an agent trained for optimal self-play learn the kinds of aggressive strategies needed to win the most difficult handicap games?
 
-How can we make AI bots more useful to humans to elarn from and study with? Will they overfit to MCTS policy and become overconfident?
-
-MuZero Go RL "model" learned in NN
-
-Interview Q's w/DJ Wu?
-
-## Other Bots
-Black hole?
-Q-whatever
-minigo
+The future of Go and AI is exciting. Though bots have overtaken humans in skill, they haven't left us behind - as long as we can continue to learn how to play the game better, as long as we think about how to get our bots to think better, Go and AI will continue to fascinate.
 
 [^kata1]: [KataGo vs. Leela Zero](http://www.yss-aya.com/cgos/viewer.cgi?19x19/SGF/2020/05/14/693137.sgf): B+Resign
 
@@ -243,3 +273,9 @@ minigo
 [^20]: [Leela Zero](https://zero.sjeng.org/home)
 
 [^21]: [Wu: Accelerating Self-Play Learning in Go](https://arxiv.org/abs/1902.10565)
+
+[^22]: [Yann Lecun Twitter](https://twitter.com/ylecun/status/1123235709802905600?lang=en)
+
+[^23]: [Godard et al: Digging Into Self-Supervised Monocular Depth Estimation](https://arxiv.org/abs/1806.01260)
+
+[^24]: [Guizilini et al: 3D Packing for Self-Supervised Monocular Depth Estimation](https://github.com/tri-ml/packnet-sfm)
