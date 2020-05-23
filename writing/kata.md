@@ -16,7 +16,7 @@ How we define AI has changed over time, older naive definitions were mostly conc
 
 >The science of making machines capable of performing tasks that would require intelligence if done by humans.<br/> Minsky, 1968
 
-Definitions like thse are inherently unstable, because as we build these computer systems and become normalized to their (at first) astonishing capabilities, we stop thinking of their task performance as demonstrating any kind of intelligence. Definitions like these leave AI in a sort of [God of the gaps](https://en.wikipedia.org/wiki/God_of_the_gaps) situation.
+Definitions like these are inherently unstable, because as we build these computer systems and become normalized to their (at first) astonishing capabilities, we stop thinking of their task performance as demonstrating any kind of intelligence. Definitions like these leave AI in a sort of [God of the gaps](https://en.wikipedia.org/wiki/God_of_the_gaps) situation.
 
 Tying intelligence to performance in any single task, or even finite set of tasks, doesn't seem consistent and informative. Some have proposed that intelligence is the ability to perform many tasks well, or the ability to solve tasks in a diverse range of environments[^8]. Others claim that intelligence is the ability to acquire new skills through learning [^9]. More recently there have been proposals[^10] that intelligence is a measure of skill acquisition *efficiency*. Given two agents with the same knowledge and fixed training time on a novel task, the more intelligent agent is the one that ends up with better skills.
 
@@ -53,14 +53,14 @@ While intuition guides move selection, reading variations strengthens intuition 
 
 
 
-Hand crafted value functions were not enough to solve Go, though. The search space is simply too large, and hueristics too difficult to define. One approach that saw some success was a modified tree search called Monte Carlo Tree Search (MCTS)[^13]. MCTS randomly samples legal moves from the current position, and rolls out the game tree all the way to the end, each time using a random move. The value of the initial move is related to the proportion of rollout trajectories that result in a won terminal state. Somewhat surprisingly, Go bots using MCTS were able to reach advanced amateur level (low-mid dan) play!
+Hand crafted value functions were not enough to solve Go, though. The search space is simply too large, and heuristics too difficult to define. One approach that saw some success was a modified tree search called Monte Carlo Tree Search (MCTS)[^13]. MCTS randomly samples legal moves from the current position, and rolls out the game tree all the way to the end, each time using a random move. The value of the initial move is related to the proportion of rollout trajectories that result in a won terminal state. Somewhat surprisingly, Go bots using MCTS were able to reach advanced amateur level (low-mid dan) play!
 
-There is something deeply interesting in the fact that defining state values by evaluating *random* rollouts to the end actually provides a meaningful approximation of "true value". It seems tautological when spelled out, but truly "good" moves really do have a greater propotion of trajectories leading to victory, and **random sampling** is enough to approximate their value.
+There is something deeply interesting in the fact that defining state values by evaluating *random* rollouts to the end actually provides a meaningful approximation of "true value". It seems tautological when spelled out, but truly "good" moves really do have a greater proportion of trajectories leading to victory, and **random sampling** is enough to approximate their value.
 
 ## Neural Networks
 If the heuristics of board evaluation and move selection are so hard to program, so hard to even specify, how can humans play Go so well? Some experts can read many variations out very quickly, but nothing like the hundreds of millions per second of Deep Blue (obviously). 
 
-Human move selection intuition is *excellent*. At a glance, a very small number of moves stand out as worth considering. From the experience of many games of Go, we seem to be able to learn a sharp sense of which moves work, and which moves don't. We also have the advantage of being able to read Go theory, which is the distilled experience of many others over millenia (incorporating symbolic knowledge into learning systems is an unsolved problem).
+Human move selection intuition is *excellent*. At a glance, a very small number of moves stand out as worth considering. From the experience of many games of Go, we seem to be able to learn a sharp sense of which moves work, and which moves don't. We also have the advantage of being able to read Go theory, which is the distilled experience of many others over millennia (incorporating symbolic knowledge into learning systems is an unsolved problem).
 
 How can AI agents be given this excellent intuition? Convolutional neural networks!
 
@@ -71,7 +71,7 @@ Briefly, convolutional neural networks are an example of a [neural network](http
 
 As convolutional neural networks started to show promise in image recognition tasks[^15], and since neural networks can approximate any function[^16], people began thinking about using them to estimate the value function, treating the board state encoding as an "image" input to the CNN. The idea is straightforward: given some board state and final game result pair, $(s,r)$ train your CNN to predict $r$ from $s$. Even better, given the same state $s$, estimate the next move.
 
-And so people started downloading hundreds of thousands of games of Go played online by strong amateurs and training CNNs to predict moves and win-rates. Agents playing from raw move prediction alone could outperform some of the weaker Go bots, but still struggled against the MCTS bots. Combining CNNs for move selection (called the policy) and value estimation (probability of winning from current state), and incorporating MCTS with the estimated policies and values to select optimal moves (i.e. instead of randomly sampling moves, we weight the sampling by the policy priors from the CNN, and instead of rolling out to a terminal state, we estiamte the value of the current state from the value network), these prototype CNN bots started to outperform all others, but professional humans were still out of reach.
+And so people started downloading hundreds of thousands of games of Go played online by strong amateurs and training CNNs to predict moves and win-rates. Agents playing from raw move prediction alone could outperform some of the weaker Go bots, but still struggled against the MCTS bots. Combining CNNs for move selection (called the policy) and value estimation (probability of winning from current state), and incorporating MCTS with the estimated policies and values to select optimal moves (i.e. instead of randomly sampling moves, we weight the sampling by the policy priors from the CNN, and instead of rolling out to a terminal state, we estimate the value of the current state from the value network), these prototype CNN bots started to outperform all others, but professional humans were still out of reach.
 
 ## AlphaGo
 Although MCTS improved the play of the trained CNNs, the networks were trained only on human games and had no means of improving beyond human knowledge. They could only weakly imitate humans.
@@ -105,7 +105,7 @@ In 2017 the team published the AlphaGo Zero paper[^18], with three primary impro
 
 With these changes, AlphaGo Zero far surpassed AlphaGo's performance, getting massive increases in training efficiency from the combined policy and value net, and from using a ResNet-like architecture[^19] instead of a fully convolutional network.
 
-To measure relative playing strength of different agents, a commonly-used metric is [Elo rating](https://en.wikipedia.org/wiki/Elo_rating_system). While the details of Elo rating are beyond the scope of this article, briefly, Elo rating encodes relative probability of winning. Using the standard scales, for example, a 100 point rating difference encodes an expectation that the higher rated palyer has a 64% chance of beating their opponent; if the difference is 200, then the expectation is 76%.
+To measure relative playing strength of different agents, a commonly-used metric is [Elo rating](https://en.wikipedia.org/wiki/Elo_rating_system). While the details of Elo rating are beyond the scope of this article, briefly, Elo rating encodes relative probability of winning. Using the standard scales, for example, a 100 point rating difference encodes an expectation that the higher rated player has a 64% chance of beating their opponent; if the difference is 200, then the expectation is 76%.
 
 There is a wonderful plot of Elo ratings of various bots from the AlphaGo Zero paper:
 
@@ -123,7 +123,7 @@ AlphaGo shook both the Go world and AI research community, but DeepMind largely 
 
 As early as the first published paper on AlphaGo, many private companies, especially in China, S. Korea and Japan (where commercial Go products are viable) began to recreate AlphaGo/Zero. While these bots were helpful to those who could afford access, it wasn't until open source bots became wide-spread that the Go community could fully take advantage their benefits.
 
-The most well known open source bot is [Leela Zero](https://zero.sjeng.org/home), a faithful reimplementation of AlphaZero, which uses crowdsourced GPU compute to produce games of self-play and train the network. Leela Zero has been training since late 2017, and has produced about 20 million games of self-play as of May 2020.
+The most well-known open source bot is [Leela Zero](https://zero.sjeng.org/home), a faithful re implementation of AlphaZero, which uses crowdsourced GPU compute to produce games of self-play and train the network. Leela Zero has been training since late 2017, and has produced about 20 million games of self-play as of May 2020.
 
 ![](leelaelo.png)
 *Leela Zero Elo rating vs. number of games of self-play[^20]*
@@ -143,9 +143,9 @@ In a 2019 World AI Cup, Leela failed to podium, losing $3^{rd}$ place to HanDol,
 
 > If intelligence is a cake, the bulk of the cake is self-supervised learning, the icing on the cake is supervised learning, and the cherry on the cake is reinforcement learning
 
-Yann's point is that the bulk of information contained in things is "unstructured". Reinforcement learning takes extremely low information density, e.g. a win-loss signal from a Go self-play game, and propogates that learning signal through many board states (e.g. training the value network to predict win rate from given board state). The signal-to-noise ratio there is not good, so reinforcement learning is **extremely** data-hungry.
+Yann's point is that the bulk of information contained in things is "unstructured". Reinforcement learning takes extremely low information density, e.g. a win-loss signal from a Go self-play game, and propagates that learning signal through many board states (e.g. training the value network to predict win rate from given board state). The signal-to-noise ratio there is not good, so reinforcement learning is **extremely** data-hungry.
 
-Supervised learning is a little better: let's say we want to build a CNN to classify images of dogs. Each training example contains a human-created label, which is much less noisy than a Go result, and is backpropogated through only the current image, a much stronger learning signal. Supervised learning generally requires fewer examples than reinforcement learning to achieve good performance.
+Supervised learning is a little better: let's say we want to build a CNN to classify images of dogs. Each training example contains a human-created label, which is much less noisy than a Go result, and is backpropagated through only the current image, a much stronger learning signal. Supervised learning generally requires fewer examples than reinforcement learning to achieve good performance.
 
 Finally there's what Yann calls "self-supervised" learning, in which "the system learns to predict part of its input from other parts of its input"[^22]. The idea is that the unstructured input data contains far more information than any supervised labels ever could, and so finding ways to cleverly predict parts of the input results in much better learning signal and eventual learnt representations.
 
@@ -164,7 +164,7 @@ It turns out, yes! By exploiting the fact that stills from video contain many of
 ## KataGo
 In late 2017 [lightvector](https://github.com/lightvector) began work on a Go project, an AlphaGo-style bot for personal experimentation. For those interested in the gritty details, I highly recommend people check out the original [repository](https://github.com/lightvector/GoNN) to follow along with his experimentation. The project evolved into a genuine research effort, and became [KataGo](https://github.com/lightvector/KataGo).
 
-Like AlphaGo, KataGo uses a CNN to estimate winrate (value) and move choice (policy), but it forgoes some of the Zero methodology of disincluding Go-specific information, instead including relevant features as input to the network, such as ladder and liberty status, amongst others. In particular, for $b =$ board width, a $b \times b \times 18$ tensor of:
+Like AlphaGo, KataGo uses a CNN to estimate win rate (value) and move choice (policy), but it forgoes some of the Zero methodology of disincluding Go-specific information, instead including relevant features as input to the network, such as ladder and liberty status, amongst others. In particular, for $b =$ board width, a $b \times b \times 18$ tensor of:
 
  # Channels | Feature
  :---: | :---
@@ -197,7 +197,7 @@ Like AlphaGo, KataGo is trained from scratch via self-play reinforcement learnin
 
 4. Auxiliary policy targets:
 
-   I think this is the most interesting change in KataGo, which shares similar ideas with those from self-supervised learning: training additional policy targets. Typically AlphaZero style bots only predict move policies and board state values (via winrate). Taking the idea from LeCun's slide that learning can be improved with the addition of more training targets, KataGo attempts to predict more game outcomes than just policy and value. In particular, KataGo also predicts final territory control, and final score difference. Quoting from the paper:
+   I think this is the most interesting change in KataGo, which shares similar ideas with those from self-supervised learning: training additional policy targets. Typically AlphaZero style bots only predict move policies and board state values (via win rate). Taking the idea from LeCun's slide that learning can be improved with the addition of more training targets, KataGo attempts to predict more game outcomes than just policy and value. In particular, KataGo also predicts final territory control, and final score difference. Quoting from the paper:
    
    > It might be surprising that these targets would continue to help beyond the earliest stages. We
    offer an intuition: consider the task of updating from a game primarily lost due to misjudging a
@@ -210,7 +210,7 @@ Like AlphaGo, KataGo is trained from scratch via self-play reinforcement learnin
 ![](territory.png)
 *Visualization of ownership predictions by KataGo [^21]*
 
-With these improvements, KataGo massively outperforms Leela Zero and Facebook's ELF bot in learning efficiency, getting a factor of fifty improvement over ELF:
+As a result of these improvements, KataGo massively outperforms Leela Zero and Facebook's ELF bot in learning efficiency, with a factor of fifty improvement over ELF:
 
 ![](efficiency.png)
 *Relative Elo rating vs self-play cost in billions of equivalent 20 block x 256 channel queries (log scale)*
@@ -224,9 +224,9 @@ KataGo is likely now the strongest open source Go bot available, recently toppin
 I highly recommend those interested check out the original [KataGo paper](https://arxiv.org/abs/1902.10565) - it's an extremely accessible read.
 
 ## Future
-David Silver, the lead researcher behind AlphaGo, recently said that he expects AlphaZero style bots to continue improving for the next 100 years, that Go's skill ceiling still isn't even close to being reached. KataGo provides a picture of how improvements will continue to be made, and how value for human players can be added along the way. Who knows, maybe next-generation Go bots will incorporate language models and be able to explain their move choices in natural language.
+In a [recent interview](https://www.youtube.com/watch?v=uPUEq8d73JI), the lead researcher from AlphaGo, David Silver, said that he expects AlphaZero style bots to continue improving for the next 100 years, that the skill ceiling of Go still has not come close to being reached. KataGo provides a picture of how improvements will continue to be made, and how value for human players can be added along the way. Who knows, maybe next-generation Go bots will incorporate language models and be able to explain their move choices in natural language.
 
-Will KataGo incorporate games played against external opponents? Self-play has worked wonders, but an even greater diversity of ideas can be found from learning from external agents. Professional Go players used to say that even God couldn't give them a four stone handicap. With KataGo inching towards that with wins over professional players with three stones, how far can handicaps be pushed? Can an agent trained for optimal self-play learn the kinds of aggressive strategies needed to win the most difficult handicap games?
+Will KataGo incorporate games played against external opponents? Self-play has worked wonders, but an even greater diversity of ideas can be found by learning from external opponents. Professional Go players used to say that even God couldn't give them a four stone handicap. As KataGo inches towards that barrier with wins over professional players with three stones, how far will handicaps be pushed? Can an agent trained for optimal self-play learn the kinds of aggressive strategies needed to win the most difficult handicap games? Is learning an "optimal" strategy given the complexity of Go realistic? Will we need to start incorporating opponent behaviour patterns to exploit their specific weaknesses?
 
 The future of Go and AI is exciting. Though bots have overtaken humans in skill, they haven't left us behind - as long as we can continue to learn how to play the game better, as long as we think about how to get our bots to think better, Go and AI will continue to fascinate.
 
@@ -279,3 +279,14 @@ The future of Go and AI is exciting. Though bots have overtaken humans in skill,
 [^23]: [Godard et al: Digging Into Self-Supervised Monocular Depth Estimation](https://arxiv.org/abs/1806.01260)
 
 [^24]: [Guizilini et al: 3D Packing for Self-Supervised Monocular Depth Estimation](https://github.com/tri-ml/packnet-sfm)
+
+<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+       
+       ga('create', 'UA-48874513-2', 'auto');
+       ga('send', 'pageview');
+       
+</script>
