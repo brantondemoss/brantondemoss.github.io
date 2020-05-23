@@ -139,7 +139,7 @@ In a 2019 World AI Cup, Leela failed to podium, losing $3^{rd}$ place to HanDol,
 "Godfather of AI", co-inventor of convolutional neural networks and Turing laureate Yann LeCun wants to tell you about his cake.
 
 ![](cake.png)
-*Slide from that one talk he's always giving*
+*Slide from [that one talk he's always giving](https://drive.google.com/drive/folders/0BxKBnD5y2M8NUXhZaXBCNXE4QlE)*
 
 > If intelligence is a cake, the bulk of the cake is self-supervised learning, the icing on the cake is supervised learning, and the cherry on the cake is reinforcement learning
 
