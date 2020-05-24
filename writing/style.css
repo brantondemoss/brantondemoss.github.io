@@ -677,3 +677,8 @@ body :checked+.radio-label {
   position: relative;
   border-color: #4078c0;
 }
+
+body p {
+  text-align: justify;
+  hyphens: auto;
+}

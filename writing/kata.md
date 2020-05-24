@@ -16,9 +16,9 @@ How we define AI has changed over time, older naive definitions were mostly conc
 
 >The science of making machines capable of performing tasks that would require intelligence if done by humans.<br/> Minsky, 1968
 
-Definitions like these are inherently unstable, because as we build these computer systems and become normalized to their (at first) astonishing capabilities, we stop thinking of their task performance as demonstrating any kind of intelligence. Definitions like these leave AI in a sort of [God of the gaps](https://en.wikipedia.org/wiki/God_of_the_gaps) situation.
+Definitions like these are inherently unstable, because as we build these computer systems and become normalized to their (at first) astonishing capabilities, we stop thinking of their task performance as demonstrating any kind of intelligence. Definitions like these leave AI in a sort of [God of the gaps](https://en.wikipedia.org/wiki/God_of_the_gaps)&nbsp;situation.
 
-Tying intelligence to performance in any single task, or even finite set of tasks, doesn't seem consistent and informative. Some have proposed that intelligence is the ability to perform many tasks well, or the ability to solve tasks in a diverse range of environments[^8]. Others claim that intelligence is the ability to acquire new skills through learning [^9]. More recently there have been proposals[^10] that intelligence is a measure of skill acquisition *efficiency*. Given two agents with the same knowledge and fixed training time on a novel task, the more intelligent agent is the one that ends up with better skills.
+Tying intelligence to performance in any single task, or even finite set of tasks, doesn't seem consistent and informative. Some have proposed that intelligence is the ability to perform many tasks well, or the ability to solve tasks in a diverse range of environments[^8]. Others claim that intelligence is the ability to acquire new skills through learning[^9]. More recently there have been proposals[^10] that intelligence is a measure of skill acquisition *efficiency*. Given two agents with the same knowledge and fixed training time on a novel task, the more intelligent agent is the one that ends up with better skills.
 
 The most popular AI system of the last century was Deep Blue, a chess playing system designed by researchers at IBM. The system consisted of a hand-crafted board evaluation function, a tree search to maximise expected board state value given an adversarial opponent, and custom hardware designed to accelerate those operations, achieving speeds of around 100 million position evaluations per second.
 
@@ -49,9 +49,6 @@ Since a game is a trajectory through legal board states (with some transition co
 Because the state space of Go is too large to be enumerated and searched through, players must learn to focus only on promising moves when considering possible game state trajectories (variations), in other words players must develop an *intuitive* sense of what moves might be good, and avoid wasting time on dubious possibilities. Defining such a value function turns out to be much more difficult for Go than for chess.
 
 While intuition guides move selection, reading variations strengthens intuition using a form of self-argument: because Go is a [zero sum game](https://en.wikipedia.org/wiki/Zero-sum_game), move choice is necessarily conditioned on an adversarial opponent. Player's goals are perfectly anti-aligned, so an optimal strategy can be constructed by considering maximising future state-value *given a minimizing opponent* (this logic is nicely encoded in the [minimax algorithm](https://en.wikipedia.org/wiki/Minimax)).
-
-
-
 
 Hand crafted value functions were not enough to solve Go, though. The search space is simply too large, and heuristics too difficult to define. One approach that saw some success was a modified tree search called Monte Carlo Tree Search (MCTS)[^13]. MCTS randomly samples legal moves from the current position, and rolls out the game tree all the way to the end, each time using a random move. The value of the initial move is related to the proportion of rollout trajectories that result in a won terminal state. Somewhat surprisingly, Go bots using MCTS were able to reach advanced amateur level (low-mid dan) play!
 
@@ -93,7 +90,7 @@ AlphaGo succeeded in beating world champion Lee Sedol, finally giving computers 
 In addition to the raw board state, AlphaGo's inputs included the following for every evaluation:
 
 ![](alphagofeatures.png)
-*Feature planes of AlphaGo [^17]*
+*Feature planes of AlphaGo[^17]*
 
 In a sense, there was still Go-specific knowledge that AlphaGo was "programmed with", and the team wanted to see if a bot with zero game-specific knowledge could perform similarly.
 
@@ -149,10 +146,10 @@ Supervised learning is a little better: let's say we want to build a CNN to clas
 
 Finally there's what Yann calls "self-supervised" learning, in which "the system learns to predict part of its input from other parts of its input"[^22]. The idea is that the unstructured input data contains far more information than any supervised labels ever could, and so finding ways to cleverly predict parts of the input results in much better learning signal and eventual learnt representations.
 
-A fun recent example of successful self-supervised learning is monocular depth estimation [^23].
+A fun recent example of successful self-supervised learning is monocular depth estimation[^23].
 
 ![](packnet.gif)
-*Monocular depth estimation [^24]*
+*Monocular depth estimation[^24]*
 
 It would be very useful to estimate pixel-accurate depth maps from monocular camera images<sup>[citation needed]</sup>. Humans cannot accurately label per-pixel depth maps, and LiDAR data is expensive to gather, so can we somehow get a network to estimate depth using only raw images as training samples?
 
@@ -208,7 +205,7 @@ Like AlphaGo, KataGo is trained from scratch via self-play reinforcement learnin
    samples to perform the correct credit assignment and update correctly.
 
 ![](territory.png)
-*Visualization of ownership predictions by KataGo [^21]*
+*Visualization of ownership predictions by KataGo[^21]*
 
 As a result of these improvements, KataGo massively outperforms Leela Zero and Facebook's ELF bot in learning efficiency, with a factor of fifty improvement over ELF:
 
