@@ -55,7 +55,7 @@ Hand crafted value functions were not enough to solve Go, though. The search spa
 There is something deeply interesting in the fact that defining state values by evaluating *random* rollouts to the end actually provides a meaningful approximation of "true value". It seems tautological when spelled out, but truly "good" moves really do have a greater proportion of trajectories leading to victory, and **random sampling** is enough to approximate their value.
 
 ## Neural Networks
-If the heuristics of board evaluation and move selection are so hard to program, so hard to even specify, how can humans play Go so well? Some experts can read many variations out very quickly, but nothing like the hundreds of millions per second of Deep Blue (obviously). 
+If the heuristics of board evaluation and move selection are so hard to program, so hard to even specify, how can humans play Go so well? Some experts can read many variations out very quickly, but nothing like the hundreds of millions per second of Deep Blue. 
 
 Human move selection intuition is *excellent*. At a glance, a very small number of moves stand out as worth considering. From the experience of many games of Go, we seem to be able to learn a sharp sense of which moves work, and which moves don't. We also have the advantage of being able to read Go theory, which is the distilled experience of many others over millennia (incorporating symbolic knowledge into learning systems is an unsolved problem).
 
@@ -102,7 +102,7 @@ In 2017 the team published the AlphaGo Zero paper[^18], with three primary impro
 
 With these changes, AlphaGo Zero far surpassed AlphaGo's performance, getting massive increases in training efficiency from the combined policy and value net, and from using a ResNet-like architecture[^19] instead of a fully convolutional network.
 
-To measure relative playing strength of different agents, a commonly-used metric is [Elo rating](https://en.wikipedia.org/wiki/Elo_rating_system). While the details of Elo rating are beyond the scope of this article, briefly, Elo rating encodes relative probability of winning. Using the standard scales, for example, a 100 point rating difference encodes an expectation that the higher rated player has a 64% chance of beating their opponent; if the difference is 200, then the expectation is 76%.
+To measure relative playing strength of different agents, a commonly-used metric is [Elo rating](https://en.wikipedia.org/wiki/Elo_rating_system). While the full details of Elo rating (and how it corresponds to handicap stones) are beyond the scope of this article, briefly, Elo rating encodes relative probability of winning. Using the standard scales, for example, a 100 point rating difference encodes an expectation that the higher rated player has a 64% chance of beating their opponent; if the difference is 200, then the expectation is 76%.
 
 There is a wonderful plot of Elo ratings of various bots from the AlphaGo Zero paper:
 
@@ -153,7 +153,7 @@ A fun recent example of successful self-supervised learning is monocular depth e
 
 It would be very useful to estimate pixel-accurate depth maps from monocular camera images<sup>[citation needed]</sup>. Humans cannot accurately label per-pixel depth maps, and LiDAR data is expensive to gather, so can we somehow get a network to estimate depth using only raw images as training samples?
 
-It turns out, yes! By exploiting the fact that stills from video contain many of the same objects, we can have a network guess a depth and scene pose, use some geometry to transform that scene to another viewpoint, and compare pixel-wise photometric loss from the reconstructed and actual images as a measure of depth and pose accuracy. Using this method, networks can learn to predict accurate depth maps with only raw video input.
+It turns out, yes! By exploiting frame-to-frame consistent scene geometry and the fact that sequential video frames contain many of the same objects, we can have a network guess a depth and scene pose, use some geometry to transform that scene to another viewpoint, and back propagate pixel-wise photometric loss from the reconstructed and actual images to learn depth and pose accuracy. Using this method, networks can learn to predict accurate depth maps with only raw video input.
 
 ![](monocdiagram.png)
 *Self-supervised monocular network diagram[^24]*
