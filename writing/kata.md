@@ -87,7 +87,7 @@ Because the MCTS in AlphaGo optimizes for maximal value (which measures probabil
 *DeepMind: [AlphaGo vs Lee Sedol](https://deepmind.com/alphago-korea)*
 
 ## AlphaZero
-Although AlphaGo succeeded in beating world champion Lee Sedol, the team at DeepMind wanted to push their reinforcement learning method further.
+Although AlphaGo succeeded in beating world champion Lee Sedol, the team at DeepMind wanted to push reinforcement learning further. AlphaGo's policy and value networks had been initialized on many thousands of human games before any self-play reinforement learning was performed.
 
 In addition to the raw board state, AlphaGo's inputs included the following for every evaluation:
 
@@ -113,9 +113,9 @@ There is a wonderful plot of Elo ratings of various bots from the AlphaGo Zero p
 
 Note that the raw network (just playing top move recommended by policy net) strength is around ~3000, while the full AlphaZero bot (using the policy network + MCTS + value network) achieves a rating > 5000. This gives us an idea of how much stronger the tree search and value estimation makes the raw network move intuition.
 
-Going back to our earlier definition of intelligence as a measure of learning efficiency, it would have been excellent to see how the Elo strength as a function of self-play games changed from AlphaGo to AlphaGo Zero.
+In the context of our earlier definition of intelligence as a measure of learning efficiency, it would have been excellent to see how the Elo strength as a function of self-play games changed from AlphaGo to AlphaGo Zero.
 
-Finally the DeepMind team extended their AlphaGo Zero method to chess and shogi, removing all Go-specific aspects of the program (e.g. not generating additional training samples from the board's [$D_4$](https://en.wikipedia.org/wiki/Dihedral_group) symmetry), and published again, calling it AlphaZero.
+Finally the DeepMind team extended their AlphaGo Zero method to chess and shogi, removing all Go-specific aspects of the program (e.g. not generating additional training samples from the [board's symmetry](https://en.wikipedia.org/wiki/Dihedral_group)), and published again, calling it AlphaZero.
 
 ## Zero Explosion
 AlphaGo shook both the Go world and AI research community, but DeepMind largely left their work behind and moved on to other topics. With only the research papers to guide them, many started to re-implement AlphaZero.
@@ -125,7 +125,7 @@ As early as the first published paper on AlphaGo, many private companies, especi
 The most well-known open source bot is [Leela Zero](https://zero.sjeng.org/home), a faithful re implementation of AlphaZero, which uses crowdsourced GPU compute to produce games of self-play and train the network. Leela Zero has been training since late 2017, and has produced about 20 million games of self-play as of May 2020.
 
 ![](leelaelo.png)
-*Leela Zero Elo rating vs. number of games of self-play[^20]*
+*Leela Zero Elo rating vs. number of games of self-play[^20]<br/>Note: Self-play Elo is inflated and does not correspond to the previously shown Elo graph*
 
 As Leela Zero and other bots became available to the public for review and play, Go experienced a cultural shift unlike any that had come before. Suddenly everyone had access to superhuman playing advice, and could get opinions on variations in study from one of the strongest players of all time. While AlphaZero was a breakthrough for the AI community, Leela and the open source bots like it were the real godsend for the Go community. Rather than just mimicking AlphaZero's moves, people could use them for in-depth review and study. World #1 Shin Jinseo reportedly brings an iPad with Leela Zero loaded up everywhere to review ideas and games. As AlphaZero and Leela Zero's influence on the game meta took hold, researchers at Facebook noticed that [players became stronger faster than anytime in history](https://ai.facebook.com/blog/open-sourcing-new-elf-opengo-bot-and-go-research/)!
 
@@ -140,13 +140,13 @@ In a 2019 World AI Cup, Leela failed to podium, losing $3^{rd}$ place to HanDol,
 ![](cake.png)
 *Slide from [that one talk he's always giving](https://drive.google.com/drive/folders/0BxKBnD5y2M8NUXhZaXBCNXE4QlE)*
 
-> If intelligence is a cake, the bulk of the cake is self-supervised learning, the icing on the cake is supervised learning, and the cherry on the cake is reinforcement learning
+> If intelligence is a cake, the bulk of the cake is self-supervised learning, the icing on the cake is supervised learning, and the cherry on the cake is reinforcement learning<br/> Yann LeCun
 
-Yann's point is that the bulk of information contained in things is "unstructured". Reinforcement learning takes extremely low information density, e.g. a win-loss signal from a Go self-play game, and propagates that learning signal through many board states (e.g. training the value network to predict win rate from given board state). The signal-to-noise ratio there is not good, so reinforcement learning is **extremely** data-hungry.
+Yann's cake metaphor is meant to point out that the bulk of information contained in data is "unstructured". Reinforcement learning takes extremely noisy and low information density signal, e.g. a win-loss result from a game of self-play, and propagates that learning signal through many board states (e.g. training the value network to predict win rate from given board state). Because the signal-to-noise ratio there is so poor, reinforcement learning is **extremely** data-hungry.
 
-Supervised learning is a little better: let's say we want to build a CNN to classify images of dogs. Each training example contains a human-created label, which is much less noisy than a Go result, and is backpropagated through only the current image, a much stronger learning signal. Supervised learning generally requires fewer examples than reinforcement learning to achieve good performance.
+Supervised learning is a little better: if we were to build a CNN to classify pictures of dogs, each training example would consist of an image and a human-made correct label that would only be backpropagated through a single image. The per-sample information density is much greater, and the label noise non-existent (unless the human has mislabeled the image!). Supervised learning generally requires far fewer examples than reinforcement learning to achieve good performance.
 
-Finally there's what Yann calls "self-supervised" learning, in which "the system learns to predict part of its input from other parts of its input"[^22]. The idea is that the unstructured input data contains far more information than any supervised labels ever could, and so finding ways to cleverly predict parts of the input results in much better learning signal and eventual learnt representations.
+Finally there's what Yann calls "self-supervised" learning, in which "the system learns to predict part of its input from other parts of its input"[^22]. The idea is that the unstructured input data contains far more information than any supervised labels ever could, and so finding ways to cleverly predict parts of the input results in much better learning efficiency, and enables using a much larger set of unlabaled data.
 
 A fun recent example of successful self-supervised learning is monocular depth estimation[^23].
 
@@ -155,7 +155,7 @@ A fun recent example of successful self-supervised learning is monocular depth e
 
 It would be very useful to estimate pixel-accurate depth maps from monocular camera images<sup>[citation needed]</sup>. Humans cannot accurately label per-pixel depth maps, and LiDAR data is expensive to gather, so can we somehow get a network to estimate depth using only raw images as training samples?
 
-It turns out, yes! By exploiting frame-to-frame consistent scene geometry and the fact that sequential video frames contain many of the same objects, we can have a network guess a depth and scene pose, use some geometry to transform that scene to another viewpoint, and back propagate pixel-wise photometric loss from the reconstructed and actual images to learn depth and pose accuracy. Using this method, networks can learn to predict accurate depth maps with only raw video input.
+It turns out, yes! By exploiting frame-to-frame consistent scene geometry and the fact that sequential video frames contain many of the same objects, we can have a network guess a depth and camera pose, use some clever differentiable geometric transformations to *reconstruct* that scene from the guessed viewpoint of a subsequent video frame, and back propagate pixel-wise photometric loss from the reconstructed and actual images to enforce scene-consistent depth and pose estimations. It turns out that the only way for the network to guess *consistent* depth and camera pose from frame-to-frame is to guess *correct* depth and pose. Using this method, networks can learn to predict accurate depth maps with only raw video input.
 
 ![](monocdiagram.png)
 *Self-supervised monocular network diagram[^24]*
