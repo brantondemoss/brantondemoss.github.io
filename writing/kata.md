@@ -14,7 +14,7 @@ With the recent advent of strong, open source Go AI that can beat top profession
 
 How we define AI has changed over time, older naive definitions were mostly concerned with capability on specific tasks, defining AI as 
 
->The science of making machines capable of performing tasks that would require intelligence if done by humans.<br/> Minsky, 1968
+>The science of making machines capable of performing tasks that would require intelligence if done by humans.<br/>Marvin Minsky, 1968
 
 Definitions like these are inherently unstable, because as we build these "intelligent" computer systems and become normalized to their (at first) astonishing capabilities, we stop thinking of their task performance as demonstrating any kind of intelligence. Defining intelligence in relation to skill in particular tasks, no matter how difficult they may be, leaves AI in a sort of [God of the gaps](https://en.wikipedia.org/wiki/God_of_the_gaps)&nbsp;situation.
 
@@ -64,7 +64,7 @@ How can AI agents be given this excellent intuition? Convolutional neural networ
 ![](conv.gif)
 *Convolutional kernel (dark blue) applied to input (blue) to produce output (cyan)[^14]*
 
-Briefly, convolutional neural networks are an example of a [neural network](https://en.wikipedia.org/wiki/Artificial_neural_network) that use only *local connections* which are particularly adept at learning about and processing spatially-correlated features in images. The GIF above shows a learned convolutional filter sliding around an image, producing a lower-dimension representation. Typical networks contain millions of such learned parameters, and can perform a [wide](https://www.youtube.com/watch?v=b62iDkLgGSI) [variety](https://www.youtube.com/watch?v=D4C1dB9UheQ) [of](https://www.youtube.com/watch?v=qWl9idsCuLQ) [tasks](https://www.youtube.com/watch?v=HgDdaMy8KNE) in image processing.
+Briefly, convolutional neural networks are an example of a [neural network](https://en.wikipedia.org/wiki/Artificial_neural_network) that use *local connections* which are particularly adept at learning about and processing spatially-correlated features in images. The GIF above shows a learned convolutional filter sliding around an image, producing a lower-dimension representation. Typical networks contain millions of such learned parameters, and can perform a [wide](https://www.youtube.com/watch?v=b62iDkLgGSI) [variety](https://www.youtube.com/watch?v=D4C1dB9UheQ) [of](https://www.youtube.com/watch?v=qWl9idsCuLQ) [tasks](https://www.youtube.com/watch?v=HgDdaMy8KNE) in image processing.
 
 As convolutional neural networks started to show promise in image recognition tasks[^15], and since neural networks can approximate any function[^16], people began thinking about using them to estimate the value function, treating the board state encoding as an "image" input to the CNN. The idea is straightforward: given some board state and final game result pair, $(s,r)$ train your CNN to predict $r$ from $s$. Even better, given the same state $s$, estimate the next move. Estimations of win rate and move choice are called the value, and policy respectively.
 
@@ -87,7 +87,7 @@ Because the MCTS in AlphaGo optimizes for maximal value (which measures probabil
 *DeepMind: [AlphaGo vs Lee Sedol](https://deepmind.com/alphago-korea)*
 
 ## AlphaZero
-Although AlphaGo succeeded in beating world champion Lee Sedol, the team at DeepMind wanted to push reinforcement learning further. AlphaGo's policy and value networks had been initialized on many thousands of human games before any self-play reinforement learning was performed.
+Although AlphaGo succeeded in beating world champion Lee Sedol, the team at DeepMind wanted to push reinforcement learning further. AlphaGo's policy and value networks had been initialized on many thousands of human games before any self-play reinforcement learning was performed.
 
 In addition to the raw board state, AlphaGo's inputs included the following for every evaluation:
 
@@ -109,7 +109,7 @@ To measure relative playing strength of different agents, a commonly-used metric
 There is a wonderful plot of Elo ratings of various bots from the AlphaGo Zero paper:
 
 ![](elo.png)
-*Elo comparison of various computer Go programs*
+*Elo comparison of various computer Go programs. Lee Sedol would be around 3500 on this scale at the time of his match against AlphaGo.*
 
 Note that the raw network (just playing top move recommended by policy net) strength is around ~3000, while the full AlphaZero bot (using the policy network + MCTS + value network) achieves a rating > 5000. This gives us an idea of how much stronger the tree search and value estimation makes the raw network move intuition.
 
@@ -125,9 +125,9 @@ As early as the first published paper on AlphaGo, many private companies, especi
 The most well-known open source bot is [Leela Zero](https://zero.sjeng.org/home), a faithful re implementation of AlphaZero, which uses crowdsourced GPU compute to produce games of self-play and train the network. Leela Zero has been training since late 2017, and has produced about 20 million games of self-play as of May 2020.
 
 ![](leelaelo.png)
-*Leela Zero Elo rating vs. number of games of self-play[^20]<br/>Note: Self-play Elo is inflated and does not correspond to the previously shown Elo graph*
+*Leela Zero Elo rating vs. number of games of self-play[^20]<br/>Note: Self-play Elo is inflated and does not correspond to the previously shown Elo graph.*
 
-As Leela Zero and other bots became available to the public for review and play, Go experienced a cultural shift unlike any that had come before. Suddenly everyone had access to superhuman playing advice, and could get opinions on variations in study from one of the strongest players of all time. While AlphaZero was a breakthrough for the AI community, Leela and the open source bots like it were the real godsend for the Go community. Rather than just mimicking AlphaZero's moves, people could use them for in-depth review and study. World #1 Shin Jinseo reportedly brings an iPad with Leela Zero loaded up everywhere to review ideas and games. As AlphaZero and Leela Zero's influence on the game meta took hold, researchers at Facebook noticed that [players became stronger faster than anytime in history](https://ai.facebook.com/blog/open-sourcing-new-elf-opengo-bot-and-go-research/)!
+As Leela Zero and other bots became available to the public for review and play, Go experienced a cultural shift unlike any that had come before. Suddenly everyone had access to superhuman playing advice, and could get opinions on variations in study from one of the strongest players of all time. While AlphaZero was a breakthrough for the AI community, Leela and the open source bots like it were the real godsend for the Go community. Rather than just mimicking AlphaZero's moves, players could use these open source bots for in-depth review and study. World #1 Shin Jinseo reportedly brings an iPad with Leela Zero loaded up everywhere to review ideas and games. As AlphaZero and Leela Zero's influence on the game meta took hold, researchers at Facebook noticed that [players became stronger faster than anytime in history](https://ai.facebook.com/blog/open-sourcing-new-elf-opengo-bot-and-go-research/)!
 
 While a great resource to the Go community, these Zero bots still had problems: they were expensive to train, taking months or years to achieve super-human performance with "normal" amounts of compute, they were [surprisingly bad at ladders](https://github.com/leela-zero/leela-zero/issues/1482) (at first), inherited AlphaGo's tendency to make slack moves when ahead, couldn't play with variable komi, and played erratically in handicap games.
 
@@ -135,7 +135,7 @@ In a 2019 World AI Cup, Leela failed to podium, losing $3^{rd}$ place to HanDol,
 
 ## Yann LeCun's Cake of Learning
 
-"Godfather of AI", co-inventor of convolutional neural networks and Turing laureate Yann LeCun wants to tell you about his cake.
+"Godfather of AI", co-inventor of convolutional neural networks and Turing Award laureate Yann LeCun wants to tell you about his cake.
 
 ![](cake.png)
 *Slide from [that one talk he's always giving](https://drive.google.com/drive/folders/0BxKBnD5y2M8NUXhZaXBCNXE4QlE)*
@@ -161,7 +161,7 @@ It turns out, yes! By exploiting frame-to-frame consistent scene geometry and th
 *Self-supervised monocular network diagram[^24]*
 
 ## KataGo
-In late 2017 [lightvector](https://github.com/lightvector) began work on a Go project, an AlphaGo-style bot for personal experimentation. For those interested in the gritty details, I highly recommend people check out the original [repository](https://github.com/lightvector/GoNN) to follow along with his experimentation. The project evolved into a genuine research effort, and became [KataGo](https://github.com/lightvector/KataGo).
+In late 2017 [lightvector](https://github.com/lightvector), a Go enthusiast and researcher at [Jane Street](https://blog.janestreet.com/author/dwu/), began work on an AlphaGo-style bot for personal experimentation. For those interested in the gritty details, I highly recommend people check out the original [repository](https://github.com/lightvector/GoNN) to follow along with his experimentation. The project evolved into a genuine research effort, and became [KataGo](https://github.com/lightvector/KataGo).
 
 Like AlphaGo, KataGo uses a CNN to estimate win rate (value) and move choice (policy), but it forgoes some of the Zero methodology of disincluding Go-specific information, instead including relevant features as input to the network, such as ladder and liberty status, amongst others. In particular, for $b =$ board width, a $b \times b \times 18$ tensor of:
 
