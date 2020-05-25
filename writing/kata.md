@@ -196,7 +196,7 @@ Like AlphaGo, KataGo is trained from scratch via self-play reinforcement learnin
 
 4. Auxiliary policy targets:
 
-   I think this is the most interesting change in KataGo, which shares similar ideas with those from self-supervised learning: training additional policy targets. Typically AlphaZero style bots only predict move policies and board state values (via win rate). Taking the idea from LeCun's slide that learning can be improved with the addition of more training targets, KataGo attempts to predict more game outcomes than just policy and value. In particular, KataGo also predicts final territory control, and final score difference. Quoting from the paper:
+   I think this is the most interesting change in KataGo, sharing some common ground with ideas like self-supervised learning: training additional policy targets. Typically AlphaZero style bots only predict policy and value, using the MCTS search and final game outcome respectively as labels. Taking the idea from LeCun's slide that learning can be improved with the addition of more training targets (in that case entire parts of the input data), KataGo attempts to predict a greater number of game outcomes than just value. In particular, KataGo also predicts final territory control, final score difference, and from each board state the opponent's next move. Quoting from the paper:
    
    > It might be surprising that these targets would continue to help beyond the earliest stages. We
    offer an intuition: consider the task of updating from a game primarily lost due to misjudging a
