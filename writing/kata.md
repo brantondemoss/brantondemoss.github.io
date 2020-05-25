@@ -16,7 +16,7 @@ How we define AI has changed over time, older naive definitions were mostly conc
 
 >The science of making machines capable of performing tasks that would require intelligence if done by humans.<br/> Minsky, 1968
 
-Definitions like these are inherently unstable, because as we build these computer systems and become normalized to their (at first) astonishing capabilities, we stop thinking of their task performance as demonstrating any kind of intelligence. Definitions like these leave AI in a sort of [God of the gaps](https://en.wikipedia.org/wiki/God_of_the_gaps)&nbsp;situation.
+Definitions like these are inherently unstable, because as we build these "intelligent" computer systems and become normalized to their (at first) astonishing capabilities, we stop thinking of their task performance as demonstrating any kind of intelligence. Defining intelligence in relation to skill in particular tasks, no matter how difficult they may be, leaves AI in a sort of [God of the gaps](https://en.wikipedia.org/wiki/God_of_the_gaps)&nbsp;situation.
 
 Tying intelligence to performance in any single task, or even finite set of tasks, doesn't seem consistent and informative. Some have proposed that intelligence is the ability to perform many tasks well, or the ability to solve tasks in a diverse range of environments[^8]. Others claim that intelligence is the ability to acquire new skills through learning[^9]. More recently there have been proposals[^10] that intelligence is a measure of skill acquisition *efficiency*. Given two agents with the same knowledge and fixed training time on a novel task, the more intelligent agent is the one that ends up with better skills.
 
@@ -48,7 +48,7 @@ Since a game is a trajectory through legal board states (with some transition co
 ## Intuition & Reading
 Because the state space of Go is too large to be enumerated and searched through, players must learn to focus only on promising moves when considering possible game state trajectories (variations), in other words players must develop an *intuitive* sense of what moves might be good, and avoid wasting time on dubious possibilities. Defining such a value function turns out to be much more difficult for Go than for chess.
 
-While intuition guides move selection, reading variations strengthens intuition using a form of self-argument: because Go is a [zero sum game](https://en.wikipedia.org/wiki/Zero-sum_game), move choice is necessarily conditioned on an adversarial opponent. Player's goals are perfectly anti-aligned, so an optimal strategy can be constructed by considering maximising future state-value *given a minimizing opponent* (this logic is nicely encoded in the [minimax algorithm](https://en.wikipedia.org/wiki/Minimax)).
+While intuition guides move selection, reading out variations strengthens intuition using a form of self-argument: because Go is a [zero sum game](https://en.wikipedia.org/wiki/Zero-sum_game), move choice is necessarily conditioned on an adversarial opponent. Player's goals are perfectly anti-aligned, so an optimal strategy can be constructed by considering maximising future state-value *given a minimizing opponent* (this logic is nicely encoded in the [minimax algorithm](https://en.wikipedia.org/wiki/Minimax)).
 
 Hand crafted value functions were not enough to solve Go, though. The search space is simply too large, and heuristics too difficult to define. One approach that saw some success was a modified tree search called Monte Carlo Tree Search (MCTS)[^13]. MCTS randomly samples legal moves from the current position, and rolls out the game tree all the way to the end, each time using a random move. The value of the initial move is related to the proportion of rollout trajectories that result in a won terminal state. Somewhat surprisingly, Go bots using MCTS were able to reach advanced amateur level (low-mid dan) play!
 
@@ -66,12 +66,14 @@ How can AI agents be given this excellent intuition? Convolutional neural networ
 
 Briefly, convolutional neural networks are an example of a [neural network](https://en.wikipedia.org/wiki/Artificial_neural_network) that use only *local connections* which are particularly adept at learning about and processing spatially-correlated features in images. The GIF above shows a learned convolutional filter sliding around an image, producing a lower-dimension representation. Typical networks contain millions of such learned parameters, and can perform a [wide](https://www.youtube.com/watch?v=b62iDkLgGSI) [variety](https://www.youtube.com/watch?v=D4C1dB9UheQ) [of](https://www.youtube.com/watch?v=qWl9idsCuLQ) [tasks](https://www.youtube.com/watch?v=HgDdaMy8KNE) in image processing.
 
-As convolutional neural networks started to show promise in image recognition tasks[^15], and since neural networks can approximate any function[^16], people began thinking about using them to estimate the value function, treating the board state encoding as an "image" input to the CNN. The idea is straightforward: given some board state and final game result pair, $(s,r)$ train your CNN to predict $r$ from $s$. Even better, given the same state $s$, estimate the next move.
+As convolutional neural networks started to show promise in image recognition tasks[^15], and since neural networks can approximate any function[^16], people began thinking about using them to estimate the value function, treating the board state encoding as an "image" input to the CNN. The idea is straightforward: given some board state and final game result pair, $(s,r)$ train your CNN to predict $r$ from $s$. Even better, given the same state $s$, estimate the next move. Estimations of win rate and move choice are called the value, and policy respectively.
 
-And so people started downloading hundreds of thousands of games of Go played online by strong amateurs and training CNNs to predict moves and win-rates. Agents playing from raw move prediction alone could outperform some of the weaker Go bots, but still struggled against the MCTS bots. Combining CNNs for move selection (called the policy) and value estimation (probability of winning from current state), and incorporating MCTS with the estimated policies and values to select optimal moves (i.e. instead of randomly sampling moves, we weight the sampling by the policy priors from the CNN, and instead of rolling out to a terminal state, we estimate the value of the current state from the value network), these prototype CNN bots started to outperform all others, but professional humans were still out of reach.
+And so people started downloading hundreds of thousands of games of Go played online by strong amateurs and training CNNs to predict moves and win-rates. Agents playing from raw move prediction alone could outperform some of the weaker Go bots, but still struggled against strong MCTS bots. 
+
+By combining CNN-based policy and value estimation *together with MCTS* (i.e. instead of randomly sampling moves, we weight the sampling by the policy priors from the CNN, and instead of rolling out to a terminal state, we estimate the value of the current state from the value network), these prototype CNN bots started to outperform all others, but professional humans were still out of reach.
 
 ## AlphaGo
-Although MCTS improved the play of the trained CNNs, the networks were trained only on human games and had no means of improving beyond human knowledge. They could only weakly imitate humans.
+Although MCTS improved the play of CNN-based bots, the neural networks were trained solely on human games and had no means of improving beyond human knowledge. They could only weakly imitate human intuition.
 
 To solve this problem, AlphaGo uses self-play and reinforcement learning to improve the policy and value estimations.
 
@@ -79,13 +81,13 @@ To solve this problem, AlphaGo uses self-play and reinforcement learning to impr
 
 Broadly, reinforcement learning agents take actions in an environment, receive rewards and observations from their environment, and learn to adjust their actions to maximise future rewards. In this case, the "environment" is a simulated game of Go, and the reward is the final result of the game (i.e. the rewards are sparse, and only received after many actions are made).
 
-Because the MCTS in AlphaGo optimizes for maximal value (which measures probability of winning), by producing and training on games of self-play, the network can be further trained to produce better value predictions, and importantly, the policy can be trained *on the MCTS search values*, that is, we can train the policy CNN to output the final move-transition values found by the MCTS during self-play. Using this system of producing games of self-play, and training on their policy and value results, AlphaGo was able to continually improve, and finally reach superhuman performance.
+Because the MCTS in AlphaGo optimizes for maximal value (which measures probability of winning), by producing and training on games of self-play, the network can be further trained to produce better value predictions, and importantly, the policy can be trained *on the MCTS search values*, that is, we can train the policy CNN on the final policy distribution found by MCTS during self-play. Using self-play reinforcement learning to continually train the policy and value networks, AlphaGo was able to surpass human performance, defeating world-champion Lee Sedol 4-1.
 
 ![](leesedol.jpg)
-*[AlphaGo vs Lee Sedol](https://deepmind.com/alphago-korea)*
+*DeepMind: [AlphaGo vs Lee Sedol](https://deepmind.com/alphago-korea)*
 
 ## AlphaZero
-AlphaGo succeeded in beating world champion Lee Sedol, finally giving computers the edge over humans. But the team at DeepMind wanted to push the method further.
+Although AlphaGo succeeded in beating world champion Lee Sedol, the team at DeepMind wanted to push their reinforcement learning method further.
 
 In addition to the raw board state, AlphaGo's inputs included the following for every evaluation:
 
