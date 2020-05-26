@@ -235,7 +235,7 @@ In late 2019, KataGo was specially trained to solve this problem. The strongest-
 KataGo was able to bring a fresh perspective to this centuries-old problem and give knowledge back to the Go community. How bots like these will continue to bring value and new insight to human problems is an open question, and one that I am excited to see answered in the coming years. We are entering an era where computers can contribute novel insights to the knowledge-base of human endeavors.
 
 ## Future
-In a [recent interview](https://www.youtube.com/watch?v=uPUEq8d73JI), the lead researcher from AlphaGo, David Silver, said that he expects AlphaZero style bots to continue improving for the next 100 years, that the skill ceiling of Go is still out of sight. KataGo provides a picture of how improvements will continue to be made, and how value for human players can be added along the way. Who knows, maybe next-generation Go bots will incorporate language models and be able to explain their move choices in natural language.
+In a [recent interview](https://www.youtube.com/watch?v=uPUEq8d73JI), the lead researcher of AlphaGo, David Silver, said that he expects AlphaZero style bots to continue improving for the next 100 years, that the skill ceiling of Go is still out of sight. KataGo provides a picture of how improvements will continue to be made, and how value for human players can be added along the way. Who knows, maybe next-generation Go bots will incorporate language models and be able to explain their move choices in natural language.
 
 *Rather than my speculation, this section will be KataGo author responding to similar forward-looking questions*
 
