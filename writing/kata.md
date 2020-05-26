@@ -46,11 +46,11 @@ Although it is in principle possible to create such a tree for Go since it is a 
 Since a game is a trajectory through legal board states (with some transition constraints), the number of possible games of Go is considerably larger. The number of unique games of Go has been bounded between $(10^{10^{104}},10^{10^{171}})$ [^3] [^4].
 
 ## Intuition & Reading
-Because the state space of Go is too large to be enumerated and searched through, players must learn to focus only on promising moves when considering possible game state trajectories (variations), in other words players must develop an *intuitive* sense of what moves might be good, and avoid wasting time on dubious possibilities. Defining such a value function turns out to be much more difficult for Go than for chess.
+Because the state space of Go is too large to be enumerated and searched through, players must learn to focus only on promising moves when considering possible game state trajectories (variations), in other words players must develop an *intuitive* sense of what moves might be good, and avoid wasting time on dubious possibilities. Empirically, defining such a value function turns out to be much more difficult for Go than for chess - efforts mirroring chess in this direction did not produce good results.
 
 While intuition guides move selection, reading out variations strengthens intuition using a form of self-argument: because Go is a [zero sum game](https://en.wikipedia.org/wiki/Zero-sum_game), move choice is necessarily conditioned on an adversarial opponent. Player's goals are perfectly anti-aligned, so an optimal strategy can be constructed by considering maximising future state-value *given a minimizing opponent* (this logic is nicely encoded in the [minimax algorithm](https://en.wikipedia.org/wiki/Minimax)).
 
-Hand crafted value functions were not enough to solve Go, though. The search space is simply too large, and heuristics too difficult to define. One approach that saw some success was a modified tree search called Monte Carlo Tree Search (MCTS)[^13]. MCTS randomly samples legal moves from the current position, and rolls out the game tree all the way to the end, each time using a random move. The value of the initial move is related to the proportion of rollout trajectories that result in a won terminal state. Somewhat surprisingly, Go bots using MCTS were able to reach advanced amateur level (low-mid dan) play!
+In light of difficulties creating a meaningful evaluation for Go, an approach that saw some success was a modified tree search called Monte Carlo Tree Search (MCTS)[^13]. MCTS randomly samples legal moves from the current position, and rolls out the game tree all the way to the end, each time using a random move. The value of the initial move is related to the proportion of rollout trajectories that result in a won terminal state. Somewhat surprisingly, Go bots using MCTS were able to reach advanced amateur level (low-mid dan) play!
 
 There is something deeply interesting in the fact that defining state values by evaluating *random* rollouts to the end actually provides a meaningful approximation of "true value". It seems tautological when spelled out, but truly "good" moves really do have a greater proportion of trajectories leading to victory, and **random sampling** is enough to approximate their value.
 
@@ -184,7 +184,7 @@ Like AlphaGo, KataGo is trained from scratch via self-play reinforcement learnin
 
 1. Playout cap randomization:
 
-   As noted in the KataGo paper, there is a "tension between policy and value training [...] the game outcome value target is highly data-limited, with only one noisy binary result per entire game", while the optimal policy training would use around 800 MCTS playouts per move. In other words, the value net would like more games to be played more quickly, but the policy net would like MCTS during self-play to go deeper to get better policy targets, so the there is tension between these two goals due to limited compute. To solve this issue, during self-play KataGo occasionally performs a "full search" of 600 playouts for move selection, but mostly only uses 100 playouts to finish games more quickly. Only the "full search" moves are used to train the policy network, but because there are more game results, the value net has more training samples.
+   As noted in the KataGo paper, there is a "tension between policy and value training [...] the game outcome value target is highly data-limited, with only one noisy binary result per entire game", while the optimal policy training would use around 800 MCTS playouts per move. In other words, the value net would like more games to be played more quickly, but the policy net would like MCTS during self-play to go deeper to get better policy targets, so there is tension between these two goals due to limited compute. To solve this issue, during self-play KataGo occasionally performs a "full search" of 600 playouts for move selection, but mostly only uses 100 playouts to finish games more quickly. Only the "full search" moves are used to train the policy network, but because there are more game results, the value net has more training samples.
 
 2. Forced playouts and policy target pruning:
    
@@ -214,13 +214,22 @@ As a result of these improvements, KataGo massively outperforms Leela Zero and F
 ![](efficiency.png)
 *Relative Elo rating vs self-play cost in billions of equivalent 20 block x 256 channel queries (log scale)*
 
-In addition to these improvements, KataGo also directly optimizes for maximum score (with some caveats), mostly eliminating the slack moves found in other Zero style bots. KataGo also plays handicap games against weaker versions of itself during training, plays on multiple board sizes, and with variable komi and rulesets, so it is flexible under permutations of these game settings.
+In addition to these improvements, KataGo also directly optimizes for maximum score (with some caveats), largely eliminating the slack moves found in other Zero style bots. KataGo also plays handicap games against weaker versions of itself during training, plays on multiple board sizes, and with variable komi and rulesets, so it is flexible under permutations of these game settings.
 
 With all of these additional features, KataGo adds up to the most useful analysis tool yet made for Go, providing players with greater insight into the opinions of a superhuman Go agent.
 
 KataGo is likely now the strongest open source Go bot available, recently topping the [CGS rankings](http://www.yss-aya.com/cgos/19x19/standings.html) in all board sizes.
 
 I highly recommend those interested check out the original [KataGo paper](https://arxiv.org/abs/1902.10565) - it's an extremely accessible read.
+
+## Giving Back
+While watching Elo ratings of top bots inexorably climb upwards is fun, the real benefit of strong Go AI lies in what they can give back to humans. Go AI represent one of the first examples of superhuman AI agents already out there in the world, being used by real people to better understand a game they love.
+
+[Igo Hatsuyoron](https://en.wikipedia.org/wiki/Igo_Hatsuy%C5%8Dron) is a collection of Go problems from around 300 years ago, much of it created by the then-strongest player in Japan. The 120th problem in the collection is often considered the most challenging Go problem in the world - it is a whole-board problem that asks the reader to finish the game optimally for both sides and determine the winner and point margin. For hundreds of years Go players have attempted to complete it, but there is still uncertainty about its true solution - the patterns and capturing races that appear in what looks to be the right solution are highly unintuitive and complex, and have eluded agreement about their correctness.
+
+In late 2019, KataGo was specially trained to solve this problem. The training used the strongest-at-the-time KataGo network, and then played out many games from the problem start position to the end, along the way discovering many of the strange and complex shapes that humans have come to associate with the problem. Now KataGo has been able to suggest new moves along the main-line solution, finding simpler refutations to old human ideas, and actually suggesting a different outcome than what had been believed to be correct [^25].
+
+KataGo was able to bring a fresh perspective to this centuries-old problem, giving knowledge back to the Go community. How bots like these will continue to bring value and fresh insight to human problems is an open question, and one that I am excited to see answered in the coming years.
 
 ## Future
 In a [recent interview](https://www.youtube.com/watch?v=uPUEq8d73JI), the lead researcher from AlphaGo, David Silver, said that he expects AlphaZero style bots to continue improving for the next 100 years, that the skill ceiling of Go still has not come close to being reached. KataGo provides a picture of how improvements will continue to be made, and how value for human players can be added along the way. Who knows, maybe next-generation Go bots will incorporate language models and be able to explain their move choices in natural language.
@@ -278,6 +287,8 @@ The future of Go and AI is exciting. Though bots have overtaken humans in skill,
 [^23]: [Godard et al: Digging Into Self-Supervised Monocular Depth Estimation](https://arxiv.org/abs/1806.01260)
 
 [^24]: [Guizilini et al: 3D Packing for Self-Supervised Monocular Depth Estimation](https://github.com/tri-ml/packnet-sfm)
+
+[^25]: [Wu: Deep-Learning the Hardest Go Problem in the World](https://blog.janestreet.com/deep-learning-the-hardest-go-problem-in-the-world/)
 
 <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
