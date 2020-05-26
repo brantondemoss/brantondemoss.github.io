@@ -228,7 +228,7 @@ While watching Elo ratings of top bots inexorably climb upwards is fun, the real
 [Igo Hatsuyōron](https://en.wikipedia.org/wiki/Igo_Hatsuy%C5%8Dron) is a collection of Go problems from around 300 years ago, much of it created by the then-strongest player in Japan. The 120th problem in the collection is often considered the most challenging Go problem in the world - it is a whole-board problem that asks the reader to finish the game optimally for both sides and determine the winner and point margin. For hundreds of years Go players have attempted to complete it, but there is still uncertainty about its true solution - the patterns and capturing races that appear in what looks to be the right solution are highly unintuitive and complex, and have eluded agreement about their correctness.
 
 ![](igo.png)
-*Igo Hatsuyōron opening position. Black to play. What is the optimal result?*
+*Igo Hatsuyōron 120 opening position. Black to play. What is the optimal result?*
 
 In late 2019, KataGo was specially trained to solve this problem. The strongest-at-the-time KataGo network was made to play out many games from the problem start position against itself to a terminal state, along the way discovering many of the strange and complex shapes that humans have come to associate with the problem. Now KataGo has been able to suggest new moves along the main-line solution, finding simpler refutations to old human ideas, and finally suggesting a different outcome than what had been believed to be the correct result[^25].
 
