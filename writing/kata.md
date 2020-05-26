@@ -230,7 +230,7 @@ While watching Elo ratings of top bots inexorably climb upwards is fun, the real
 ![](igo.png)
 *Igo Hatsuyōron opening position. Black to play. What is the optimal result?*
 
-In late 2019, KataGo was specially trained to solve this problem. The training used the strongest-at-the-time KataGo network, and then played out many games from the problem start position to the end, along the way discovering many of the strange and complex shapes that humans have come to associate with the problem. Now KataGo has been able to suggest new moves along the main-line solution, finding simpler refutations to old human ideas, and actually suggesting a different outcome than what had been believed to be correct [^25].
+In late 2019, KataGo was specially trained to solve this problem. The strongest-at-the-time KataGo network was made to play out many games from the problem start position against itself to a terminal state, along the way discovering many of the strange and complex shapes that humans have come to associate with the problem. Now KataGo has been able to suggest new moves along the main-line solution, finding simpler refutations to old human ideas, and finally suggesting a different outcome than what had been believed to be final result[^25].
 
 KataGo was able to bring a fresh perspective to this centuries-old problem, giving knowledge back to the Go community. How bots like these will continue to bring value and fresh insight to human problems is an open question, and one that I am excited to see answered in the coming years.
 
