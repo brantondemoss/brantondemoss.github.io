@@ -131,7 +131,7 @@ As Leela Zero and other bots became available to the public for review and play,
 
 While a great resource to the Go community, these Zero bots still had problems: they were expensive to train, taking months or years to achieve super-human performance with "normal" amounts of compute, they were [surprisingly bad at ladders](https://github.com/leela-zero/leela-zero/issues/1482) (at first), inherited AlphaGo's tendency to make slack moves when ahead, couldn't play with variable komi, and played erratically in handicap games.
 
-In a 2019 World AI Cup, Leela failed to podium, losing $3^{rd}$ place to HanDol, a Korean bot which would later play Lee Sedol for his final game as a professional. Disappointingly, the commercial bots destroyed the #1 open source bot Leela, likely due to vastly greater compute resources for training at their disposal. It is unclear what algorithmic differences, if any, the commercial bots have vs AlphaGo.
+In a 2019 World AI Cup, Leela failed to podium, losing $3^{rd}$ place to HanDol, a Korean commercial bot which would later play Lee Sedol for his final game as a professional. Disappointingly, the commercial bots destroyed the #1 open source bot Leela, likely due to vastly greater compute resources for training at their disposal. It is unclear what algorithmic differences, if any, the commercial bots have vs AlphaGo.
 
 ## Yann LeCun's Cake of Learning
 
@@ -218,7 +218,7 @@ In addition to these improvements, KataGo also directly optimizes for maximum sc
 
 With all of these additional features, KataGo adds up to the most useful analysis tool yet made for Go, providing players with greater insight into the opinions of a superhuman Go agent.
 
-KataGo is likely now the strongest open source Go bot available, recently topping the [CGS rankings](http://www.yss-aya.com/cgos/19x19/standings.html) in all board sizes.
+KataGo is likely now the strongest open source Go bot available, recently topping the [CGS rankings](http://www.yss-aya.com/cgos/19x19/bayes.html) in all board sizes.
 
 I highly recommend those interested check out the original [KataGo paper](https://arxiv.org/abs/1902.10565) - it's an extremely accessible read.
 
