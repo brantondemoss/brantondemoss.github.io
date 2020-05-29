@@ -1,4 +1,4 @@
-% Love Letter to KataGo, or: <br> Go AI past, present, and future
+% Love Letter to KataGo or: <br> Go AI past, present, and future
 
 ![](katagame.png)
 *KataGo (B) vs LeelaZero (W)[^kata1]*
