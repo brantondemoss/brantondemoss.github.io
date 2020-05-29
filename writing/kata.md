@@ -1,4 +1,4 @@
-# Love Letter to KataGo, or: <br> Go AI past, present, and future
+% Love Letter to KataGo, or: <br> Go AI past, present, and future
 
 ![](katagame.png)
 *KataGo (B) vs LeelaZero (W)[^kata1]*
@@ -50,7 +50,7 @@ Because the state space of Go is too large to be enumerated and searched through
 
 While intuition guides move selection, reading out variations strengthens intuition using a form of self-argument: because Go is a [zero sum game](https://en.wikipedia.org/wiki/Zero-sum_game), move choice is necessarily conditioned on an adversarial opponent. Player's goals are perfectly anti-aligned, so an optimal strategy can be constructed by considering maximising future state-value *given a minimizing opponent* (this logic is nicely encoded in the [minimax algorithm](https://en.wikipedia.org/wiki/Minimax)).
 
-In light of difficulties creating a meaningful evaluation for Go, an approach that saw some success was a modified tree search called Monte Carlo Tree Search (MCTS)[^13]. MCTS randomly samples legal moves from the current position, and rolls out the game tree all the way to the end, each time using a random move. The value of the initial move is related to the proportion of rollout trajectories that result in a won terminal state. Somewhat surprisingly, Go bots using MCTS were able to reach advanced amateur level (low-mid dan) play!
+In light of difficulties creating a meaningful evaluation for Go, an approach that saw some success was a modified tree search called Monte Carlo Tree Search (MCTS)[^13]. MCTS randomly samples legal moves from the current position, and rolls out the game tree all the way to the end, evolving each position using a random move. The value of the initial move is related to the proportion of rollout trajectories that result in a won terminal state. Somewhat surprisingly, Go bots using MCTS were able to reach advanced amateur level (low-mid dan) play!
 
 There is something deeply interesting in the fact that defining state values by evaluating *random* rollouts to the end actually provides a meaningful approximation of "true value". It seems tautological when spelled out, but truly "good" moves really do have a greater proportion of trajectories leading to victory, and **random sampling** is enough to approximate their value.
 
@@ -86,6 +86,12 @@ Because the MCTS in AlphaGo optimizes for maximal value (which measures probabil
 ![](leesedol.jpg)
 *DeepMind: [AlphaGo vs Lee Sedol](https://deepmind.com/alphago-korea)*
 
+The ways in which AlphaGo diverges from human play are as shocking as the ways in which it does not. There is no particular reason to assume AlphaGo should play anything at all like humans - it is only optimized to win, and yet AlphaGo still begins by placing stones in the corners like humans, still plays "normal" approach and asking moves. AlphaGo's convergence with humans on many aspects of Go is reassuring: we are not totally misunderstanding the game. An external intelligence broadly agrees with the moves we make - something about our play is "correct", our ideas about the game aren't totally off-track. 
+
+And yet, there are divergences. AlphaGo plays moves and expresses ideas that humans have never seen, that just look "wrong" from our viewpoint. Much has been said about move 37 in the second game against Lee Sedol: A fifth line shoulder hit that feels wrong - not one of the moves a human would seriously consider, even have on their radar.
+
+But these moves work. AlphaGo wins. It discovered ideas about the game that we do not understand.
+
 ## AlphaZero
 Although AlphaGo succeeded in beating world champion Lee Sedol, the team at DeepMind wanted to push reinforcement learning further. AlphaGo's policy and value networks had been initialized on many thousands of human games before any self-play reinforcement learning was performed.
 
@@ -98,11 +104,11 @@ In a sense, there was still Go-specific knowledge that AlphaGo was "programmed w
 
 In 2017 the team published the AlphaGo Zero paper[^18], with three primary improvements:
 
-1. The networks are trained solely from self-play reinforcement learning, starting from random play using no human data.
+1. The networks are trained solely from self-play reinforcement learning, starting from random play with no pre-training on human data.
 2. Only the black and white stone positions are used as input features to the networks.
 3. The policy and value networks are combined into a single network with shared backbone, with shallow policy and value heads on top.
 
-With these changes, AlphaGo Zero far surpassed AlphaGo's performance, getting massive increases in training efficiency from the combined policy and value net, and from using a ResNet-like architecture[^19] instead of a fully convolutional network.
+With these changes, AlphaGo Zero far surpassed AlphaGo's performance, gaining massive increases in training efficiency from the combined policy and value net, and from using a ResNet-like architecture[^19] instead of a fully convolutional network.
 
 To measure relative playing strength of different agents, a commonly-used metric is [Elo rating](https://en.wikipedia.org/wiki/Elo_rating_system). While the full details of Elo rating (and how it corresponds to handicap stones) are beyond the scope of this article, briefly, Elo rating encodes relative probability of winning. Using the standard scales, for example, a 100 point rating difference encodes an expectation that the higher rated player has a 64% chance of beating their opponent; if the difference is 200, then the expectation is 76%.
 
@@ -120,7 +126,7 @@ Finally the DeepMind team extended their AlphaGo Zero method to chess and shogi,
 ## Zero Explosion
 AlphaGo shook both the Go world and AI research community, but DeepMind largely left their work behind and moved on to other topics. With only the research papers to guide them, many started to re-implement AlphaZero.
 
-As early as the first published paper on AlphaGo, many private companies, especially in China, S. Korea and Japan (where commercial Go products are viable) began to recreate AlphaGo/Zero. While these bots were helpful to those who could afford access, it wasn't until open source bots became wide-spread that the Go community could fully take advantage their benefits.
+As early as the first published paper on AlphaGo, many private companies, especially in China, S. Korea and Japan (where commercial Go products are viable) began to recreate AlphaGo/Zero. While these bots were helpful to those who could afford access, it wasn't until open source bots became wide-spread that the Go community could fully take advantage of their benefits.
 
 The most well-known open source bot is [Leela Zero](https://zero.sjeng.org/home), a faithful re implementation of AlphaZero, which uses crowdsourced GPU compute to produce games of self-play and train the network. Leela Zero has been training since late 2017, and has produced about 20 million games of self-play as of May 2020.
 
@@ -131,7 +137,7 @@ As Leela Zero and other bots became available to the public for review and play,
 
 While a great resource to the Go community, these Zero bots still had problems: they were expensive to train, taking months or years to achieve super-human performance with "normal" amounts of compute, they were [surprisingly bad at ladders](https://github.com/leela-zero/leela-zero/issues/1482) (at first), inherited AlphaGo's tendency to make slack moves when ahead, couldn't play with variable komi, and played erratically in handicap games.
 
-In a 2019 World AI Cup, Leela failed to podium, losing $3^{rd}$ place to HanDol, a Korean commercial bot which would later play Lee Sedol for his final game as a professional. Disappointingly, the commercial bots destroyed the #1 open source bot Leela, likely due to vastly greater compute resources for training at their disposal. It is unclear what algorithmic differences, if any, the commercial bots have vs AlphaGo.
+In a 2019 World AI Cup, Leela failed to podium, losing $3^{rd}$ place to HanDol, a Korean commercial bot which would later play Lee Sedol for his final professional game. Disappointingly, the commercial bots destroyed the #1 open source bot Leela, likely due to vastly greater compute resources for training at their disposal. It is unclear what algorithmic differences, if any, the commercial bots have vs AlphaGo.
 
 ## Yann LeCun's Cake of Learning
 
