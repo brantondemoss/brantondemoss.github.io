@@ -25,7 +25,7 @@ The most popular AI system of the last century was Deep Blue, a chess playing sy
 ![](abpruning.png)
 *Alpha-beta pruning tree[^12]*
 
-Value functions measure the "goodness" of states (read: how likely they are to lead to victory). Creating meaningful evaluation functions is no small task - indeed, the Deep Blue evaluation function consisted of 8000 hand coded heuristics[^11]! Programmers got together with chess experts to assign value to various board states - rooks on the back rank, passed pawns, king safety, etc... All of these values were combined into a single number representing the total scalar "value" of that position, which tree search can then optimize for expected future value, given an opponent who attempts to minimize your value ([minimax](minimax)).
+Value functions measure the "goodness" of states (read: how likely they are to lead to victory). Creating meaningful evaluation functions is no small task - indeed, the Deep Blue evaluation function consisted of 8000 hand coded heuristics[^11]! Programmers got together with chess experts to assign value to various board substates - rooks on the back rank, passed pawns, king safety, etc... All of these individual heuristics were carefully weighted and combined to give an approximate overall singular board value, which was then optimized for via a tree search through many possible future board states.
 
 With a well-tuned value function and powerful tree search to read ahead and find a value-maximising trajectory, Deep Blue managed a win over Garry Kasparov, the world chess champion, in 1997[^6].
 
