@@ -1,7 +1,7 @@
 % Love Letter to KataGo or: <br> Go AI past, present, and future
 
 ![](katagame.png)
-*KataGo (B) vs LeelaZero (W)[^kata1]*
+*KataGo (B) vs Leela Zero (W)[^kata1]*
 
 >In order to programme a computer to play a reasonable game of Go - rather than merely a legal game - it is necessary to formalise the principles of good strategy, or to design a learning programme. The principles are more qualitative and mysterious than in chess, and depend more on judgment. So I think it will be even more difficult to programme a computer to play a reasonable game of Go than of chess. <br>- I J Good, 1965[^quote1]
 
@@ -152,7 +152,7 @@ Yann's cake metaphor is meant to point out that the bulk of information containe
 
 Supervised learning is a little better: if we were to build a CNN to classify pictures of dogs, each training example would consist of an image and a human-made correct label that would only be backpropagated through a single image. The per-sample information density is much greater, and the label noise non-existent (unless the human has mislabeled the image!). Supervised learning generally requires far fewer examples than reinforcement learning to achieve good performance.
 
-Finally there's what Yann calls "self-supervised" learning, in which "the system learns to predict part of its input from other parts of its input"[^22]. The idea is that the unstructured input data contains far more information than any supervised labels ever could, and so finding ways to cleverly predict parts of the input results in much better learning efficiency, and enables using a much larger set of unlabaled data.
+Finally there's what Yann calls "self-supervised" learning, in which "the system learns to predict part of its input from other parts of its input"[^22]. The idea is that the unstructured input data contains far more information than any supervised labels ever could, and so finding ways to cleverly predict parts of the input results in much better learning efficiency, and enables using a much larger set of unlabeled data.
 
 A fun recent example of successful self-supervised learning is monocular depth estimation[^23].
 
@@ -202,7 +202,7 @@ Like AlphaGo, KataGo is trained from scratch via self-play reinforcement learnin
 
 4. Auxiliary policy targets:
 
-   I think this is the most interesting change in KataGo, sharing some common ground with ideas like self-supervised learning: training additional policy targets. Typically AlphaZero style bots only predict policy and value, using the MCTS search and final game outcome respectively as labels. Taking the idea from LeCun's slide that learning can be improved with the addition of more training targets (in that case entire parts of the input data), KataGo attempts to predict a greater number of game outcomes than just value. In particular, KataGo also predicts final territory control, final score difference, and from each board state the opponent's next move. Quoting from the paper:
+   I think this is the most interesting change in KataGo, sharing some common ground with ideas like self-supervised learning: training additional policy targets. Typically, AlphaZero style bots only predict policy and value, using the MCTS search and final game outcome respectively as labels. Taking the idea from LeCun's slide that learning can be improved with the addition of more training targets (in that case entire parts of the input data), KataGo attempts to predict a greater number of game outcomes than just value. In particular, KataGo also predicts final territory control, final score difference, and from each board state the opponent's next move. Quoting from the paper:
    
    > It might be surprising that these targets would continue to help beyond the earliest stages. We
    offer an intuition: consider the task of updating from a game primarily lost due to misjudging a
@@ -220,7 +220,7 @@ As a result of these improvements, KataGo massively outperforms Leela Zero and F
 ![](efficiency.png)
 *Relative Elo rating vs self-play cost in billions of equivalent 20 block x 256 channel queries (log scale)*
 
-In addition to these improvements, KataGo also directly optimizes for maximum score (with some caveats), largely eliminating the slack moves found in other Zero style bots. KataGo also plays handicap games against weaker versions of itself during training, plays on multiple board sizes, and with variable komi and rulesets, so it is flexible under permutations of these game settings.
+In addition to these improvements, KataGo also directly optimizes for maximum score (with some caveats), largely eliminating the slack moves found in other Zero style bots. KataGo also plays handicap games against weaker versions of itself during training, plays on multiple board sizes, and with variable komi and rule sets, so it is flexible under permutations of these game settings.
 
 With all of these additional features, KataGo adds up to the most useful analysis tool yet made for Go, providing players with greater insight into the opinions of a superhuman Go agent.
 
@@ -255,7 +255,7 @@ For a bit more insight on where things might be heading for the future of Go, I 
 
 **Your paper focused both on self-play improvements designed to find a more optimal balance between exploration and exploitation in training, and neural architecture design choices like adding specific layers and additional training targets. Between raw compute, neural architecture, and the search algorithm used, which aspect do you think has the greatest potential to improve AI performance in Go, and in other settings?**
 
-> That's an interesting question and entertaining to speculate on, for sure; but I don't really have any good answers, since at least personally, I mostly don't think in the ways that this question is presupposing. Rather than focusing on broad areas from top down and guessing what will have "more potential" it feels more practical to me to focus on specific problems or flaws or ideas - and work up from there. A lot of the current techniques were developed simply by observing specific deficiencies in "vanilla AlphaZero self-play training" and then experimenting with various potential solutions, regardless of whether they involved the neural net or the search or something else. For practical ways to make progress, I feel like you mostly want to be focused on problems and *then* playing with what (possibly entirely new!) methods might solve them, rather than the other way around. <br><br/>Maybe in other words - when you are trying to solve problems, I find you often want to tackle each problem by figuring out the right tool for the job, rather than starting with the tool you want to use and then searching for the problem to solve with it. Although doing the latter and brainstorming if a tool can be applied more broadly to other things is definitely something you also want to do sometimes!
+> Rather than focusing on broad areas from top down and guessing what will have "more potential" it feels more practical to me to focus on specific problems or flaws or ideas - and work up from there. A lot of the current techniques were developed simply by observing specific deficiencies in "vanilla AlphaZero self-play training" and then experimenting with potential solutions, regardless of whether they involved the neural net or the search or something else. For practical ways to make progress, you mostly want to be focused on problems and *then* play with what (possibly entirely new!) methods might solve them, rather than the other way around. <br><br/>In other words - when you are trying to solve problems, I find you often want to tackle each problem by figuring out the right tool for the job, rather than start with the tool you want to use and then search for the problem to solve with it. Although doing the latter and brainstorming if a tool can be applied more broadly to other things is definitely something you want to do sometimes!
 
 **Are there plans to set up a community contributed computing pool for training KataGo when the current run ends?**
 
@@ -265,7 +265,7 @@ For a bit more insight on where things might be heading for the future of Go, I 
 
 > There aren't any immediate plans - although it could be interesting to compete just for fun. Obviously anything that involves traveling rather than being purely online is a bit of an issue right now with covid-19. Although there's no reason a purely online competition couldn't be organized, many past competitions involved traveling and I'm not aware of any major online-only tournaments that have been organized this year. If there are any I'd be interested to hear of them.<br><br/>As an aside, it always seemed amusing to me that emphasis is placed on competitions where a bot only plays a grand total of, say, 5 or 10 or 20 games against other opponents, when anyone can download KataGo or Leela Zero or whatever and run hundreds if not thousands of games and gather far more data to compare the bots, and even to find patterns in their individual styles, strengths and weaknesses, and so on. Complicating the matter is that (at least, by my limited recollection) past competitions often allowed things like unbounded hardware - anything that the individual or team or company could afford, which makes it hard to judge the results. Still, I guess they're good entertainment and a good central coordination point for commentary and spectating.
 
-Thank you lightvector for the insight! It looks like the future of Go and AI is bright - though bots have overtaken humans in skill, they haven't left us behind. Thanks to projects like KataGo, we keep learning how to think about and play this beautiful game better. As long as we continue wondering about the meaning of intelligence, Go and AI will flourish.
+Though bots have overtaken humans in skill, they haven't left us behind: Now they are now giving back, contributing to greater understanding and enjoyment of Go. Thanks to projects like KataGo, we are gifted with glimpses of secrets still hidden in this millennia old game. Even if we don't yet understand the true meaning of Go, or of intelligence, chasing after them continues to delight.
 
 [^kata1]: [KataGo vs. Leela Zero](http://www.yss-aya.com/cgos/viewer.cgi?19x19/SGF/2020/05/14/693137.sgf): B+Resign
 
