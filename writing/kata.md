@@ -215,7 +215,7 @@ Like AlphaGo, KataGo is trained from scratch via self-play reinforcement learnin
 ![](territory.png)
 *Visualization of ownership predictions by KataGo[^21]*
 
-As a result of these improvements, KataGo massively outperforms Leela Zero and Facebook's ELF bot in learning efficiency, with a factor of fifty improvement over ELF:
+As a result of these improvements, KataGo massively outperforms Leela Zero and Facebook's ELF bot in learning efficiency, gaining a factor of fifty improvement over ELF:
 
 ![](efficiency.png)
 *Relative Elo rating vs self-play cost in billions of equivalent 20 block x 256 channel queries (log scale)*
