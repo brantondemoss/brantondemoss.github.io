@@ -43,7 +43,7 @@ In tic-tac-toe, we can search the entire game tree, and easily find the optimal 
 
 Although it is in principle possible to create such a tree for Go since it is a finite game, the state space of Go is very large: the number of legal positions[^2] in Go is approximately $2.1 \times 10^{170}$.
 
-Since a game is a trajectory through legal board states (with some transition constraints), the number of possible games of Go is considerably larger. The number of unique games of Go has been bounded between $(10^{10^{104}},10^{10^{171}})$ [^3] [^4].
+Since a game is a trajectory through legal board states (with some transition constraints), the number of possible games of Go is considerably larger. The number of unique games of Go has been bounded between $(10^{10^{108}},10^{10^{171}})$ [^3] [^4].
 
 ## Intuition & Reading
 Because the state space of Go is too large to be enumerated and searched through, players must learn to focus only on promising moves when considering possible game state trajectories (variations), in other words players must develop an *intuitive* sense of what moves might be good, and avoid wasting time on dubious possibilities. Empirically, defining such a value function turns out to be much more difficult for Go than for chess - efforts mirroring chess in this direction did not produce good results.
@@ -275,7 +275,7 @@ Though bots have overtaken humans in skill, they haven't left us behind: Now the
 
 [^2]: [Tromp: Number of legal Go positions](https://tromp.github.io/go/legal.html)
 
-[^3]: Lower bound: [Walraet: A Googolplex of Go Games](GoGamesNumber.pdf) 
+[^3]: Lower bound: [Walraet: A Googolplex of Go Games](https://matthieuw.github.io/go-games-number/AGoogolplexOfGoGames.pdf) 
 
 [^4]: Upper bound: [Tromp and Farneback: Combinatorics of Go](https://tromp.github.io/go/gostate.pdf)
 
