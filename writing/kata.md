@@ -275,7 +275,7 @@ Though bots have overtaken humans in skill, they haven't left us behind: Now the
 
 [^2]: [Tromp: Number of legal Go positions](https://tromp.github.io/go/legal.html)
 
-[^3]: Lower bound: [Walraet: A Googolplex of Go Games](https://matthieuw.github.io/go-games-number/AGoogolplexOfGoGames.pdf) 
+[^3]: Lower bound: [Walraet and Tromp: A Googolplex of Go Games](https://matthieuw.github.io/go-games-number/AGoogolplexOfGoGames.pdf) 
 
 [^4]: Upper bound: [Tromp and Farneback: Combinatorics of Go](https://tromp.github.io/go/gostate.pdf)
 
