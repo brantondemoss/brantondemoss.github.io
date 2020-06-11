@@ -1,7 +1,7 @@
 % Love Letter to KataGo or: <br> Go AI past, present, and future
 
 ![](katagame.png)
-*KataGo (B) vs LeelaZero (W)[^kata1]*
+*KataGo (B) vs Leela Zero (W)[^kata1]*
 
 >In order to programme a computer to play a reasonable game of Go - rather than merely a legal game - it is necessary to formalise the principles of good strategy, or to design a learning programme. The principles are more qualitative and mysterious than in chess, and depend more on judgment. So I think it will be even more difficult to programme a computer to play a reasonable game of Go than of chess. <br>- I J Good, 1965[^quote1]
 
@@ -25,7 +25,7 @@ The most popular AI system of the last century was Deep Blue, a chess playing sy
 ![](abpruning.png)
 *Alpha-beta pruning tree[^12]*
 
-Value functions measure the "goodness" of states (read: how likely they are to lead to victory). They take the state of the baord as input, and output an estimate of the value of the current state. Creating meaningful evaluation functions is no small task - indeed, the Deep Blue evaluation function consisted of 8000 hand coded heuristics[^11]! Programmers got together with chess experts to assign value to various board states - rooks on the back rank, passed pawns, king safety, etc... All of these values were combined into a single number representing the total scalar "value" of that position, which tree search can then optimize for expected future value, given an opponent who attempts to minimize your value ([minimax](minimax)).
+Value functions measure the "goodness" of states (read: how likely they are to lead to victory). They take the state of the baord as input, and output an estimate of the value of the current state. Creating meaningful evaluation functions is no small task - indeed, the Deep Blue evaluation function consisted of 8000 hand coded heuristics[^11]! Programmers got together with chess experts to assign value to various board states - rooks on the back rank, passed pawns, king safety, etc... All of these individual heuristics were carefully weighted and combined to give an approximate overall singular board value, which was then optimized for via a tree search through many possible future board states.
 
 With a well-tuned value function and powerful tree search to read ahead and find a value-maximising trajectory, Deep Blue managed a win over Garry Kasparov, the world chess champion, in 1997[^6].
 
@@ -43,7 +43,7 @@ In tic-tac-toe, we can search the entire game tree, and easily find the optimal 
 
 Although it is in principle possible to create such a tree for Go since it is a finite game, the state space of Go is very large: the number of legal positions[^2] in Go is approximately $2.1 \times 10^{170}$.
 
-Since a game is a trajectory through legal board states (with some transition constraints), the number of possible games of Go is considerably larger. The number of unique games of Go has been bounded between $(10^{10^{104}},10^{10^{171}})$ [^3] [^4].
+Since a game is a trajectory through legal board states (with some transition constraints), the number of possible games of Go is considerably larger. The number of unique games of Go has been bounded between $(10^{10^{108}},10^{10^{171}})$ [^3] [^4].
 
 ## Intuition & Reading
 Because the state space of Go is too large to be enumerated and searched through, players must learn to focus only on promising moves when considering possible game state trajectories (variations), in other words players must develop an *intuitive* sense of what moves might be good, and avoid wasting time on dubious possibilities. Empirically, defining such a value function turns out to be much more difficult for Go than for chess - efforts mirroring chess in this direction did not produce good results.
@@ -66,11 +66,11 @@ How can AI agents be given this excellent intuition? Convolutional neural networ
 
 Briefly, convolutional neural networks are an example of a [neural network](https://en.wikipedia.org/wiki/Artificial_neural_network) that use *local connections* which are particularly adept at learning about and processing spatially-correlated features in images. The GIF above shows a learned convolutional filter sliding around an image, producing a lower-dimension representation. Typical networks contain millions of such learned parameters, and can perform a [wide](https://www.youtube.com/watch?v=b62iDkLgGSI) [variety](https://www.youtube.com/watch?v=D4C1dB9UheQ) [of](https://www.youtube.com/watch?v=qWl9idsCuLQ) [tasks](https://www.youtube.com/watch?v=HgDdaMy8KNE) in image processing.
 
-As convolutional neural networks started to show promise in image recognition tasks[^15], and since neural networks can approximate any function[^16], people began thinking about using them to estimate the value function, treating the board state encoding as an "image" input to the CNN. The idea is straightforward: given some board state and final game result pair, $(s,r)$ train your CNN to predict $r$ from $s$. Even better, given the same state $s$, estimate the next move. Estimations of win rate and move choice are called the value, and policy respectively.
+As convolutional neural networks started to show promise in image recognition tasks[^15], and since neural networks can approximate any function[^16], people began thinking about using them to estimate the value function, treating the board state encoding as an "image" input to the CNN. The idea is straightforward: given some board state and final game result pair, $(s,r)$ train your CNN to predict $r$ from $s$ - the prediction of $r$ (constrained between $[0,1]$ to be interpreted as a *probability* of winning) represents our state value. What's more, given the same state $s$, we can estimate the next move (called the *policy*).
 
-And so people started downloading hundreds of thousands of games of Go played online by strong amateurs and training CNNs to predict moves and win-rates. Agents playing from raw move prediction alone could outperform some of the weaker Go bots, but still struggled against strong MCTS bots. 
+And so people began downloading hundreds of thousands of games of Go played online by strong amateurs, and trained CNNs to predict moves and win-rates. Agents playing from raw policy alone could outperform some of the weaker Go bots, but still struggled against strong MCTS bots.
 
-By combining CNN-based policy and value estimation *together with MCTS* (i.e. instead of randomly sampling moves, we weight the sampling by the policy priors from the CNN, and instead of rolling out to a terminal state, we estimate the value of the current state from the value network), these prototype CNN bots started to outperform all others, but professional humans were still out of reach.
+By combining CNN-based policy and value estimation *with MCTS* (i.e. instead of randomly sampling moves, we *weight the MCTS sampling with the policy* from the CNN, and instead of rolling out to a terminal state, we estimate the value of the current state from the value network), these prototype CNN bots started to outperform all others, but professional humans were still out of reach.
 
 ## AlphaGo
 Although MCTS improved the play of CNN-based bots, the neural networks were trained solely on human games and had no means of improving beyond human knowledge. They could only weakly imitate human intuition.
@@ -135,7 +135,7 @@ The most well-known open source bot is [Leela Zero](https://zero.sjeng.org/home)
 
 As Leela Zero and other bots became available to the public for review and play, Go experienced a cultural shift unlike any that had come before. Suddenly everyone had access to superhuman playing advice, and could get opinions on variations in study from one of the strongest players of all time. While AlphaZero was a breakthrough for the AI community, Leela and the open source bots like it were the real godsend for the Go community. Rather than just mimicking AlphaZero's moves, players could use these open source bots for in-depth review and study. World #1 Shin Jinseo reportedly brings an iPad with Leela Zero loaded up everywhere to review ideas and games. As AlphaZero and Leela Zero's influence on the game meta took hold, researchers at Facebook noticed that [players became stronger faster than anytime in history](https://ai.facebook.com/blog/open-sourcing-new-elf-opengo-bot-and-go-research/)!
 
-While a great resource to the Go community, these Zero bots still had problems: they were expensive to train, taking months or years to achieve super-human performance with "normal" amounts of compute, they were [surprisingly bad at ladders](https://github.com/leela-zero/leela-zero/issues/1482) (at first), inherited AlphaGo's tendency to make slack moves when ahead, couldn't play with variable komi, and played erratically in handicap games.
+While a great resource to the Go community, these Zero bots still had problems: they were expensive to train, taking months or years to achieve super-human performance with "normal" amounts of compute, they were [surprisingly bad](https://lifein19x19.com/viewtopic.php?f=18&t=17298) [at ladders](https://github.com/leela-zero/leela-zero/issues/1482) (at first), inherited AlphaGo's tendency to make slack moves when ahead, couldn't play with variable komi, and played erratically in handicap games.
 
 In a 2019 World AI Cup, Leela failed to podium, losing $3^{rd}$ place to HanDol, a Korean commercial bot which would later play Lee Sedol for his final professional game. Disappointingly, the commercial bots destroyed the #1 open source bot Leela, likely due to vastly greater compute resources for training at their disposal. It is unclear what algorithmic differences, if any, the commercial bots have vs AlphaGo.
 
@@ -152,7 +152,7 @@ Yann's cake metaphor is meant to point out that the bulk of information containe
 
 Supervised learning is a little better: if we were to build a CNN to classify pictures of dogs, each training example would consist of an image and a human-made correct label that would only be backpropagated through a single image. The per-sample information density is much greater, and the label noise non-existent (unless the human has mislabeled the image!). Supervised learning generally requires far fewer examples than reinforcement learning to achieve good performance.
 
-Finally there's what Yann calls "self-supervised" learning, in which "the system learns to predict part of its input from other parts of its input"[^22]. The idea is that the unstructured input data contains far more information than any supervised labels ever could, and so finding ways to cleverly predict parts of the input results in much better learning efficiency, and enables using a much larger set of unlabaled data.
+Finally there's what Yann calls "self-supervised" learning, in which "the system learns to predict part of its input from other parts of its input"[^22]. The idea is that the unstructured input data contains far more information than any supervised labels ever could, and so finding ways to cleverly predict parts of the input results in much better learning efficiency, and enables using a much larger set of unlabeled data.
 
 A fun recent example of successful self-supervised learning is monocular depth estimation[^23].
 
@@ -161,7 +161,7 @@ A fun recent example of successful self-supervised learning is monocular depth e
 
 It would be very useful to estimate pixel-accurate depth maps from monocular camera images<sup>[citation needed]</sup>. Humans cannot accurately label per-pixel depth maps, and LiDAR data is expensive to gather, so can we somehow get a network to estimate depth using only raw images as training samples?
 
-It turns out, yes! By exploiting frame-to-frame consistent scene geometry and the fact that sequential video frames contain many of the same objects, we can have a network guess a depth and camera pose, use some clever differentiable geometric transformations to *reconstruct* that scene from the guessed viewpoint of a subsequent video frame, and back propagate pixel-wise photometric loss from the reconstructed and actual images to enforce scene-consistent depth and pose estimations. It turns out that the only way for the network to guess *consistent* depth and camera pose from frame-to-frame is to guess *correct* depth and pose. Using this method, networks can learn to predict accurate depth maps with only raw video input.
+It turns out, yes! By exploiting frame-to-frame consistent scene geometry and the fact that sequential video frames contain many of the same objects, we can have a network guess a depth and camera pose, use some clever differentiable geometric transformations to *reconstruct* that scene from the guessed viewpoint of a subsequent video frame, and back propagate the consistency loss from the reconstructed and actual images to enforce scene-consistent depth and pose estimations. It turns out that the only way for the network to guess *consistent* depth and camera pose from frame-to-frame is to guess *correct* depth and pose. Using this method, networks can learn to predict accurate depth maps with only raw video input.
 
 ![](monocdiagram.png)
 *Self-supervised monocular network diagram[^24]*
@@ -202,7 +202,7 @@ Like AlphaGo, KataGo is trained from scratch via self-play reinforcement learnin
 
 4. Auxiliary policy targets:
 
-   I think this is the most interesting change in KataGo, sharing some common ground with ideas like self-supervised learning: training additional policy targets. Typically AlphaZero style bots only predict policy and value, using the MCTS search and final game outcome respectively as labels. Taking the idea from LeCun's slide that learning can be improved with the addition of more training targets (in that case entire parts of the input data), KataGo attempts to predict a greater number of game outcomes than just value. In particular, KataGo also predicts final territory control, final score difference, and from each board state the opponent's next move. Quoting from the paper:
+   I think this is the most interesting change in KataGo, sharing some common ground with ideas like self-supervised learning: training additional policy targets. Typically, AlphaZero style bots only predict policy and value, using the MCTS search and final game outcome respectively as labels. Taking the idea from LeCun's slide that learning can be improved with the addition of more training targets (in that case entire parts of the input data), KataGo attempts to predict a greater number of game outcomes than just value. In particular, KataGo also predicts final territory control, final score difference, and from each board state the opponent's next move. Quoting from the paper:
    
    > It might be surprising that these targets would continue to help beyond the earliest stages. We
    offer an intuition: consider the task of updating from a game primarily lost due to misjudging a
@@ -215,12 +215,12 @@ Like AlphaGo, KataGo is trained from scratch via self-play reinforcement learnin
 ![](territory.png)
 *Visualization of ownership predictions by KataGo[^21]*
 
-As a result of these improvements, KataGo massively outperforms Leela Zero and Facebook's ELF bot in learning efficiency, with a factor of fifty improvement over ELF:
+As a result of these improvements, KataGo massively outperforms Leela Zero and Facebook's ELF bot in learning efficiency. KataGo achieves a factor of fifty improvement in training efficiency vs ELF:
 
 ![](efficiency.png)
 *Relative Elo rating vs self-play cost in billions of equivalent 20 block x 256 channel queries (log scale)*
 
-In addition to these improvements, KataGo also directly optimizes for maximum score (with some caveats), largely eliminating the slack moves found in other Zero style bots. KataGo also plays handicap games against weaker versions of itself during training, plays on multiple board sizes, and with variable komi and rulesets, so it is flexible under permutations of these game settings.
+In addition to these improvements, KataGo also directly optimizes for maximum score (with some caveats), largely eliminating the slack moves found in other Zero style bots. KataGo also plays handicap games against weaker versions of itself during training, plays on multiple board sizes, and with variable komi and rule sets, so it is flexible under permutations of these game settings.
 
 With all of these additional features, KataGo adds up to the most useful analysis tool yet made for Go, providing players with greater insight into the opinions of a superhuman Go agent.
 
@@ -241,13 +241,31 @@ In late 2019, KataGo was specially trained to solve this problem. The strongest-
 KataGo was able to bring a fresh perspective to this centuries-old problem and give knowledge back to the Go community. How bots like these will continue to bring value and new insight to human problems is an open question, and one that I am excited to see answered in the coming years. We are entering an era where computers can contribute novel insights to the knowledge-base of human endeavors.
 
 ## Future
-In a [recent interview](https://www.youtube.com/watch?v=uPUEq8d73JI), the lead researcher of AlphaGo, David Silver, said that he expects AlphaZero style bots to continue improving for the next 100 years, that the skill ceiling of Go is still out of sight. KataGo provides a picture of how improvements will continue to be made, and how value for human players can be added along the way. Who knows, maybe next-generation Go bots will incorporate language models and be able to explain their move choices in natural language.
+In a [recent interview](https://www.youtube.com/watch?v=uPUEq8d73JI), the lead researcher of AlphaGo, David Silver, said that he expects AlphaZero style bots to continue improving for the next 100 years, that the skill ceiling of Go is still out of sight. KataGo provides a picture of how improvements will continue to be made, and how value for human players can be added along the way. 
 
-*Rather than my speculation, this section will be KataGo author responding to similar forward-looking questions*
+For a bit more insight on where things might be heading for the future of Go, I turned to KataGo's author lightvector for some perspective.
 
-Will KataGo incorporate games played against external opponents? Self-play has worked wonders, but an even greater diversity of ideas can be found by learning from external opponents. Professional Go players used to say that even God couldn't give them a four stone handicap. As KataGo inches towards that barrier with wins over professional players with three stones, how far will handicaps be pushed? Can an agent trained for optimal self-play learn the kinds of aggressive strategies needed to win the most difficult handicap games? Is learning an "optimal" strategy given the complexity of Go realistic? Will we need to incorporate learning opponent behaviour models to exploit their specific weaknesses?
+**Perhaps even more than playing strength gains, watching how KataGo has improved its utility as an analysis tool through e.g. score estimation and territory ownership prediction has been exciting. Is the future of KataGo more focused on adding additional layers of interpretability and analysis utility to players, or are strength and training efficiency improvements your primary focus?**
 
-The future of Go and AI is exciting. Though bots have overtaken humans in skill, they haven't left us behind - as long as we can continue to learn how to play the game better, as long as we think about how to get our bots to think better, Go and AI will continue to flourish together.
+> I'm interested in both! But training efficiency and strength are foremost because a lot of the kinds of nice experiments you'd want to do to add interpretability and analysis utility *depend* on things that have to be fundamentally trained into the model. For example, if you want to predict score? The only way is if the neural net was trained to predict score, and there are many approaches to trying that. Maybe you want the bot to be able to tell you the status of a group? You'll need to find some way of training that too. Maybe you want the bot to report some measure of "uncertainty" versus "confidence" about its own evaluation? There are ways you can try to add that on after the fact, but again you might get better results if it was built in to the training from the start. <br><br/>It greatly expands your ability to run lots of experiments for such things (like KataGo did with score estimation, Japanese rules, and handicap game-training) if training is efficient - the faster you can train to a strong level in each new experiment, the more interesting experiments you can do. But of course, trying to be the strongest and getting closer and closer to optimal play is fun too.<br><br/>The rate of experimentation may slow in the future since some of KataGo's initial support and arrangements for compute power are wrapping up now, but I hope more research in the future will continue to be possible. I hope that KataGo isn't the last word! There are very likely many more improvements possible, so I'd be happy if in coming years other projects found ways to take KataGo's ideas and efficiency improvements to find yet more improvements, and reach even further. KataGo is open source precisely because sharing of techniques and research, rather than keeping them secret, is what improves the state of the art for everyone.
+
+**Top professional players used to say that even God couldn't give them 4 stones. As KataGo approaches that threshold, do you think Zero-style training will continue to scale indefinitely? Both in terms of strength, but also in how current blind spots are found and dealt with: We've seen, for example, that KataGo doesn't understand the flying dagger joseki as well as Leela Zero, and that it remains blind to certain "sharp" positions. Do you think self-play will be enough to overcome these issues long-term, or will other solutions need to be found? Potentially incorporating other external Go agents in the training game generation process?**
+
+> I think the AlphaZero-style training loop using MCTS is not the last word on things like this. Blind spots are just the most visible of the flaws, but there are some technical and theoretical details you can dig into that start to make it clear that there are some practical problems with how exploration and move discovery work in this loop, some basic theoretical flaws involving mismatches between the neural net's training distribution and usage, and also some fundamental "missing" capabilities in current bots in terms of using search effectively. <br><br/>Incorporating external data is maybe a possible patch for only one of these issues, and is only a patch - it would be much cooler to find ways to fix them at a more fundamental level rather than patching them after the fact.
+
+**Your paper focused both on self-play improvements designed to find a more optimal balance between exploration and exploitation in training, and neural architecture design choices like adding specific layers and additional training targets. Between raw compute, neural architecture, and the search algorithm used, which aspect do you think has the greatest potential to improve AI performance in Go, and in other settings?**
+
+> Rather than focusing on broad areas from top down and guessing what will have "more potential" it feels more practical to me to focus on specific problems or flaws or ideas - and work up from there. A lot of the current techniques were developed simply by observing specific deficiencies in "vanilla AlphaZero self-play training" and then experimenting with potential solutions, regardless of whether they involved the neural net or the search or something else. For practical ways to make progress, you mostly want to be focused on problems and *then* play with what (possibly entirely new!) methods might solve them, rather than the other way around. <br><br/>In other words - when you are trying to solve problems, I find you often want to tackle each problem by figuring out the right tool for the job, rather than start with the tool you want to use and then search for the problem to solve with it. Although doing the latter and brainstorming if a tool can be applied more broadly to other things is definitely something you want to do sometimes!
+
+**Are there plans to set up a community contributed computing pool for training KataGo when the current run ends?**
+
+> There are some attempts and plans, and I hope they can get off the ground. Even if they don't, KataGo has reached a great point already and I hope it's made a big impact going forward on any future successors or other projects inspired by it. But yes, I hope a distributed run will be started before too long.
+
+**Are there plans to have KataGo compete in any of the international Go AI competitions?** 
+
+> There aren't any immediate plans - although it could be interesting to compete just for fun. Obviously anything that involves traveling rather than being purely online is a bit of an issue right now with covid-19. Although there's no reason a purely online competition couldn't be organized, many past competitions involved traveling and I'm not aware of any major online-only tournaments that have been organized this year. If there are any I'd be interested to hear of them.<br><br/>As an aside, it always seemed amusing to me that emphasis is placed on competitions where a bot only plays a grand total of, say, 5 or 10 or 20 games against other opponents, when anyone can download KataGo or Leela Zero or whatever and run hundreds if not thousands of games and gather far more data to compare the bots, and even to find patterns in their individual styles, strengths and weaknesses, and so on. Complicating the matter is that (at least, by my limited recollection) past competitions often allowed things like unbounded hardware - anything that the individual or team or company could afford, which makes it hard to judge the results. Still, I guess they're good entertainment and a good central coordination point for commentary and spectating.
+
+Though bots have overtaken humans in skill, they haven't left us behind: Now they are giving back, contributing to greater understanding and enjoyment of Go. Thanks to projects like KataGo, we are gifted with glimpses of secrets still hidden in this millennia old game. Even if we don't yet understand the true meaning of Go, or of intelligence, chasing after them continues to delight.
 
 [^kata1]: [KataGo vs. Leela Zero](http://www.yss-aya.com/cgos/viewer.cgi?19x19/SGF/2020/05/14/693137.sgf): B+Resign
 
@@ -257,7 +275,7 @@ The future of Go and AI is exciting. Though bots have overtaken humans in skill,
 
 [^2]: [Tromp: Number of legal Go positions](https://tromp.github.io/go/legal.html)
 
-[^3]: Lower bound: [Walraet: A Googolplex of Go Games](GoGamesNumber.pdf) 
+[^3]: Lower bound: [Walraet and Tromp: A Googolplex of Go Games](https://matthieuw.github.io/go-games-number/AGoogolplexOfGoGames.pdf) 
 
 [^4]: Upper bound: [Tromp and Farneback: Combinatorics of Go](https://tromp.github.io/go/gostate.pdf)
 
