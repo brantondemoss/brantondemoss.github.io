@@ -1,0 +1,18 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+body {
+    position: relative;
+    text-align: center;
+    font-family: "Open Sans", 'Lato', Helvetica, sans-serif;
+    background-color: white;
+    color: black;
+}
+
+.videos > video{
+    display: inline;
+    margin: 0px;
+    padding: 10px;    
+}
+
+.videos {
+    font-size: 0;
+}
