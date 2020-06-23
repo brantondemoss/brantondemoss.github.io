@@ -1,0 +1,32 @@
+body {
+    position: relative;
+    text-align: center;
+    font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: white;
+    color: black;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+  text-align-last: center;
+  font-weight: normal;
+}
+
+.videos > video{
+    display: inline;
+    margin: 0px;
+    padding: 10px;    
+}
+
+.videos {
+    font-size: 0;
+}
+
+img {
+    width: 40%;
+    padding: 5px;
+    margin: 0 0 0 0;
+    float: left;
+    display: block;
+}
