@@ -156,7 +156,6 @@ a.gray {
 a.gray:hover {
     background-color: rgba(232, 232, 232, 0.9); }
 a.purple {
-    font-family: "Source Code Pro", Inconsolata, "Lucida Console", Terminal, "Courier New", Courier;
     color: #9932CD;}
 a.purple:hover {
     background-color: rgba(153, 50, 205, 0.2);
