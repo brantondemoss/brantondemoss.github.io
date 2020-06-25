@@ -677,3 +677,7 @@ body :checked+.radio-label {
   position: relative;
   border-color: #4078c0;
 }
+.title {
+    display:flex;
+    justify-content:center;
+}
