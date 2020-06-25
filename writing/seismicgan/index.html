@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Seismic GAN</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <link rel="icon" sizes="16x16 32x32" type="image/png" href="../../favicon.ico">
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Seismic GAN</h1>
+</header>
+<video autoplay playsinline loop muted width="420" class="top" style="width: 50%;margin-left: 25%;float: center">
+<source src="../../seismicdream/5820.mp4"
+            type="video/mp4">
+</video>
+<p>In machine learning we are often trying to get some algorithm or learning system to understand abstract attributes of a data distribution of interest. In our case, seismic data from a wide variety of geologic contexts.</p>
+<p>Unfortunately, it is often the case that labels for a given task are hard to come by. Take first break picking in seismic data: given a set of geophones laid out in a line which have recorded seismic data from a source of vibration, we would like to label the first-arrival of the seismic energy for each trace.</p>
+<p>Let’s take a look at a typical noisy seismic image:</p>
+<p><img src="noisyseismic.png" /> <em>We identify the first arrival for each seismic trace with a red dot <span class="rdot"></span></em></p>
+<p>While we can train a neural network to estimate these arrivals when available, often no human-labeled first breaks are available, even if interesting raw seismic data is. In cases like these we still want our neural network to learn <em>something</em> from the data, even if the exact task-label is unavailable.</p>
+<p>The data itself contains a wealth of geologic information which the neural network could likely extract valuable information from to improve its internal represenation of seismic data in general. If we could somehow train the neural network on the raw data without labels, and still have it learn meaningful features and representations, it could likely transfer this knowledge to downstream tasks like first break picking.</p>
+<h2 id="autoencoders">Autoencoders</h2>
+<p>This is the general idea behind autoencoders, a class of neural networks which attempt to estimate their own input, and in which the data is forced through a network with a <em>bottleneck layer</em> in the middle, such that the dimension of the bottleneck (usually <span class="math inline">\(\vec{z}\)</span>) is much lower than the dimension of the input data, <span class="math inline">\(\vec{x}\)</span>: <span class="math inline">\(\text{dim}(\vec{z}) \ll \text{dim}(\vec{x})\)</span>.</p>
+<p><img src="autoencoder.png" /> <em>Autoencoder network diagram<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></em></p>
+<p>The loss function of an autoencoder measures how well the input data was able to be reconstructed with something like an identiy function: <span class="math inline">\(L(\vec{x}) = (\vec{x} - \vec{x}&#39;)^2\)</span>. By forcing the data to flow through the bottleneck layer, we force the neural network to learn an efficient encoding of the data to some <em>latent space</em>, <span class="math inline">\(\vec{z}\)</span>, and an efficient decoding from the latent space back to the initial distribution. We call the portions of the network before and after the compact latent space the encoder and decoder, respectively.</p>
+<p>By training an autoencoder on all of our data, even where labels are unavailable, we hope that the network learns powerful internal representations, which we can then transfer to another network trained for a particular final task. This kind of pre-training and transfer is called <a href="https://en.wikipedia.org/wiki/Transfer_learning">Transfer Learning</a>.</p>
+<h2 id="latent-space">Latent Space</h2>
+<p>Before diving in to how we’ll take advantage of transfer learning to help solve our first-break picking task, it’s interesting to discuss the concept of the latent space introduced with autoecoders.</p>
+<p><img src="vibrating.gif" /> <em>Vibrating strings<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></em></p>
+<p>Latent means “hidden”: in machine learning a latent space refers to a space in which dimensions represent abstract features, rather than encoding literal spatial properties. In physics, for example, one can model an arbitrary vibrating string state as a point in Hilbert Space where each dimension corresponds to an overtone of the string - Hilbert Space can be considered as a kind of latent space.</p>
+<p>If we imagine training an autoencoder on images of cars perhaps its latent space would come to represent different manufacturers, so that dimension one is Honda, and dimension two is Ford, and so on. Then the decoder takes the latent space representation and produces the image which was most likely to be encoded into that latent description.</p>
+<p>In a typical convolutional neural net for image classification, we can think of the final convolutional layer as the latent space - a space of learned features that are relevant to classifying our image, with the final fully connected layer approximating a <em>decision boundary in the latent space</em> for classification.</p>
+<p><img src="cnnclassification.webp" /> <em>Typical CNN classifier network diagram<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></em></p>
+<h2 id="gans">GANs</h2>
+<p>Generative Adversarial Networks<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>, or GANs, are a kind of generative algorithm that learns to generate samples from a data distribution in a unique way. There is a Generator, <span class="math inline">\(G\)</span>, and a Discriminator, <span class="math inline">\(D\)</span>, each of which are usually implemented as a neural network. The Generator’s goal is to produce realistic seeming samples of the underlying distribution (this could be handwritten digits, human faces, anything…) and the Discriminator’s goal is to learn to distinguish real samples from samples generated by the Generator. By pitting the two against each other in a game, their competetion drives the Generator to produce realistic samples to fool the Discriminator.</p>
+<p>Formally, let <span class="math inline">\(G(\vec{z})\)</span> be a sample produced by the Generator (later we will address what <span class="math inline">\(\vec{z}\)</span>, <span class="math inline">\(G\)</span>’s input is), and let <span class="math inline">\(D(\vec{x})\)</span> be the Discriminator’s opinion about the probability that its input is a real sample, so that <span class="math inline">\(D \in [0,1]\)</span>. We want <span class="math inline">\(G(\vec{z}) \sim \vec{x}\)</span>. Let <span class="math inline">\(E_{p(\vec{x})}\)</span> represent an expectation over a distribution <span class="math inline">\(p(\vec{x})\)</span>, then the GAN loss function is:</p>
+<p><span class="math display">\[
+\underset{G}{\text{min}} \, \underset{D}{\text{max}} \left( E_{p(\vec{x})} \left [ \log(D(\vec{x}))\right] + E_{p(\vec{z})} \left[ \log(1-D(G(z)))\right] \right )
+\]</span></p>
+<p>Unpacking this, notice that <span class="math inline">\(D\)</span> is trying to <em>maximize</em> the probability of true samples, while <span class="math inline">\(G\)</span> is trying to <em>minimize</em> <span class="math inline">\(\log(1-D(G(\vec{z})))\)</span>, which amounts to maximizing <span class="math inline">\(D\)</span>’s classification error. The loss function actually encodes a zero-sum minimax game!</p>
+<p>Note also that we did not specify what the input to <span class="math inline">\(G\)</span> is. We feed it Gaussian noise, and as if it were the deocder in an autoencoder, we can think of its input as noise in a latent space. By carefully training <span class="math inline">\(G\)</span> and <span class="math inline">\(D\)</span> in turn, <span class="math inline">\(G\)</span> eventually learns to produce quite realistic-seeming samples from the true distribution of data, receiving only noise as input.</p>
+<p>Since the whole network is a differentiable (and therefore continuous) function with respect to its input, which we interpret as a latent space, we can take continuous walks through the latent space and watch as the generator produces continuously varying images which seem to semantically interpolate through abstract features. A popular GAN training set is human faces, so that a walk through latent space produces these unsettling GIFs:</p>
+<p><img src="nvidiafacegan.gif" /> <em>Continuous walk through latent space in Nvidia’s GAN<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></em></p>
+<h2 id="seismic-gan">Seismic GAN</h2>
+<p>As a powerful general-purpose generative model, we can train a GAN on all kinds of seismic data without the need to worry about task-specific labels!</p>
+<p>Training GANs, however, is notoriously tricky. Everyone’s experience seems somewhat different, but a <a href="https://github.com/soumith/ganhacks">whole slew</a> of <a href="https://arxiv.org/pdf/1809.11096.pdf#page=23">tricks</a> are known to help stabilize GAN convergence. Personally, I found Spectral Normalization and avoiding sigmoid activation in the output layer due to clipping (do BCE directly on the logits) to be the most beneficial hacks, but YMMV.</p>
+<p>Finally with our trained generator and discriminator, we can transfer their weights to different networks for downstream-task finetuning! But before that, let’s take a look at some generated samples by walking through latent space à la the face GANs. We get some beautiful generated “dreams” of seismic data:</p>
+<div class="videos">
+<video width="420" loop autoplay muted playsinline>
+<source src="../../seismicdream/3460.mp4" type="video/mp4">
+</video>
+<video width="420"  loop autoplay muted playsinline>
+<source src="../../seismicdream/4980.mp4" type="video/mp4">
+</video>
+</div>
+<div class="videos">
+<video width="420"  loop autoplay muted playsinline>
+<source src="../../seismicdream/2860.mp4" type="video/mp4">
+</video>
+<video width="420"  loop autoplay muted playsinline>
+<source src="../../seismicdream/3090.mp4" type="video/mp4">
+</video>
+</div>
+<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+       
+       ga('create', 'UA-48874513-2', 'auto');
+       ga('send', 'pageview');
+       
+</script>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p><a href="https://commons.wikimedia.org/wiki/File:Autoencoder_structure.png">Autoencoder structure</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a href="https://commons.wikimedia.org/wiki/File:Standing_waves_on_a_string.gif">Standing waves on a string</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p><a href="https://www.mdpi.com/2076-3417/9/21/4500">A High-Accuracy Model Average Ensemble of Convolutional Neural Networks for Classification of Cloud Image Patches on Small Datasets</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p><a href="https://arxiv.org/abs/1406.2661">Generative Adversarial Networks</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p><a href="https://research.nvidia.com/publication/2017-10_Progressive-Growing-of">Progressive Growing of GANs for Improved Quality, Stability, and Variation</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>
