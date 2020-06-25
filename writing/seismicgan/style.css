@@ -711,3 +711,7 @@ body :checked+.radio-label {
 .videos {
     font-size: 0;
 }
+.title {
+    display:flex;
+    justify-content:center;
+}
