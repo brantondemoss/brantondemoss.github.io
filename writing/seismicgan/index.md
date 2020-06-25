@@ -44,7 +44,7 @@ If we imagine training an autoencoder on images of cars perhaps its latent space
 
 In a typical convolutional neural net for image classification, we can think of the final convolutional layer as the latent space - a space of learned features that are relevant to classifying our image, with the final fully connected layer approximating a *decision boundary in the latent space* for classification.
 
-![](cnnclassification.webp)
+![](cnnclassification.png)
 *Typical CNN classifier network diagram[^3]*
 
 ## GANs
