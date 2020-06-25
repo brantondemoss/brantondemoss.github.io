@@ -456,7 +456,7 @@ body table tr:nth-child(2n) {
 }
 
 body img {
-  max-width: 420px;
+  width: 420px;
   display: block; 
   margin-left: auto; 
   margin-right: auto;
@@ -701,4 +701,8 @@ body :checked+.radio-label {
     background-color: red;
     border-radius: 50%;
     display: inline-block;
+}
+.title {
+    display:flex;
+    justify-content:center;
 }
