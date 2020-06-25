@@ -2,6 +2,7 @@
 title: Seismic GAN
 header-includes:
 	<link rel="icon" sizes="16x16 32x32" type="image/png" href="../../favicon.ico">
+	<meta property="og:image" content="http://brantondemoss.com/writing/seismicgan/noisyseismic.png" />
 ---
 
 <video autoplay playsinline loop muted width="420" class="top" style="width: 50%;margin-left: 25%;float: center">
