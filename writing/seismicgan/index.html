@@ -33,7 +33,7 @@
 <p>Let’s take a look at a typical noisy seismic image:</p>
 <p><img src="noisyseismic.png" /> <em>We identify the first arrival for each seismic trace with a red dot <span class="rdot"></span></em></p>
 <p>While we can train a neural network to estimate these arrivals when available, often no human-labeled first breaks are available, even if interesting raw seismic data is. In cases like these we still want our neural network to learn <em>something</em> from the data, even if the exact task-label is unavailable.</p>
-<p>The data itself contains a wealth of geologic information which the neural network could likely extract valuable information from to improve its internal represenation of seismic data in general. If we could somehow train the neural network on the raw data without labels, and still have it learn meaningful features and representations, it could likely transfer this knowledge to downstream tasks like first break picking.</p>
+<p>The data itself contains a wealth of geologic information which the neural network could likely extract to improve its internal represenation of seismic data in general. We would like to find a way to train the neural network on the raw data without labels, and still have it learn meaningful features and representations which it could transfer to other downstream tasks like first break picking.</p>
 <h2 id="autoencoders">Autoencoders</h2>
 <p>This is the general idea behind autoencoders, a class of neural networks which attempt to estimate their own input, and in which the data is forced through a network with a <em>bottleneck layer</em> in the middle, such that the dimension of the bottleneck (usually denoted <span class="math inline">\(\vec{z}\)</span>) is much lower than the dimension of the input data, <span class="math inline">\(\vec{x}\)</span>: <span class="math inline">\(\text{dim}(\vec{z}) \ll \text{dim}(\vec{x})\)</span>.</p>
 <p><img src="autoencoder.png" /> <em>Autoencoder network diagram<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></em></p>
@@ -59,7 +59,7 @@
 <h2 id="seismic-gan">Seismic GAN</h2>
 <p>As a powerful general-purpose generative model, we can train a GAN on all kinds of seismic data without the need to worry about task-specific labels!</p>
 <p>Training GANs, however, is notoriously tricky. Everyone’s experience seems somewhat different, but a <a href="https://github.com/soumith/ganhacks">whole slew</a> of <a href="https://arxiv.org/pdf/1809.11096.pdf#page=23">tricks</a> are known to help stabilize GAN convergence. Personally, I found Spectral Normalization and avoiding sigmoid activation in the output layer due to clipping (do BCE directly on the logits) to be the most beneficial hacks, but YMMV.</p>
-<p>Finally with our trained generator and discriminator, we can transfer their weights to different networks for downstream-task finetuning! But before that, let’s take a look at some generated samples by walking through latent space à la the face GANs. We get some beautiful generated “dreams” of seismic data:</p>
+<p>Finally with our trained generator and discriminator, we can transfer their learned weights to other networks for downstream task finetuning! But before that, let’s take a look at some generated samples by walking through latent space à la the face GANs. We get some beautiful generated “dreams” of seismic data:</p>
 <div class="videos">
 <video width="420" loop autoplay muted playsinline>
 <source src="../../seismicdream/3460.mp4" type="video/mp4">

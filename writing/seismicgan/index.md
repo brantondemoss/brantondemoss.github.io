@@ -20,7 +20,7 @@ Let's take a look at a typical noisy seismic image:
 
 While we can train a neural network to estimate these arrivals when available, often no human-labeled first breaks are available, even if interesting raw seismic data is. In cases like these we still want our neural network to learn *something* from the data, even if the exact task-label is unavailable.
 
-The data itself contains a wealth of geologic information which the neural network could likely extract valuable information from to improve its internal represenation of seismic data in general. If we could somehow train the neural network on the raw data without labels, and still have it learn meaningful features and representations, it could likely transfer this knowledge to downstream tasks like first break picking.
+The data itself contains a wealth of geologic information which the neural network could likely extract to improve its internal represenation of seismic data in general. We would like to find a way to train the neural network on the raw data without labels, and still have it learn meaningful features and representations which it could transfer to other downstream tasks like first break picking.
 
 ## Autoencoders
 This is the general idea behind autoencoders, a class of neural networks which attempt to estimate their own input, and in which the data is forced through a network with a *bottleneck layer* in the middle, such that the dimension of the bottleneck (usually denoted $\vec{z}$) is much lower than the dimension of the input data, $\vec{x}$: $\text{dim}(\vec{z}) \ll \text{dim}(\vec{x})$. 
@@ -70,7 +70,7 @@ As a powerful general-purpose generative model, we can train a GAN on all kinds 
 
 Training GANs, however, is notoriously tricky. Everyone's experience seems somewhat different, but a [whole slew](https://github.com/soumith/ganhacks) of [tricks](https://arxiv.org/pdf/1809.11096.pdf#page=23) are known to help stabilize GAN convergence. Personally, I found Spectral Normalization and avoiding sigmoid activation in the output layer due to clipping (do BCE directly on the logits) to be the most beneficial hacks, but YMMV.
 
-Finally with our trained generator and discriminator, we can transfer their weights to different networks for downstream-task finetuning! But before that, let's take a look at some generated samples by walking through latent space à la the face GANs. We get some beautiful generated "dreams" of seismic data:
+Finally with our trained generator and discriminator, we can transfer their learned weights to other networks for downstream task finetuning! But before that, let's take a look at some generated samples by walking through latent space à la the face GANs. We get some beautiful generated "dreams" of seismic data:
 
 <div class="videos">
 <video width="420" loop autoplay muted playsinline>
