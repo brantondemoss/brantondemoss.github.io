@@ -89,6 +89,8 @@ Finally with our trained generator and discriminator, we can transfer their lear
 </video>
 </div> 
 
+You can find more seismic dreams [here](https://brantondemoss.com/seismicdream/). Happy training!
+
 [^1]: [Autoencoder structure](https://commons.wikimedia.org/wiki/File:Autoencoder_structure.png)
 
 [^2]: [Standing waves on a string](https://commons.wikimedia.org/wiki/File:Standing_waves_on_a_string.gif)
