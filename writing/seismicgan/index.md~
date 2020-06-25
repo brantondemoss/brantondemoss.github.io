@@ -23,7 +23,7 @@ While we can train a neural network to estimate these arrivals when available, o
 The data itself contains a wealth of geologic information which the neural network could likely extract valuable information from to improve its internal represenation of seismic data in general. If we could somehow train the neural network on the raw data without labels, and still have it learn meaningful features and representations, it could likely transfer this knowledge to downstream tasks like first break picking.
 
 ## Autoencoders
-This is the general idea behind autoencoders, a class of neural networks which attempt to estimate their own input, and in which the data is forced through a network with a *bottleneck layer* in the middle, such that the dimension of the bottleneck (usually denoted $\vec{z}$) is much lower than the dimension of the input data, $\vec{x}$: $\text{dim}(\vec{z}) \ll \text{dim}(\vec{x})$. 
+This is the general idea behind autoencoders, a class of neural networks which attempt to estimate their own input, and in which the data is forced through a network with a *bottleneck layer* in the middle, such that the dimension of the bottleneck (usually $\vec{z}$) is much lower than the dimension of the input data, $\vec{x}$: $\text{dim}(\vec{z}) \ll \text{dim}(\vec{x})$. 
 
 ![](autoencoder.png)
 *Autoencoder network diagram[^1]*
