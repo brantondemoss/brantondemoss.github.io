@@ -29,7 +29,7 @@ This is the general idea behind autoencoders, a class of neural networks which a
 ![](autoencoder.png)
 *Autoencoder network diagram[^1]*
 
-The loss function of an autoencoder measures how well the input data matches the reconstructed image: $L(\vec{x}) = (\vec{x} - \vec{x}')^2$. By forcing the data to flow through the bottleneck layer, we force the neural network to learn an efficient encoding of the data to some *latent space*, $\vec{z}$, and an efficient decoding from the latent space back to the initial distribution. We call the portions of the network before and after the compact latent space the encoder and decoder, respectively.
+In its simplest form, the loss function of a vanilla autoencoder measures how well the input data matches the reconstructed image: $L(\vec{x}) = (\vec{x} - \vec{x}')^2$. By forcing the data to flow through the bottleneck layer, we force the neural network to learn an efficient encoding of the data to some *latent space*, $\vec{z}$, and an efficient decoding from the latent space back to the initial distribution. We call the portions of the network before and after the compact latent space the encoder and decoder, respectively.
 
 By training an autoencoder on all of our data, even where labels are unavailable, we hope that the network learns powerful internal representations, which we can then transfer to another network trained for a particular final task. This kind of pre-training and transfer is called [Transfer Learning](https://en.wikipedia.org/wiki/Transfer_learning).
 
