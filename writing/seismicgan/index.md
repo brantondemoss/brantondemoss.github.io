@@ -69,7 +69,7 @@ Since the whole network is a differentiable (and therefore continuous) function 
 ## Seismic GAN
 As a powerful general-purpose generative model, we can train a GAN on all kinds of seismic data without the need to worry about task-specific labels! 
 
-Training GANs, however, is notoriously tricky. Everyone's experience seems somewhat different, but a [whole slew](https://github.com/soumith/ganhacks) of [tricks](https://arxiv.org/pdf/1809.11096.pdf#page=23) are known to help stabilize GAN convergence. Personally, I found Spectral Normalization and avoiding sigmoid activation in the output layer due to clipping (do BCE directly on the logits) to be the most beneficial hacks, but YMMV.
+Training GANs, however, is notoriously tricky. Everyone's experience seems somewhat different, but a [whole slew](https://github.com/soumith/ganhacks) of [tricks](https://arxiv.org/pdf/1809.11096.pdf#page=23) are known to help stabilize GAN convergence. Personally, I found Spectral Normalization[^5] and avoiding sigmoid activation in the output layer due to clipping[^6] (do BCE directly on the logits) to be the most beneficial hacks, but YMMV.
 
 Finally with our trained generator and discriminator, we can transfer their learned weights to other networks for downstream task finetuning! But before that, let's take a look at some generated samples by walking through latent space à la the face GANs. We get some beautiful generated "dreams" of seismic data:
 
@@ -101,6 +101,10 @@ You can find more seismic dreams [here](https://brantondemoss.com/seismicdream/)
 [^4]: [Progressive Growing of GANs for Improved Quality, Stability, and Variation](https://research.nvidia.com/publication/2017-10_Progressive-Growing-of)
 
 [^gan1]: [Generative Adversarial Networks](https://arxiv.org/abs/1406.2661)
+
+[^5]: [Spectral Normalization for Generative Adversarial Networks](https://arxiv.org/abs/1802.05957)
+
+[^6]: [Sigmoid Activation and Binary Crossentropy — A Less Than Perfect Match?](https://towardsdatascience.com/sigmoid-activation-and-binary-crossentropy-a-less-than-perfect-match-b801e130e31)
 
 <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

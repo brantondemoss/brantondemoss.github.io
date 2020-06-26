@@ -59,7 +59,7 @@
 <p><img src="nvidiafacegan.gif" /> <em>Continuous walk through latent space in Nvidia’s GAN<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></em></p>
 <h2 id="seismic-gan">Seismic GAN</h2>
 <p>As a powerful general-purpose generative model, we can train a GAN on all kinds of seismic data without the need to worry about task-specific labels!</p>
-<p>Training GANs, however, is notoriously tricky. Everyone’s experience seems somewhat different, but a <a href="https://github.com/soumith/ganhacks">whole slew</a> of <a href="https://arxiv.org/pdf/1809.11096.pdf#page=23">tricks</a> are known to help stabilize GAN convergence. Personally, I found Spectral Normalization and avoiding sigmoid activation in the output layer due to clipping (do BCE directly on the logits) to be the most beneficial hacks, but YMMV.</p>
+<p>Training GANs, however, is notoriously tricky. Everyone’s experience seems somewhat different, but a <a href="https://github.com/soumith/ganhacks">whole slew</a> of <a href="https://arxiv.org/pdf/1809.11096.pdf#page=23">tricks</a> are known to help stabilize GAN convergence. Personally, I found Spectral Normalization<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> and avoiding sigmoid activation in the output layer due to clipping<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> (do BCE directly on the logits) to be the most beneficial hacks, but YMMV.</p>
 <p>Finally with our trained generator and discriminator, we can transfer their learned weights to other networks for downstream task finetuning! But before that, let’s take a look at some generated samples by walking through latent space à la the face GANs. We get some beautiful generated “dreams” of seismic data:</p>
 <div class="videos">
 <video width="420" loop autoplay muted playsinline>
@@ -96,6 +96,8 @@
 <li id="fn3" role="doc-endnote"><p><a href="https://www.mdpi.com/2076-3417/9/21/4500">A High-Accuracy Model Average Ensemble of Convolutional Neural Networks for Classification of Cloud Image Patches on Small Datasets</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4" role="doc-endnote"><p><a href="https://arxiv.org/abs/1406.2661">Generative Adversarial Networks</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5" role="doc-endnote"><p><a href="https://research.nvidia.com/publication/2017-10_Progressive-Growing-of">Progressive Growing of GANs for Improved Quality, Stability, and Variation</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p><a href="https://arxiv.org/abs/1802.05957">Spectral Normalization for Generative Adversarial Networks</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p><a href="https://towardsdatascience.com/sigmoid-activation-and-binary-crossentropy-a-less-than-perfect-match-b801e130e31">Sigmoid Activation and Binary Crossentropy — A Less Than Perfect Match?</a><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 </body>
