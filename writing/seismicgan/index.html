@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
@@ -38,7 +38,7 @@
 <h2 id="autoencoders">Autoencoders</h2>
 <p>This is the general idea behind autoencoders, a class of neural networks which attempt to estimate their own input, and in which the data is forced through a network with a <em>bottleneck layer</em> in the middle, such that the dimension of the bottleneck (usually denoted <span class="math inline">\(\vec{z}\)</span>) is much lower than the dimension of the input data, <span class="math inline">\(\vec{x}\)</span>: <span class="math inline">\(\text{dim}(\vec{z}) \ll \text{dim}(\vec{x})\)</span>.</p>
 <p><img src="autoencoder.png" /> <em>Autoencoder network diagram<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></em></p>
-<p>The loss function of an autoencoder measures how well the input data matches the reconstructed image: <span class="math inline">\(L(\vec{x}) = (\vec{x} - \vec{x}&#39;)^2\)</span>. By forcing the data to flow through the bottleneck layer, we force the neural network to learn an efficient encoding of the data to some <em>latent space</em>, <span class="math inline">\(\vec{z}\)</span>, and an efficient decoding from the latent space back to the initial distribution. We call the portions of the network before and after the compact latent space the encoder and decoder, respectively.</p>
+<p>In its simplest form, the loss function of a vanilla autoencoder measures how well the input data matches the reconstructed image: <span class="math inline">\(L(\vec{x}) = (\vec{x} - \vec{x}&#39;)^2\)</span>. By forcing the data to flow through the bottleneck layer, we force the neural network to learn an efficient encoding of the data to some <em>latent space</em>, <span class="math inline">\(\vec{z}\)</span>, and an efficient decoding from the latent space back to the initial distribution. We call the portions of the network before and after the compact latent space the encoder and decoder, respectively.</p>
 <p>By training an autoencoder on all of our data, even where labels are unavailable, we hope that the network learns powerful internal representations, which we can then transfer to another network trained for a particular final task. This kind of pre-training and transfer is called <a href="https://en.wikipedia.org/wiki/Transfer_learning">Transfer Learning</a>.</p>
 <h2 id="latent-space">Latent Space</h2>
 <p>Before diving in to how we’ll take advantage of transfer learning to help solve our first-break picking task, it’s interesting to discuss the concept of the latent space introduced with autoencoders.</p>
