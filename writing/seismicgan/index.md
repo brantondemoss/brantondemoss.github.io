@@ -10,7 +10,7 @@ header-includes:
             type="video/mp4">
 </video>
 
-In machine learning we are often trying to get some algorithm or learning system to understand abstract attributes of a data distribution of interest. In our case, seismic data from a wide variety of geologic contexts. 
+We often want to get some algorithm or learning system to understand abstract attributes of a data distribution of interest. In this case, seismic data from a wide variety of geologic contexts.
 
 Unfortunately, it is often the case that labels for a given task are hard to come by. Take first break picking in seismic data: given a set of geophones laid out in a line which have recorded seismic data from a source of vibration, we would like to label the first-arrival of the seismic energy for each trace.
 
