@@ -224,7 +224,7 @@ In addition to these improvements, KataGo also directly optimizes for maximum sc
 
 With all of these additional features, KataGo adds up to the most useful analysis tool yet made for Go, providing players with greater insight into the opinions of a superhuman Go agent.
 
-KataGo is likely now the strongest open source Go bot available, recently topping the [CGS rankings](http://www.yss-aya.com/cgos/19x19/bayes.html) in all board sizes.
+KataGo is likely now the strongest open source Go bot available, recently topping the [CGOS rankings](http://www.yss-aya.com/cgos/19x19/bayes.html) in all board sizes.
 
 I highly recommend those interested check out the original [KataGo paper](https://arxiv.org/abs/1902.10565) - it's an extremely accessible read.
 
