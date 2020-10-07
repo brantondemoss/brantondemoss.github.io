@@ -13,7 +13,7 @@ function pixTimeChange() {
 	var rand = Math.floor(Math.random() * 2)
 
 	if (rand == 0) { main.innerHTML += "<a href='/sunflower'><img class='rounded' src='resources/blacksunflowervector.svg' id='myimage' title='this image changes based on time of day'></a>"}
-	else{ main.innerHTML += '<a href="https://brantondemoss.com/seismicdream"><video loop autoplay muted playsinline width="480" style="float: left; padding-left: 20%;padding-top: 4px; margin-top: 0px;"><source src="seismicdream/4980.mp4" type="video/mp4"></video>'}
+	else{ main.innerHTML += '<a href="https://brantondemoss.com/seismicdream"><video loop autoplay muted playsinline width="480" style="max-width: 30%; float: left; padding-left: 20%;padding-top: 4px; margin-top: 0px;"><source src="seismicdream/4980.mp4" type="video/mp4"></video>'}
 	
 	
     }
