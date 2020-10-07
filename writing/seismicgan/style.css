@@ -433,7 +433,8 @@ body table {
 }
 
 video {
-autosize: true
+    max-width: 100%;
+    autosize: true
 }
 
 body table th {
