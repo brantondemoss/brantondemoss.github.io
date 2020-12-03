@@ -1,5 +1,9 @@
-% What's a Concept, and How to Find One
-
+---
+title: What's a Concept, and How to Find One
+header-includes:
+        <link rel="icon" sizes="16x16 32x32" type="image/png" href="../../favicon.ico">
+        <meta property="og:image" content="http://brantondemoss.com/writing/semanticsearch/parsethicket.jpg" />
+---
 <a href="https://xkcd.com/1425/"><img src="xkcdtasks.png" style="float: left; max-width: 25%;margin-right: 5%;"/></a>
 
 > In the 60s, Marvin Minsky assigned a couple of undergrads to spend the summer programming a computer to use a camera to identify objects in a scene. He figured they'd have the problem solved by the end of the summer. Half a century later, we're still working on it.<br>[- xkcd 1425: "Tasks" alt text](https://xkcd.com/1425)
