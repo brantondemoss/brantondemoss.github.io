@@ -51,11 +51,25 @@ N &amp;= |D|\text{, the number of documents in the corpus}\\
 <p>With this linguistic hypothesis, we want to train a neural network to output dictionary vectors representing “tree” and “fruit” when we put in the dictionaryvector for “apple”. We’ll build a single hidden layer neural network that accepts a 100,000 dimension vector, learns a transformation to some intermediate hidden representation (which we’ll force to be much smaller in size, say 1,000 dimensions), and then another transformation back to 100,000 dimensions, which will represent another dictionary vector:</p>
 <p><img src="autoencoder.png" /> <em>A single hidden layer neural network</em></p>
 <p>By training this network on millions of examples of nearby words sourced from text, the intermediate, hidden representation in the network is forced to encode general semantic information about concepts learned from text. After training for many iterations, the word2vec authors showed a remarkable result: the hidden representation of “king”, minus the hidden representation of “man”, plus the hidden representation of “woman” equaled… the hidden representation of “queen”. The network wasn’t taught this, but it learned to embed these words into a <em>semantic space</em>, where related concepts were mapped near to each other. It was forced to learn this mapping to a semantic space through its training procedure!</p>
-<p><img src="glove_embedding.jpg" /> <em>An example semantic embedding of concepts into vector space, showing only two dimensions</em></p>
-<p>Using semantic vectors like these, we can make progress towards making our concept search better. Now even if a user wants to search for “flora” but a text uses the word “vegatation”, it’s no matter! Their semantic vectors should be nearby each other in semantic vector space. By comparing these vectors, we can rank concepts by similarity of <em>meaning</em>, and get around the brittle term-based search of yesteryear.</p>
-<h2 id="give-the-people-what-they-want">Give the people what they want</h2>
+<p><img src="glove_embedding.jpg" /> <em>An example semantic embedding of concepts into vector space, showing only two dimensions<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></em></p>
+<p>Using semantic vectors like these, we can make progress towards making our concept search better. Now even if a user wants to search for “flora” but a text uses the word “vegetation”, it’s no matter! Their semantic vectors should be nearby each other in semantic vector space. By comparing these vectors, we can rank concepts by similarity of <em>meaning</em>, and get around the brittle term-based search of yesteryear.</p>
+<h2 id="to-now">2013 to now</h2>
+<p>NLP has come a long way since 2013. Word vectors don’t come from single hidden layer neural networks, now large neural language models can do more than predict which words are associated with others - the latest and greatest models can write text better than many teenagers<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. The <a href="https://arxiv.org/abs/1706.03762">Transformer revolution</a> and models like <a href="https://arxiv.org/abs/1810.04805">BERT</a> are making language representations ever more powerful: we’re getting closer to hidden representations that capture ever more subtle properties like <span class="math display">\[ R(\text{not apple}) = - R(\text{apple})\]</span> where <span class="math inline">\(R(\cdot)\)</span> is the representation learned by the network. These methods have been extended to whole paragraphs, and even documents<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<p>Neural language models are actively revolutionizing how we organize natural text - even Google added BERT semantic similarity features to their search last year<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> - a serious sign of maturation of the technology.</p>
+<p>At The Collaboratory, we’re building the next generation semantic search and data sharing platform for scientists. If these kinds of tasks sound interesting to you, we encourage you to <a href="mailto:branton@thecollaboratory.ai">apply</a>!</p>
+<h2 id="future">Future</h2>
+<p>Talk about reinforcement learning to eventually predict on end-user clicks and attention, instead of just content similarity?</p>
 <blockquote>
 <p>“A human is not a device that reliably reports a gold standard judgment of relevance of a document to a query.”</br>― Hinrich Schütze, Introduction to Information Retrieval</p>
 </blockquote>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p><a href="https://nlp.stanford.edu/projects/glove/">GloVe: Global Vectors for Word Representation</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p><a href="https://www.gwern.net/newsletter/2020/05#gpt-3">On GPT-3: Meta-Learning, Scaling, Implications, And Deep Theory</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p><a href="https://arxiv.org/abs/2008.08567">Transformer based Multilingual document Embedding model</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p><a href="https://blog.google/products/search/search-language-understanding-bert/">Understanding searches better than ever before</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 </body>
 </html>

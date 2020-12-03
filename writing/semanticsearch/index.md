@@ -52,10 +52,25 @@ With this linguistic hypothesis, we want to train a neural network to output dic
 By training this network on millions of examples of nearby words sourced from text, the intermediate, hidden representation in the network is forced to encode general semantic information about concepts learned from text. After training for many iterations, the word2vec authors showed a remarkable result: the hidden representation of "king", minus the hidden representation of "man", plus the hidden representation of "woman" equaled... the hidden representation of "queen". The network wasn't taught this, but it learned to embed these words into a *semantic space*, where related concepts were mapped near to each other. It was forced to learn this mapping to a semantic space through its training procedure!
 
 ![](glove_embedding.jpg)
-*An example semantic embedding of concepts into vector space, showing only two dimensions*
+*An example semantic embedding of concepts into vector space, showing only two dimensions[^glove]*
 
-Using semantic vectors like these, we can make progress towards making our concept search better. Now even if a user wants to search for "flora" but a text uses the word "vegatation", it's no matter! Their semantic vectors should be nearby each other in semantic vector space. By comparing these vectors, we can rank concepts by similarity of *meaning*, and get around the brittle term-based search of yesteryear.
+Using semantic vectors like these, we can make progress towards making our concept search better. Now even if a user wants to search for "flora" but a text uses the word "vegetation", it's no matter! Their semantic vectors should be nearby each other in semantic vector space. By comparing these vectors, we can rank concepts by similarity of *meaning*, and get around the brittle term-based search of yesteryear.
 
+## 2013 to now
+NLP has come a long way since 2013. Word vectors don't come from single hidden layer neural networks, now large neural language models can do more than predict which words are associated with others - the latest and greatest models can write text better than many teenagers[^gwerngpt3]. The [Transformer revolution](https://arxiv.org/abs/1706.03762) and models like [BERT](https://arxiv.org/abs/1810.04805) are making language representations ever more powerful: we're getting closer to hidden representations that capture ever more subtle properties like
+$$ R(\text{not apple}) = - R(\text{apple})$$
+where $R(\cdot)$ is the representation learned by the network. These methods have been extended to whole paragraphs, and even documents[^laser].
 
-## Give the people what they want
+Neural language models are actively revolutionizing how we organize natural text - even Google added BERT semantic similarity features to their search last year[^googlebert] - a serious sign of maturation of the technology.
+
+At The Collaboratory, we're building the next generation semantic search and data sharing platform for scientists. If these kinds of tasks sound interesting to you, we encourage you to [apply](mailto:branton@thecollaboratory.ai)!
+
+## Future
+Talk about reinforcement learning to eventually predict on end-user clicks and attention, instead of just content similarity?
+
 >“A human is not a device that reliably reports a gold standard judgment of relevance of a document to a query.”</br>― Hinrich Schütze, Introduction to Information Retrieval 
+
+[^glove]: [GloVe: Global Vectors for Word Representation](https://nlp.stanford.edu/projects/glove/)
+[^gwerngpt3]: [On GPT-3: Meta-Learning, Scaling, Implications, And Deep Theory](https://www.gwern.net/newsletter/2020/05#gpt-3)
+[^laser]: [Transformer based Multilingual document Embedding model](https://arxiv.org/abs/2008.08567)
+[^googlebert]: [Understanding searches better than ever before](https://blog.google/products/search/search-language-understanding-bert/)
