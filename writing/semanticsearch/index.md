@@ -46,7 +46,7 @@ $$\text{apple} = [1,0,0,0,...]$$
 Now if "zebra" was the final word in the language, we would represent it like
 $$\text{zebra} = [0,0,0,...,1]$$
 
-and so on for the rest of the words in the dictionary. Now, take as a linguistic hypothesis the following: words that appear near each other in text often carry related semantic meaning. For example, the word "apple" will probably appear near the words "pie" and "tree" and "fruit" much more often than it will appear near the word "chair". If we can build a system that outputs "pie" when it's fed "apple", or outputs "ocean" when it's fed "fish", it must have learned at least at a superficial level how concepts are related.
+and so on for the rest of the words in the dictionary. Now, take as a linguistic hypothesis the following: words that appear near each other in text often carry related meaning. For example, the word "apple" will probably appear near the words "pie" and "tree" and "fruit" much more often than it will appear near the word "chair". If we can build a system that outputs "pie" when it's fed "apple", or outputs "ocean" when it's fed "fish", it must have learned at least at a superficial level how concepts are related.
 
 With this linguistic hypothesis, we want to train a neural network to output dictionary vectors representing "tree" and "fruit" when we put in the dictionaryvector for "apple". We'll build a single hidden layer neural network that accepts a 100,000 dimension vector, learns a transformation to some intermediate hidden representation (which we'll force to be much smaller in size, say 1,000 dimensions), and then another transformation back to 100,000 dimensions, which will represent another dictionary vector:
 
