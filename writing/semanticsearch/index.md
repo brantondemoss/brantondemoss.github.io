@@ -4,27 +4,25 @@ header-includes:
         <link rel="icon" sizes="16x16 32x32" type="image/png" href="../../favicon.ico">
         <meta property="og:image" content="http://brantondemoss.com/writing/semanticsearch/parsethicket.jpg" />
 ---
+
+Finding research data is hard: scientists often don't upload their data to the internet, and when they do it's hard to search for, and there are dozens of places to look. At The Collaboratory, we're building a universal research data platform, and along the way facing [philosophical challenges](https://slatestarcodex.com/2014/11/21/the-categories-were-made-for-man-not-man-for-the-categories/) that require new kinds of engineering solutions.
+
+# It's all semantics
 <a href="https://xkcd.com/1425/"><img src="xkcdtasks.png" style="float: left; max-width: 25%;margin-right: 5%;"/></a>
 
 > In the 60s, Marvin Minsky assigned a couple of undergrads to spend the summer programming a computer to use a camera to identify objects in a scene. He figured they'd have the problem solved by the end of the summer. Half a century later, we're still working on it.<br>[- xkcd 1425: "Tasks" alt text](https://xkcd.com/1425)
 
-Finding research data is hard: scientists often don't upload their data to the internet, and when they do it's hard to search for, and there are dozens of places to look. At The Collaboratory, we're building a universal research data platform, and along the way facing [philosophical challenges](https://slatestarcodex.com/2014/11/21/the-categories-were-made-for-man-not-man-for-the-categories/) that require engineering solutions.
+It's hard to write a program to identify pictures of birds, because birds do not exist. Like a Platonic solid, the idea of a perfect "bird" has no dual in reality. Unlike Platonic solids, though, we cannot even define what a bird is - the moment we try we run into a million philosphical questions of taxonomy. Because we cannot really define what a bird is, a simple, human understandable program to detect one is a hopeless challenge. Like the Supreme Court's infamously noncommittal criteria for classifying obscenity of "[I know it when I see it](https://en.wikipedia.org/wiki/I_know_it_when_I_see_it)", human-defined categories elude specification, and require a new approach to engineering solutions.
 
-It's hard to write a program to identify pictures of birds, because birds do not exist. Like a Platonic solid
+![](dodecahedron.gif)
+*[Ce n'est pas un dodécaèdre](https://en.wikipedia.org/wiki/The_Treachery_of_Images)*
 
-![](rotato.gif)
-*Ce n'est pas un cuboctaèdre*
-
-Ask any librarian, organizing concepts into categories is really hard. Can we build a meaningful and navigable taxonomy of human ideas?
-
-Why is it hard to write a program to identify pictures of birds? Funnily enough, it's for the exact same reason the US Supreme Court struggled to define obscenity, finally settling on the now-infamous criteria "[I know it when I see it](https://en.wikipedia.org/wiki/I_know_it_when_I_see_it)". The difficulty, of course, is that human made categories are not exact, and exist only by agreement. We've cut arbitrary lines through the space of things which exist: what's a fruit vs. a vegetable? A car vs. a truck? These lines blur - no exact definition can be given.
-
-Those interested in the philosophical side of this discussion will appreciate Scott Alexander's [The Categories Were Made For Man, Not Man For The Categories](https://slatestarcodex.com/2014/11/21/the-categories-were-made-for-man-not-man-for-the-categories/). With recent advances in natural language processing and machine understanding, we'll discuss how these problems are solved today, and how they can be used to build better search engines.
+With recent advances in natural language processing (NLP) and machine understanding, we'll discuss how these problems are solved today, and how they can be used to build better search engines.
 
 ## Are words concepts?
 The problem of computational understanding of concepts shows up in everyday life most frequently through search: Google a question, and you'll more than likely receive an answer. How do such systems work?
 
-Traditional search algorithms for information retrieval work assuming a very straightforward principle: documents that contain terms found in queries are more likely to be relevant to the query than documents not containing those terms. So, to give a relevancy ranking to a document, we can simply compute how often a search query term is found in the document (and give a bonus if those words are rarely found in other documents). This way of relevancy ranking for search is nicely captured in the [tf-idf](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) (term frequency - inverse document frequency) score:
+Traditional search algorithms measure and rank relevancy using a key assumption: documents containing terms found in a search query are more likely to be relevant to the query than documents not containing those terms documents that contain terms found in queries are more likely to be relevant to the query than documents not containing those terms. So, to give a relevancy ranking to a document, we can simply compute how often a search query term is found in the document (and give a bonus if those words are rarely found in other documents). This way of relevancy ranking for search is nicely captured in the [tf-idf](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) (term frequency - inverse document frequency) score:
 
 $$\text{tf-idf} = \frac{f_{t,d}}{ \text{max}\{f_{t',d}:t' \in d \}}\times\log\frac{N}{| \{ d \in D:t \in d\}|}$$
 where
@@ -36,54 +34,69 @@ N &= |D|\text{, the number of documents in the corpus}\\
 \end{aligned}
 $$
 
-Using something as simple tf-idf, you get pretty far. People learn to harness the system and develop their "google-fu", choosing rare words that are likely to appear in the document they want. However, there are problems.
+Using something as simple as tf-idf, you get pretty far - whatever shortcomings there may be are mitigated by users adapting to the system and developing their "google-fu", searching for combinations of words that are likely to appear in the document they want, but unlikely to appear in other unrelated documents.
 
-Consider someone searching for the term "flora": maybe the document they were searching for instead contained the word "vegetation". Extremely similar concepts, but the strings don't match, so the system won't recommend it. "Okay", you think, "well we'll just add all the known synonyms of a word and swap them out. And if we detect 'not' before a word we'll search instead for the antonyms! And we'll build up syntax graphs, and grammatical hierarchies and..."
+However, this approach has problems: Consider searching for the term "flora": it could be that the document they were searching for instead contained the word "vegetation". While these words represent extremely similar concepts, their literal character-based representation as words don't match, so the system won't recommend it. "Okay", you think, "well we'll just add all the known synonyms of a word and swap them out. And if we detect 'not' before a word we'll search instead for the antonyms! And we'll build up syntax graphs, and grammatical hierarchies and..."
 
 ![](parsethicket.jpg)
 *A [Parse Thicket](https://en.wikipedia.org/wiki/Parse_thicket)*
 
-You've just gone down the feature engineering path. It's admirable, and many have made some damn impressive tools with great effort - but it's ultimately brittle, won't generalize to other languages, and took a huge amount of time to design. Can we do better?
+You've just gone down the feature engineering path. It's admirable, and some damn impressive tools have been built this way with great effort. However, systems like these take a huge amount of time to design, tend to be brittle and domain-limited, require continuous carefully crafted updates as the target language expands and new concepts are added, and won't generalize to other languages.
+
+Issues like these plague existing scientific search tools: take the famous [AdS/CFT correspondence](https://en.wikipedia.org/wiki/AdS/CFT_correspondence) in physics - it says that a certain kind of quantum field theory (CFT) is closely related to gravitation in a particular regime (AdS). If we were hand-designing a physics search engine, we'd now have to find a way to make every search for a CFT also bring up AdS results. This is a never-ending nightmare of new features that requires understanding and staying on top of the literature. It's infeasible, and cannot scale to a universal platform.
+
+Considering problems of these kinds led us to ask, "can we do better?"
 
 ## Are vectors concepts?
 Instead of trying to encode every scrap of explicit knowledge and structure we can think of into a system, can we build a system that learns for itself how best to represent concepts?
 
 This was the questions on the minds of researchers in 2013, when the seminal [word2vec](https://arxiv.org/abs/1301.3781) paper was published. They created a basic system of this kind in a remarkably simple way:
 
-Consider encoding a word into a vector that represents the word's place in the dictionary, e.g. if there are 100,000 words in the english language, and if e.g. "apple" was the first word alphabetically, the *dictionary vector* for "apple" would be a 1 in the first place, followed by a zero everywhere else:
+Consider encoding a word into a vector that represents the word's place in the dictionary. For example, say there are 100,000 words in the English language, and "apple" is the first word alphabetically, then the *dictionary vector* for "apple" would be a 1 in the first place, followed by a zero everywhere else:
 $$\text{apple} = [1,0,0,0,...]$$
-Now if "zebra" was the final word in the language, we would represent it like
+Now if "zebra" were the final word in the language, we would represent it like:
 $$\text{zebra} = [0,0,0,...,1]$$
 
-and so on for the rest of the words in the dictionary. Now, take as a linguistic hypothesis the following: words that appear near each other in text often carry related meaning. For example, the word "apple" will probably appear near the words "pie" and "tree" and "fruit" much more often than it will appear near the word "chair". If we can build a system that outputs "pie" when it's fed "apple", or outputs "ocean" when it's fed "fish", it must have learned at least at a superficial level how concepts are related.
+and so on for the rest of the words in between. Now, take as a linguistic hypothesis the following: words that appear near each other in human-written text often carry related meaning. For example, the word "apple" will probably appear near the words "pie","tree", and "fruit" much more often than it will appear near the word "chair". If we can build a system that outputs "pie" when it's fed "apple", or outputs "ocean" when it's fed "fish", it must have learned at least at a superficial level how concepts are related.
 
-With this linguistic hypothesis, we want to train a neural network to output dictionary vectors representing "tree" and "fruit" when we put in the dictionaryvector for "apple". We'll build a single hidden layer neural network that accepts a 100,000 dimension vector, learns a transformation to some intermediate hidden representation (which we'll force to be much smaller in size, say 1,000 dimensions), and then another transformation back to 100,000 dimensions, which will represent another dictionary vector:
+With this linguistic hypothesis, we can train a neural network to take words as input, and get related words as output (e.g., if we input the dictionary vector for “apple”, we’d like the network to output dictionary vectors for "tree" and "fruit").
+
+In practice, we can build a single hidden layer neural network that accepts a 100,000 dimension vector, learns a transformation to some intermediate hidden representation (which we'll force to be much smaller in size, say 1,000 dimensions), and then another transformation back to 100,000 dimensions, which will represent another dictionary vector:
 
 ![](autoencoder.png)
 *A single hidden layer neural network*
 
-By training this network on millions of examples of nearby words sourced from text, the intermediate, hidden representation in the network is forced to encode general semantic information about concepts learned from text. After training for many iterations, the word2vec authors showed a remarkable result: the hidden representation of "king", minus the hidden representation of "man", plus the hidden representation of "woman" equaled... the hidden representation of "queen". The network wasn't taught this, but it learned to embed these words into a *semantic space*, where related concepts were mapped near to each other. It was forced to learn this mapping to a semantic space through its training procedure!
+By training this network on millions of examples of nearby words sourced from text, the word2vec authors found that the intermediate, hidden representation in the network is forced to encode general semantic information about concepts learned from text. In other words, the network learns to encode what humans would call the "meaning" of the input.
+
+In one remarkable result, the word2vec authors showed showed that the hidden representation of "king", minus the hidden representation of "man", plus the hidden representation of "woman" equaled... the hidden representation of "queen"! The network wasn't taught this relationship explicitly, instead it learned to embed these words into a *semantic space*, where related concepts were mapped near to each other as a side effect of the training procedure!
 
 ![](glove_embedding.jpg)
-*An example semantic embedding of concepts into vector space, showing only two dimensions[^glove]*
+*An example semantic embedding of concepts into vector space, showing only two dimensions[^glove]. The x-dimension seems to encode a notion of formality, while the y-dimension seems to encode a notion of gender.*
 
-Using semantic vectors like these, we can make progress towards making our concept search better. Now even if a user wants to search for "flora" but a text uses the word "vegetation", it's no matter! Their semantic vectors should be nearby each other in semantic vector space. By comparing these vectors, we can rank concepts by similarity of *meaning*, and get around the brittle term-based search of yesteryear.
+Using semantic vectors like these, we can make progress towards making our concept search better. Now even if a user wants to search for "flora" but a text uses the word "vegetation", it's no matter! Those two words' semantic vectors will be nearby each other in semantic vector space. By comparing these vectors, we can rank concepts by similarity of *meaning*, and get around the brittle term-based problems with classical search methods.
 
-## 2013 to now
-NLP has come a long way since 2013. Word vectors don't come from single hidden layer neural networks, now large neural language models can do more than predict which words are associated with others - the latest and greatest models can write text better than many teenagers[^gwerngpt3]. The [Transformer revolution](https://arxiv.org/abs/1706.03762) and models like [BERT](https://arxiv.org/abs/1810.04805) are making language representations ever more powerful: we're getting closer to hidden representations that capture ever more subtle properties like
+## The Transformer revolution
+NLP has come a long way from 2013. Since the Transformer revolution[^transformer], neural language models have been able to capture ever more subtle properties in their embeddings, such as:
 $$ R(\text{not apple}) = - R(\text{apple})$$
-where $R(\cdot)$ is the representation learned by the network. These methods have been extended to whole paragraphs, and even documents[^laser].
+where $R(\cdot)$ is the representation learned by the network. Now language models can embed sentences[^sentence], and even whole documents[^laser], rendering obsolete most of the utility of individual word-level embeddings.
 
-Neural language models are actively revolutionizing how we organize natural text - even Google added BERT semantic similarity features to their search last year[^googlebert] - a serious sign of maturation of the technology.
+The latest neural language models no longer predict words related to their input, rather they can continue a sentence from any point[^gpt3], fill in missing phrases [^bert], and are now writing documents at a middle/high-school level [^gwerngpt3].
 
-At The Collaboratory, we're building the next generation semantic search and data sharing platform for scientists. If these kinds of tasks sound interesting to you, we encourage you to [apply](mailto:branton@thecollaboratory.ai)!
+While universal language embeddings are incredibly useful, purpose-built models can still outperform them for particular domains. In The Collaboratory's case, we need models that understand specialized scientific content - which is not something models like BERT, which are trained mostly on news and general internet articles, excel at. In the last year there has been enormous progress in building language models which understand scientific content, in particular Sci-TLDR[^tldr], a model which creates extremely abridged abstractive summaries of scientific documents, and SPECTER[^specter], a scientific document-level embedder trained using a citation graph (The Collaboratory ❤️ [AI2](https://allenai.org/)).
 
-## Future
-Talk about reinforcement learning to eventually predict on end-user clicks and attention, instead of just content similarity?
+Neural language models are actively revolutionizing how we organize natural text - even Google has recently added BERT semantic features to their search[^googlebert] - a serious sign of maturation of the technology.
 
->“A human is not a device that reliably reports a gold standard judgment of relevance of a document to a query.”</br>― Hinrich Schütze, Introduction to Information Retrieval 
+---
+
+At The Collaboratory, we want to make searching through scientific literature, and finding, sharing and collaborating with research data vastly more efficient. To do that, we're building the next generation of semantic search and working to aggregate and organize all scientific data under one roof. If you're excited to work with us to solve these problems, we'd love to hear from you! email here
 
 [^glove]: [GloVe: Global Vectors for Word Representation](https://nlp.stanford.edu/projects/glove/)
+[^transformer]: [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
+[^sentence]: [Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks](https://arxiv.org/abs/1908.10084)
+[^bert]: [BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding](https://arxiv.org/abs/1810.04805)
+[^gpt3]: [Language Models are Few-Shot Learners](https://arxiv.org/abs/2005.14165)
 [^gwerngpt3]: [On GPT-3: Meta-Learning, Scaling, Implications, And Deep Theory](https://www.gwern.net/newsletter/2020/05#gpt-3)
 [^laser]: [Transformer based Multilingual document Embedding model](https://arxiv.org/abs/2008.08567)
+[^tldr]: [TLDR: Extreme Summarization of Scientific Documents](https://arxiv.org/abs/2004.15011)
+[^specter]: [SPECTER: Document-level Representation Learning using Citation-informed Transformers](https://arxiv.org/abs/2004.07180)
 [^googlebert]: [Understanding searches better than ever before](https://blog.google/products/search/search-language-understanding-bert/)
