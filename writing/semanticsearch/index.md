@@ -80,7 +80,7 @@ NLP has come a long way from 2013. Since the Transformer revolution[^transformer
 $$ R(\text{not apple}) = - R(\text{apple})$$
 where $R(\cdot)$ is the representation learned by the network. Now language models can embed sentences[^sentence], and even whole documents[^laser], rendering obsolete most of the utility of individual word-level embeddings.
 
-The latest neural language models no longer predict words related to their input, rather they can continue a sentence from any point[^gpt3], fill in missing phrases [^bert], and are now writing documents at a middle/high-school level [^gwerngpt3].
+The latest neural language models no longer predict words related to their input, rather they can continue a sentence from any point[^gpt3], fill in missing phrases[^bert], and are now writing documents at a middle/high-school level[^gwerngpt3].
 
 While universal language embeddings are incredibly useful, purpose-built models can still outperform them for particular domains. In The Collaboratory's case, we need models that understand specialized scientific content - which is not something models like BERT, which are trained mostly on news and general internet articles, excel at. In the last year there has been enormous progress in building language models which understand scientific content, in particular Sci-TLDR[^tldr], a model which creates extremely abridged abstractive summaries of scientific documents, and SPECTER[^specter], a scientific document-level embedder trained using a citation graph (The Collaboratory ❤️ [AI2](https://allenai.org/)).
 
