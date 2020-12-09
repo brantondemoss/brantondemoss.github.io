@@ -8,6 +8,15 @@ header-includes:
 
 > In the 60s, Marvin Minsky assigned a couple of undergrads to spend the summer programming a computer to use a camera to identify objects in a scene. He figured they'd have the problem solved by the end of the summer. Half a century later, we're still working on it.<br>[- xkcd 1425: "Tasks" alt text](https://xkcd.com/1425)
 
+Finding research data is hard: scientists often don't upload their data to the internet, and when they do it's hard to search for, and there are dozens of places to look. At The Collaboratory, we're building a universal research data platform, and along the way facing [philosophical challenges](https://slatestarcodex.com/2014/11/21/the-categories-were-made-for-man-not-man-for-the-categories/) that require engineering solutions.
+
+It's hard to write a program to identify pictures of birds, because birds do not exist. Like a Platonic solid
+
+![](rotato.gif)
+*Ce n'est pas un cuboctaèdre*
+
+Ask any librarian, organizing concepts into categories is really hard. Can we build a meaningful and navigable taxonomy of human ideas?
+
 Why is it hard to write a program to identify pictures of birds? Funnily enough, it's for the exact same reason the US Supreme Court struggled to define obscenity, finally settling on the now-infamous criteria "[I know it when I see it](https://en.wikipedia.org/wiki/I_know_it_when_I_see_it)". The difficulty, of course, is that human made categories are not exact, and exist only by agreement. We've cut arbitrary lines through the space of things which exist: what's a fruit vs. a vegetable? A car vs. a truck? These lines blur - no exact definition can be given.
 
 Those interested in the philosophical side of this discussion will appreciate Scott Alexander's [The Categories Were Made For Man, Not Man For The Categories](https://slatestarcodex.com/2014/11/21/the-categories-were-made-for-man-not-man-for-the-categories/). With recent advances in natural language processing and machine understanding, we'll discuss how these problems are solved today, and how they can be used to build better search engines.
