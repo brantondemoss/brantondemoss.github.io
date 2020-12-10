@@ -6,6 +6,12 @@ header-includes:
 <p style="float:center; text-align: center;">
 <a href="https://brantondemoss.com/">↩</a>
 </p>
+
+<a href="https://brantondemoss.com/writing/semanticsearch/">
+<img src="semanticsearch/dodecahedron.gif"></img>
+*What's a Concept, and How to Find One*
+</a>
+
 <a href="https://brantondemoss.com/writing/seismicgan/">
 <video autoplay playsinline loop muted width="420" class="top" style="width: 50%;margin-left: 25%;float: center">
        <source src="../seismicdream/5820.mp4"
