@@ -98,4 +98,15 @@ At The Collaboratory, we want to make searching through scientific literature, a
 [^laser]: [Transformer based Multilingual document Embedding model](https://arxiv.org/abs/2008.08567)
 [^tldr]: [TLDR: Extreme Summarization of Scientific Documents](https://arxiv.org/abs/2004.15011)
 [^specter]: [SPECTER: Document-level Representation Learning using Citation-informed Transformers](https://arxiv.org/abs/2004.07180)
-[^googlebert]: [Understanding searches better than ever before](https://blog.google/products/search/search-language-understanding-bert/)
+[^googlebert]: [Understanding searches better than ever before](https://blog.google/products/search/search-language-understanding-bert/)OBBBB
+
+<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-48874513-2', 'auto');
+       ga('send', 'pageview');
+
+</script>
