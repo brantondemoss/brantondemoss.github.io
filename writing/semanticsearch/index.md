@@ -87,8 +87,7 @@ While universal language embeddings are incredibly useful, purpose-built models 
 Neural language models are actively revolutionizing how we organize natural text - even Google has recently added BERT semantic features to their search[^googlebert] - a serious sign of maturation of the technology.
 
 ---
-
-At The Collaboratory, we want to make searching through scientific literature, and finding, sharing and collaborating with research data vastly more efficient. To do that, we're building the next generation of semantic search and working to aggregate and organize all scientific data under one roof. If you're excited to work with us to solve these problems, [we'd love to hear from you](mailto:jobs@thecollaboratory.ai)!
+At The Collaboratory, we want to make searching through scientific literature, and finding, sharing and collaborating with research data vastly more efficient. To do that, we’re building the next generation of semantic search and working to aggregate and organize all scientific data under one roof. If you’re excited to work with us to solve these problems, [we’d love to hear from you](mailto:jobs@thecollaboratory.ai)!
 
 [^glove]: [GloVe: Global Vectors for Word Representation](https://nlp.stanford.edu/projects/glove/)
 [^transformer]: [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
