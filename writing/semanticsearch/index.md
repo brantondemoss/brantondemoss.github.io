@@ -50,7 +50,7 @@ Considering problems of these kinds led us to ask, "can we do better?"
 ## Are vectors concepts?
 Instead of trying to encode every scrap of explicit knowledge and structure we can think of into a system, can we build a system that learns for itself how best to represent concepts?
 
-This was the questions on the minds of researchers in 2013, when the seminal [word2vec](https://arxiv.org/abs/1301.3781) paper was published. They created a basic system of this kind in a remarkably simple way:
+This was the questions on the minds of researchers in 2013, when the seminal word2vec[^w2v] paper was published. They created a basic system of this kind in a remarkably simple way:
 
 Consider encoding a word into a vector that represents the word's place in the dictionary. For example, say there are 100,000 words in the English language, and "apple" is the first word alphabetically, then the *dictionary vector* for "apple" would be a 1 in the first place, followed by a zero everywhere else:
 $$\text{apple} = [1,0,0,0,...]$$
@@ -89,6 +89,7 @@ Neural language models are actively revolutionizing how we organize natural text
 ---
 At The Collaboratory, we want to make searching through scientific literature, and finding, sharing and collaborating with research data vastly more efficient. To do that, we’re building the next generation of semantic search and working to aggregate and organize all scientific data under one roof. If you’re excited to work with us to solve these problems, [we’d love to hear from you](mailto:jobs@thecollaboratory.ai)!
 
+[^w2v]: [Efficient Estimation of Word Representations in Vector Space](https://arxiv.org/abs/1301.3781)
 [^glove]: [GloVe: Global Vectors for Word Representation](https://nlp.stanford.edu/projects/glove/)
 [^transformer]: [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 [^sentence]: [Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks](https://arxiv.org/abs/1908.10084)
