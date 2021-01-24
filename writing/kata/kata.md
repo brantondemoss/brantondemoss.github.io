@@ -1,5 +1,7 @@
 % Love Letter to KataGo or:<br>Go AI past, present, and future
 
+<center>[🇩🇪Deutsche](katagogerman.pdf)</center>
+
 ![](katagame.png)
 *KataGo (B) vs Leela Zero (W)[^kata1]*
 
@@ -260,6 +262,8 @@ For a bit more insight on where things might be heading for the future of Go, I 
 **Are there plans to set up a community contributed computing pool for training KataGo when the current run ends?**
 
 > There are some attempts and plans, and I hope they can get off the ground. Even if they don't, KataGo has reached a great point already and I hope it's made a big impact going forward on any future successors or other projects inspired by it. But yes, I hope a distributed run will be started before too long.
+
+**EDIT Jan 23, 2021: KataGo distributed is now [open to the public](https://katagotraining.org/)**
 
 **Are there plans to have KataGo compete in any of the international Go AI competitions?** 
 
