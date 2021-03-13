@@ -130,7 +130,7 @@ AlphaGo shook both the Go world and AI research community, but DeepMind largely 
 
 As early as the first published paper on AlphaGo, many private companies, especially in China, S. Korea and Japan (where commercial Go products are viable) began to recreate AlphaGo/Zero. While these bots were helpful to those who could afford access, it wasn't until open source bots became wide-spread that the Go community could fully take advantage of their benefits.
 
-The most well-known open source bot is [Leela Zero](https://zero.sjeng.org/home), a faithful re implementation of AlphaZero, which uses crowdsourced GPU compute to produce games of self-play and train the network. Leela Zero has been training since late 2017, and has produced about 20 million games of self-play as of May 2020.
+The most well-known open source bot is [Leela Zero](https://zero.sjeng.org/), a faithful re implementation of AlphaZero, which uses crowdsourced GPU compute to produce games of self-play and train the network. Leela Zero has been training since late 2017, and has produced about 20 million games of self-play as of May 2020.
 
 ![](leelaelo.png)
 *Leela Zero Elo rating vs. number of games of self-play[^20]<br/>Note: Self-play Elo is inflated and does not correspond to the previously shown Elo graph.*
@@ -279,7 +279,7 @@ Though bots have overtaken humans in skill, they haven't left us behind: Now the
 
 [^2]: [Tromp: Number of legal Go positions](https://tromp.github.io/go/legal.html)
 
-[^3]: Lower bound: [Walraet and Tromp: A Googolplex of Go Games](https://matthieuw.github.io/go-games-number/AGoogolplexOfGoGames.pdf) 
+[^3]: Lower bound: [Walraet and Tromp: A Googolplex of Go Games](https://doi.org/10.1007/978-3-319-50935-8_18)
 
 [^4]: Upper bound: [Tromp and Farneback: Combinatorics of Go](https://tromp.github.io/go/gostate.pdf)
 
