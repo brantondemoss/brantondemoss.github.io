@@ -311,7 +311,7 @@ Though bots have overtaken humans in skill, they haven't left us behind: Now the
 
 [^19]: [He et al: Deep Residual Learning for Image Recognition](https://arxiv.org/abs/1512.03385)
 
-[^20]: [Leela Zero](https://zero.sjeng.org/home)
+[^20]: [Leela Zero](https://zero.sjeng.org/)
 
 [^21]: [Wu: Accelerating Self-Play Learning in Go](https://arxiv.org/abs/1902.10565)
 

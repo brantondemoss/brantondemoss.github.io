@@ -1,0 +1,126 @@
+Host *
+     XAuthLocation /opt/X11/bin/xauth
+
+Host oxweb
+    Hostname linux.ox.ac.uk
+    Port 22
+    User exet4231
+
+Host robert
+     User database
+     Hostname collabserver.hopto.org
+     Port 12649
+
+Host farah
+     User  farah_test
+     Hostname collabserver.hopto.org
+     Port 35949
+
+Host collabtest
+     UseKeychain yes
+     AddKeysToAgent yes
+     User collabtest
+     Hostname collabserver.hopto.org
+     Port 30809
+     IdentityFile ~/.ssh/id_rsa
+
+Host node1
+     User matt
+     ProxyJump master
+     Hostname node1
+
+Host node2
+     User matt
+     ProxyJump master
+     Hostname node2
+
+Host node3
+     User matt
+     ProxyJump master
+     Hostname node3
+
+Host node4
+     User matt
+     ProxyJump master
+     Hostname node4
+
+Host collab2
+     User collab_user
+     Port 36942
+     Hostname collabserver.hopto.org
+     IdentityFile ~/.ssh/id_rsa
+     UseKeychain yes
+     AddKeysToAgent yes
+
+Host collab
+     UseKeychain yes
+     AddKeysToAgent yes
+     User user1
+     Hostname collabserver.duckdns.org
+     Port 22
+     IdentityFile ~/.ssh/id_rsa
+
+Host imac
+     UseKeychain yes
+     AddKeysToAgent yes
+     User bdemoss
+     Hostname 67.172.148.212
+     Port 50026
+     IdentityFile ~/.ssh/id_rsa
+
+Host volga
+     UseKeychain yes
+     AddKeysToAgent yes
+     User bdemoss
+     Hostname 67.172.148.212
+     Port 50022
+     IdentityFile ~/.ssh/id_rsa
+
+Host nile
+     UseKeychain yes
+     AddKeysToAgent yes
+     User bdemoss
+     Hostname 67.172.148.212
+     Port 50023
+     IdentityFile ~/.ssh/id_rsa
+
+Host master
+     User matt
+     UseKeychain yes
+     AddKeysToAgent yes
+     Hostname 10.1.10.220
+     ProxyJump nile
+
+Host gpu1
+     UseKeychain yes
+     AddKeysToAgent yes
+     User bdemoss
+     Hostname 67.172.148.212
+     Port 50020
+     IdentityFile ~/.ssh/id_rsa
+
+Host columbia
+     UseKeychain yes
+     AddKeysToAgent yes
+     User bdemoss
+     Hostname 67.172.148.212
+     Port 50021
+     IdentityFile ~/.ssh/id_rsa
+
+Host xtgeodesk
+     User matt
+     Hostname 10.1.10.222
+     ProxyJump nile
+
+Host p53
+     UseKeychain yes
+     AddKeysToAgent yes
+     User bdemoss
+     Hostname 67.172.148.212
+     Port 50025
+     IdentityFile ~/.ssh/id_rsa
+
+Host archivist
+     User archivist
+     Hostname 10.1.10.205
+     ProxyJump nile
