@@ -1,0 +1,143 @@
+% LaTeX resume using res.cls
+\documentclass[margin]{res}
+\usepackage{mathtools} 
+\usepackage{amsmath}
+%\usepackage{helvetica} % uses helvetica postscript font (download helvetica.sty)
+%\usepackage{newcent}   % uses new century schoolbook postscript font 
+\setlength{\textwidth}{5.1in} % set width of text portion
+
+\begin{document}
+
+% Center the name over the entire width of resume:
+
+\moveleft.5\hoffset\centerline{\large\bf Branton DeMoss}
+%\vspace{10px}
+%\moveleft.5\hoffset\centerline{branton.demoss@eng.ox.ac.uk \(|\) brantondemoss.com}
+%\moveleft.5\hoffset\centerline{ \begin{ncolumn}{3}
+%     & branton.demoss@eng.ox.ac.uk & \qquad St Edmund Hall \\
+%     & brantondemoss.com & \qquad Queen's Lane, Oxford \\
+%    \large\bf Branton DeMoss & +1-720-592-5911 & \qquad OX1 4AR, UK   \\
+%  \end{ncolumn}}
+% Draw a horizontal line the whole width of resume:
+% \moveleft\hoffset\vbox{\hrule width\resumewidth height 1pt}\smallskip
+% address begins here
+% Again, the address lines must be centered over entire width of resume:
+
+
+
+
+\begin{resume}
+  \section{SUMMARY}  Interested in the intersection of classical planning
+  and deep-learning based world modeling to build autonomous agents that
+  can think ahead to act in the world.
+
+  \section{CONTACT} \begin{ncolumn}{2}
+     branton.demoss@eng.ox.ac.uk & \qquad St Edmund Hall \\
+     brantondemoss.com & \qquad Queen's Lane, Oxford \\
+     +1-720-592-5911 & \qquad OX1 4AR, UK   \\                   
+  \end{ncolumn}
+  
+ 
+
+  \section{EDUCATION} {\sl DPhil Candidate in Artificial Intelligence } \hfill 2021-\\
+                      % \sl will be bold italic in New Century Schoolbook (or
+                      % any postscript font) and just slanted in
+                      % Computer Modern (default) font
+                University of Oxford  \\
+
+
+  {\sl BA Mathematics and Physics} \hfill 2014-18\\
+                University of Colorado Boulder  \\
+ 
+\section{EXPERIENCE} The Collaboratory \hfill 2020- \\
+                 {\sl Co-founder; Chief Science Officer}
+                 \begin{itemize}  \itemsep -2pt %reduce space between items
+                 \item Developed deep-learning based document embedder
+                   based on language and graph structure, and related algorithms
+                   for knowledge curation.
+                 \item Led product strategy, ML R\&D,
+                   and customer-informed design.
+                 \item Admitted to Techstars class of 2021 ($<1\%$ applicants admitted)
+                 \end{itemize}
+
+                 Comma.ai \hfill            2020 \\
+		{\sl ML Research Intern}
+                 \begin{itemize}  \itemsep -2pt %reduce space between items
+                 \item Extended	vision module architecture and ported recurrent
+                   neural network for driving policy from Tensorflow to PyTorch.
+                 \item Studied effects of new stochastic dynamics model on driving
+                   policy quality.
+                 \end{itemize}
+
+ 
+               Front Range Geosciences \hfill            2017-20 \\
+                 {\sl Research Scientist}
+                 \begin{itemize}  \itemsep -2pt %reduce space between items
+                 \item Developed convolutional neural network (CNN) to detect
+                   seismic first break events. System now used in production at
+                   multinational seismic exploration corporations.
+                 \item Incorporated differentiable Gaussian mixture models in
+                   deep learning system to model energy-time uncertainty in
+                   wavelet arrival.
+                 \item Developed Generative Adversarial Network (GAN) to pre-train
+                   CNN when supervisory targets unavailable.
+                 \item Wrote eikonal wave equation propagator (C++) for
+                   psuedo-structured 3D meshes for tomographic seismic imaging.
+                 \end{itemize} 
+\section{RESEARCH} Center for Theory of Quantum Matter \hfill            2017 \\
+		{\sl Research Assistant}
+                 \begin{itemize}  \itemsep -2pt %reduce space between items
+                 \item Characterized quantum many-body localization (MBL) under Floquet conditions.
+                 \end{itemize}
+
+                Mathematics Department, CU Boulder \hfill            2016 \\
+		 {\sl Research Assistant}
+                 \begin{itemize}  \itemsep -2pt %reduce space between items
+                 \item Investigated knot-theoretic properties of topological quantum field theories.
+                 \end{itemize}
+
+                High Enery Particle Physics Group, Physics Department, CU Boulder  \hfill            2014-15 \\
+		{\sl Research Assistant}
+                 \begin{itemize}  \itemsep -2pt %reduce space between items
+                 \item Characterized effects of beamline material geometry on particle
+                   correlation statistics for the Deep Underground Neutrino Experiment
+                   (DUNE).
+                 \end{itemize}
+
+\section{PUBLICATIONS} {\sl Combining physics and deep learning to automatically \hfill            $2021$ \\ pick first breaks in the Permian Basin} \\
+		To appear in {\sl SEG Technical Program Expanded Abstracts}
+
+                {\sl Ein Liebesbrief an KataGo} \hfill 2020 \\
+                Deutsche Go Zeitung, Ausgabe 4/2020
+
+                {\sl Love Letter to KataGo, or:\hfill $2020$\\ Go AI Past, Present, and Future} \\
+                American Go E-Journal
+                
+                {\sl DeepTrace: A breakthrough application of deep learning \hfill $2019$\\ to automate first break picking}  \\
+                SEG 2019 Lenovo Thought Leadership Series
+
+                {\sl Topology and Knot Theory} \hfill 2016 \\
+                Course notes for CU Boulder special topics course: \\
+                \textit{``Topology, Knot Theory, and their applications in Physics and Chemistry''}
+                
+                {\sl Secondary Particle Showers from Hadron Absorber Interactions} \hfill 2016 \\
+                Long Baseline Neutrino Facility (LBNF) / Deep Underground Neutrino Experiment (DUNE) Collaboration Documents
+
+                
+                \section{AWARDS}
+                
+                {\sl Research Studentship} \hfill Oxford, 2021 \\
+                {\sl Stribic-Martin Scholarship} \hfill Boulder, 2017 \\
+                        {\sl UROP Fellowship} \hfill Boulder, 2017 \\
+                        {\sl Dawkins Fund Award} \hfill Oxford, 2016 \\
+                        {\sl Gilman Scholarship} \hfill Oxford, 2016 \\
+                        {\sl Esteemed Scholar Award} \hfill Boulder, 2014 \\
+
+
+
+
+                
+
+\end{resume}
+\end{document}
+B
