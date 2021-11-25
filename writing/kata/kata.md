@@ -1,5 +1,6 @@
 % Love Letter to KataGo or:<br>Go AI past, present, and future
 
+<center> June 2020 </center>
 <center>[🇩🇪Deutsche](katagogerman.pdf)</center>
 
 ![](katagame.png)
