@@ -1,6 +1,17 @@
 Host *
      XAuthLocation /opt/X11/bin/xauth
 
+Host robots
+     User bdemoss
+     Hostname login.robots.ox.ac.uk
+     Port 22
+
+Host collabml
+     User user2
+     Hostname 10.0.0.37
+     Port 22
+     ProxyJump collab
+     
 Host oxweb
     Hostname linux.ox.ac.uk
     Port 22
