@@ -1,18 +1,18 @@
 % LaTeX resume using res.cls
 \documentclass[margin]{res}
-\usepackage{mathtools} 
+\usepackage{mathtools}
 \usepackage{amsmath}
 \usepackage{hyperref}
 %\usepackage{helvetica} % uses helvetica postscript font (download helvetica.sty)
-%\usepackage{newcent}   % uses new century schoolbook postscript font 
+%\usepackage{newcent}   % uses new century schoolbook postscript font
 \setlength{\textwidth}{5.1in} % set width of text portion
 
 \begin{document}
 
 % Center the name over the entire width of resume:
 
-\moveleft.5\hoffset\centerline{\large\bf Branton DeMoss}
-%\vspace{10px}
+\moveleft0.5\hoffset\centerline{\large\bf Branton DeMoss}
+\vspace{10px}
 %\moveleft.5\hoffset\centerline{branton.demoss@eng.ox.ac.uk \(|\) brantondemoss.com}
 %\moveleft.5\hoffset\centerline{ \begin{ncolumn}{3}
 %     & branton.demoss@eng.ox.ac.uk & \qquad St Edmund Hall \\
@@ -20,49 +20,45 @@
 %    \large\bf Branton DeMoss & +1-720-592-5911 & \qquad OX1 4AR, UK   \\
 %  \end{ncolumn}}
 % Draw a horizontal line the whole width of resume:
-% \moveleft\hoffset\vbox{\hrule width\resumewidth height 1pt}\smallskip
+ \moveleft\hoffset\vbox{\hrule width\resumewidth height 1pt}\smallskip
 % address begins here
 % Again, the address lines must be centered over entire width of resume:
-
-
-
+\section{CONTACT}
+  \begin{ncolumn}{2}
+     \href{mailto:bdemoss@robots.ox.ac.uk}{bdemoss@robots.ox.ac.uk} & \hfill St Edmund Hall \\
+     \href{https://brantondemoss.com/}{www.brantondemoss.com} & \hfill Queen's Lane, Oxford \\
+     \href{tel:+447926576225}{+44 (0)7926 576225} & \hfill OX1 4AR, UK
+  \end{ncolumn}
 
 \begin{resume}
-    \section{Summary}
-  Interested in the intersection of classical planning
+    \section{SUMMARY}
+  Working at the intersection of classical planning
   with deep-learning based world modeling to build autonomous agents that
   can think ahead to act in the world.
 
-  %\section{Contact}
-  \begin{ncolumn}{2}
-     \href{mailto:bdemoss@robots.ox.ac.uk}{bdemoss@robots.ox.ac.uk} & \qquad St Edmund Hall \\
-     \href{https://brantondemoss.com/}{www.brantondemoss.com} & \qquad Queen's Lane, Oxford \\
-     \href{tel:+447926576225}{+44 (0)7926 576225} & \qquad OX1 4AR, UK   \\                   
-  \end{ncolumn}
-  
- 
 
-  \section{Education} {\sl DPhil Candidate in Artificial Intelligence } \hfill 2021-\\
+  \section{EDUCATION} {\sl DPhil Candidate in Artificial Intelligence } \hfill 2021-\\
                       % \sl will be bold italic in New Century Schoolbook (or
                       % any postscript font) and just slanted in
                       % Computer Modern (default) font
-                University of Oxford  \\
+                University of Oxford
 
   {\sl BA Mathematics and Physics} \hfill 2018\\
-                University of Colorado Boulder  \\
- 
-\section{Experience} Oxford Robotics Institute \hfill 2021- \\
+  University of Colorado Boulder
+
+\section{EXPERIENCE} Oxford Robotics Institute \hfill 2021- \\
                  {\sl Graduate Student Researcher}
-                 \begin{itemize}  \itemsep -2pt %reduce space between items                
+                 \begin{itemize}  \itemsep -2pt %reduce space between items
                  \item Research in reinforcement learning, world modeling, and planning.
                  \end{itemize}
-                
+
                 The Collaboratory \hfill 2020- \\
                  {\sl Co-founder; Chief Science Officer}
                  \begin{itemize}  \itemsep -2pt %reduce space between items
                  \item Deep learning on language and graphs for scientific knowledge curation.
                  \item Led product strategy, design, and ML R\&D.
                  \item Admitted to Techstars class of 2021 ($<1\%$ applicants admitted).
+                 \item Raised $>$\$2M (as of early 2022).
                  \end{itemize}
 
                  Comma.ai \hfill            2020 \\
@@ -71,9 +67,8 @@
                  \item Reinforcement learning for self-driving cars.
                  \end{itemize}
 
- 
                Front Range Geosciences \hfill            2017-20 \\
-                 {\sl Research Scientist}
+                 {\sl Machine Learning Engineer}
                  \begin{itemize}  \itemsep -2pt %reduce space between items
                  \item Developed and sold deep-learning based first break picking system.
                  \end{itemize} 
@@ -93,10 +88,10 @@
                 High Enery Particle Physics Group, Physics Department, CU Boulder  \hfill            2014-15 \\
 		{\sl Research Assistant}
                  \begin{itemize}  \itemsep -2pt %reduce space between items
-                 \item Monte Carlo simulations for the Deep Underground Neutrino Experiment (DUNE).
+                 \item Monte Carlo simulations for the Deep Underground Neutrino Experiment.
                  \end{itemize}
 
-\section{Publications} {\sl Combining physics and deep learning to automatically \hfill            $2021$ \\ pick first breaks in the Permian Basin} \\
+\section{PUBLICATIONS} {\sl Combining physics and deep learning to automatically \hfill            $2021$ \\ pick first breaks in the Permian Basin} \\
 		First International Meeting for Applied Geoscience \& Energy
 
                 {\sl Ein Liebesbrief an KataGo} \hfill 2020 \\
@@ -104,20 +99,20 @@
 
                 {\sl Love Letter to KataGo, or:\hfill $2020$\\ Go AI Past, Present, and Future} \\
                 American Go E-Journal
-                
+
                 {\sl DeepTrace: A breakthrough application of deep learning \hfill $2019$\\ to automate first break picking}  \\
                 SEG 2019 Lenovo Thought Leadership Series
 
                 {\sl Topology and Knot Theory} \hfill 2016 \\
                 Course notes for CU Boulder special topics course: \\
                 \textit{``Topology, Knot Theory, and their applications in Physics and Chemistry''}
-                
+
                 {\sl Secondary Particle Showers from Hadron Absorber Interactions} \hfill 2016 \\
                 Deep Underground Neutrino Experiment (DUNE) Collaboration Documents
 
-                
-                \section{Awards}
-                
+
+                \section{AWARDS}
+
                 {\sl Research Studentship} \hfill Oxford, 2021 \\
                 {\sl Stribic-Martin Scholarship} \hfill Boulder, 2017 \\
                         {\sl UROP Fellowship} \hfill Boulder, 2017 \\
@@ -128,8 +123,5 @@
 
 
 
-                
-
 \end{resume}
 \end{document}
-B
