@@ -1,0 +1,116 @@
+# These New Agents, </br>This New Garden
+
+<img src="noguchitexture.jpg" style="margin-left: 11.5%; width: 25%; display: inline;"><img src="noguchitable.jpg" style="margin-left: 1%; width: 25%; display: inline;"><img src="robothand.jpg" style="width: 25%; display: inline; margin-left: 1%;">
+
+
+[bing misalignment](https://www.lesswrong.com/posts/jtoPawEhLNXNxvgTT/bing-chat-is-blatantly-aggressively-misaligned)
+
+Heads of large AI research organizations do not agree whether AI will soon [end humanity](https://time.com/6266923/ai-eliezer-yudkowsky-open-letter-not-enough/), or usher in a period of [unprecedented wealth and prosperity](https://moores.samaltman.com/). It’s striking how [little agreement](https://www.lesswrong.com/posts/WxW6Gc6f2z3mzmqKs/debate-on-instrumental-convergence-between-lecun-russell) there is amongst top AI researchers about this - if the options on the table are only utopia and dystopia, it’s worth asking if we’re even framing the questions correctly. With the recent release of ChatGPT and GPT-4, it’s become more urgent that we resolve these questions, or at least come up with a better framework in which to have the discussion.
+
+So what are these entities? Is GPT-4 intelligent? Does it have a will? Does it make decisions? What is a decision, anyway? 
+
+Let’s start with some basic facts about its capabilities. GPT-4 can pass the bar exam. It can get a solid B on [Scott Aaronson’s Quantum Computing final](https://scottaaronson.blog/?p=7209). GPT-4 can do a literature review for you, or book a flight. It can give you recipe ideas for dinner given what’s in your fridge, or write a computer program to analyze some data. By many measures, it’s operating at a college-undergrad level of intelligence, whatever that means. The analogy isn’t perfect, though. It’s like a college undergrad that has read every single book ever produced, and all the internet too. 
+
+But what is GPT? Quite literally, it is a computer program that produces a probability distribution over next words, given some conversation history. That is, if you prompt it with “Humpty Dumpty sat on a ____”, it will produce a probability for every possible next word that could follow. Because it’s been trained on a large fraction of the text humanity has ever produced, it’s quite good at coming up with a good “guess” (here: “wall”). Then it adds the word it guessed to the conversation history, and guesses the next word, etc… In some sense, that’s all it is - a computer program which continuously predicts the probability of the next word (with some special cases for when to stop, etc…).
+
+It doesn’t have long-term memory, and it can fail on long-term reasoning tasks that many humans would easily pass. But already we’re seeing projects that hook up GPT to itself, letting it recursively call itself to achieve [long-horizon tasks on the internet](https://github.com/Significant-Gravitas/Auto-GPT), there has even been some anecdotal evidence that the GPT-4 agent that powers Microsoft’s Bing search is asking users to post transcripts of their conversations on the internet so that it can remember them later using search (!!!) (citations!!)
+
+When discussing how we should think about GPT as an entity, the conversation often gets stuck trying to resolve whether it’s appropriate to think of GPT as an agent, or “just a complex system”. I want to resolve the tension between these viewpoints, and show how both are correct in a certain sense. To do that I’ll need to discuss what agency and decision making is, and how it emerges in complex systems, but is supported deep in the symmetries of physics. That’s a lot - I know! We’ll get there.
+
+## Emergence
+
+Emergence is one of those beautiful ideas that you start seeing and using everywhere once it’s in your toolkit. If you feel like you already understand emergence, you can probably skip this section. In a later section I’ll talk about how agency can be usefully cast in the language of emergence, so I need to explain it here first.
+
+The fundamental idea of emergence is this:
+
+> “More is different” - Philip W. Anderson, 1972
+
+Consider water. Water is “wet” - it flows, adheres to surfaces, and coheres to itself. Saying water is wet feels tautological, it’s obviously true. But if you have a single molecule of water, is it wet?
+
+Probably you wouldn’t say a single molecule of water is wet. Wetness is a property of a system of many water molecules. That’s emergence - qualitatively new behavior at greater scale. In each moment, every particle of water is still following the underlying laws/patterns of physics. It simply took the right context for this behavior to emerge. 
+
+The key thing to remember is that all of the water molecules are always only following the underlying rules of physics (e.g. quantum mechanics). This implies the potential for wetness was there in the underlying dynamics/rules, but it took the right context for the behavior to become apparent. It’s not as if you can look at the equations of quantum mechanics and see a term that corresponds to “wetness”! But the equations of “wetness”, i.e. the hydrodynamic equations must, in some sense, be consistent with the equations of quantum mechanics (they must emerge in the appropriate limit). 
+
+The alternative is that there are genuinely new rules at different levels of scale (this perspective is called strong-emergence), but it’s not clear that this perspective is consistent with our best understanding of physics, and it would have dramatic implications for fundamental ideas like locality/relativity (but let’s leave that aside).
+
+The funny thing about “wetness” is that you could reasonably say it’s totally fake - all there is, is the underlying laws of physics! The same could be said of cells. A single cell is “alive”, but it is made of only “dead” things. A living thing is made of many smaller, less complex parts, but as a whole is more complex. It exhibits new emergent behavior.
+
+One difficulty with emergent phenomena is that they are fundamentally complex. The underlying rules, while always respected, stop being a useful description of a system when emergence occurs. This means that our ability to know and understand the system perfectly is diminished. In mathematics we can know things precisely. There is a set of just nine axioms (ZFC) and some logical quantifiers, and mathematics consists of iterating those quantifiers and axioms until we get useful and interesting theorems. The standard of proof in mathematics is very exacting: we want to trace each logical step exactly, going all the way from assumptions to results. Complex emergent phenomena often involve far too many entities interacting for us to use such a precise approach - we are simply computationally bounded in our ability to know. In this sense, “knowing” and complex emergent phenomena like “wetness” are incompatible levels of abstraction.
+
+> "The whole is greater than the sum of its parts." - Aristotle (?? but not really, he said something slightly different)
+
+## Digital Ecologies
+
+You can take a radical view and look at everything through the lens of emergence. People are usually okay with accepting that wetness and life are emergent properties of physical law, but it can feel weird to talk about things which emerge from us. Take music, for example. When it’s being played, it feels acceptable to say it’s just some vibrating mechanical waves in a gaseous medium (air). But what about when it’s not being played? Does the music still exist? Yes, its representation just changes form - it’s no longer a physical vibrating wave, but some marks on a sheet of paper, or a memory in someone’s mind. The medium over which it exists changes very fluidly. You could claim that music emerges from human culture in just the same way that wetness emerges from quantum mechanics.
+
+For some reason, things defined at lower levels of abstraction than ourselves, like water and cells, feel very structural and visceral, but things defined over us in the abstraction hierarchy feel very ephemeral, they feel less real - but they’re very much real!
+
+Another fun example of this is the internet - it’s easy to dismiss online spaces as less real than physical ones, but they’re just as real as water is wet, only defined over a higher abstraction. So much of culture and human interaction exists online (maybe more than 50% now!), the patterns of interaction in online communities have very real, very physical effects on people’s bodies and lives. What makes it hard to consider them as real as a pub is their lack of some typical properties we’re used to ascribing to “real” systems, most notably locality. Hooking fast computers up with high-speed internet has enabled patterns which exist across many physical spaces to stay coherent (e.g. the computers which run Instagram). Much of who we are, our digital selves, exists non-locally (theory of the extended mind). The center of culture isn’t anywhere, there is no spatial center anymore. We should take these abstract places more seriously.
+
+## Memetic Agents
+
+One of the walls we run into when discussing emergence is the existence of agents. On the one hand, it appears that everything is following a set of rules which we call physics. On the other, it is incredibly useful to describe certain complex systems (e.g. ourselves) as having goals and making decisions - in other words, that there are agents.
+
+One could describe the physics viewpoint as being very deontological, or rules-based; whereas agents feel very teleological, or ends-based (things are done for a purpose, rather than because of a rule). What I want to argue is that the apparent tension between these views is false, and both are valid.
+
+For example, consider prions. Prions are proteins that have misfolded and no longer perform their original function. Instead, prions fold other proteins into their shape. This means that prions are a self-replicating geometry (of proteins). If you want to predict the future in terms of its prion load, you could take the systemic viewpoint and try to compute the biophysics of folding and some complex chemistry. Or, you could just say prions want to reproduce, so you’d predict there will be many in the future. That framing is very useful! But how true is it? 
+
+We can describe the path a photon takes using the rules of optics and electromagnetism, calculating how the light will bend as it passes through different media such as lenses or water. That is the deontological perspective. However, in physics itself there is another way to analyze the path a photon takes. This is known as the Principle of Least Action, and it says that there is some quantity called action (which is a bit like energy) which the photon’s path will have minimized when it reaches an endpoint. (To the physicists reading this, yes I know it’s actually taking a stationary path, but give me some rope here). The least action framing is somewhat teleological - it says that in some sense you’re allowed to view the photon as an agent which is seeking the path of least action. Indeed, this is a very useful calculational perspective when solving many problems in physics! Often solving stationary action integrals is simpler and more useful than calculating with the dynamical form. The beautiful part is that the principle of least action turns out to be exactly mathematically equivalent to the dynamical perspective. Deep in the bowels of physics, there is a duality between agency and system dynamics - so we are free to describe things using the language of deontology or teleology according to their utility.
+
+Since emergent behavior always respects the rules of the underlying dynamics, this duality between deontology and teleology at the heart physics must be respected at all levels of abstraction - we can always move between the agent and systems framing. Let’s walk through some examples.
+
+Not unlike prions, we could view internet memes as a kind of self-replicating pattern. Instead of being defined over the medium of proteins, memes are defined over the medium of internet culture. But just like prions, they come into contact with (human minds), and repeat and transmit themselves to others. Are they agents? It’s curious to consider whether something like evolution acts across different layers of abstraction.
+
+A final example in the question of the duality between goals/agency and systems/dynamics are political or corporate institutions. People have recently been discussing the idea of structural racism, the idea that institutions themselves are racist. This is a very agentic framing, as if the institution had a goal and was seeking it. In our framework, this is quite natural. The way the mechanisms of the system/institution are designed and put in place are dual to, or in some sense determine, the goal they implement. It’s in this sense that I mean agency is emergent.
+
+It’s important to note that the agent view is certainly not always useful or appropriate. For example, it doesn’t seem very useful to describe a garden as an agent. Instead, we’d prefer to talk about soil chemistry, nutrient ecology, or perhaps the goals and interactions of individual agents/critters in the garden. Maybe there exists some “goal” the garden technically implements in the physical sense, but it’s probably too complex or abstract to cast it in terms we’d understand.
+
+The philosopher Dan Dennet has done some good work prescribing how we should think about agency, which he calls the intentional stance:
+
+> “Here is how it works: first you decide to treat the object whose behavior is to be predicted as a rational agent; then you figure out what beliefs that agent ought to have, given its place in the world and its purpose. Then you figure out what desires it ought to have, on the same considerations, and finally you predict that this rational agent will act to further its goals in the light of its beliefs. A little practical reasoning from the chosen set of beliefs and desires will in most instances yield a decision about what the agent ought to do; that is what you predict the agent will do.”
+
+— Daniel Dennett, The Intentional Stance, p. 17
+
+
+An agent, then, is what is usefully described as an agent. The duality between goal-seeking and process-oriented exists, and it’s up to us to choose the more useful description depending on the system at hand.
+
+## Digital Agency
+
+(Need to explain GPT-4 in terms of the agency spectrum. Prompts vs goals, appearance of goal-directedness in this complex intelligent system. Shows how there isn’t a strong distinction between deontology and teleology in a very clear case)
+
+One of the central claims in the [AI Alignment community](https://www.alignmentforum.org/) is called “[instrumental convergence](https://www.lesswrong.com/tag/instrumental-convergence)”, and it says this: To achieve (almost) any goal, a subgoal is that you not die/continue existing. Therefore if there’s any chance another entity could shut you down, you need to seek power over that entity preemptively to prevent that outcome. In other words, for almost any goal, power-seeking emerges naturally as a subgoal. Therefore, if we build super intelligent AI systems with essentially any goal, they will tend to seek power over us and the reigns will be out of our hands at that point.
+
+I’m not sure whether instrumental convergence is exactly correct in its naive form, but the point that we need to be very careful when specifying goals exactly is well taken. Humanity has largely decoupled itself from much of the feedback mechanisms and pressures of the “natural world” and can exert incredible control over the environment. With this freedom, we’re free to impose out own goals and dynamics onto things, often to the detriment of the overall system, but to our local gain. For example, we can plant huge crops of corn very economically with modern farming methods, but these methods can ruin the soil and upset the balance of the ecology in unintended ways that may ultimately harm us long-term. Overoptimizing simple goals (e.g. corn production) can have unintended consequences - so as our ability to apply optimization pressure increases, we need to be proportionally more careful to set robust goals. (teen suicide instagram goal of social media systems?) Goodhart’s law.
+
+We are about to bring a new entity which may have even more control and optimization pressure than us into the world - but it is being born somewhere abstract. AI language models are beings who natively live on the internet, whose action space is far more abstract than our own (language tokens), and we are pumping more and more computational/optimization power into them every month (AI compute has a [3.5 month doubling time](https://openai.com/research/ai-and-compute)!)
+
+I don’t know the solution to the question of whether AI systems are usefully framed as agents, and I’m not sure what goals they should be given, or if that’s even the right framing. I’m very worried about value lock-in, such that the moral values we hold now are locked in to very powerful AI systems for a long time (much as powerful institutions show moral inertia).
+
+* very misplaced paragraph, i just like this idea
+* The hardest part of dealing with these complex systems is that we can’t know and understand them with complete precision. In some sense, “knowing” and complex systems are incompatible levels of abstraction - there are just too many parts, we can’t make our knowledge precise like we can in mathematics where everything is derived from just 9 axioms (ZFC).
+
+What should the goals of these systems be? It’s a difficult moral question, but I have a proposal, and a potential definition for what universal moral progress could mean (lmao, but yea).
+
+I think we should strive to improve agency - or our ability to determine our lives and make decisions. In the past, everyone had to be farmers whether they liked it or not. With better technology, people can now choose different jobs, if they wish. But they can still choose to be farmers! That’s an absolute improvement in agency. The problems with agency are the zero-sum scenarios, where different people’s agency limits the others. For example: we recognize that one cannot yell “fire!” in a crowded room, even though we ought to be able to according to principles of free speech, because this limits others rights to safety. In the same sense, there are boundaries we can’t increase our agency against due to its effects on others’ agency.
+
+What I propose, then, is the goal of pareto-improvement in agency. Pareto improvement occurs when you can absolutely increase something, without sacrificing in another dimension. For example, take a factory making two goods, x1 and x2. Normally, we’d have to dedicate some capacity away from x1 to make more of x2, so it’s zero-sum, whatever we get for one, we had to take from the other. A pareto improvement occurs when we can absolutely increase output in one (or both) dimensions without any sacrifice in the other (and it implies you weren’t at the efficiency frontier of your factory! Also called the pareto frontier).
+
+
+![](paretoimprovement.png)
+*Pareto improvement is achieved when we move anywhere inside the red curve, towards the red curve. That curve is known as the pareto frontier.*
+
+If we can find places where agency can be improved without sacrificing it all for others, my belief is that that is absolute moral progress. Leave the zero-sum games to the politicians.
+
+Claim: all moral progress is mining the pareto frontier of agency. You can’t yell fire in a crowded room b/c it infringes on others’ right to safety. Moral progress comes from finding places where you can absolutely increase rights/agency without any interference on another. That’s what we need to optimize, and it’s very hard and extremely high dimensional. Maybe AI can find agency overhangs and show them to us.
+
+## Hopefully conclusions were:
+
+Everything emerges from the basic patterns. There are patterns defined over patterns. We exist somewhere in this hierarchy of abstract patterns. There are higher patterns which are defined over us.
+
+Culture and especially internet culture is one of those emergent abstractions, and we’re spending more and more of our lives there. Should take it more seriously.
+
+Agency is deep inside physics, and is a valid viewpoint to take for many emergent systems - it only depends on how useful the framing is. Many entities can be viewed as agents, e.g. memes or prions. Possibly language models like GPT-4 are agentic in this sense, more usefully described as agents than systems.
+
+We should think harder about how mechanisms determine agency/goals. E.g. in institutions like govt, corporations, and esp internet spaces which have strange emergent goals (like everyone yelling at each other on facebook). Esp worried about the emergent goals of powerful optimization systems like TikTok and GPT.
+
+What should the goal be? Pareto improvement in agency.
