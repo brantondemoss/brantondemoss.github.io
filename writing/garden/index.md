@@ -3,6 +3,8 @@
 <img src="noguchitexture.jpg" style="margin-left: 11.5%; width: 25%; display: inline;"><img src="noguchitable.jpg" style="margin-left: 1%; width: 25%; display: inline;"><img src="robothand.jpg" style="width: 25%; display: inline; margin-left: 1%;">
 
 
+
+
 [bing misalignment](https://www.lesswrong.com/posts/jtoPawEhLNXNxvgTT/bing-chat-is-blatantly-aggressively-misaligned)
 
 Heads of large AI research organizations do not agree whether AI will soon [end humanity](https://time.com/6266923/ai-eliezer-yudkowsky-open-letter-not-enough/), or usher in a period of [unprecedented wealth and prosperity](https://moores.samaltman.com/). It’s striking how [little agreement](https://www.lesswrong.com/posts/WxW6Gc6f2z3mzmqKs/debate-on-instrumental-convergence-between-lecun-russell) there is amongst top AI researchers about this - if the options on the table are only utopia and dystopia, it’s worth asking if we’re even framing the questions correctly. With the recent release of ChatGPT and GPT-4, it’s become more urgent that we resolve these questions, or at least come up with a better framework in which to have the discussion.
@@ -27,7 +29,7 @@ The fundamental idea of emergence is this:
 
 Consider water. Water is “wet” - it flows, adheres to surfaces, and coheres to itself. Saying water is wet feels tautological, it’s obviously true. But if you have a single molecule of water, is it wet?
 
-Probably you wouldn’t say a single molecule of water is wet. Wetness is a property of a system of many water molecules. That’s emergence - qualitatively new behavior at greater scale. In each moment, every particle of water is still following the underlying laws/patterns of physics. It simply took the right context for this behavior to emerge. 
+Probably you wouldn’t say a single molecule of water is wet. Wetness is a property of a system of many water molecules. That’s emergence - qualitatively new behavior at greater scale. In each moment, every particle of water is still following the underlying laws/patterns of physics. It simply took the right context for this behavior to emerge. If we assume the correct description of reality is quantum mechanics, which is described by the Schrodinger equation, and fluid flow is described by the hydrodynamic equations, then we would claim that the 
 
 The key thing to remember is that all of the water molecules are always only following the underlying rules of physics (e.g. quantum mechanics). This implies the potential for wetness was there in the underlying dynamics/rules, but it took the right context for the behavior to become apparent. It’s not as if you can look at the equations of quantum mechanics and see a term that corresponds to “wetness”! But the equations of “wetness”, i.e. the hydrodynamic equations must, in some sense, be consistent with the equations of quantum mechanics (they must emerge in the appropriate limit). 
 
@@ -49,11 +51,17 @@ Another fun example of this is the internet - it’s easy to dismiss online spac
 
 ## Memetic Agents
 
-One of the walls we run into when discussing emergence is the existence of agents. On the one hand, it appears that everything is following a set of rules which we call physics. On the other, it is incredibly useful to describe certain complex systems (e.g. ourselves) as having goals and making decisions - in other words, that there are agents.
+One interesting topic to consider in the context of emergence is *agency*, the ability to describe systems as having and pursuing goals, and "making decisions". Like wetness, agency is one possible emergent phenomena, given the right context. On the one hand, it appears that everything is following a set of rules which we call physics. On the other, it is incredibly useful to describe certain complex systems (e.g. ourselves) as having goals and making decisions - in other words, that there are agents.
 
 One could describe the physics viewpoint as being very deontological, or rules-based; whereas agents feel very teleological, or ends-based (things are done for a purpose, rather than because of a rule). What I want to argue is that the apparent tension between these views is false, and both are valid.
 
-For example, consider prions. Prions are proteins that have misfolded and no longer perform their original function. Instead, prions fold other proteins into their shape. This means that prions are a self-replicating geometry (of proteins). If you want to predict the future in terms of its prion load, you could take the systemic viewpoint and try to compute the biophysics of folding and some complex chemistry. Or, you could just say prions want to reproduce, so you’d predict there will be many in the future. That framing is very useful! But how true is it? 
+For example, consider prions. Prions are proteins that have misfolded and no longer perform their original function. Instead, prions fold other proteins into their shape. This means that prions are a self-replicating geometry (of proteins). If you want to predict the future in terms of its prion load, you could take the systemic viewpoint and try to compute the biophysics of folding and some complex chemistry. Or, you could just say prions want to reproduce, so you’d predict there will be many in the future. That framing is very useful! But how true is it?
+
+
+<video width="320" loop autoplay muted>
+<source src="proteinfolding.mp4" type="video/mp4">
+</video>
+
 
 We can describe the path a photon takes using the rules of optics and electromagnetism, calculating how the light will bend as it passes through different media such as lenses or water. That is the deontological perspective. However, in physics itself there is another way to analyze the path a photon takes. This is known as the Principle of Least Action, and it says that there is some quantity called action (which is a bit like energy) which the photon’s path will have minimized when it reaches an endpoint. (To the physicists reading this, yes I know it’s actually taking a stationary path, but give me some rope here). The least action framing is somewhat teleological - it says that in some sense you’re allowed to view the photon as an agent which is seeking the path of least action. Indeed, this is a very useful calculational perspective when solving many problems in physics! Often solving stationary action integrals is simpler and more useful than calculating with the dynamical form. The beautiful part is that the principle of least action turns out to be exactly mathematically equivalent to the dynamical perspective. Deep in the bowels of physics, there is a duality between agency and system dynamics - so we are free to describe things using the language of deontology or teleology according to their utility.
 
@@ -114,3 +122,8 @@ Agency is deep inside physics, and is a valid viewpoint to take for many emergen
 We should think harder about how mechanisms determine agency/goals. E.g. in institutions like govt, corporations, and esp internet spaces which have strange emergent goals (like everyone yelling at each other on facebook). Esp worried about the emergent goals of powerful optimization systems like TikTok and GPT.
 
 What should the goal be? Pareto improvement in agency.
+
+
+## References
+
+[^1]: [Bing Chat is blatantly, aggressively misaligned.](https://www.lesswrong.com/posts/jtoPawEhLNXNxvgTT/bing-chat-is-blatantly-aggressively-misaligned)

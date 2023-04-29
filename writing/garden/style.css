@@ -427,7 +427,18 @@ body table {
 }
 
 video {
-autosize: true
+  autosize: true;
+  margin-left: 25%;
+  max-width: 50%;
+}
+
+.videos > video{
+    display: block;
+    margin: auto;
+    padding: auto;
+}
+.videos {
+  font-size: 0;
 }
 
 body table th {
