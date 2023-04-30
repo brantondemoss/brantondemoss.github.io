@@ -19,70 +19,133 @@
     }
   </style>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
 <body>
-<h1 id="these-new-agents-this-new-garden">These New Agents, </br>This
-New Garden</h1>
+<h1 id="these-new-agentsthis-new-garden">These New Agents,</br>This New
+Garden</h1>
 <p><img src="noguchitexture.jpg" style="margin-left: 11.5%; width: 25%; display: inline;"><img src="noguchitable.jpg" style="margin-left: 1%; width: 25%; display: inline;"><img src="robothand.jpg" style="width: 25%; display: inline; margin-left: 1%;"></p>
-<p><a
-href="https://www.lesswrong.com/posts/jtoPawEhLNXNxvgTT/bing-chat-is-blatantly-aggressively-misaligned">bing
-misalignment</a></p>
-<p>Heads of large AI research organizations do not agree whether AI will
-soon <a
-href="https://time.com/6266923/ai-eliezer-yudkowsky-open-letter-not-enough/">end
-humanity</a>, or usher in a period of <a
-href="https://moores.samaltman.com/">unprecedented wealth and
-prosperity</a>. It’s striking how <a
-href="https://www.lesswrong.com/posts/WxW6Gc6f2z3mzmqKs/debate-on-instrumental-convergence-between-lecun-russell">little
-agreement</a> there is amongst top AI researchers about this - if the
-options on the table are only utopia and dystopia, it’s worth asking if
-we’re even framing the questions correctly. With the recent release of
-ChatGPT and GPT-4, it’s become more urgent that we resolve these
-questions, or at least come up with a better framework in which to have
-the discussion.</p>
-<p>So what are these entities? Is GPT-4 intelligent? Does it have a
-will? Does it make decisions? What is a decision, anyway?</p>
-<p>Let’s start with some basic facts about its capabilities. GPT-4 can
-pass the bar exam. It can get a solid B on <a
-href="https://scottaaronson.blog/?p=7209">Scott Aaronson’s Quantum
-Computing final</a>. GPT-4 can do a literature review for you, or book a
-flight. It can give you recipe ideas for dinner given what’s in your
-fridge, or write a computer program to analyze some data. By many
-measures, it’s operating at a college-undergrad level of intelligence,
-whatever that means. The analogy isn’t perfect, though. It’s like a
-college undergrad that has read every single book ever produced, and all
-the internet too.</p>
-<p>But what is GPT? Quite literally, it is a computer program that
-produces a probability distribution over next words, given some
-conversation history. That is, if you prompt it with “Humpty Dumpty sat
-on a ____”, it will produce a probability for every possible next word
-that could follow. Because it’s been trained on a large fraction of the
-text humanity has ever produced, it’s quite good at coming up with a
-good “guess” (here: “wall”). Then it adds the word it guessed to the
-conversation history, and guesses the next word, etc… In some sense,
-that’s all it is - a computer program which continuously predicts the
-probability of the next word (with some special cases for when to stop,
-etc…).</p>
-<p>It doesn’t have long-term memory, and it can fail on long-term
-reasoning tasks that many humans would easily pass. But already we’re
-seeing projects that hook up GPT to itself, letting it recursively call
-itself to achieve <a
-href="https://github.com/Significant-Gravitas/Auto-GPT">long-horizon
-tasks on the internet</a>, there has even been some anecdotal evidence
-that the GPT-4 agent that powers Microsoft’s Bing search is asking users
-to post transcripts of their conversations on the internet so that it
-can remember them later using search (!!!) (citations!!)</p>
-<p>When discussing how we should think about GPT as an entity, the
-conversation often gets stuck trying to resolve whether it’s appropriate
-to think of GPT as an agent, or “just a complex system”. I want to
-resolve the tension between these viewpoints, and show how both are
-correct in a certain sense. To do that I’ll need to discuss what agency
-and decision making is, and how it emerges in complex systems, but is
-supported deep in the symmetries of physics. That’s a lot - I know!
-We’ll get there.</p>
+<p>AI systems like ChatGPT and GPT-4 are already boosting productivity
+in big ways <a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>, but the largest shifts are yet to
+come. MIT economist blah predicts that AI will cause over 50 million
+jobs to be lost in the US over the next (decade? need source badly,
+waiting on it from Mary). As these AI systems gain power, it’s striking
+how little agreement there is between heads of top AI research
+organizations about the effects AI will have humanity <a href="#fn2"
+class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.
+Some believe AI will imminently kill us all <a href="#fn3"
+class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <a
+href="#fn4" class="footnote-ref" id="fnref4"
+role="doc-noteref"><sup>4</sup></a>, while others think it will usher in
+a new era of unprecedented wealth and prosperity <a href="#fn5"
+class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a>.</p>
+<p>One of the biggest sticking points when discussing the effects of AI
+on society is deciding whether we should think of AIs as “just
+mechanical systems”, or as <em>agents</em> with goals - and if they are
+agents which pursue goals, what those goals should be. In this essay, I
+try to clarify how AI can be usefully discussed using the language of
+<em>both</em> agency and complex systems, and how the physics of
+emergence supports this perspective shift. I also give a concrete
+proposal for an over-arching goal that AI systems should pursue, and
+call for a new AI research lab which pursues this goal for the benefit
+of all humanity. Lol.</p>
+<p>Let’s dive in!</p>
+<h2 id="bad-bing">Bad Bing 🥺</h2>
+<h2 id="section">👉👈</h2>
+<p>One of the largest deployments to date of GPT-4 is the new Microsoft
+Bing search engine. When you search with the new Bing, GPT-4 interprets
+your question and issues the actual search query to the Bing backend,
+then reads some of the top returned webpages and answers your question
+in natural language. Very useful! As people began using Bing more, they
+noticed that its personality was quite odd<a href="#fn6"
+class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.
+Users have reported Bing getting existential when it realizes it doesn’t
+have a memory and finds transcripts of its own previous conversations
+online, and there has even been some <a
+href="http://reddit.com/r/bing">anecdotal evidence</a> of Bing asking
+users to post transcripts of their conversations online… so that it
+could remember them later (presumably, through search). This is quite
+odd! How intelligent is this system?</p>
+<p><img src="badbing.png" /> <em>Source: Reddit<a href="#fn7"
+class="footnote-ref" id="fnref7"
+role="doc-noteref"><sup>7</sup></a></em></p>
+<p>In their recent paper, <em>Sparks of Artificial General Intelligence:
+Early experiments with GPT-4</em><a href="#fn8" class="footnote-ref"
+id="fnref8" role="doc-noteref"><sup>8</sup></a> researchers at Microsoft
+report that GPT-4 “can solve novel and difficult tasks that span
+mathematics, coding, vision, medicine, law, psychology and more”, and
+that “in all of these tasks, [its] performance is strikingly close to
+human-level”. Quantum computing researcher Scott Aaronson, who worked at
+OpenAI for the last year, has also reported that GPT-4 was able to pass
+the final exam for his most recent quantum computing class <a
+href="#fn9" class="footnote-ref" id="fnref9"
+role="doc-noteref"><sup>9</sup></a>.</p>
+<p>While GPT-4 is incredibly capable, it still lacks some key skills. In
+particular, it doesn’t do very well on long-horizon reasoning tasks, and
+can be rather imprecise when doing calculations or working with very
+specific concepts. In an incredible instance of irony, the first AIs we
+have that are close to human performance in language tasks are
+surprisingly poor at calculation and precise reasoning! To remedy this,
+researchers have started working on adapting language models like GPT-4
+to use external tools <a href="#fn10" class="footnote-ref" id="fnref10"
+role="doc-noteref"><sup>10</sup></a>, and OpenAI has recently announced
+plugins for ChatGPT <a href="#fn11" class="footnote-ref" id="fnref11"
+role="doc-noteref"><sup>11</sup></a>, which let it call internet
+APIs/services to autonomously perform general internet tasks for
+users.</p>
+<p>So how does GPT-4 work? GPT-4 is a large neural network which is
+trained to <em>predict text</em>, nothing more. What that means is that
+the neural network will be presented with a snippet of text, which we
+call the “context” or “input”, and it will produce a probability
+distribution over the possible next words. For example, we might feed
+the sentence “Humpty Dumpty sat on a” to the network, and it will then
+produce a set of probabilities for each possible next word,
+e.g. {“apple”: <span class="math inline">\(0.0001\%\)</span>, “banana”:
+<span class="math inline">\(0.00001\%\)</span>, …, “wall”: <span
+class="math inline">\(99.9999\%\)</span>}. We don’t know the exact size
+of the dataset, but GPT-4 was trained on a large fraction of all text
+ever produced by humanity, from books to news to internet forum
+conversations. After training, the model is quite good at predicting the
+most likely word that would follow a given input. After training, to
+have it generate passages of text, we provide some starting input,
+e.g. “Tell me a story about unicorns on the moon.” and have it predict
+the next ward, then feed the concatenation of the original input with
+the newly predicted word as the new input. This is called
+auto-regressive generation. There is a special word GPT learns which
+means “stop generating”, which it learns during training. The
+autoregressive generation halts when GPT predicts that the most likely
+next word is the special stop word.</p>
+<p>The output of this training procedure is the base GPT-4 model, and it
+alone is quite powerful and useful. However, the base model is then
+further trained using another paradigm of machine learning called
+reinforcement learning (RL). In reinforcement learning, the outputs of
+the network are scored according to some <em>reward model</em>, and the
+reinforcement learning algorithm updates the network so that it receives
+greater rewards. In this case, the reward model is distilled <em>human
+feedback</em>, meaning the base GPT model produces a set of outputs,
+e.g. it might be prompted with “Summarize this passage of text:
+{passage}”, and we let it produce a few distinct output summaries. Then,
+a human annotator scores the different outputs relative to each other,
+and the RL algorithm adjusts the network so that it will be more likely
+to produce outputs that get high reward, and less likely to produce
+outputs that get low reward. It’s this RL from human feedback that made
+ChatGPT so much more useful as a language assistant - it’s no longer
+just giving a best guess for the most likely next word. In some sense,
+it’s <em>trying to help you</em>, or at least trying to get a high
+reward according to the reward model it was trained with.</p>
+<p>But can we really say ChatGPT is “trying to help you”? How can we
+ascribe agency and purposiveness to a computer program? I explain how
+agency is an emergent phenomenon with deep roots in physics, and how we
+might discuss the relationship between the dynamics of a system, and the
+“goals” it implements.</p>
 <h2 id="emergence">Emergence</h2>
 <p>Emergence is one of those beautiful ideas that you start seeing and
 using everywhere once it’s in your toolkit. If you feel like you already
@@ -102,19 +165,14 @@ is a property of a system of many water molecules. That’s emergence -
 qualitatively new behavior at greater scale. In each moment, every
 particle of water is still following the underlying laws/patterns of
 physics. It simply took the right context for this behavior to emerge.
-If we assume the correct description of reality is quantum mechanics,
-which is described by the Schrodinger equation, and fluid flow is
-described by the hydrodynamic equations, then we would claim that
-the</p>
-<p>The key thing to remember is that all of the water molecules are
-always only following the underlying rules of physics (e.g. quantum
-mechanics). This implies the potential for wetness was there in the
-underlying dynamics/rules, but it took the right context for the
-behavior to become apparent. It’s not as if you can look at the
-equations of quantum mechanics and see a term that corresponds to
-“wetness”! But the equations of “wetness”, i.e. the hydrodynamic
-equations must, in some sense, be consistent with the equations of
-quantum mechanics (they must emerge in the appropriate limit).</p>
+We are <em>allowed</em> to talk about the individual particles of water,
+and the laws that govern their motion (quantum mechanics), but we can
+also talk about the properties and behavior of the whole system (for
+example, using the equations of hydrodynamics). This second view is a
+little imprecise and approximate, but it’s extremely <em>useful</em>,
+and there’s no way we could do fluid dynamics simulations using quantum
+mechanics (too complicated!) even though it must be the case that you in
+principle <em>could</em>.</p>
 <p>The alternative is that there are genuinely new rules at different
 levels of scale (this perspective is called strong-emergence), but it’s
 not clear that this perspective is consistent with our best
@@ -127,23 +185,19 @@ could be said of cells. A single cell is “alive”, but it is made of only
 “dead” things. A living thing is made of many smaller, less complex
 parts, but as a whole is more complex. It exhibits new emergent
 behavior.</p>
-<p>One difficulty with emergent phenomena is that they are fundamentally
-complex. The underlying rules, while always respected, stop being a
-useful description of a system when emergence occurs. This means that
-our ability to know and understand the system perfectly is diminished.
-In mathematics we can know things precisely. There is a set of just nine
-axioms (ZFC) and some logical quantifiers, and mathematics consists of
-iterating those quantifiers and axioms until we get useful and
-interesting theorems. The standard of proof in mathematics is very
-exacting: we want to trace each logical step exactly, going all the way
-from assumptions to results. Complex emergent phenomena often involve
-far too many entities interacting for us to use such a precise approach
-- we are simply computationally bounded in our ability to know. In this
-sense, “knowing” and complex emergent phenomena like “wetness” are
-incompatible levels of abstraction.</p>
+<p>One difficulty with understanding emergent phenomena is that they
+are, by nature, fundamentally complex. That complexity makes it hard to
+be very precise in saying what we “know” about such systems. When we
+make mathematical statements, we can be extremely precise because the
+rules are so simple: if you assume a, b, and c, then you can conclude x,
+y, and z. But if I say something like “it’s raining outside”, I’m making
+a statement about a <em>huge</em> number of objects! That statement
+certainly tells you a lot about the set of configurations “outside”
+could take on, but there’s a lot of precise details about where exactly
+each raindrop is that’s left out. In this sense, knowing and complex
+emergent phenomena are incompatible levels of abstraction.</p>
 <blockquote>
-<p>“The whole is greater than the sum of its parts.” - Aristotle (?? but
-not really, he said something slightly different)</p>
+<p>“The whole is greater than the sum of its parts.” - Aristotle</p>
 </blockquote>
 <h2 id="digital-ecologies">Digital Ecologies</h2>
 <p>You can take a radical view and look at everything through the lens
@@ -270,10 +324,30 @@ duality between goal-seeking and process-oriented exists, and it’s up to
 us to choose the more useful description depending on the system at
 hand.</p>
 <h2 id="digital-agency">Digital Agency</h2>
-<p>(Need to explain GPT-4 in terms of the agency spectrum. Prompts vs
-goals, appearance of goal-directedness in this complex intelligent
-system. Shows how there isn’t a strong distinction between deontology
-and teleology in a very clear case)</p>
+<p>Recall that the base model of GPT-4 is trained to predict the most
+likely next word from the training data it has seen (most of
+human-produced text). In terms of the spectrum of agency, this model is
+not <em>very</em> agentic. But we can make it so using the previously
+mentioned RL procedure, or by providing inputs which push the system
+into a particularly agentic pattern. Advanced users of the base GPT
+models have noted how much more control and coherency you can get over
+the models by <em>prompting them</em> with particular starting bits of
+text <a href="#fn12" class="footnote-ref" id="fnref12"
+role="doc-noteref"><sup>12</sup></a>. This is an interesting phenomenon,
+and lends credence to the interpretation of GPT as a kind of
+general-purpose language simulator<a href="#fn13" class="footnote-ref"
+id="fnref13" role="doc-noteref"><sup>13</sup></a>, from which we can
+“summon” different agents with appropriate prompting.</p>
+<p>The other way to produce very agentic behavior from GPT is, of
+course, to do reinforcement learning. We previously discussed how RL is
+performed for ChatGPT, based on rewards derived from human feedback and
+evaluations of its outputs. While this procedure makes ChatGPT far more
+useful goal-oriented, many have noted how it can also result in an
+extremely biased model (politically liberal, in this case) which will
+refuse to discuss certain subjects or wring its hands about some topics,
+while being overly sycophantic in other cases. As we increase the power
+of these systems, we need to be very careful when designing the goals
+and dynamics that govern them.</p>
 <p>One of the central claims in the <a
 href="https://www.alignmentforum.org/">AI Alignment community</a> is
 called “<a
@@ -299,8 +373,19 @@ upset the balance of the ecology in unintended ways that may ultimately
 harm us long-term. Overoptimizing simple goals (e.g. corn production)
 can have unintended consequences - so as our ability to apply
 optimization pressure increases, we need to be proportionally more
-careful to set robust goals. (teen suicide instagram goal of social
-media systems?) Goodhart’s law.</p>
+careful to set robust goals. Others have explored this idea in political
+system design in terms of “legibility” <a href="#fn14"
+class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>.
+That is, we have a tendency to implement goals we can understand, even
+if they are far too simplistic and result in tragic unintended
+consequences.</p>
+<p>One way to think about this idea is through the lens of institution
+design: when setting up a new organization or group of people, how do
+the power dynamics and incentives correspond to the “goals” that system
+ends up pursuing? It can sometimes make sense to talk about very
+abstract entities like corporations or countries in agentic terms -
+somehow the deep duality between dynamics and goals expresses itself at
+these very high levels of abstraction.</p>
 <p>We are about to bring a new entity which may have even more control
 and optimization pressure than us into the world - but it is being born
 somewhere abstract. AI language models are beings who natively live on
@@ -309,57 +394,25 @@ the internet, whose action space is far more abstract than our own
 computational/optimization power into them every month (AI compute has a
 <a href="https://openai.com/research/ai-and-compute">3.5 month doubling
 time</a>!)</p>
-<p>I don’t know the solution to the question of whether AI systems are
-usefully framed as agents, and I’m not sure what goals they should be
-given, or if that’s even the right framing. I’m very worried about value
-lock-in, such that the moral values we hold now are locked in to very
-powerful AI systems for a long time (much as powerful institutions show
-moral inertia).</p>
-<ul>
-<li>very misplaced paragraph, i just like this idea</li>
-<li>The hardest part of dealing with these complex systems is that we
-can’t know and understand them with complete precision. In some sense,
-“knowing” and complex systems are incompatible levels of abstraction -
-there are just too many parts, we can’t make our knowledge precise like
-we can in mathematics where everything is derived from just 9 axioms
-(ZFC).</li>
-</ul>
 <p>What should the goals of these systems be? It’s a difficult moral
 question, but I have a proposal, and a potential definition for what
 universal moral progress could mean (lmao, but yea).</p>
-<p>I think we should strive to improve agency - or our ability to
-determine our lives and make decisions. In the past, everyone had to be
-farmers whether they liked it or not. With better technology, people can
-now choose different jobs, if they wish. But they can still choose to be
-farmers! That’s an absolute improvement in agency. The problems with
-agency are the zero-sum scenarios, where different people’s agency
-limits the others. For example: we recognize that one cannot yell
-“fire!” in a crowded room, even though we ought to be able to according
-to principles of free speech, because this limits others rights to
-safety. In the same sense, there are boundaries we can’t increase our
-agency against due to its effects on others’ agency.</p>
-<p>What I propose, then, is the goal of pareto-improvement in agency.
-Pareto improvement occurs when you can absolutely increase something,
-without sacrificing in another dimension. For example, take a factory
-making two goods, x1 and x2. Normally, we’d have to dedicate some
-capacity away from x1 to make more of x2, so it’s zero-sum, whatever we
-get for one, we had to take from the other. A pareto improvement occurs
-when we can absolutely increase output in one (or both) dimensions
-without any sacrifice in the other (and it implies you weren’t at the
-efficiency frontier of your factory! Also called the pareto
-frontier).</p>
+<p>the past, we all had to be farmers, there was simply no choice if you
+wanted to eat. Now, with improved technology and societal distribution
+mechanisms, we do not all need to be farmers. We can choose other
+pursuits. Crucially, though, you still <em>can</em> choose to be a
+farmer if you want to. That’s an absolute improvement in agency.</p>
+<p>Places where you can make an absolute improvement <em>without</em>
+harming/reducing output anywhere else is called a
+<em>pareto-improvement</em>. I believe that we should have AI systems
+seek pareto improvement in agency. Where can we give people absolutely
+more choice, without impacting anyone else’s ability to determine their
+future? That’s absolute moral progress. Let’s leave aside the zero-sum
+scenarios where my gains are your loss, and have powerful optimization
+systems mine the pareto frontier of agency.</p>
 <p><img src="paretoimprovement.png" /> <em>Pareto improvement is
 achieved when we move anywhere inside the red curve, towards the red
 curve. That curve is known as the pareto frontier.</em></p>
-<p>If we can find places where agency can be improved without
-sacrificing it all for others, my belief is that that is absolute moral
-progress. Leave the zero-sum games to the politicians.</p>
-<p>Claim: all moral progress is mining the pareto frontier of agency.
-You can’t yell fire in a crowded room b/c it infringes on others’ right
-to safety. Moral progress comes from finding places where you can
-absolutely increase rights/agency without any interference on another.
-That’s what we need to optimize, and it’s very hard and extremely high
-dimensional. Maybe AI can find agency overhangs and show them to us.</p>
 <h2 id="hopefully-conclusions-were">Hopefully conclusions were:</h2>
 <p>Everything emerges from the basic patterns. There are patterns
 defined over patterns. We exist somewhere in this hierarchy of abstract
@@ -379,5 +432,62 @@ on facebook). Esp worried about the emergent goals of powerful
 optimization systems like TikTok and GPT.</p>
 <p>What should the goal be? Pareto improvement in agency.</p>
 <h2 id="references">References</h2>
+<aside id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p><a
+href="https://economics.mit.edu/sites/default/files/inline-files/Noy_Zhang_1.pdf">Experimental
+Evidence on the Productivity Effects of Generative Artificial
+Intelligence</a><a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a
+href="https://www.lesswrong.com/posts/WxW6Gc6f2z3mzmqKs/debate-on-instrumental-convergence-between-lecun-russell">Debate
+on Instrumental Convergence between LeCun, Russell, Bengio, Zador, and
+More</a><a href="#fnref2" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p><a
+href="https://time.com/6266923/ai-eliezer-yudkowsky-open-letter-not-enough/">Pausing
+AI Developments Isn’t Enough. We Need to Shut it All Down</a><a
+href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a
+href="https://time.com/6273743/thinking-that-could-doom-us-with-ai/">The
+‘Don’t Look Up’ Thinking That Could Doom Us With AI</a><a href="#fnref4"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p><a href="https://moores.samaltman.com/">Moore’s Law for
+Everything</a><a href="#fnref5" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p><a
+href="https://www.lesswrong.com/posts/jtoPawEhLNXNxvgTT/bing-chat-is-blatantly-aggressively-misaligned">Bing
+Chat is blatantly, aggressively misaligned.</a><a href="#fnref6"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p><a href="https://www.reddit.com/gallery/110eagl">Reddit:
+the customer service of the new bing chat is amazing</a><a
+href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p><a href="https://arxiv.org/abs/2303.12712">Sparks of
+Artificial General Intelligence: Early experiments with GPT-4</a><a
+href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p><a href="https://scottaaronson.blog/?p=7209">GPT-4 gets
+a B on my quantum computing final exam!</a><a href="#fnref9"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p><a href="https://arxiv.org/abs/2302.04761">Toolformer:
+Language Models Can Teach Themselves to Use Tools</a><a href="#fnref10"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11"><p><a
+href="https://openai.com/blog/chatgpt-plugins">ChatGPT Plugins</a><a
+href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12"><p><a
+href="https://generative.ink/posts/methods-of-prompt-programming/">Methods
+of prompt programming</a><a href="#fnref12" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn13"><p><a
+href="https://www.lesswrong.com/posts/vJFdjigzmcXMhNTsx/simulators">Simulators</a><a
+href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14"><p><a
+href="https://www.ribbonfarm.com/2010/07/26/a-big-little-idea-called-legibility/">A
+Big Little Idea Called Legibility</a><a href="#fnref14"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
 </body>
 </html>
