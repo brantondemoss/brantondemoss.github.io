@@ -31,6 +31,7 @@ As people began using Bing more, they noticed that its personality was quite odd
 Users have reported Bing getting existential when it realizes it doesn’t have a memory and finds transcripts of its own previous conversations online, and there has even been some [anecdotal evidence](http://reddit.com/r/bing) of Bing asking users to post transcripts of their conversations online… so that it could remember them later (presumably, through search). This is quite odd! How intelligent is this system?
 
 ![](badbing.png)
+*Source: Reddit[^12]*
 
 In their recent paper, *Sparks of Artificial General Intelligence: Early experiments with GPT—4*[^3] researchers at Microsoft report that GPT—4 “can solve novel and difficult tasks that span mathematics, coding, vision, medicine, law, psychology and more”, and that “in all of these tasks, [its] performance is strikingly close to human—level”. 
 Quantum computing researcher Scott Aaronson, who worked at OpenAI for the last year, has also reported that GPT—4 was able to pass the final exam for his most recent quantum computing class [^4].
@@ -41,7 +42,7 @@ To remedy this, researchers have started working on adapting language models lik
 
 So how does GPT—4 work? GPT—4 is a large neural network which is trained to *predict text*, nothing more. 
 What that means is that the neural network will be presented with a snippet of text, which we call the “context” or “input”, and it will produce a probability distribution over the possible next words. 
-For example, we might feed the sentence “Humpty Dumpty sat on a” to the network, and it will then produce a set of probabilities for each possible next word, e.g. {“apple”: $0.0001\%$, “banana”: $0.00001\%$, … “wall”: $99.9999\%$}. 
+For example, we might feed the sentence “Humpty Dumpty sat on a” to the network, and it will then produce a set of probabilities for each possible next word, e.g. {“apple”: $0.0001\%$, “banana”: $0.00001\%$, ..., “wall”: $99.9999\%$}. 
 We don’t know the exact size of the dataset, but GPT—4 was trained on a large fraction of all text ever produced by humanity, from books to news to internet forum conversations. 
 After training, the model is quite good at predicting the most likely word that would follow a given input. 
 To generate passages of text, we provide some initial input, e.g. “Tell me a story about unicorns on the moon.” and have it predict the next word, then feed the concatenation of the original input with the newly predicted word as the new input. 
