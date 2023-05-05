@@ -5,12 +5,11 @@
 **DRAFT - IN PROGRESS**
 
 some points left to fill in:
-examples of pareto-improvement in agency. what would this look like for AI? fire in crowded room
-Connect C Thi Nguyen work with ideas about goal legibility (!!) and collapse of complex behavior. social media behavior example of bad consequences of legibility
-citation for 50M jobs lost
-more explicit discussion of dangers of value lock-in
-agency of other entities in nature? should we recognize all agents?
-unilateral hegemony in the garden can be bad. better to go slow and have co-evolution so no one entity can impose its will too strongly, diversity is a good strategy in face of uncertain/complex outcomes.
+- examples of pareto-improvement in agency. what would this look like for AI? fire in crowded room
+- Connect C Thi Nguyen work with ideas about goal legibility (!!) and collapse of complex behavior. social media behavior example of bad consequences of legibility
+- more explicit discussion of dangers of value lock-in
+- agency of other entities in nature? should we recognize all agents?
+- unilateral hegemony in the garden can be bad. better to go slow and have co-evolution so no one entity can impose its will too strongly, diversity is a good strategy in face of uncertain/complex outcomes.
 
 
 AI systems like ChatGPT and GPT-4 are already boosting productivity in big ways [^9], but the largest shifts are yet to come. 
