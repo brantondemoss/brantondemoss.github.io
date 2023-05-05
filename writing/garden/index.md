@@ -55,7 +55,7 @@ Then, a human annotator scores the different outputs relative to each other, and
 It’s this RL from human feedback that made ChatGPT so much more useful as a language assistant - it’s no longer just giving a best guess for the most likely next word. 
 In some sense, it’s *trying to help you*, or at least trying to get a high reward according to the reward model it was trained with.
 
-![](tweet.png)                                                                                                                                                                                              
+![](tweet.png)
 *Source: Twitter[^16]*
 
 But can we really say ChatGPT is “trying to help you”? How can we ascribe agency and purposiveness to a computer program? I explain how agency is an emergent phenomenon with deep roots in physics, and how we might discuss the relationship between the dynamics of a system, and the “goals” it implements.
