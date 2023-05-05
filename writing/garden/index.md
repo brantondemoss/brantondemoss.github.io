@@ -14,7 +14,7 @@ some points left to fill in:
 
 
 AI systems like ChatGPT and GPT-4 are already boosting productivity in big ways,[^9] but the largest shifts are yet to come. 
-As these AI systems gain power, it’s striking how little agreement there is between heads of top AI research organizations about the effects AI will have on humanity.[^5] 
+As these AI systems gain power, it’s striking how little agreement there is between heads of top AI research organizations about the effects AI will have humanity.[^5]  
 Some believe AI will imminently kill us all,[^6] [^7] while others think it will usher in a new era of unprecedented wealth and prosperity.[^8] 
 
 One of the biggest sticking points when discussing the effects of AI on society is deciding whether we should think of AIs as “just mechanical systems”, or as *agents* with goals - and if they are agents which pursue goals, what those goals should be.
@@ -23,14 +23,14 @@ In this essay, I try to clarify how AI can be usefully discussed using the langu
 ## Bad Bing 🥺 </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉👈 
 
 One of the largest deployments to date of GPT-4 is the new Microsoft Bing search engine. When you search with the new Bing, GPT-4 interprets your question and issues the actual search query to the Bing backend, then reads some of the top returned webpages and answers your question in natural language. Very useful. 
-As people began using Bing more, they noticed that its personality was quite odd.[^1] 
+As people began using Bing more, they noticed that its personality was quite odd.[^1]  
 Users have reported Bing getting existential when it realizes it doesn’t have a memory and finds transcripts of its own previous conversations online, and there has even been some [anecdotal evidence](http://reddit.com/r/bing) of Bing asking users to post transcripts of their conversations online… so that it could remember them later (presumably, through search). This is slightly unsettling. How intelligent is this system?
 
 ![](badbing.png)
 *Source: Reddit[^12]*
 
 In their recent paper, *Sparks of Artificial General Intelligence: Early experiments with GPT-4* researchers at Microsoft report that GPT-4 “can solve novel and difficult tasks that span mathematics, coding, vision, medicine, law, psychology and more”, and that “in all of these tasks, [its] performance is strikingly close to human-level”.[^3] 
-Quantum computing researcher Scott Aaronson, who worked at OpenAI for the last year, recently reported that GPT-4 passed his latest Quantum Computing class’ final exam.[^4] 
+Quantum computing researcher Scott Aaronson, who worked at OpenAI for the last year, recently reported that GPT-4 passed his latest Quantum Computing class’s final exam.[^4] 
 
 While GPT-4 is incredibly capable, it still lacks some key skills. In an incredible instance of irony, the first AIs we have that are close to human performance in language tasks are surprisingly poor at calculation and precise reasoning! Aaronson reports that GPT actually did better on conceptual questions than ones requiring long chains of precise reasoning.
 To remedy this, researchers have started working on adapting language models like GPT-4 to use external tools,[^10] and OpenAI has recently announced plugins for ChatGPT,[^11] which let it call internet APIs/services to autonomously perform general internet tasks for users.
@@ -77,9 +77,7 @@ Probably you wouldn’t say a single molecule of water is wet. Wetness is a prop
 That’s emergence - qualitatively new behavior at greater scale. In each moment, every particle of water is still following the underlying laws/patterns of physics. 
 It simply took the right context for this behavior to emerge. 
 We are *allowed* to talk about the individual particles of water, and the laws that govern their motion (quantum mechanics), but we can also talk about the properties and behavior of the whole system (for example, using the equations of hydrodynamics). 
-This second view is a little imprecise and approximate, but it's extremely *useful*, and there's no way we could do fluid dynamics simulations using quantum mechanics (too complicated!) even though it must be the case that you in principle *could*.
-
-The alternative is that there are genuinely new rules at different levels of scale (this perspective is called strong-emergence), but it’s not clear that this perspective is consistent with our best understanding of physics, and it would have dramatic implications for fundamental ideas like locality/relativity (but let’s leave that aside).
+This second view is a little imprecise and approximate, but it's extremely *useful*, and there's no way we could do fluid dynamics simulations using quantum mechanics (too complicated!) even though it must be the case that you in principle *could*.[^17]
 
 The funny thing about “wetness” is that you could reasonably say it’s totally fake - all there is, is the underlying laws of physics. 
 The same could be said of cells. A single cell is “alive”, but it is made of only “dead” things. 
@@ -151,6 +149,13 @@ Instead of being defined over the medium of proteins, memes are defined over the
 But just like prions, they come into contact with (human minds), and repeat and transmit themselves to others. 
 Are they agents? It’s curious to consider whether something like evolution acts across different layers of abstraction.
 
+When does our agency emerge? 
+In some sense, we’re just a big bag of cells, each doing their own little cell thing, yet there’s incredible coordination and collective action. 
+It seems useful to describe ourselves as coherent agents. Is an ant an agent? 
+Are the cells in an ant an agent? What about the molecular machines that make up the cells? 
+There’s no definite point when things “become” agents - it just becomes more and more useful to describe an entity’s dynamics in the language of agency. Just as it becomes more and more useful to describe a group of water molecules as “wet”. 
+That this happens at all is interesting.
+
 A final example in the question of the duality between goals/agency and systems/dynamics are political or corporate institutions. 
 People have recently been discussing the idea of structural racism, the idea that institutions themselves are racist. 
 This is a very agentic framing, as if the institution had a goal and was seeking it. In our framework, this is quite natural. 
@@ -165,7 +170,6 @@ Maybe there exists some “goal” the garden technically implements in the phys
 The philosopher Dan Dennett has done some good work prescribing how we should think about agency, which he calls the intentional stance:
 
 > “Here is how it works: first you decide to treat the object whose behavior is to be predicted as a rational agent; then you figure out what beliefs that agent ought to have, given its place in the world and its purpose. Then you figure out what desires it ought to have, on the same considerations, and finally you predict that this rational agent will act to further its goals in the light of its beliefs. A little practical reasoning from the chosen set of beliefs and desires will in most instances yield a decision about what the agent ought to do; that is what you predict the agent will do.”
-
 - Daniel Dennett, The Intentional Stance, p. 17
 
 
@@ -200,7 +204,7 @@ It can sometimes make sense to talk about very abstract entities like corporatio
 We are about to bring a new entity which may have even more control and optimization pressure than us into the world - but it is being born somewhere abstract. 
 AI language models are beings who natively live on the internet, whose action space is far more abstract than our own (language tokens), and we are pumping more and more computational/optimization power into them every month (AI compute has a [3.5 month doubling time](https://openai.com/research/ai-and-compute)!)
 
-What should the goals of these systems be? It’s a difficult moral question, but I have a proposal, and a potential definition for what universal moral progress could mean (lmao, but yea).
+What should the goals of these systems be? It’s a difficult moral question, but I have a proposal, and a potential definition for what universal moral progress could mean.[^18]
 
 ## Moral Progress
 
@@ -285,3 +289,7 @@ What should the goal be? Pareto improvement in agency.
 [^15]: To the physicists reading this, yes I know it’s actually taking a stationary path, but give me some rope here.
 
 [^16]: [@MNateShyamalan on Twitter](https://twitter.com/MNateShyamalan/status/1652482602366902273)
+
+[^17]: The alternative is that there are genuinely new rules at different levels of scale (this perspective is called [strong-emergence](https://consc.net/papers/emergence.pdf)), but it’s not clear that this perspective is consistent with our best understanding of physics, and it would have dramatic implications for fundamental ideas like locality/relativity.
+
+[^18]: lol, but yea
