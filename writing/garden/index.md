@@ -5,6 +5,7 @@
 **DRAFT - IN PROGRESS**
 
 some points left to fill in:
+
 - examples of pareto-improvement in agency. what would this look like for AI? fire in crowded room
 - Connect C Thi Nguyen work with ideas about goal legibility (!!) and collapse of complex behavior. social media behavior example of bad consequences of legibility
 - more explicit discussion of dangers of value lock-in
