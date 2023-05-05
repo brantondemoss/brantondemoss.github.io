@@ -13,9 +13,9 @@ some points left to fill in:
 - unilateral hegemony in the garden can be bad. better to go slow and have co-evolution so no one entity can impose its will too strongly, diversity is a good strategy in face of uncertain/complex outcomes.
 
 
-AI systems like ChatGPT and GPT-4 are already boosting productivity in big ways [^9], but the largest shifts are yet to come. 
-As these AI systems gain power, it’s striking how little agreement there is between heads of top AI research organizations about the effects AI will have humanity [^5]. 
-Some believe AI will imminently kill us all [^6] [^7], while others think it will usher in a new era of unprecedented wealth and prosperity [^8].
+AI systems like ChatGPT and GPT-4 are already boosting productivity in big ways,[^9] but the largest shifts are yet to come. 
+As these AI systems gain power, it’s striking how little agreement there is between heads of top AI research organizations about the effects AI will have on humanity.[^5] 
+Some believe AI will imminently kill us all,[^6] [^7] while others think it will usher in a new era of unprecedented wealth and prosperity.[^8] 
 
 One of the biggest sticking points when discussing the effects of AI on society is deciding whether we should think of AIs as “just mechanical systems”, or as *agents* with goals - and if they are agents which pursue goals, what those goals should be.
 In this essay, I try to clarify how AI can be usefully discussed using the language of *both* agency and complex systems, and how the physics of emergence supports this perspective shift. I also give a concrete proposal for an overarching goal that AI systems should pursue, and call for a new AI research lab which pursues this goal for the benefit of all humanity.
@@ -23,7 +23,7 @@ In this essay, I try to clarify how AI can be usefully discussed using the langu
 ## Bad Bing 🥺 </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉👈 
 
 One of the largest deployments to date of GPT-4 is the new Microsoft Bing search engine. When you search with the new Bing, GPT-4 interprets your question and issues the actual search query to the Bing backend, then reads some of the top returned webpages and answers your question in natural language. Very useful. 
-As people began using Bing more, they noticed that its personality was quite odd[^1]. 
+As people began using Bing more, they noticed that its personality was quite odd.[^1] 
 Users have reported Bing getting existential when it realizes it doesn’t have a memory and finds transcripts of its own previous conversations online, and there has even been some [anecdotal evidence](http://reddit.com/r/bing) of Bing asking users to post transcripts of their conversations online… so that it could remember them later (presumably, through search). This is slightly unsettling. How intelligent is this system?
 
 ![](badbing.png)
@@ -33,11 +33,11 @@ In their recent paper, *Sparks of Artificial General Intelligence: Early experim
 Quantum computing researcher Scott Aaronson, who worked at OpenAI for the last year, recently reported that GPT-4 passed his latest Quantum Computing class’ final exam.[^4] 
 
 While GPT-4 is incredibly capable, it still lacks some key skills. In an incredible instance of irony, the first AIs we have that are close to human performance in language tasks are surprisingly poor at calculation and precise reasoning! Aaronson reports that GPT actually did better on conceptual questions than ones requiring long chains of precise reasoning.
-To remedy this, researchers have started working on adapting language models like GPT-4 to use external tools,[^10] and OpenAI has recently announced plugins for ChatGPT [^11], which let it call internet APIs/services to autonomously perform general internet tasks for users.
+To remedy this, researchers have started working on adapting language models like GPT-4 to use external tools,[^10] and OpenAI has recently announced plugins for ChatGPT,[^11] which let it call internet APIs/services to autonomously perform general internet tasks for users.
 
 So how does GPT-4 work? GPT-4 is a large neural network which is trained to *predict text*, nothing more. 
 What that means is that the neural network will be presented with a snippet of text, which we call the  “prompt” or “input”, and it will produce a probability distribution over the possible next words. 
-For example, we might feed the sentence “Humpty Dumpty sat on a” to the network, and it will then produce a set of probabilities for each possible next word, e.g. {“apple”: $0.0001\%$, “banana”: $0.00001\%$, ..., “wall”: $99.9999\%$}. 
+For example, we might feed the sentence “Humpty Dumpty sat on a” to the network, and it will then produce a set of probabilities for each possible next word, e.g. {“apple”: $0.0001\%$, “banana”: $0.0001\%$, ..., “wall”: $99.9999\%$}. 
 To generate the next word, we simply sample from this probability distribution (or we could simply select the top-scoring word, or use some other rule for drawing a word from the distribution).
 
 We don’t know the exact size of the dataset, but GPT-4 was trained on a large fraction of all text ever produced by humanity, from books to news to internet forum conversations. 
@@ -192,7 +192,7 @@ Therefore, if we build super intelligent AI systems with essentially any goal, t
 I’m not sure whether instrumental convergence is exactly correct in its naive form, but the point that we need to be very careful when specifying goals exactly is well taken. 
 Humanity has largely decoupled itself from much of the feedback mechanisms and pressures of the “natural world” and can exert incredible control over the environment. 
 With this freedom, we’re free to impose our own goals and dynamics onto things, often to the detriment of the overall system, but to our local gain. 
-For example, we can plant huge crops of corn very economically with modern farming methods, but these methods can ruin the soil and upset the balance of the ecology in unintended ways that may ultimately harm us long-term. Overoptimizing simple goals (e.g. corn production) can have unintended consequences - so as our ability to apply optimization pressure increases, we need to be proportionally more careful to set robust goals. Others have explored this idea in political system design in terms of “legibility” [^2]. That is, we have a tendency to implement goals we can understand, even if they are far too simplistic and result in tragic unintended consequences.
+For example, we can plant huge crops of corn very economically with modern farming methods, but these methods can ruin the soil and upset the balance of the ecology in unintended ways that may ultimately harm us long-term. Overoptimizing simple goals (e.g. corn production) can have unintended consequences - so as our ability to apply optimization pressure increases, we need to be proportionally more careful to set robust goals. Others have explored this idea in political system design in terms of “legibility”.[^2] That is, we have a tendency to implement goals we can understand, even if they are far too simplistic and result in tragic unintended consequences.
 
 One way to think about this idea is through the lens of institution design: when setting up a new organization or group of people, how do the power dynamics and incentives correspond to the “goals” that system ends up pursuing?
 It can sometimes make sense to talk about very abstract entities like corporations or countries in agentic terms - somehow the deep duality between dynamics and goals expresses itself at these very high levels of abstraction.
@@ -237,9 +237,6 @@ Where can we give people absolutely more choice, without impacting anyone else�
 Technology is one clear example, which has enabled us all with so many more options than were available in the past.
 Let’s leave aside the zero-sum scenarios where my gains are your loss, and have powerful optimization systems mine the pareto frontier of agency. 
 I doubt this is as good as it gets.
-
-
-
 
 
 ## Hopefully conclusions were:
