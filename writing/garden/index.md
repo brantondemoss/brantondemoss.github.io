@@ -1,4 +1,9 @@
-# These New Agents,</br>This New Garden
+---
+title: These New Agents, </br>This New Garden
+header-includes:
+        <link rel="icon" sizes="16x16 32x32" type="image/png" href="../../favicon.ico">
+        <meta property="og:image" content="http://brantondemoss.com/writing/garden/noguchitexture.jpg" />
+---
 
 <img src="noguchitexture.jpg" style="margin-left: 11.5%; width: 25%; display: inline;"><img src="noguchitable.jpg" style="margin-left: 1%; width: 25%; display: inline;"><img src="robothand.jpg" style="width: 25%; display: inline; margin-left: 1%;">
 
@@ -118,10 +123,10 @@ Like wetness, agency is one of many possible emergent phenomena, given the right
 On the one hand, it appears that everything is following a set of rules which we call physics. 
 On the other, it is incredibly useful to describe certain complex systems (e.g. ourselves) as having goals and making decisions - in other words, that there are agents.
 
-One could describe the physics viewpoint as being very deontological, or rules-based; whereas agents feel very teleological, or ends-based (things are done for a purpose, rather than because of a rule). 
-What I want to argue is that the apparent tension between these views is false, and both are valid.
+One could describe the physics viewpoint as being very deontological, or rules-based; whereas agents feel very teleological, or ends-based (things are done *for a purpose*, rather than *because of a rule*). 
+My argument is that both viewpoints are valid, physically grounded, and that understanding how and when to move between the two is key to understanding how we should think about different kinds of AI systems. 
 
-For example, consider prions. Prions are proteins that have misfolded and no longer perform their original function. 
+Consider prions: prions are proteins that have misfolded and no longer perform their original function. 
 Instead, prions fold other proteins into their shape. This means that prions are a self-replicating geometry (of proteins). 
 If you want to predict the future in terms of its prion load, you could take the systemic viewpoint and try to compute the biophysics of folding and some complex chemistry. 
 Or, you could just say prions want to reproduce, so you’d predict there will be many in the future. 
