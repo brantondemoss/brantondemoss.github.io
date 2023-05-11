@@ -9,15 +9,6 @@ header-includes:
 
 **DRAFT - IN PROGRESS**
 
-some points left to fill in:
-
-- examples of pareto-improvement in agency. what would this look like for AI? fire in crowded room
-- Connect C Thi Nguyen work with ideas about goal legibility (!!) and collapse of complex behavior. social media behavior example of bad consequences of legibility
-- more explicit discussion of dangers of value lock-in
-- agency of other entities in nature? should we recognize all agents?
-- unilateral hegemony in the garden can be bad. better to go slow and have co-evolution so no one entity can impose its will too strongly, diversity is a good strategy in face of uncertain/complex outcomes.
-
-
 AI systems like ChatGPT and GPT-4 are already boosting productivity in big ways,[^9] but the largest shifts are yet to come. 
 As these AI systems gain power, it’s striking how little agreement there is between heads of top AI research organizations about the effects AI will have humanity.[^5]  
 Some believe AI will imminently kill us all,[^6] [^7] while others think it will usher in a new era of unprecedented wealth and prosperity.[^8] 
@@ -206,6 +197,17 @@ For example, we can plant huge crops of corn very economically with modern farmi
 One way to think about this idea is through the lens of institution design: when setting up a new organization or group of people, how do the power dynamics and incentives correspond to the “goals” that system ends up pursuing?
 It can sometimes make sense to talk about very abstract entities like corporations or countries in agentic terms - somehow the deep duality between dynamics and goals expresses itself at these very high levels of abstraction.
 
+It’s not clear that *any* particular goal or set of goals is even an appropriate target. 
+For example, the philosopher C Thi Nguyen has discussed[^mindscape] how digital social media spaces have reduced complexity of interaction *because* the goals of interaction are clear. 
+That is, because there’s a “universal ranking” or ordering (likes, hearts, etc…), this induces a value clarity which is not present in typical social interaction settings, where different agents may have a range of goals. 
+He gives the example of law school applicants, who used to discuss the moral and political values of different institutions, and question their own values, when deciding on which schools to apply to. 
+Now, with national rankings and clear values, applicants no longer go through the process of value deliberation, and have exported it to the ranking schemes. 
+Furthermore, because large institutions have difficulty incorporating quantitative information like moral values, and rely more on quantitative measures, this induces more problems of “goal legibility” as mentioned before. 
+
+All that is to say, it’s probably not a good idea to think about what particular set of moral values or goals we ought to give AI systems - goal clarity and powerful optimizers like corporations, institutions, and soon AI systems, tend to collapse environments into constituents that are legible to them, which often misses something crucially important but difficult to explicate ahead of time. 
+We have not yet figured this problem out at the societal level, but we are careening towards an outcome where AI systems look more and more like agents optimizing a goal, and currently those goals look roughly like… modern liberal values. 
+Do we want to lock that in for all time?
+
 We are about to bring a new entity which may have even more control and optimization pressure than us into the world - but it is being born somewhere abstract. 
 AI language models are beings who natively live on the internet, whose action space is far more abstract than our own (language tokens), and we are pumping more and more computational/optimization power into them every month (AI compute has a [3.5 month doubling time](https://openai.com/research/ai-and-compute)!)
 
@@ -246,6 +248,15 @@ Where can we give people absolutely more choice, without impacting anyone else�
 Technology is one clear example, which has enabled us all with so many more options than were available in the past.
 Let’s leave aside the zero-sum scenarios where my gains are your loss, and have powerful optimization systems mine the pareto frontier of agency. 
 I doubt this is as good as it gets.
+
+## Doubts
+
+Draft draft section
+
+- We are still training AI systems with relatively simple, interpretable goals. This will not work. Cannot even solve self-driving cars this way. There is not, or we have not yet found, a legible goal which describes the driving task. Seems to be much more like “do a good dance” than “don’t hit anyone”. Fundamentally complex “goal”.
+- Even if pareto-improvements in agency was a good meta-goal, that lifts from object level of values to increasing space of possible values… what is agent? Is a dog an agent? A garden? A prion? Can we really pareto-improve agency at all? Energy is conserved… makes it zero-sum : (
+- How do we both use powerful optimizers like AI systems to get what we want and make life better, but make sure we don’t collapse everything into a giant field of corn? How does nature handle this? Slow co-evolution? No agent ever becomes so much more powerful than others? Need to be hooked into the feedback mechanisms of the garden much more strongly. Need AI to ask us and plants if it’s ok.
+- We’re roughly post-scarcity now. There are enough calories to feed everyone on Earth [citation needed], it’s mostly political systems and capitalism getting in the way of distribution. Maybe we should… take this chance to ask what *our* goals should be going forward. Like why are we still pumping those numbers up so much? Can we turn inwards? Can we increase consciousness? Do we need more more faster?
 
 
 ## Hopefully conclusions were:
@@ -298,3 +309,5 @@ What should the goal be? Pareto improvement in agency.
 [^17]: The alternative is that there are genuinely new rules at different levels of scale (this perspective is called [strong-emergence](https://consc.net/papers/emergence.pdf)), but it’s not clear that this perspective is consistent with our best understanding of physics, and it would have dramatic implications for fundamental ideas like locality/relativity.
 
 [^18]: lol, but yea
+
+[^mindscape]: Mindscape podcast with C Thi Nguyen
