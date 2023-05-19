@@ -1,33 +1,33 @@
 ---
 title: These New Agents, </br>This New Garden
 header-includes:
-        <link rel="icon" sizes="16x16 32x32" type="image/png" href="../../favicon.ico">
-        <meta property="og:image" content="http://brantondemoss.com/writing/garden/noguchitexture.jpg" />
----
-
-<img src="noguchitexture.jpg" style="margin-left: 11.5%; width: 25%; display: inline;"><img src="noguchitable.jpg" style="margin-left: 1%; width: 25%; display: inline;"><img src="robothand.jpg" style="width: 25%; display: inline; margin-left: 1%;">
-
-<center>**DRAFT - IN PROGRESS**</center>
-
+        <link rel="icon" sizes="16x16 32x32" type="image/png" href="../../favicon.ico">                                                                                                                     
+        <meta property="og:image" content="http://brantondemoss.com/writing/garden/noguchitexture.jpg" />                                                                                                   
+---                                                                                                                                                                                                         
+                                                                                                                                                                                                            
+<img src="noguchitexture.jpg" style="margin-left: 11.5%; width: 25%; display: inline;"><img src="noguchitable.jpg" style="margin-left: 1%; width: 25%; display: inline;"><img src="robothand.jpg" style="width: 25%; display: inline; margin-left: 1%;">                                                                                                                                                               
+                                                                                                                                                                                                            
+<center>**DRAFT - IN PROGRESS**</center>                                                                                                                                                                    
+                                                                                                                                                                                                            
 # Chapters
 
 ---
 
-1. [Bad Bing](#bad-bing)
-2. [Emergence](#emergence)
-3. [Digital Ecologies](#digital-ecologies)
-4. [Memetic Agents](#memetic-agents)
-5. [Digital Agency](#digital-agency)
-6. [Moral Progress](#moral-progress)
-
----
+1. [Bad Bing](#bad-bing)                                                                                                                                                                                    
+2. [Emergence](#emergence)                                                                                                                                                                                  
+3. [Digital Ecologies](#digital-ecologies)                                                                                                                                                                  
+4. [Memetic Agents](#memetic-agents)                                                                                                                                                                        
+5. [Digital Agency](#digital-agency)                                                                                                                                                                        
+6. [Moral Progress](#moral-progress)                                                                                                                                                                        
+                                                                                                                                                                                                            
+--- 
 
 AI systems like ChatGPT and GPT-4 are already boosting productivity in big ways,[^9] but the largest shifts are yet to come. 
 As these AI systems gain power, it’s striking how little agreement there is between heads of top AI research organizations about the effects AI will have humanity.[^5] 
 Some believe AI will imminently kill us all,[^6] [^7] while others think it will usher in a new era of unprecedented wealth and prosperity.[^8] 
 
 One of the biggest sticking points when discussing the effects of AI on society is deciding whether we should think of AIs as “just mechanical systems”, or as *agents* with goals - and if they are agents which pursue goals, what those goals should be.
-In this essay, I try to clarify how AI can be usefully discussed using the language of *both* agency and complex systems, and how the physics of emergence supports this perspective shift. I also give a concrete proposal for an overarching goal that AI systems should pursue, and call for a new AI research lab which pursues this goal for the benefit of all humanity.
+In this essay, I start by clarifying how AI can be usefully discussed using the language of *both* agency and complex systems, and how the physics of emergence gives us the freedom to use either perspective when discussing a wide range of systems. Then, I discuss how the design of emergent agents like societies, digital platforms, and AI systems are intrinsically linked to the goals they implement, and finally give a concrete proposal for an overarching goal that AI systems should pursue, as well as call for a new AI research lab which pursues this goal for the benefit of all humanity.
 
 ## Bad Bing 🥺 </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉👈 
 
@@ -191,7 +191,6 @@ The philosopher Dan Dennett has done some good work prescribing how we should th
 An agent, then, is any system which is usefully described as goal-seeking. 
 We should recognize that this description extends only as far as its utility: Just as light isn’t really a particle or a wave, but something there in the world which is sometimes usefully described in the language of waves or particles, agents are systems which are usefully described in the language of agency and goals. 
 The duality between goal-seeking agents and dynamical systems exists, and it’s up to us to choose the more useful description depending on the problem at hand. 
-
 
 ## Digital Agency
 
