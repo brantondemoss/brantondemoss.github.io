@@ -34,20 +34,33 @@
 <h1 class="title">These New Agents, </br>This New Garden</h1>
 </header>
 <p><img src="noguchitexture.jpg" style="margin-left: 11.5%; width: 25%; display: inline;"><img src="noguchitable.jpg" style="margin-left: 1%; width: 25%; display: inline;"><img src="robothand.jpg" style="width: 25%; display: inline; margin-left: 1%;"></p>
-<p><strong>DRAFT - IN PROGRESS</strong></p>
+<center>
+<strong>DRAFT - IN PROGRESS</strong>
+</center>
+<h1 id="chapters">Chapters</h1>
+<hr />
+<ol type="1">
+<li><a href="#bad-bing">Bad Bing</a></li>
+<li><a href="#emergence">Emergence</a></li>
+<li><a href="#digital-ecologies">Digital Ecologies</a></li>
+<li><a href="#memetic-agents">Memetic Agents</a></li>
+<li><a href="#digital-agency">Digital Agency</a></li>
+<li><a href="#moral-progress">Moral Progress</a></li>
+</ol>
+<hr />
 <p>AI systems like ChatGPT and GPT-4 are already boosting productivity
 in big ways,<a href="#fn1" class="footnote-ref" id="fnref1"
 role="doc-noteref"><sup>1</sup></a> but the largest shifts are yet to
 come. As these AI systems gain power, it’s striking how little agreement
 there is between heads of top AI research organizations about the
 effects AI will have humanity.<a href="#fn2" class="footnote-ref"
-id="fnref2" role="doc-noteref"><sup>2</sup></a><br />
-Some believe AI will imminently kill us all,<a href="#fn3"
-class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> <a
-href="#fn4" class="footnote-ref" id="fnref4"
-role="doc-noteref"><sup>4</sup></a> while others think it will usher in
-a new era of unprecedented wealth and prosperity.<a href="#fn5"
-class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+id="fnref2" role="doc-noteref"><sup>2</sup></a> Some believe AI will
+imminently kill us all,<a href="#fn3" class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a> <a href="#fn4" class="footnote-ref"
+id="fnref4" role="doc-noteref"><sup>4</sup></a> while others think it
+will usher in a new era of unprecedented wealth and prosperity.<a
+href="#fn5" class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a></p>
 <p>One of the biggest sticking points when discussing the effects of AI
 on society is deciding whether we should think of AIs as “just
 mechanical systems”, or as <em>agents</em> with goals - and if they are
@@ -88,8 +101,8 @@ Aaronson, who worked at OpenAI for the last year, recently reported that
 GPT-4 passed his latest Quantum Computing class’s final exam.<a
 href="#fn9" class="footnote-ref" id="fnref9"
 role="doc-noteref"><sup>9</sup></a></p>
-<p>While GPT-4 is incredibly capable, it still lacks some key skills. In
-an incredible instance of irony, the first AIs we have that are close to
+<p>While GPT-4 is highly capable, it still lacks some key skills. In an
+incredible instance of irony, the first AIs we have that are close to
 human performance in language tasks are surprisingly poor at calculation
 and precise reasoning! Aaronson reports that GPT actually did better on
 conceptual questions than ones requiring long chains of precise
@@ -303,6 +316,15 @@ There’s no definite point when things “become” agents - it just becomes
 more and more useful to describe an entity’s dynamics in the language of
 agency. Just as it becomes more and more useful to describe a group of
 water molecules as “wet”. That this happens at all is interesting.</p>
+<p>These examples show that there is not a unique level of abstraction
+at which agency exists, and we frequently encounter compound agents:
+agents which are made of collections of other agents. The goals of the
+compound agent can be quite different from the goals of the component
+agents. For example, the compound agent of the body can command cell
+death, despite it clearly not being a goal of the individual cell
+sub-agent. The dynamics of the integration and communication between the
+individual agents gives rise to strange new emergent goals, which may
+not exist in any one individual sub-agent at all.</p>
 <p>A final example in the question of the duality between goals/agency
 and systems/dynamics are political or corporate institutions. People
 have recently been discussing the idea of structural racism, the idea
@@ -310,8 +332,11 @@ that institutions themselves are racist. This is a very agentic framing,
 as if the institution had a goal and was seeking it. In our framework,
 this is quite natural. The way the mechanisms of the system/institution
 are designed and put in place are dual to, or in some sense determine,
-the goal they implement. It’s in this sense that I mean agency is
-emergent.</p>
+the goal they implement. Again, the goal of the emergent agent can be
+quite different from any particular sub-agent. In this case, the
+organization’s cultural norms and interaction dynamics can result in
+high-level goals which no individual has, or might even support. It’s in
+this sense that I mean agency is emergent.</p>
 <p>It’s important to note that the agent view is certainly not always
 useful or appropriate. For example, it doesn’t seem very useful to
 describe a garden as an agent. Instead, we’d prefer to talk about soil
@@ -334,9 +359,14 @@ most instances yield a decision about what the agent ought to do; that
 is what you predict the agent will do.” - Daniel Dennett, The
 Intentional Stance, p. 17</p>
 </blockquote>
-<p>An agent, then, is what is usefully described as an agent. The
-duality between goal-seeking and process-oriented exists, and it’s up to
-us to choose the more useful description depending on the system at
+<p>An agent, then, is any system which is usefully described as
+goal-seeking. We should recognize that this description extends only as
+far as its utility: Just as light isn’t really a particle or a wave, but
+something there in the world which is sometimes usefully described in
+the language of waves or particles, agents are systems which are
+usefully described in the language of agency and goals. The duality
+between goal-seeking agents and dynamical systems exists, and it’s up to
+us to choose the more useful description depending on the problem at
 hand.</p>
 <h2 id="digital-agency">Digital Agency</h2>
 <p>Recall that the base model of GPT-4 is trained to predict the most
@@ -356,13 +386,18 @@ id="fnref16" role="doc-noteref"><sup>16</sup></a> from which we can
 <p>The other way to produce very agentic behavior from GPT is, of
 course, to do reinforcement learning. We previously discussed how RL is
 performed for ChatGPT, based on rewards derived from human feedback and
-evaluations of its outputs. While this procedure makes ChatGPT far more
-useful and goal-oriented, many have noted how it can also result in an
-extremely biased model (politically liberal, in this case) which will
-refuse to discuss certain subjects or wring its hands about some topics,
-while being overly sycophantic in other cases. As we increase the power
-of these systems, we need to be very careful when designing the goals
-and dynamics that govern them.</p>
+evaluations of its outputs. Because reinforcement learning (by
+construction) has the property of making systems more likely to receive
+rewards over time, it’s exactly a procedure for making those systems
+more usefully described as agents following particular
+temporally-coherent goals, which are encapsulated in the reward function
+used to train the agent. While RL on human feedback of helpfulness makes
+ChatGPT far more useful and goal-oriented, many have noted how it can
+also result in a clearly biased agent (politically liberal, in this
+case) which will refuse to discuss certain subjects, or wring its hands
+about some topics, while being overly sycophantic in other cases. As we
+increase the power of these systems, we need to be very careful when
+designing the goals and dynamics that govern them.</p>
 <p>One of the central claims in the <a
 href="https://www.alignmentforum.org/">AI Alignment community</a> is
 called “<a
@@ -409,25 +444,27 @@ have reduced complexity of interaction <em>because</em> the goals of
 interaction are clear. That is, because there’s a “universal ranking” or
 ordering (likes, hearts, etc…), this induces a value clarity which is
 not present in typical social interaction settings, where different
-agents may have a range of goals. He gives the example of law school
-applicants, who used to discuss the moral and political values of
+agents may have a diverse range of goals. He gives the example of law
+school applicants who used to discuss the moral and political values of
 different institutions, and question their own values, when deciding on
 which schools to apply to. Now, with national rankings and clear values,
 applicants no longer go through the process of value deliberation, and
 have exported it to the ranking schemes. Furthermore, because large
-institutions have difficulty incorporating quantitative information like
-moral values, and rely more on quantitative measures, this induces more
-problems of “goal legibility” as mentioned before.</p>
+institutions have difficulty measuring and acting upon qualitative
+information like moral values at scale, they rely on more “portable”
+forms of data, particularly quantifiable measures. This is another
+instance of goal legibility reducing complexity and collapsing systems
+down only to what is measured.</p>
 <p>All that is to say, it’s probably not a good idea to think about what
 particular set of moral values or goals we ought to give AI systems -
 goal clarity and powerful optimizers like corporations, institutions,
 and soon AI systems, tend to collapse environments into constituents
-that are legible to them, which often misses something crucially
-important but difficult to explicate ahead of time. We have not yet
-figured this problem out at the societal level, but we are careening
-towards an outcome where AI systems look more and more like agents
-optimizing a goal, and currently those goals look roughly like… modern
-liberal values. Do we want to lock that in for all time?</p>
+that are legible to them, which can miss something crucially important
+but difficult to explicate ahead of time. We have not yet figured this
+problem out at the societal level, but we are careening towards an
+outcome where AI systems look more and more like agents optimizing a
+goal, and currently those goals look roughly like… modern liberal
+values. Do we want to lock that in for all time?</p>
 <p>We are about to bring a new entity which may have even more control
 and optimization pressure than us into the world - but it is being born
 somewhere abstract. AI language models are beings who natively live on
@@ -437,9 +474,10 @@ computational/optimization power into them every month (AI compute has a
 <a href="https://openai.com/research/ai-and-compute">3.5 month doubling
 time</a>!)</p>
 <p>What should the goals of these systems be? It’s a difficult moral
-question, but I have a proposal, and a potential definition for what
-universal moral progress could mean.<a href="#fn19" class="footnote-ref"
-id="fnref19" role="doc-noteref"><sup>19</sup></a></p>
+question, but I have a proposal, at least for a meta-objective, and a
+potential definition for what universal moral progress could mean.<a
+href="#fn19" class="footnote-ref" id="fnref19"
+role="doc-noteref"><sup>19</sup></a></p>
 <h2 id="moral-progress">Moral Progress</h2>
 <p>Morality is a briar patch, and I’d like very much to avoid getting
 trapped there. <em>However</em>…</p>
@@ -610,8 +648,10 @@ href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 href="https://www.ribbonfarm.com/2010/07/26/a-big-little-idea-called-legibility/">A
 Big Little Idea Called Legibility</a><a href="#fnref17"
 class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn18"><p>Mindscape podcast with C Thi Nguyen<a href="#fnref18"
-class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18"><p><a
+href="https://www.preposterousuniverse.com/podcast/2021/10/18/169-c-thi-nguyen-on-games-art-values-and-agency/">Mindscape
+podcast</a> with C Thi Nguyen<a href="#fnref18" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
 <li id="fn19"><p>lol, but yea<a href="#fnref19" class="footnote-back"
 role="doc-backlink">↩︎</a></p></li>
 </ol>

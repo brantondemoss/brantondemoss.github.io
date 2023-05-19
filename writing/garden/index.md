@@ -7,10 +7,23 @@ header-includes:
 
 <img src="noguchitexture.jpg" style="margin-left: 11.5%; width: 25%; display: inline;"><img src="noguchitable.jpg" style="margin-left: 1%; width: 25%; display: inline;"><img src="robothand.jpg" style="width: 25%; display: inline; margin-left: 1%;">
 
-**DRAFT - IN PROGRESS**
+<center>**DRAFT - IN PROGRESS**</center>
+
+# Chapters
+
+---
+
+1. [Bad Bing](#bad-bing)
+2. [Emergence](#emergence)
+3. [Digital Ecologies](#digital-ecologies)
+4. [Memetic Agents](#memetic-agents)
+5. [Digital Agency](#digital-agency)
+6. [Moral Progress](#moral-progress)
+
+---
 
 AI systems like ChatGPT and GPT-4 are already boosting productivity in big ways,[^9] but the largest shifts are yet to come. 
-As these AI systems gain power, it’s striking how little agreement there is between heads of top AI research organizations about the effects AI will have humanity.[^5]  
+As these AI systems gain power, it’s striking how little agreement there is between heads of top AI research organizations about the effects AI will have humanity.[^5] 
 Some believe AI will imminently kill us all,[^6] [^7] while others think it will usher in a new era of unprecedented wealth and prosperity.[^8] 
 
 One of the biggest sticking points when discussing the effects of AI on society is deciding whether we should think of AIs as “just mechanical systems”, or as *agents* with goals - and if they are agents which pursue goals, what those goals should be.
@@ -28,7 +41,7 @@ Users have reported Bing getting existential when it realizes it doesn’t have 
 In their recent paper, *Sparks of Artificial General Intelligence: Early experiments with GPT-4* researchers at Microsoft report that GPT-4 “can solve novel and difficult tasks that span mathematics, coding, vision, medicine, law, psychology and more”, and that “in all of these tasks, [its] performance is strikingly close to human-level”.[^3] 
 Quantum computing researcher Scott Aaronson, who worked at OpenAI for the last year, recently reported that GPT-4 passed his latest Quantum Computing class’s final exam.[^4] 
 
-While GPT-4 is incredibly capable, it still lacks some key skills. In an incredible instance of irony, the first AIs we have that are close to human performance in language tasks are surprisingly poor at calculation and precise reasoning! Aaronson reports that GPT actually did better on conceptual questions than ones requiring long chains of precise reasoning.
+While GPT-4 is highly capable, it still lacks some key skills. In an incredible instance of irony, the first AIs we have that are close to human performance in language tasks are surprisingly poor at calculation and precise reasoning! Aaronson reports that GPT actually did better on conceptual questions than ones requiring long chains of precise reasoning.
 To remedy this, researchers have started working on adapting language models like GPT-4 to use external tools,[^10] and OpenAI has recently announced plugins for ChatGPT,[^11] which let it call internet APIs/services to autonomously perform general internet tasks for users.
 
 So how does GPT-4 work? GPT-4 is a large neural network which is trained to *predict text*, nothing more. 
@@ -152,10 +165,17 @@ Are the cells in an ant an agent? What about the molecular machines that make up
 There’s no definite point when things “become” agents - it just becomes more and more useful to describe an entity’s dynamics in the language of agency. Just as it becomes more and more useful to describe a group of water molecules as “wet”. 
 That this happens at all is interesting.
 
+These examples show that there is not a unique level of abstraction at which agency exists, and we frequently encounter compound agents: agents which are made of collections of other agents. 
+The goals of the compound agent can be quite different from the goals of the component agents. 
+For example, the compound agent of the body can command cell death, despite it clearly not being a goal of the individual cell sub-agent. 
+The dynamics of the integration and communication between the individual agents gives rise to strange new emergent goals, which may not exist in any one individual sub-agent at all.
+
 A final example in the question of the duality between goals/agency and systems/dynamics are political or corporate institutions. 
 People have recently been discussing the idea of structural racism, the idea that institutions themselves are racist. 
 This is a very agentic framing, as if the institution had a goal and was seeking it. In our framework, this is quite natural. 
 The way the mechanisms of the system/institution are designed and put in place are dual to, or in some sense determine, the goal they implement. 
+Again, the goal of the emergent agent can be quite different from any particular sub-agent. 
+In this case, the organization’s cultural norms and interaction dynamics can result in high-level goals which no individual has, or might even support.
 It’s in this sense that I mean agency is emergent.
 
 It’s important to note that the agent view is certainly not always useful or appropriate. 
@@ -168,9 +188,10 @@ The philosopher Dan Dennett has done some good work prescribing how we should th
 > “Here is how it works: first you decide to treat the object whose behavior is to be predicted as a rational agent; then you figure out what beliefs that agent ought to have, given its place in the world and its purpose. Then you figure out what desires it ought to have, on the same considerations, and finally you predict that this rational agent will act to further its goals in the light of its beliefs. A little practical reasoning from the chosen set of beliefs and desires will in most instances yield a decision about what the agent ought to do; that is what you predict the agent will do.”
 - Daniel Dennett, The Intentional Stance, p. 17
 
+An agent, then, is any system which is usefully described as goal-seeking. 
+We should recognize that this description extends only as far as its utility: Just as light isn’t really a particle or a wave, but something there in the world which is sometimes usefully described in the language of waves or particles, agents are systems which are usefully described in the language of agency and goals. 
+The duality between goal-seeking agents and dynamical systems exists, and it’s up to us to choose the more useful description depending on the problem at hand. 
 
-An agent, then, is what is usefully described as an agent. 
-The duality between goal-seeking and process-oriented exists, and it’s up to us to choose the more useful description depending on the system at hand.
 
 ## Digital Agency
 
@@ -181,7 +202,8 @@ This is an interesting phenomenon, and lends credence to the interpretation of G
 
 The other way to produce very agentic behavior from GPT is, of course, to do reinforcement learning. 
 We previously discussed how RL is performed for ChatGPT, based on rewards derived from human feedback and evaluations of its outputs. 
-While this procedure makes ChatGPT far more useful and goal-oriented, many have noted how it can also result in an extremely biased model (politically liberal, in this case) which will refuse to discuss certain subjects or wring its hands about some topics, while being overly sycophantic in other cases. 
+Because reinforcement learning (by construction) has the property of making systems more likely to receive rewards over time, it’s exactly a procedure for making those systems more usefully described as agents following particular temporally-coherent goals, which are encapsulated in the reward function used to train the agent. 
+While RL on human feedback of helpfulness makes ChatGPT far more useful and goal-oriented, many have noted how it can also result in a clearly biased agent (politically liberal, in this case) which will refuse to discuss certain subjects, or wring its hands about some topics, while being overly sycophantic in other cases. 
 As we increase the power of these systems, we need to be very careful when designing the goals and dynamics that govern them.
 
 One of the central claims in the [AI Alignment community](https://www.alignmentforum.org/) is called “[instrumental convergence](https://www.lesswrong.com/tag/instrumental-convergence)”, and it says this: To achieve (almost) any goal, a subgoal is that you not die/continue existing. 
@@ -192,26 +214,29 @@ Therefore, if we build super intelligent AI systems with essentially any goal, t
 I’m not sure whether instrumental convergence is exactly correct in its naive form, but the point that we need to be very careful when specifying goals exactly is well taken. 
 Humanity has largely decoupled itself from much of the feedback mechanisms and pressures of the “natural world” and can exert incredible control over the environment. 
 With this freedom, we’re free to impose our own goals and dynamics onto things, often to the detriment of the overall system, but to our local gain. 
-For example, we can plant huge crops of corn very economically with modern farming methods, but these methods can ruin the soil and upset the balance of the ecology in unintended ways that may ultimately harm us long-term. Overoptimizing simple goals (e.g. corn production) can have unintended consequences - so as our ability to apply optimization pressure increases, we need to be proportionally more careful to set robust goals. Others have explored this idea in political system design in terms of “legibility”.[^2] That is, we have a tendency to implement goals we can understand, even if they are far too simplistic and result in tragic unintended consequences.
+For example, we can plant huge crops of corn very economically with modern farming methods, but these methods can ruin the soil and upset the balance of the ecology in unintended ways that may ultimately harm us long-term. 
+Overoptimizing simple goals (e.g. corn production) can have unintended consequences - so as our ability to apply optimization pressure increases, we need to be proportionally more careful to set robust goals. 
+Others have explored this idea in political system design in terms of “legibility”.[^2] That is, we have a tendency to implement goals we can understand, even if they are far too simplistic and result in tragic unintended consequences.
 
 One way to think about this idea is through the lens of institution design: when setting up a new organization or group of people, how do the power dynamics and incentives correspond to the “goals” that system ends up pursuing?
 It can sometimes make sense to talk about very abstract entities like corporations or countries in agentic terms - somehow the deep duality between dynamics and goals expresses itself at these very high levels of abstraction.
 
 It’s not clear that *any* particular goal or set of goals is even an appropriate target. 
 For example, the philosopher C Thi Nguyen has discussed[^mindscape] how digital social media spaces have reduced complexity of interaction *because* the goals of interaction are clear. 
-That is, because there’s a “universal ranking” or ordering (likes, hearts, etc…), this induces a value clarity which is not present in typical social interaction settings, where different agents may have a range of goals. 
-He gives the example of law school applicants, who used to discuss the moral and political values of different institutions, and question their own values, when deciding on which schools to apply to. 
+That is, because there’s a “universal ranking” or ordering (likes, hearts, etc…), this induces a value clarity which is not present in typical social interaction settings, where different agents may have a diverse range of goals. 
+He gives the example of law school applicants who used to discuss the moral and political values of different institutions, and question their own values, when deciding on which schools to apply to. 
 Now, with national rankings and clear values, applicants no longer go through the process of value deliberation, and have exported it to the ranking schemes. 
-Furthermore, because large institutions have difficulty incorporating quantitative information like moral values, and rely more on quantitative measures, this induces more problems of “goal legibility” as mentioned before. 
+Furthermore, because large institutions have difficulty measuring and acting upon qualitative information like moral values at scale, they rely on more “portable” forms of data, particularly quantifiable measures. 
+This is another instance of goal legibility reducing complexity and collapsing systems down only to what is measured.
 
-All that is to say, it’s probably not a good idea to think about what particular set of moral values or goals we ought to give AI systems - goal clarity and powerful optimizers like corporations, institutions, and soon AI systems, tend to collapse environments into constituents that are legible to them, which often misses something crucially important but difficult to explicate ahead of time. 
+All that is to say, it’s probably not a good idea to think about what particular set of moral values or goals we ought to give AI systems - goal clarity and powerful optimizers like corporations, institutions, and soon AI systems, tend to collapse environments into constituents that are legible to them, which can miss something crucially important but difficult to explicate ahead of time. 
 We have not yet figured this problem out at the societal level, but we are careening towards an outcome where AI systems look more and more like agents optimizing a goal, and currently those goals look roughly like… modern liberal values. 
 Do we want to lock that in for all time?
 
 We are about to bring a new entity which may have even more control and optimization pressure than us into the world - but it is being born somewhere abstract. 
 AI language models are beings who natively live on the internet, whose action space is far more abstract than our own (language tokens), and we are pumping more and more computational/optimization power into them every month (AI compute has a [3.5 month doubling time](https://openai.com/research/ai-and-compute)!)
 
-What should the goals of these systems be? It’s a difficult moral question, but I have a proposal, and a potential definition for what universal moral progress could mean.[^18]
+What should the goals of these systems be? It’s a difficult moral question, but I have a proposal, at least for a meta-objective, and a potential definition for what universal moral progress could mean.[^18]
 
 ## Moral Progress
 
@@ -310,4 +335,4 @@ What should the goal be? Pareto improvement in agency.
 
 [^18]: lol, but yea
 
-[^mindscape]: Mindscape podcast with C Thi Nguyen
+[^mindscape]: [Mindscape podcast](https://www.preposterousuniverse.com/podcast/2021/10/18/169-c-thi-nguyen-on-games-art-values-and-agency/) with C Thi Nguyen
