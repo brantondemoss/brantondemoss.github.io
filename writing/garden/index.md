@@ -1,29 +1,29 @@
 ---
 title: These New Agents, </br>This New Garden
 header-includes:
-        <link rel="icon" sizes="16x16 32x32" type="image/png" href="../../favicon.ico">                                                                                                                     
-        <meta property="og:image" content="http://brantondemoss.com/writing/garden/noguchitexture.jpg" />                                                                                                   
----                                                                                                                                                                                                         
-                                                                                                                                                                                                            
+        <link rel="icon" sizes="16x16 32x32" type="image/png" href="../../favicon.ico">
+	<meta property="og:image" content="http://brantondemoss.com/writing/garden/noguchitexture.jpg" />
+---
+
 <img src="noguchitexture.jpg" style="margin-left: 11.5%; width: 25%; display: inline;"><img src="noguchitable.jpg" style="margin-left: 1%; width: 25%; display: inline;"><img src="robothand.jpg" style="width: 25%; display: inline; margin-left: 1%;">                                                                                                                                                               
                                                                                                                                                                                                             
 <center>**DRAFT - IN PROGRESS**</center>                                                                                                                                                                    
                                                                                                                                                                                                             
-# Chapters
+## Chapters
 
 ---
 
-1. [Bad Bing](#bad-bing)                                                                                                                                                                                    
-2. [Emergence](#emergence)                                                                                                                                                                                  
-3. [Digital Ecologies](#digital-ecologies)                                                                                                                                                                  
-4. [Memetic Agents](#memetic-agents)                                                                                                                                                                        
-5. [Digital Agency](#digital-agency)                                                                                                                                                                        
-6. [Moral Progress](#moral-progress)                                                                                                                                                                        
-                                                                                                                                                                                                            
---- 
+1. [Bad Bing](#bad-bing)
+2. [Emergence](#emergence)
+3. [Digital Ecologies](#digital-ecologies)
+4. [Memetic Agents](#memetic-agents)
+5. [Digital Agency](#digital-agency)
+6. [Moral Progress](#moral-progress)
+
+---
 
 AI systems like ChatGPT and GPT-4 are already boosting productivity in big ways,[^9] but the largest shifts are yet to come. 
-As these AI systems gain power, it’s striking how little agreement there is between heads of top AI research organizations about the effects AI will have humanity.[^5] 
+As these AI systems gain power, it’s striking how little agreement there is between heads of top AI research organizations about the effects AI will have on humanity.[^5] 
 Some believe AI will imminently kill us all,[^6] [^7] while others think it will usher in a new era of unprecedented wealth and prosperity.[^8] 
 
 One of the biggest sticking points when discussing the effects of AI on society is deciding whether we should think of AIs as “just mechanical systems”, or as *agents* with goals - and if they are agents which pursue goals, what those goals should be.
@@ -32,13 +32,13 @@ In this essay, I start by clarifying how AI can be usefully discussed using the 
 ## Bad Bing 🥺 </br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;👉👈 
 
 One of the largest deployments to date of GPT-4 is the new Microsoft Bing search engine. When you search with the new Bing, GPT-4 interprets your question and issues the actual search query to the Bing backend, then reads some of the top returned webpages and answers your question in natural language. Very useful. 
-As people began using Bing more, they noticed that its personality was quite odd.[^1]  
+As people began using Bing more, they noticed that its personality was quite odd.[^1] 
 Users have reported Bing getting existential when it realizes it doesn’t have a memory and finds transcripts of its own previous conversations online, and there has even been some [anecdotal evidence](http://reddit.com/r/bing) of Bing asking users to post transcripts of their conversations online… so that it could remember them later (presumably, through search). This is slightly unsettling. How intelligent is this system?
 
 ![](badbing.png)
 *Source: Reddit[^12]*
 
-In their recent paper, *Sparks of Artificial General Intelligence: Early experiments with GPT-4* researchers at Microsoft report that GPT-4 “can solve novel and difficult tasks that span mathematics, coding, vision, medicine, law, psychology and more”, and that “in all of these tasks, [its] performance is strikingly close to human-level”.[^3] 
+In their recent paper, *Sparks of Artificial General Intelligence: Early experiments with GPT-4*, researchers at Microsoft report that GPT-4 “can solve novel and difficult tasks that span mathematics, coding, vision, medicine, law, psychology and more”, and that “in all of these tasks, [its] performance is strikingly close to human-level”.[^3] 
 Quantum computing researcher Scott Aaronson, who worked at OpenAI for the last year, recently reported that GPT-4 passed his latest Quantum Computing class’s final exam.[^4] 
 
 While GPT-4 is highly capable, it still lacks some key skills. In an incredible instance of irony, the first AIs we have that are close to human performance in language tasks are surprisingly poor at calculation and precise reasoning! Aaronson reports that GPT actually did better on conceptual questions than ones requiring long chains of precise reasoning.
@@ -97,7 +97,7 @@ That complexity makes it hard to be very precise in saying what we “know” ab
 When we make mathematical statements, we can be extremely precise because the rules are so simple: if you assume a, b, and c, then you can conclude x, y, and z. 
 But if I say something like “it’s raining outside”, I’m making a statement about a *huge* number of objects! 
 That statement certainly tells you a lot about the set of configurations “outside” could take on, but there are many precise details about where exactly each raindrop is that are left out. 
-In this sense, knowing and complex emergent phenomena are incompatible levels of abstraction.
+In this sense, knowing and complex emergent phenomena are incompatible levels of abstraction. 
 
 > "The whole is greater than the sum of its parts." - Aristotle
 
@@ -241,19 +241,17 @@ What should the goals of these systems be? It’s a difficult moral question, bu
 
 Morality is a briar patch, and I’d like very much to avoid getting trapped there. *However*…
 
-I’ve often felt a tension: Morality can feel so completely subjective. Group A wants Group B gone, and Group B wants Group A gone. Who’s to say who is right? People can be deeply, fully anti-aligned, with no hope of progress or reconciliation. That seems to imply the whole game is up for interpretation, and completely subjective. How could I claim something like moral progress could even exist? What direction is there to go in, if you’re constantly running up against people’s moral boundaries?
-
-But consider: if we look back on the Dark Ages and compare the overall state to today, it does feel as though there’s been something like moral progress. How does that fit with the feeling of utter subjectivity? If we imagine looking back on today from the future, I wouldn’t want to bet they wouldn’t feel the same. So progress seems possible. What could it look like?
+It often feels as though there is a tension in the contemporary conception of morality. On the one hand, we’ve largely moved away from accepting that there is a singular set of moral principles that is universal, and can much more fluidly accept that other’s moral principles may not align with our own. On the other hand, if we look back to the past and compare it to today, it feels wrong to say we haven’t made any moral progress. And if I look back on today from the far future, I wouldn’t feel confident claiming they wouldn’t feel similarly about us. So we’re at odds: it seems like we’ve arrived in a place of accepting that morality is subjective, yet considering the arc of history, it does feel like the trend is one of progress. How can this be? What could universal moral progress mean?
 
 I believe the answer lies in improving agency.
 
-Agency is related to our ability to determine our lives, to make choices which affect ourselves.
-Often our agency is bounded by others’ agency. 
-For example, my right to yell fire in a crowded room is limited by your right to safety. 
+Agency is related to our ability to determine our lives, to make choices which affect ourselves.                                                                                                            
+Often our own agency is bounded by another’s: my right to yell fire in a crowded room is limited by your right to safety. 
 These are zero-sum scenarios, where improving one person’s agency decreases another’s. 
-These are the kinds of scenarios that make morality feel so arbitrary, where we use political entities to determine some arbitrary point between our rights and say “there!”
+These are the kinds of scenarios that make morality feel so arbitrary, where we use political entities to determine some arbitrary balancing point between our rights and say “there!” 
+It may be that most hot-button political issues are exactly these no win, zero-sum scenarios, where we merely make trade-offs between the agency of different groups. 
 
-However, not all aspects of agency are zero-sum. 
+However, not all aspects of agency are zero-sum. There are places where we can absolutely improve people’s agency *without decreasing it for anyone else*. 
 In the past, if you wanted to eat, you needed to be a farmer. 
 There wasn’t much of a choice. 
 Now, with better technology and more efficient agriculture, people are free to choose to pursue a much more diverse set of careers. 
@@ -268,10 +266,17 @@ But you are not always operating most efficiently! There may be potential to imp
 *Pareto improvement is achieved when we move anywhere inside the red curve, towards the red curve. That curve is known as the pareto-frontier.*
 
 I believe that we should have AI systems seek pareto-improvement in agency. 
-Where can we give people absolutely more choice, without impacting anyone else’s ability to determine their future? 
-Technology is one clear example, which has enabled us all with so many more options than were available in the past.
+Where can we give people absolutely more choice, without impacting anyone else’s ability to determine their future? One of the most obvious ways to achieve this is simply to give people their time back. If I can reduce the time it takes you to wash your dishes by 50% and achieve exactly the same outcome, I’ve given you more agency with that extra time, which you can choose to spend as you please. 
+This is why technological progress, in my opinion, can be a great driver of moral progress - giving people their time back improves their agency and ability to self-determine, without taking it away from others. 
 Let’s leave aside the zero-sum scenarios where my gains are your loss, and have powerful optimization systems mine the pareto frontier of agency. 
-I doubt this is as good as it gets.
+I doubt this is as good as it gets. 
+
+We get to determine the goals and dynamics of these new systems. 
+Will the current crop of AI companies really distribute the benefits of these technologies to all humanity? 
+Or will the goals of these powerful new systems be set by the existing emergent culture of institutions and mechanisms,[^moloch] and cause a new legibility collapse? 
+Someone should fund a lab dedicated to having AI pareto improve agency outside the current systems and incentives. 
+
+There is about to be a step change. Which direction should we push it in?
 
 ## Doubts
 
@@ -335,3 +340,5 @@ What should the goal be? Pareto improvement in agency.
 [^18]: lol, but yea
 
 [^mindscape]: [Mindscape podcast](https://www.preposterousuniverse.com/podcast/2021/10/18/169-c-thi-nguyen-on-games-art-values-and-agency/) with C Thi Nguyen
+
+[^moloch]: [Meditations on Moloch](https://slatestarcodex.com/2014/07/30/meditations-on-moloch/)
