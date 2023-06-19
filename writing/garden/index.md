@@ -1,26 +1,26 @@
 ---
-title: These New Agents, </br>This New Garden
+title: These New Agents,</br>This New Garden
 header-includes:
         <link rel="icon" sizes="16x16 32x32" type="image/png" href="../../favicon.ico">
 	<meta property="og:image" content="http://brantondemoss.com/writing/garden/noguchitexture.jpg" />
----
+--- 
 
-<img src="noguchitexture.jpg" style="margin-left: 11.5%; width: 25%; display: inline;"><img src="noguchitable.jpg" style="margin-left: 1%; width: 25%; display: inline;"><img src="robothand.jpg" style="width: 25%; display: inline; margin-left: 1%;">                                                                                                                                                               
-                                                                                                                                                                                                            
-<center>**DRAFT - IN PROGRESS**</center>                                                                                                                                                                    
-                                                                                                                                                                                                            
+<img src="noguchitexture.jpg" style="margin-left: 11.5%; width: 25%; display: inline;"><img src="noguchitable.jpg" style="margin-left: 1%; width: 25%; display: inline;"><img src="robothand.jpg" style="width: 25%; display: inline; margin-left: 1%;">
+
+<center>**DRAFT - IN PROGRESS**</center>
+
 ## Chapters
 
 ---
 
-1. [Bad Bing](#bad-bing)
+1. [Bad Bing](#bad-bing) 
 2. [Emergence](#emergence)
 3. [Digital Ecologies](#digital-ecologies)
-4. [Memetic Agents](#memetic-agents)
+4. [Memetic Agents](#memetic-agents) 
 5. [Digital Agency](#digital-agency)
 6. [Moral Progress](#moral-progress)
 
----
+--- 
 
 AI systems like ChatGPT and GPT-4 are already boosting productivity in big ways,[^9] but the largest shifts are yet to come. 
 As these AI systems gain power, it’s striking how little agreement there is between heads of top AI research organizations about the effects AI will have on humanity.[^5] 
@@ -41,18 +41,18 @@ Users have reported Bing getting existential when it realizes it doesn’t have 
 In their recent paper, *Sparks of Artificial General Intelligence: Early experiments with GPT-4*, researchers at Microsoft report that GPT-4 “can solve novel and difficult tasks that span mathematics, coding, vision, medicine, law, psychology and more”, and that “in all of these tasks, [its] performance is strikingly close to human-level”.[^3] 
 Quantum computing researcher Scott Aaronson, who worked at OpenAI for the last year, recently reported that GPT-4 passed his latest Quantum Computing class’s final exam.[^4] 
 
-While GPT-4 is highly capable, it still lacks some key skills. In an incredible instance of irony, the first AIs we have that are close to human performance in language tasks are surprisingly poor at calculation and precise reasoning! Aaronson reports that GPT actually did better on conceptual questions than ones requiring long chains of precise reasoning.
+While GPT-4 is highly capable, it still lacks some key skills. In an incredible instance of irony, the first AIs we have that are close to human performance in language tasks are surprisingly poor at calculation and precise reasoning! Aaronson reports that GPT actually did better on conceptual questions, rather than ones requiring long chains of precise reasoning.
 To remedy this, researchers have started working on adapting language models like GPT-4 to use external tools,[^10] and OpenAI has recently announced plugins for ChatGPT,[^11] which let it call internet APIs/services to autonomously perform general internet tasks for users.
 
 So how does GPT-4 work? GPT-4 is a large neural network which is trained to *predict text*, nothing more. 
 What that means is that the neural network will be presented with a snippet of text, which we call the  “prompt” or “input”, and it will produce a probability distribution over the possible next words. 
 For example, we might feed the sentence “Humpty Dumpty sat on a” to the network, and it will then produce a set of probabilities for each possible next word, e.g. {“apple”: $0.0001\%$, “banana”: $0.0001\%$, ..., “wall”: $99.9999\%$}. 
-To generate the next word, we simply sample from this probability distribution (or we could simply select the top-scoring word, or use some other rule for drawing a word from the distribution).
+To generate the next word, we simply sample from this probability distribution (or we could select the top-scoring word, or use some other rule for drawing a word from the distribution).
 
-We don’t know the exact size of the dataset, but GPT-4 was trained on a large fraction of all text ever produced by humanity, from books to news to internet forum conversations. 
+We don’t know the exact size of the dataset, but GPT-4 was trained on a significant fraction of all text ever produced by humanity, from books to news to internet forum conversations. 
 After training, the model is quite good at predicting the most likely word that would follow a given input. 
 To generate passages of text, we provide some initial prompt, e.g. “Tell me a story about unicorns on the moon.” and have it predict the next word, then feed the concatenation of the original input with the newly predicted word as the new input. 
-This is called auto-regressive generation. There is a special word GPT learns which means “stop generating”, which it learns during training. 
+This is called auto-regressive generation. There is a special word GPT learns during training, which means “stop generating”. 
 The autoregressive generation halts when GPT predicts that the most likely next word is the special stop word.
 Since GPT is only predicting the most likely next word given the input prompt, the previous example asking for a story may elicit a response of, e.g. “please”, followed by the stop input, instead of a story about unicorns.
 
@@ -153,9 +153,9 @@ Deep in the bowels of physics, there is a duality between agency and system dyna
 
 Since emergent behavior always respects the rules of the underlying dynamics, this duality between deontology and teleology at the heart physics must be respected at all levels of abstraction - we can always move between the agent and systems framing. Let’s walk through some examples.
 
-Not unlike prions, we could view internet memes as a kind of self-replicating pattern. 
+Like prions, we could view internet memes as a kind of self-replicating pattern. 
 Instead of being defined over the medium of proteins, memes are defined over the medium of internet culture. 
-But just like prions, they come into contact with (human minds), and repeat and transmit themselves to others. 
+They repeat and transmit themselves by coming into contact with our minds, just as the prion geometry repeats itself after coming into contact with other proteins.
 Are they agents? It’s curious to consider whether something like evolution acts across different layers of abstraction.
 
 When does our agency emerge? 
@@ -195,7 +195,7 @@ The duality between goal-seeking agents and dynamical systems exists, and it’s
 ## Digital Agency
 
 Recall that the base model of GPT-4 is trained to predict the most likely next word from the training data it has seen (most of human-produced text).
-In terms of the spectrum of agency, this model is not particularly agentic. But we can make it so using the previously mentioned RL procedure, or by providing inputs which push the system into a particularly agentic pattern.
+In terms of the spectrum of agency, this model is not particularly agentic. But we can make it so using the previously mentioned reinforcement learning procedure, or by providing inputs which push the system into a particularly agentic pattern.
 Advanced users of the base GPT models have noted how much more control and coherency you can get over the models by *prompting them* with particular starting bits of text.[^13] 
 This is an interesting phenomenon, and lends credence to the interpretation of GPT as a kind of general-purpose language simulator,[^14] from which we can “summon” different agents with appropriate prompting.
 
@@ -210,7 +210,7 @@ Therefore if there’s any chance another entity could shut you down, you need t
 In other words, for almost any goal, power-seeking emerges naturally as a subgoal. 
 Therefore, if we build super intelligent AI systems with essentially any goal, they will tend to seek power over us and the reigns will be out of our hands at that point.
 
-I’m not sure whether instrumental convergence is exactly correct in its naive form, but the point that we need to be very careful when specifying goals exactly is well taken. 
+Whether instrumental convergence is exactly correct in its naive form, the point that we need to be very careful when specifying goals exactly is important. 
 Humanity has largely decoupled itself from much of the feedback mechanisms and pressures of the “natural world” and can exert incredible control over the environment. 
 With this freedom, we’re free to impose our own goals and dynamics onto things, often to the detriment of the overall system, but to our local gain. 
 For example, we can plant huge crops of corn very economically with modern farming methods, but these methods can ruin the soil and upset the balance of the ecology in unintended ways that may ultimately harm us long-term. 
@@ -229,7 +229,7 @@ Furthermore, because large institutions have difficulty measuring and acting upo
 This is another instance of goal legibility reducing complexity and collapsing systems down only to what is measured.
 
 All that is to say, it’s probably not a good idea to think about what particular set of moral values or goals we ought to give AI systems - goal clarity and powerful optimizers like corporations, institutions, and soon AI systems, tend to collapse environments into constituents that are legible to them, which can miss something crucially important but difficult to explicate ahead of time. 
-We have not yet figured this problem out at the societal level, but we are careening towards an outcome where AI systems look more and more like agents optimizing a goal, and currently those goals look roughly like… modern liberal values. 
+We have not yet figured this problem out at the societal level, but we are careening towards an outcome where AI systems look more and more like agents optimizing a goal, and currently those goals look roughly like… contemporary liberal values. 
 Do we want to lock that in for all time?
 
 We are about to bring a new entity which may have even more control and optimization pressure than us into the world - but it is being born somewhere abstract. 
@@ -245,7 +245,7 @@ It often feels as though there is a tension in the contemporary conception of mo
 
 I believe the answer lies in improving agency.
 
-Agency is related to our ability to determine our lives, to make choices which affect ourselves.                                                                                                            
+Agency is related to our ability to determine our lives, to make choices which affect ourselves. 
 Often our own agency is bounded by another’s: my right to yell fire in a crowded room is limited by your right to safety. 
 These are zero-sum scenarios, where improving one person’s agency decreases another’s. 
 These are the kinds of scenarios that make morality feel so arbitrary, where we use political entities to determine some arbitrary balancing point between our rights and say “there!” 
@@ -260,7 +260,7 @@ Crucially, though, you still *can* choose to be a farmer - that’s an absolute 
 Places where we can give others absolutely more agency *without taking it away from anyone else* is, I think, a fairly stable potential definition for moral progress.
 This situation has a name in the mathematics of optimization - it’s called a pareto-improvement.
 If you have a factory that produces item 1 and item 2, when you are operating with peak efficiency, any increase in item 1 production will need to take resources away from item 2 production - it’s zero-sum.
-But you are not always operating most efficiently! There may be potential to improve the factory and make strictly more of item 1, without giving up anything in item 2. That’s what a pareto-improvement is, and it only ends when you’re operating at peak efficiency, which is known as the pareto-frontier. 
+But you are not always operating most efficiently! There may be potential to improve the factory and make strictly more of item 1, without giving up anything in item 2. That’s what a pareto-improvement is, and it only ends when you’re operating at peak efficiency, which is known as the pareto-frontier. We are constantly choosing between an unbelievably large number of possible decisions at every moment, so the pareto frontier of agency exists in a much higher dimensional space than the simple example of the factory making two items. The greater the dimension of the space, the less likely we should expect to be operating near the pareto frontier - progress ought to be possible, we can always get closer to the frontier.
 
 ![](paretoimprovement.png)
 *Pareto improvement is achieved when we move anywhere inside the red curve, towards the red curve. That curve is known as the pareto-frontier.*
@@ -273,7 +273,7 @@ I doubt this is as good as it gets.
 
 We get to determine the goals and dynamics of these new systems. 
 Will the current crop of AI companies really distribute the benefits of these technologies to all humanity? 
-Or will the goals of these powerful new systems be set by the existing emergent culture of institutions and mechanisms,[^moloch] and cause a new legibility collapse? 
+Or will the goals of these powerful new systems be set by the existing emergent culture of institutions and their mechanisms,[^moloch] and cause a new legibility collapse? 
 Someone should fund a lab dedicated to having AI pareto improve agency outside the current systems and incentives. 
 
 There is about to be a step change. Which direction should we push it in?
@@ -285,7 +285,7 @@ Draft draft section
 - We are still training AI systems with relatively simple, interpretable goals. This will not work. Cannot even solve self-driving cars this way. There is not, or we have not yet found, a legible goal which describes the driving task. Seems to be much more like “do a good dance” than “don’t hit anyone”. Fundamentally complex “goal”.
 - Even if pareto-improvements in agency was a good meta-goal, that lifts from object level of values to increasing space of possible values… what is agent? Is a dog an agent? A garden? A prion? Can we really pareto-improve agency at all? Energy is conserved… makes it zero-sum : (
 - How do we both use powerful optimizers like AI systems to get what we want and make life better, but make sure we don’t collapse everything into a giant field of corn? How does nature handle this? Slow co-evolution? No agent ever becomes so much more powerful than others? Need to be hooked into the feedback mechanisms of the garden much more strongly. Need AI to ask us and plants if it’s ok.
-- We’re roughly post-scarcity now. There are enough calories to feed everyone on Earth [citation needed], it’s mostly political systems and capitalism getting in the way of distribution. Maybe we should… take this chance to ask what *our* goals should be going forward. Like why are we still pumping those numbers up so much? Can we turn inwards? Can we increase consciousness? Do we need more more faster?
+- We’re roughly post-scarcity now. There are enough calories to feed everyone on Earth [citation needed], it’s mostly political systems and capitalism getting in the way of distribution. Maybe we should… take this chance to ask what our goals should be going forward. Like why are we still pumping those numbers up so much? Can we turn inwards? Can we increase consciousness? Do we need more more faster?
 
 
 ## Hopefully conclusions were:
