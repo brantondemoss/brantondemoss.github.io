@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" type="image/png" href="https://users.ox.ac.uk/~exet4231/icons/favicon-16x16.png" sizes="16x16"/>
+    <link rel="icon" type="image/png" href="https://users.ox.ac.uk/~exet4231/icons/favicon-32x32.png" sizes="32x32"/>
+    <meta name="theme-color" content="#44687d" />
+    <meta charset="UTF-8"/>
+    <title>Branton DeMoss's Research Page</title>
+    <link href="index.css" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div id="wrapper"> 
+      <div id="header"> 
+        <div class="top_banner">
+          <h1 style="text-align:center">Branton's Research Page</h1>
+          <br>
+        </div>
+      </div>
+      
+      <div id="page_content">
+        <div class="intro" style="border-top:#adb1b2 solid 1px; border-bottom:#adb1b2 solid 1px; padding-top: 20px; padding-bottom: 20px;">
+          <p>I'm interested in the nature of emergence, which I study using algorithmic information theory and machine learning. Emergence is the observation that systems exhibit new behavior at different degrees of scale and complexity. For example: a cell is alive, but is only made of dead things. Water is wet, yet a single molecule is not.</p>
+          <br>
+          <p>Previously, I did research in mathematics and physics. I've worked on projects in knot theory, neutrino physics, and quantum many-body localization. In industry, I've worked in computational geophysics, reinforcement learning for robotics, and natural language processing with LLMs at a startup I founded.</p>
+          <br>
+          <p>A brief statement on my research interests is available <a href="SFI_Research_Statement.pdf">here</a>.</p>
+          <br>
+          <i>email:</i> bdemoss at robots.ox.ac.uk
+          <br>
+        </div>
+        <!-- 
+        <div class="links">
+          <br>
+          <p style="text-align:center;">
+            <video style="padding-left: 10px" width="380" loop autoplay muted playsinline>
+              <source src="4980.mp4" type="video/mp4">
+            </video>
+            <video width="380" loop autoplay muted playsinline>
+              <source src="1660.mp4" type="video/mp4">
+            </video>
+          </p>
+        </div>
+        -->
+        <!-- Publications Section -->
+        <div class="publications">
+          <h2>Publications</h2>
+          <div class="publication-item">
+            <div class="publication-image">
+              <img src="grokkingimage.png" alt="Grokking Image">
+            </div>
+            <div class="publication-content">
+              <h3>The Complexity Dynamics of Grokking</h3>
+              <p>Under submission</p>
+              <p>
+                We proposed a universal measure of model complexity based on Kolmogorov complexity 
+                and algorithmic rate&ndash;distortion theory, and used it to track the complexity dynamics
+                of networks undergoing <i>grokking</i>, which is the sudden phase change from memorization
+                to generalization. We showed that this phase change corresponds to a rise and fall of complexity
+                of the model.
+              </p>
+            </div>
+          </div>
+          <div class="publication-item">
+            <div class="publication-image">
+              <img src="lumosim2.png" alt="LUMOS Image">
+            </div>
+            <div class="publication-content">
+              <h3>LUMOS: Language-Conditioned Imitation Learning with World Models</h3>
+              <p>Under submission</p>
+              <p>
+                We extended DITTO (below) to work for long-horizon manipulation tasks on a real robot. 
+                Train in dream (world model), transfer zero-shot to real! We also upgraded DITTO to be multi-task, 
+                and can condition it on natural language commands.
+              </p>
+            </div>
+          </div>
+          <div class="publication-item">
+            <div class="publication-image">
+              <img src="dittoresults.png" alt="DITTO Image">
+            </div>
+            <div class="publication-content">
+              <h3>DITTO: Offline Imitation Learning with World Models</h3>
+              <p>Preparing for submission (<a href="https://arxiv.org/abs/2302.03086">arXiv)</a></p>
+              <p>
+                We can't train policies online, on robots, because it's too sample inefficient 
+                (and potentially dangerous). Training in simulation can be problematic if the simulator 
+                fails to model all relevant dynamics. To address these issues, we propose a method which 
+                takes inspiration from <a href="https://arxiv.org/abs/1011.0686">DAgger</a> and 
+                <a href="https://worldmodels.github.io/">World Models</a>. We <i>learn</i> a simulator from data, 
+                then let a policy practice matching expert demonstrations inside the learned simulator (world model). 
+                The policy learns how to correct its own mistakes over multiple time-steps, by learning to match its 
+                <i>latent trajectory</i> to an expert demonstrator.
+              </p>
+            </div>
+          </div>
+          <div class="publication-item">
+            <div class="publication-image">
+              <img src="noisyseismic.png" alt="Seismic Image">
+            </div>
+            <div class="publication-content">
+              <h3>Combining physics and deep learning to automatically pick first breaks in the Permian Basin</h3>
+              <p><a href="https://library.seg.org/doi/abs/10.1190/segam2021-3579730.1">
+                  First International Meeting for Applied Geoscience & Energy, 2021</a></p>
+              <p>
+                This was a case-study which used an ML product I created for geophysical modeling, led by 
+                one of our customers. The seismic data visualizations at the bottom of this page come from an experiment 
+                using GANs to model seismic data, which I explain 
+                <a href="https://brantondemoss.com/writing/seismicgan">here</a>.
+              </p>
+            </div>
+          </div>
+          <div class="publication-item">
+            <div class="publication-image">
+              <img src="katagame.png" alt="Go Image">
+            </div>
+            <div class="publication-content">
+              <h3>Love Letter to KataGo or:<br>Go AI past, present, and future</h3>
+              <p><a href="https://brantondemoss.com/writing/kata/">American Go E-Journal</a>, 
+                <a href="https://brantondemoss.com/writing/kata/katagogerman.pdf">Deutsche Go-Zeitung</a>, 2020</p>
+              <p>
+                This essay describes the history of AI in the game of Go. Republished by the American Go Association and the German Go Newspaper.
+              </p>
+            </div>
+          </div>
+          <div class="publication-item-last">
+            <div class="publication-image">
+              <img src="particleshowers.png" alt="Go Image">
+            </div>
+            <div class="publication-content">
+              <h3>Secondary Particle Showers from Hadron Absorber Interactions</h3>
+              <p>DUNE Collaboration Technical Report, 2016</p>
+              <p>
+                This was an internal report I wrote for the <a href="https://www.dunescience.org/">DUNE</a> experiment, which studies 
+                neutrino flavour oscillations. I ran simulations of the beamline to understand neutrino production statitistics. 
+                Small cog in a giant experiment, and my first taste of research as an undergraduate.
+              </p>
+            </div>
+          </div>
+          <!-- Repeat for additional publications -->
+        </div>
+        <!-- End of Publications Section -->
+        <div class="links">
+          <br>
+          <p style="text-align:center;">
+            <video style="padding-left: 10px" width="380" loop autoplay muted playsinline>
+              <source src="4980.mp4" type="video/mp4">
+            </video>
+            <video width="380" loop autoplay muted playsinline>
+              <source src="1660.mp4" type="video/mp4">
+            </video>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
