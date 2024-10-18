@@ -1,76 +1,54 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
-
 body {
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+    overflow: hidden;
     position: relative;
     text-align: center;
     font-family: "Open Sans", 'Lato', Helvetica, sans-serif;
     background-color: white;
     color: black;
 }
-
-
 #wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 5px;
-    box-sizing: border-box;
+    padding-top: 70px;
+    display: block;
+    padding-right: 0px;
+    /*max-width: 400px;*/
+    /*word-wrap: break-word;
+    word-break: break-all;
+    position: relative;*/
+    overflow: hidden;}
+#wrapper p {
+    z-index: 5;
+    margin: 5px 0px;
+}
+#wrapper img {
+    position: relative;
+    z-index: -1;
+    max-width: 40%;
+
+    @media only screen and (max-device-width: 667px) and (orientation : landscape) {
+           max-width: 20%;
+
+    }
 }
 
-#mainImage {
-    flex: 0 0 auto;
-    width: 55%; /* Changed from max-width to width */
-
-}
-
-#mainImage img,
-#mainImage video {
+#footer {
+    font: 14px "Source Code Pro", Inconsolata;
+    display: block;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
     width: 100%;
-    height: auto;
-    display: block; /* Removes any extra space below the image */
+    background-color: #f5f5f5;
+    color: #4D4D4D;
 }
-
-#mainImage {
-    margin-right: 20px;
-}
-
-#mainImage img {
-    max-width: 100%;
-    animation: 250s rotateRight infinite linear;
-}
-
-.content {
-    flex: 1 1 auto;
-    min-width: 0; /* Allows content to shrink below its minimum content size */
-    text-align: left;
-    padding-left: 20px;
-    border-left: 2px solid #9799a7;
-    overflow-wrap: break-word; /* Ensures long words don't overflow */
-    margin: 5px 0;
-}
-.content p, .content ul {
-    margin: 0px 0;
-}
-
-.content-container {
-    display: flex;
-    align-items: center;
-    max-width: 1000px;
-    width: 100%;
-}
-
 
 .key {
     font-family: "Menlo", monospace;
     text-align: left;
     width: 50%;
-    /*margin: auto;*/
+    margin: auto;
     white-space: pre-wrap;
-    /*line-height:10px;*/
+    line-height:10px;
 } 
 
 .rounded {
@@ -82,18 +60,32 @@ body {
     overflow: hidden;
 }
 
+.content {
+    float: left;
+    margin-left: 12px;
+    padding-left: 12px;
+    border-left: 2px solid #9799a7;
+    /*border-bottom: 2px solid #9799a7;*/
+    /*word-wrap: break-word;
+    word-break: break-all;  */
+}
+
 tab {
     padding-left: 2em;
 }
 
-img {
-    margin-left: 0; /* Remove left margin */
-    margin-right: 0;
-    float: none; /* Remove float */
-    -moz-animation: 250s rotateRight infinite linear;
-    -webkit-animation: 250s rotateRight infinite linear;
+img{
+    margin-left: 20%;
+    @media only screen and (max-device-width: 667px) and (orientation : landscape) {
+    	   margin-left: 10%;
+    }
+    margin-right: 0px;
+    float: left;
+    -moz-animation:250s rotateRight infinite linear;
+    -webkit-animation:250s rotateRight infinite linear;
     overflow: hidden;
 }
+
 
 @-moz-keyframes rotateRight{
     0%{ -moz-transform:rotate(0deg); -moz-transform-origin:50% 50%; }
@@ -114,6 +106,12 @@ img {
     font-family: "Open Sans", 'Lato', Helvetica, sans-serif;
     font-stretch:normal;
     font-size: 36px;
+}
+
+ul {
+    font-size: 14px;
+    text-align: left;
+    margin:6px 0px 12px 0px;
 }
 
 .left {
@@ -178,45 +176,4 @@ a.orange
 a.orange:hover
 {
  background-color: #E7D9A4;   
-}
-
-
-
-ul {
-    font-size: 14px;
-    text-align: left;
-    padding-left: 20px;
-}
-
-@media (max-width: 768px) {
-    .content-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #mainImage {
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
-
-    .content {
-        padding-left: 0;
-        border-left: none;
-        text-align: center;
-    }
-
-    .large {
-        font-size: 20px;
-    }
-
-    ul {
-        text-align: center;
-        padding-left: 0;
-        list-style-type: none;
-    }
-}
-
-@keyframes rotateRight {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
 }
