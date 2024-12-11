@@ -7,11 +7,11 @@ header-includes:
 <center> Branton DeMoss, Silvia Sapora, Jakob Foerster, Nick Hawes, Ingmar Posner </br> <a href="https://arxiv.org/">ar$\chi$iv</a></center>
 </br>
 ![](fig1.png)
-*In grokking experiments, the unregularized network's complexity rises at it memorizes the training data, and remains high, never generalizing. The regularized network's complexity similarly rises, but as it groks and generalization occurs, the complexity falls.*
+*In grokking experiments, the unregularized network's complexity rises and remains high as it memorizes the training data, never generalizing. The regularized network's complexity similarly rises, but as it groks and generalization occurs, the complexity falls.*
 
 When can we say a neural network “understands” the task it has learned? 
 If one network “understands” its training data better than another, shouldn’t it generalize better? 
-To answer these questions, we study networks which suddenly transition from memorization to perfect generalization: the “grokking” phenomenon first reported in [Power et al](https://arxiv.org/abs/2201.02177). 
+To answer these questions, we study networks which suddenly transition from memorization to perfect generalization: the “grokking” phenomenon first reported by [Power et al](https://arxiv.org/abs/2201.02177). 
 We introduce a new way to measure the complexity of neural networks based on *lossy compression* and Kolmogorov complexity, and use this framework to track the complexity dynamics of neural networks which grok. 
 We find a characteristic **rise and fall of complexity** in the networks, which corresponds to memorization followed by generalization. 
 
@@ -64,16 +64,16 @@ Hence, models which best compress the data are the ones which are expected to ge
 We’ve shown how low complexity models are preferred when compressing data, and models which achieve both low complexity and low entropy on their training data generalize best. 
 But what is complexity? 
 Intuitively, a complexity measure should have units of information: it appears summed with entropy in the previous equations.
-The **Kolmogorov Complexity** $K$ of a string s is defined to be the length of the shortest program which prints s:
+The **Kolmogorov Complexity** $K$ of a string s is defined to be the length of the shortest program $p$ which produces s:
 \begin{equation}
 	K(s) = \min \{ \texttt{len}(p) | \texttt{exec}(p) = s \}
 \end{equation}
 So strings like “11111111…” are simple becauser they have a short description (program) which produces them: “print ‘1’ N times’.
-Strings like “100101011010…” are complex, because they lack regularity and so cannot be described compactly. 
-We say a string is *algorithmically random* if it has no description shorter than itself, i.e. $K(s) = \texttt{len}(s)$. 
+Strings like “100101011010…” are complex because they lack regularity and cannot be described compactly. 
+We say a string is *algorithmically random* if it has no description shorter than itself, i.e. $K(s) \geq \texttt{len}(s)$. 
 
 Notice that this conception of complexity is intimately related to compression: simple strings are those which are highly compressible, whereas maximally complex (algorithmically random) strings are not at all compressible. 
-In fact, while we cannot compute the Kolmogorov Complexity, we can upper-bound it by compression: if we compress our string, then the compressed data with the decompressor are a program which prints the original string. 
+In fact, while we cannot compute the Kolmogorov Complexity, we can upper-bound it by compression: if we compress our string, then the compressed data with the decompressor is a program which prints the original string. 
 So the tighter we can compress the data, the tighter a bound on its complexity we can produce. 
 We cannot know a string’s true complexity, even in principle, but we can get tighter and tighter upper-bounds on how complex it is, by compressing the string more and more.
 

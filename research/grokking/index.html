@@ -38,15 +38,15 @@ Branton DeMoss, Silvia Sapora, Jakob Foerster, Nick Hawes, Ingmar Posner
 class="math inline">\(\chi\)</span>iv</a>
 </center>
 <p></br> <img src="fig1.png" /> <em>In grokking experiments, the
-unregularized network’s complexity rises at it memorizes the training
-data, and remains high, never generalizing. The regularized network’s
-complexity similarly rises, but as it groks and generalization occurs,
-the complexity falls.</em></p>
+unregularized network’s complexity rises and remains high as it
+memorizes the training data, never generalizing. The regularized
+network’s complexity similarly rises, but as it groks and generalization
+occurs, the complexity falls.</em></p>
 <p>When can we say a neural network “understands” the task it has
 learned? If one network “understands” its training data better than
 another, shouldn’t it generalize better? To answer these questions, we
 study networks which suddenly transition from memorization to perfect
-generalization: the “grokking” phenomenon first reported in <a
+generalization: the “grokking” phenomenon first reported by <a
 href="https://arxiv.org/abs/2201.02177">Power et al</a>. We introduce a
 new way to measure the complexity of neural networks based on <em>lossy
 compression</em> and Kolmogorov complexity, and use this framework to
@@ -140,22 +140,22 @@ Intuitively, a complexity measure should have units of information: it
 appears summed with entropy in the previous equations. The
 <strong>Kolmogorov Complexity</strong> <span
 class="math inline">\(K\)</span> of a string s is defined to be the
-length of the shortest program which prints s: <span
-class="math display">\[\begin{equation}
+length of the shortest program <span class="math inline">\(p\)</span>
+which produces s: <span class="math display">\[\begin{equation}
     K(s) = \min \{ \texttt{len}(p) | \texttt{exec}(p) = s \}
 \end{equation}\]</span> So strings like “11111111…” are simple becauser
 they have a short description (program) which produces them: “print ‘1’
-N times’. Strings like “100101011010…” are complex, because they lack
-regularity and so cannot be described compactly. We say a string is
+N times’. Strings like “100101011010…” are complex because they lack
+regularity and cannot be described compactly. We say a string is
 <em>algorithmically random</em> if it has no description shorter than
-itself, i.e. <span class="math inline">\(K(s) =
+itself, i.e. <span class="math inline">\(K(s) \geq
 \texttt{len}(s)\)</span>.</p>
 <p>Notice that this conception of complexity is intimately related to
 compression: simple strings are those which are highly compressible,
 whereas maximally complex (algorithmically random) strings are not at
 all compressible. In fact, while we cannot compute the Kolmogorov
 Complexity, we can upper-bound it by compression: if we compress our
-string, then the compressed data with the decompressor are a program
+string, then the compressed data with the decompressor is a program
 which prints the original string. So the tighter we can compress the
 data, the tighter a bound on its complexity we can produce. We cannot
 know a string’s true complexity, even in principle, but we can get
