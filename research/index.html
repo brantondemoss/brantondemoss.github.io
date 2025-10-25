@@ -85,9 +85,7 @@
               <h3>LUMOS: Language-Conditioned Imitation Learning with World Models</h3>
               <p>ICRA 2025, <a href="http://lumos.cs.uni-freiburg.de/">project page</a></p>
               <p>
-                We extended DITTO (below) to work for long-horizon manipulation tasks on a real robot. 
-                Train in dream (world model), transfer zero-shot to real! We also upgraded DITTO to be multi-task, 
-                and can condition it on natural language commands.
+                We demonstrated robot policies trained purely offline in a world model could transfer to the real world zero-shot, by extending DITTO (below). LUMOS is an upgrade to DITTO, and works even better for long horizon tasks using latent-space planning, and can also be conditioned on natural language commands for multi-task manipulation all in a single network.
               </p>
             </div>
           </div>
@@ -101,14 +99,7 @@
               <h3>DITTO: Offline Imitation Learning with World Models</h3>
               <p><a href="https://arxiv.org/abs/2302.03086">arXiv</a></p>
               <p>
-                We can't train policies online, on robots, because it's too sample inefficient 
-                (and potentially dangerous). Training in simulation can be problematic if the simulator 
-                fails to model all relevant dynamics. To address these issues, we propose a method which 
-                takes inspiration from <a href="https://arxiv.org/abs/1011.0686">DAgger</a> and 
-                <a href="https://worldmodels.github.io/">World Models</a>. We <i>learn</i> a simulator from data, 
-                then let a policy practice matching expert demonstrations inside the learned simulator (world model). 
-                The policy learns how to correct its own mistakes over multiple time-steps, by learning to match its 
-                <i>latent trajectory</i> to an expert demonstrator.
+                Normally when we train policies offline, it also means they learn off-policy. We use world models to enable safe offline training on-policy. We use reinforcement learning inside the latent space of a learned world model to induce imitation learning, using a robust reward defined in the learned latent space. On-policy RL in the world model transfers to robust imitation learning in the real environment.
               </p>
             </div>
           </div>
